@@ -1,0 +1,1 @@
+finded in https://www.flaticon.com/free-icons/bell
