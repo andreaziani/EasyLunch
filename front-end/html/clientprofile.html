@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>FoodDelivery</title>
+    </head>
+    <body>
+        <header>
+            <!--TODO: set the dimension of the icon with css-->
+            <a href="notification.html"><img src="../resources/bell.png" alt="alarmbell" width="70"></a>
+            <nav>
+                <a href="clientprofile.html">Profile</a>
+                <a href="lists.html">Lists</a>
+            </nav>
+            <a href="cart.html"><img src="../resources/online-store.png" alt="cart" width="70"></a>
+        </header>
+        <div>
+            <fieldset id="personalinfo">
+                <legend>Personal informations</legend>
+                <!--Span will be filled with text taken from db-->
+                <p>Name: <span id="name">None</span><br/>
+                    Surname: <span id="surname">None</span><br/>
+                    Birthday: <span id="birthday">None</span><br/>
+                    Telephone: <span id="tel">None</span><br/>
+                    Email: <span id="email">None</span><br/>
+                    Username: <span id="username">None</span><br/>
+                </p>
+                <button type="button">Modify</button>
+            </fieldset>
+        </div>
+        <!--Maybe it would be better move this div in a separate page -->
+        <div>
+            <fieldset>
+                <legend>Last Purchases</legend>
+                <!-- TODO: Define border and style of the table using css-->
+                <table>
+                    <tr>
+                        <th>ID Purchase</th>
+                        <th>Nominative</th>
+                        <th>Delivery date & time</th>
+                        <th>Delivery spot</th>
+                        <th>Status</th>
+                    </tr>
+                    <!--table rows will be created with text taken from db-->
+                </table>
+            </fieldset>
+        </div>
+    </body>
+</html>
