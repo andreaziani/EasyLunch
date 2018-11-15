@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Cart Summary</title>
+    </head>
+    <body>
+        <header>
+            <!--TODO: set the dimension of the icon with css-->
+            <a href="notification.html"><img src="../resources/bell.png" alt="alarmbell" width="70" /></a>
+            <nav>
+                <a href="clientprofile.html">Profile</a>
+                <a href="lists.html">Lists</a>
+            </nav>
+            <a href="cart.html"><img src="../resources/online-store.png" alt="cart" width="70" /></a>
+        </header>
+        <section>
+            <h1>Cart Summary</h1>
+            <table>
+                <tr>
+                    <th>Product</th>
+                    <th>Provider</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+                <!---->
+                    <tr>
+                    <td>Product1</td>
+                    <td>Provider1</td>
+                    <td>x€</td>
+                    <td><input type="number" /></td>
+                </tr><!---->
+                <!--table rows will be created with text taken from db-->
+            </table>
+            <input type="button" value="Submit" />
+        </section>
+    </body>
+</html>
