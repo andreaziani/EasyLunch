@@ -10,24 +10,32 @@
             <h1>Register</h1>
             <form>
                 <label>Name: <input type="text" name="Name" id="name" /></label><br/>
+                <label id="nameError"></label><br/>
                 <label>Surname: <input type="text" name="Surname" id="surname" /></label><br/>
+                <label id="surnameError"></label><br/>
                 <label>Birthdate: <input type="date" name="birthdate" id="birthdate" /></label><br/>
                 <label>Telephone: <input type="tel" name="telephone" id="telephone" /></label><br/>
                 <label>Email: <input type="email" name="email" id="email" /></label><br/>
                 <label>Username: <input type="text" name="Userame" id="username" /></label><br/>
-                <!-- TODO: Add PIVA if the user is a provider -->
+                <label id="usernameError"></label><br/>
                 <label>Password: <input type="password" name="password" id="password" /></label><br/>
-                <label>Repeat Password: <input type="password" name="rpassword" id="rpassword" /></label><br/>
+                <label id="passwordError"></label><br/>
+                <label>Repeat Password: <input type="password" name="rpassword" id="rPassword" /></label><br/>
+                <label id="rPasswordError"></label><br/>
                 <label>
                     Typology: 
-                    <select name="Typology" id="typo">
-                        <option value="client">Client</option>
+                    <select name="Typology" id="typology">
+                        <option value="client">Client</option>s
                         <option value="provider">Provider</option>
                     </select>
                 </label><br/>
-                <input type="button" value="Sign up" />
-                <input type="button" value="Undo" />
+                <label style="display: none">PIVA:  <input type="text" name="piva" id="piva" /></label>
+                <!-- TODO: Add PIVA if the user is a provider -->
+                <input type="button" value="Sign up" id="submit"/>
+                <input type="button" value="Reset" />
             </form>
         </section>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="registration.js"></script>
     </body>
 </html>
