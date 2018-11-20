@@ -3,25 +3,26 @@
     <head>
         <meta charset="UTF-8">
         <title>FoodDelivery</title>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <a href="access.html">Sign in</a>
+        <a href="../access/access.html">Sign in</a>
         <section id="registration">
             <h1>Register</h1>
             <form>
-                <label>Name: <input type="text" name="Name" id="name" /></label><br/>
-                <label id="nameError"></label><br/>
-                <label>Surname: <input type="text" name="Surname" id="surname" /></label><br/>
-                <label id="surnameError"></label><br/>
+                <label>Name: <input type="text" name="Name" id="name" /></label>
+                <label id="nameError" class="errorMessage"> Invalid Name</label><br/>
+                <label>Surname: <input type="text" name="Surname" id="surname" /></label>
+                <label id="surnameError" class="errorMessage"> Invalid Surname</label><br/>
                 <label>Birthdate: <input type="date" name="birthdate" id="birthdate" /></label><br/>
                 <label>Telephone: <input type="tel" name="telephone" id="telephone" /></label><br/>
                 <label>Email: <input type="email" name="email" id="email" /></label><br/>
-                <label>Username: <input type="text" name="Userame" id="username" /></label><br/>
-                <label id="usernameError"></label><br/>
-                <label>Password: <input type="password" name="password" id="password" /></label><br/>
-                <label id="passwordError"></label><br/>
-                <label>Repeat Password: <input type="password" name="rpassword" id="rPassword" /></label><br/>
-                <label id="rPasswordError"></label><br/>
+                <label>Username: <input type="text" name="Userame" id="username" /></label>
+                <label id="usernameError" class="errorMessage"> Invalid username</label><br/>
+                <label>Password: <input type="password" name="password" id="password" /></label>
+                <label id="passwordError" class="errorMessage"> Invalid password</label><br/>
+                <label>Repeat Password: <input type="password" name="rpassword" id="rPassword" /></label>
+                <label id="rPasswordError" class="errorMessage"> Passwords are not the same</label><br/>
                 <label>
                     Typology: 
                     <select name="Typology" id="typology">
@@ -29,8 +30,7 @@
                         <option value="provider">Provider</option>
                     </select>
                 </label><br/>
-                <label style="display: none">PIVA:  <input type="text" name="piva" id="piva" /></label>
-                <!-- TODO: Add PIVA if the user is a provider -->
+                <label class="hiddenLabel" id="pivaLabel">PIVA:  <input type="text" name="piva" id="piva" /></label><br/>
                 <input type="button" value="Sign up" id="submit"/>
                 <input type="button" value="Reset" />
             </form>

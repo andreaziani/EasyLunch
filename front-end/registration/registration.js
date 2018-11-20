@@ -8,13 +8,13 @@ $(document).ready(function() {
       .val()
       .toLowerCase();
     if (val.length === 0) {
-      $("#" + label).html("Invalid " + str);
+      $("#" + label).show();
       return false;
     }
     for (var i = 0; i < queries.length; i++) {
       if (val.search(queries[i]) != -1) {
         console.log(queries[i]);
-        $("#" + label).html("Invalid " + str);
+        $("#" + label).show();
         return false;
       }
     }
@@ -30,7 +30,7 @@ $(document).ready(function() {
     isGood = check("password") && isGood;
     isGood = check("username") && isGood;
     if (password != rPassword) {
-      $("#rPasswordError").html("Passwords are not the same");
+      $("#rPasswordError").show();
       isGood = false;
     }
     if (isGood) {
@@ -38,16 +38,23 @@ $(document).ready(function() {
     }
   }
 
-
+  //on change in the typology box, piva label appear and disappear
   $("#typology").change(function(){
     if($("#typology option:selected").val() == "provider"){
-        //$("#piva").style.display = 'contents';
-    }
+        $("#pivaLabel").show();  
+   }
   });
+  $("#typology").change(function(){
+    if($("#typology option:selected").val() == "client"){
+        $("#pivaLabel").hide();
+   }
+  });
+
+  
   $("#submit").click(submit);
-  $("#username").focusin(() => $("#usernameError").html(""));
-  $("#password").focusin(() => $("#passwordError").html(""));
-  $("#name").focusin(() => $("#nameError").html(""));
-  $("#surname").focusin(() => $("#surnameError").html(""));
-  $("#rPassword").focusin(() => $("#rPasswordError").html(""));
+  $("#username").focusin(() => $("#usernameError").hide());
+  $("#password").focusin(() => $("#passwordError").hide());
+  $("#name").focusin(() => $("#nameError").hide());
+  $("#surname").focusin(() => $("#surnameError").hide());
+  $("#rPassword").focusin(() => $("#rPasswordError").hide());
 });
