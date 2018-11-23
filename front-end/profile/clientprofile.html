@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>FoodDelivery</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <!--TODO: set the dimension of the icon with css-->
+            <a href="notification.html"><img src="../resources/bell.png" alt="alarmbell" width="70" /></a>
+            <nav>
+                <a href="clientprofile.html">Profile</a>
+                <a href="productslist.html">Lists</a>
+                <a href="../html/previousOrders.html">Orders</a>
+            </nav>
+            <a href="cart.html"><img src="../resources/online-store.png" alt="cart" width="70" /></a>
+        </header>
+        <div>
+            <fieldset id="personalinfo">
+                <legend>Personal informations</legend>
+                <!--Span will be filled with text taken from db-->
+                <form>
+                    <!--TODO: Set img size with css-->
+                    <!--Each modifiable field should be validate-->
+                    <label>Username: <input type="text" name="Userame" id="username" disabled /></label><br />
+                
+                    <label>Password: <input type="password" name="password" id="password" disabled /></label>
+                    <a class="edit"><img src="../resources/edit.png" alt="modify" width="15"></a>
+                    <label id="passwordError" class="errorMessage"> Invalid password</label><br />
+                
+                    <label>Name: <input type="text" name="Name" id="name" disabled /></label>
+                    <a class="edit"><img src="../resources/edit.png" alt="modify" width="15"></a>
+                    <label id="nameError" class="errorMessage"> Invalid name</label><br />
+                
+                    <label>Surname: <input type="text" name="Surname" id="surname" disabled /></label>
+                    <a class="edit"><img src="../resources/edit.png" alt="modify" width="15"></a>
+                    <label id="surnameError" class="errorMessage"> Invalid surname</label><br />
+                
+                    <label>Birthdate: <input type="date" name="birthdate" id="birthdate" disabled /></label>
+                    <a class="edit"><img src="../resources/edit.png" alt="modify" width="15"></a><br />
+                
+                    <label>Telephone: <input type="tel" name="telephone" id="telephone" disabled /></label>
+                    <a class="edit"><img src="../resources/edit.png" alt="modify" width="15"></a><br />
+                
+                    <label>Email: <input type="email" name="email" id="email" disabled /></label>
+                    <a class="edit"><img src="../resources/edit.png" alt="modify" width="15"></a><br />
+
+                    <input type="button" name="modifyChanges" id="modifyChanges" value="Save changes" class="hiddenButton">
+                </form>
+            </fieldset>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="edit.js"></script>
+    </body>
+</html>
