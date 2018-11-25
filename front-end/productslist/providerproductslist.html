@@ -14,10 +14,15 @@
                 <ul>
                     <li>
                         <figure>
-                            <img src="../resources/food.png" alt="Image of the product" width="100">
-                            <p>Little Description of the product...</p>
-                            <button>Modify</button>
-                            <button>Remove</button>
+                            <img src="../resources/food.png" alt="Image of the product" width="100"><br/>
+                            <label>Name: <input type="text" name="name" disabled/></label><br/>
+                            <label>Quantity: <input type="number" name="Quantity" value="1" disabled/></label><br/>
+                            <label for="description">Description:</label><br/>
+                            <textarea name="description" id="description" cols="30" rows="5" disabled></textarea><br/>
+                            <label>Price in euro: <input type="text" name="Price" disabled/></label><br/>
+                            <button class="modify" type="button">Modify</button>
+                            <button class="remove" type="button">Remove</button>
+                            <button type="submit" class="saveModify">Save product</button>
                         </figure>
                     </li>
                 </ul>
@@ -29,14 +34,14 @@
                     <textarea name="description" id="description" cols="30" rows="5"></textarea><br/>
                     <label>Add image: <input type="file" name="image" id="image"/></label><br/>
                     <label>Price in euro: <input type="text" name="Price"/></label><br/>
-                    <button type="submit" id="saveProduct">Save product</button>
-                    <button type="button" id="cancel">Cancel</button>
+                    <button type="submit" class="saveProduct">Save product</button>
+                    <button type="button" class="cancel">Cancel</button>
                 </form>
                 <button type="button" id="addProduct">Add product</button>
             </div>
         </section>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="addProduct.js"></script>
+        <script src="productslist.js"></script>
     </body>
 </html>   
