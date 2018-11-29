@@ -11,6 +11,7 @@ $(document).ready(function(){
     /* Hide the form to adding new product */
     function cancel(){
         hiddenForm.hide();
+        addProductButton.show();
     }
 
     /* Save the product */

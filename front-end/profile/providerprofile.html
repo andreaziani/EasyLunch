@@ -17,7 +17,7 @@
         <div>
             <fieldset id="personalinfo">
                 <legend>Personal informations</legend>
-                <form>
+                <form action="file.php" method="POST">
                     <!--TODO: Set img size with css-->
                     <label>Username: <input type="text" name="Userame" id="username" disabled/></label><br/>
                     
@@ -46,7 +46,7 @@
                     <a class="edit"><img src="../resources/edit.png" alt="modify" width="15"></a><br/>
                     <label id="pivaError" class="errorMessage"> Invalid PIVA</label><br/>
                     
-                    <button type="button" id="saveChanges" class="hiddenButton">Save changes</button>
+                    <button type="submit" id="saveChanges" class="hiddenButton">Save changes</button>
                 </form>
             </fieldset>
         </div>

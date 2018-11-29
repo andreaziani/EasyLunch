@@ -20,7 +20,7 @@
             <fieldset id="personalinfo">
                 <legend>Personal informations</legend>
                 <!--Span will be filled with text taken from db-->
-                <form>
+                <form action="file.php" method="POST">
                     <!--TODO: Set img size with css-->
                     <!--Each modifiable field should be validate-->
                     <label>Username: <input type="text" name="Userame" id="username" disabled /></label><br />
@@ -46,7 +46,7 @@
                     <label>Email: <input type="email" name="email" id="email" disabled /></label>
                     <a class="edit"><img src="../resources/edit.png" alt="modify" width="15"></a><br />
 
-                    <button type="button" id="saveChanges" class="hiddenButton">Save changes</button>
+                    <button type="submit" id="saveChanges" class="hiddenButton">Save changes</button>
                 </form>
             </fieldset>
         </div>

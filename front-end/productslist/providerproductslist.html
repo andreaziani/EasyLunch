@@ -10,7 +10,7 @@
         <section id="productlist">
             <h1>Your products</h1>
             <div>
-                <!--TODO: this list will be filled with data taken from db-->
+                <!--TODO: AJAX request to fill this list with data taken from db-->
                 <ul>
                     <li>
                         <figure>
@@ -26,8 +26,8 @@
                         </figure>
                     </li>
                 </ul>
-                <form class="hidden">
-                    <label>Id: <input type="text" name="Id" /></label><br/>
+                <form class="hidden" action="file.php" method="GET"> <!--Maybe it's ok to use get because they aren't sensitive data-->
+                    <label>Id: <input type="text" name="Id"/></label><br/>
                     <label>Name: <input type="text" name="name" /></label><br/>
                     <label>Quantity: <input type="number" name="Quantity" value="1" /></label><br/>
                     <label for="description">Description:</label><br/>
@@ -35,7 +35,7 @@
                     <label>Add image: <input type="file" name="image" id="image"/></label><br/>
                     <label>Price in euro: <input type="text" name="Price"/></label><br/>
                     <button type="submit" class="saveProduct">Save product</button>
-                    <button type="button" class="cancel">Cancel</button>
+                    <button type="reset" class="cancel">Cancel</button>
                 </form>
                 <button type="button" id="addProduct">Add product</button>
             </div>
