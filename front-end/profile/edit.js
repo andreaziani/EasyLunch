@@ -1,3 +1,4 @@
+/* @flow */
 $(document).ready(function () {
     var hiddenButton = $(".hiddenButton");
 

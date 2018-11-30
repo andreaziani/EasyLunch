@@ -1,3 +1,4 @@
+/* @flow */
 $(document).ready(function() {
   function submit(){
       var user = $("#username").val().toLowerCase();

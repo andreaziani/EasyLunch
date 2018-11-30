@@ -1,3 +1,4 @@
+/* @flow */
 $(document).ready(function(){
     var addProductButton = $("#addProduct");
     var hiddenForm = $("form.hidden");
@@ -43,7 +44,6 @@ $(document).ready(function(){
     function removeProduct(){
         //show a dialog to alert provider.
         if (confirm("Are you sure to delete the product?")) {
-            txt = "You pressed OK!";
             $(this).parent().hide();
             //TODO: delete the product from db
         }

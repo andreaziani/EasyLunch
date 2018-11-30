@@ -1,3 +1,4 @@
+/* @flow */
 $(document).ready(function() {
   
     //check if the fields are not valid
@@ -25,6 +26,7 @@ $(document).ready(function() {
   function submit() {
     var password = $("#password").val();
     var rPassword = $("#rPassword").val();
+    var isGood = true;
     isGood = check("name");
     isGood = check("surname") && isGood;
     isGood = check("password") && isGood;
