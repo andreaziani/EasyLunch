@@ -6,25 +6,12 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <header>
-            <!--TODO: set the dimension of the icon with css-->
-            <nav>
-                <a href="providerprofile.html">Profile</a>
-                <a href="../html/providerproductslist.html">Lists</a>
-                <a href="../html/notifications.html"><img src="../resources/bell.png" alt="alarmbell" width="70" /></a>
-            </nav>
-        </header>
         <div>
+            <img src="../resources/user.png" alt="Personal profile" width="70">
             <fieldset id="personalinfo">
                 <legend>Personal informations</legend>
                 <form action="file.php" method="POST">
                     <!--TODO: Set img size with css-->
-                    <label>Username: <input type="text" name="Userame" id="username" disabled/></label><br/>
-                    
-                    <label>Password: <input type="password" name="password" id="password" disabled/></label>
-                    <a class="edit"><img src="../resources/edit.png" alt="modify" width="15"></a>
-                    <label id="passwordError" class="errorMessage"> Invalid password</label><br/>
-                    
                     <label>Name: <input type="text" name="Name" id="name" disabled/></label>
                     <a class="edit"><img src="../resources/edit.png" alt="modify" width="15"></a>
                     <label id="nameError" class="errorMessage"> Invalid name</label><br/>
@@ -32,6 +19,10 @@
                     <label>Surname: <input type="text" name="Surname" id="surname" disabled/></label>
                     <a class="edit"><img src="../resources/edit.png" alt="modify" width="15"></a>
                     <label id="surnameError" class="errorMessage"> Invalid surname</label><br/>
+                    
+                    <label>Password: <input type="password" name="password" id="password" disabled/></label>
+                    <a class="edit"><img src="../resources/edit.png" alt="modify" width="15"></a>
+                    <label id="passwordError" class="errorMessage"> Invalid password</label><br/>
                     
                     <label>Birthdate: <input type="date" name="birthdate" id="birthdate" disabled/></label>
                     <a class="edit"><img src="../resources/edit.png" alt="modify" width="15"></a><br/>
