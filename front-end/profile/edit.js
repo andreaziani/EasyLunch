@@ -1,20 +1,12 @@
 /* @flow */
 $(document).ready(function() {
+    //variables
+  var notPermittedStrings = ['select', 'alter', 'update', 'delete', " "];
   var hiddenButton = $(".hiddenButton");
   
-  // check if value is not equal to params passed
-  function check(value, element, param) {
-    var notEqual = true;
-    for (i = 0; i < param.length; i++) {
-        if (value.toLowerCase().includes(param[i])) { notEqual = false; }
-    }
-    return this.optional(element) || notEqual;
-  }
   /* Enable information editing */
   function editInformation() {
-      var input = $(this)
-      .prev()
-      .children();
+      var input = $(this).prev().children();
       if (input.is(":disabled")) {
           input.prop("disabled", false);
           input.val(" ");
@@ -22,25 +14,35 @@ $(document).ready(function() {
         }
     }
     
-    /* Save the modified information */
-    function saveChanges() {
-        // TODO: send the modified info to webserver.
-        $("form").validate({
-            rules: {
-                name: {
-                    required: true,
-                    minlength: 3,
-                    notEqualTo: ['select', 'alter', 'update', 'delete']
+  /* Validation starts here */
+  function check(value, element, param) {
+    var notEqual = true;
+    for (i = 0; i < param.length; i++) {
+        if (value.toLowerCase().includes(param[i])) { notEqual = false; } // check if value is not equal to params passed
+    }
+    return this.optional(element) || notEqual;
+  }
+
+  
+  /* Save the modified information */
+  function saveChanges() {
+      // TODO: send the modified info to webserver.
+      $("form").validate({
+          rules: {
+              name: {
+                  required: true,
+                  minlength: 3,
+                  notEqualTo: notPermittedStrings
                 },
                 surname: {
                     required: true,
                     minlength: 3,
-                    notEqualTo: ["select", "alter", "update", "delete"]
+                    notEqualTo: notPermittedStrings
                 },
                 password: {
                     required: true,
                     minlength: 3,
-                    notEqualTo: ["select", "alter", "update", "delete"]
+                    notEqualTo: notPermittedStrings
                 },
                 birthdate: {
                     required: true,
@@ -55,16 +57,21 @@ $(document).ready(function() {
                 email: {
                     required: true,
                     email: true
+                },
+                piva: {
+                    required: true,
+                    minlength: 5,
+                    maxlength: 20,
+                    notEqualTo: notPermittedStrings
                 }
             }
         });
     }
+    
     //add jQuery validator rule 
     jQuery.validator.addMethod("notEqualTo", check, "Please enter a diferent value.");
-
-    $("a.edit").click(
-        editInformation
-        ); /*On click of edit icon, enable edit information */
-        $("#saveChanges").click(saveChanges);
-    });
+    $("a.edit").click(editInformation); /*On click of edit icon, enable edit information */
+    $("#saveChanges").click(saveChanges);
+    
+});
     

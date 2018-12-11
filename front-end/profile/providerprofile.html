@@ -10,20 +10,17 @@
             <img src="../resources/user.png" alt="Personal profile" width="70">
             <fieldset id="personalinfo">
                 <legend>Personal informations</legend>
-                <form action="file.php" method="POST">
+                <form action="" method="POST">
                     <!--TODO: Set img size with css-->
-                    <label>Name: <input type="text" name="Name" id="name" disabled/></label>
-                    <a class="edit"><img src="../resources/edit.png" alt="modify" width="15"></a>
-                    <label id="nameError" class="errorMessage"> Invalid name</label><br/>
+                    <label>Name: <input type="text" name="name" id="name" disabled/></label>
+                    <a class="edit"><img src="../resources/edit.png" alt="modify" width="15"></a><br/>
                     
-                    <label>Surname: <input type="text" name="Surname" id="surname" disabled/></label>
-                    <a class="edit"><img src="../resources/edit.png" alt="modify" width="15"></a>
-                    <label id="surnameError" class="errorMessage"> Invalid surname</label><br/>
+                    <label>Surname: <input type="text" name="surname" id="surname" disabled/></label>
+                    <a class="edit"><img src="../resources/edit.png" alt="modify" width="15"></a><br/>
                     
                     <label>Password: <input type="password" name="password" id="password" disabled/></label>
-                    <a class="edit"><img src="../resources/edit.png" alt="modify" width="15"></a>
-                    <label id="passwordError" class="errorMessage"> Invalid password</label><br/>
-                    
+                    <a class="edit"><img src="../resources/edit.png" alt="modify" width="15"></a><br/>
+                   
                     <label>Birthdate: <input type="date" name="birthdate" id="birthdate" disabled/></label>
                     <a class="edit"><img src="../resources/edit.png" alt="modify" width="15"></a><br/>
                     
@@ -35,7 +32,6 @@
                     
                     <label>PIVA: <input type="text" name="piva" id="piva" disabled/></label>
                     <a class="edit"><img src="../resources/edit.png" alt="modify" width="15"></a><br/>
-                    <label id="pivaError" class="errorMessage"> Invalid PIVA</label><br/>
                     
                     <button type="submit" id="saveChanges" class="hiddenButton">Save changes</button>
                 </form>
@@ -43,6 +39,7 @@
         </div>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
         <script src="edit.js"></script>
     </body>
     </html>
