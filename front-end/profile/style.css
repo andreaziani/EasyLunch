@@ -5,3 +5,7 @@
 .hiddenLabel, .errorMessage, .hiddenButton{
     display: none;
 }
+
+.edit{
+    cursor: pointer;
+}

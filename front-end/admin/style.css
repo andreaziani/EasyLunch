@@ -1,0 +1,11 @@
+.hidden, .saveModify{
+    display: none;
+}
+
+.remove{
+    cursor: pointer;
+}
+
+.error:not(input){
+    color:red;
+}
