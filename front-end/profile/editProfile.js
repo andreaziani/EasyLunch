@@ -1,7 +1,7 @@
 /* @flow */
 $(document).ready(function() {
     //variables
-  var notPermittedStrings = ['select', 'alter', 'update', 'delete', " "];
+  var invalidStrings = ['select', 'alter', 'update', 'delete', " "];
   var hiddenButton = $(".hiddenButton");
   
   /* Enable information editing */
@@ -17,7 +17,7 @@ $(document).ready(function() {
   /* Validation starts here */
   function check(value, element, param) {
     var notEqual = true;
-    for (i = 0; i < param.length; i++) {
+    for (var i = 0; i < param.length; i++) {
         if (value.toLowerCase().includes(param[i])) { notEqual = false; } // check if value is not equal to params passed
     }
     return this.optional(element) || notEqual;
@@ -32,17 +32,17 @@ $(document).ready(function() {
               name: {
                   required: true,
                   minlength: 3,
-                  notEqualTo: notPermittedStrings
+                  notEqualTo: invalidStrings
                 },
                 surname: {
                     required: true,
                     minlength: 3,
-                    notEqualTo: notPermittedStrings
+                    notEqualTo: invalidStrings
                 },
                 password: {
                     required: true,
                     minlength: 3,
-                    notEqualTo: notPermittedStrings
+                    notEqualTo: invalidStrings
                 },
                 birthdate: {
                     required: true,
@@ -62,7 +62,7 @@ $(document).ready(function() {
                     required: true,
                     minlength: 5,
                     maxlength: 20,
-                    notEqualTo: notPermittedStrings
+                    notEqualTo: invalidStrings
                 }
             }
         });

@@ -13,27 +13,29 @@
                 <!--TODO: AJAX request to fill this list with data taken from db-->
                 <ul>
                     <li>
-                        <figure>
-                            <img src="../resources/food.png" alt="Image of the product" width="100"><br/>
+                        <form action="" method="GET">
+                            <figure>
+                                <img src="../resources/food.png" alt="Image of the product" width="100"><br/>
+                            </figure>
                             <label>Name: <input type="text" name="name" disabled/></label><br/>
-                            <label>Quantity: <input type="number" name="Quantity" value="1" disabled/></label><br/>
+                            <label>Quantity: <input type="number" name="quantity" value="1" disabled/></label><br/>
                             <label for="description">Description:</label><br/>
                             <textarea name="description" id="description" cols="30" rows="5" disabled></textarea><br/>
-                            <label>Price in euro: <input type="text" name="Price" disabled/></label><br/>
+                            <label>Price in euro: <input type="text" name="price" disabled/></label><br/>
                             <button class="modify" type="button">Modify</button>
                             <button class="remove" type="button">Remove</button>
                             <button type="submit" class="saveModify">Save product</button>
-                        </figure>
+                        </form>
                     </li>
                 </ul>
-                <form class="hidden" action="file.php" method="GET"> <!--Maybe it's ok to use get because they aren't sensitive data-->
-                    <label>Id: <input type="text" name="Id"/></label><br/>
+                <form class="hidden" action="" method="GET"> <!--Maybe it's ok to use get because they aren't sensitive data-->
+                    <label>Id: <input type="text" name="id"/></label><br/>
                     <label>Name: <input type="text" name="name" /></label><br/>
-                    <label>Quantity: <input type="number" name="Quantity" value="1" /></label><br/>
+                    <label>Quantity: <input type="number" name="quantity" value="1" /></label><br/>
                     <label for="description">Description:</label><br/>
                     <textarea name="description" id="description" cols="30" rows="5"></textarea><br/>
                     <label>Add image: <input type="file" name="image" id="image"/></label><br/>
-                    <label>Price in euro: <input type="text" name="Price"/></label><br/>
+                    <label>Price in euro: <input type="text" name="price"/></label><br/>
                     <button type="submit" class="saveProduct">Save product</button>
                     <button type="reset" class="cancel">Cancel</button>
                 </form>
@@ -42,7 +44,7 @@
         </section>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
         <script src="productslist.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     </body>
 </html>   
