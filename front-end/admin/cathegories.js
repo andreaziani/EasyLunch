@@ -2,6 +2,7 @@ $(document).ready(function () {
     var addCathegoryButton = $("#addCathegory");
     var cancelButton = $("#cancel");
     var saveButton = $("#save");
+    var removeButton = $(".remove");
     var invalidStrings = ['select', 'alter', 'update', 'delete'];
    
     /* Validation starts here */
@@ -37,6 +38,11 @@ $(document).ready(function () {
         addCathegoryButton.show();
     }
 
+    function removeCathegory(e){
+        e.preventDefault();
+        $(this).parent().hide();
+        //TODO: delete the product from db
+    }
     function add(e) { 
         e.preventDefault();
         $(".hidden").fadeIn();
@@ -52,4 +58,5 @@ $(document).ready(function () {
     addCathegoryButton.click(add);
     cancelButton.click(cancel);
     saveButton.click(saveCathegory);
+    removeButton.click(removeCathegory);
 });
