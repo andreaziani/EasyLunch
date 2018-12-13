@@ -9,7 +9,7 @@
         <a href="../access/access.html">Sign in</a>
         <section id="registration">
             <h1>Register</h1>
-            <form>
+            <form action="file.php" method="POST">
                 <label>Name: <input type="text" name="Name" id="name" /></label>
                 <label id="nameError" class="errorMessage"> Invalid Name</label><br/>
                 <label>Surname: <input type="text" name="Surname" id="surname" /></label>
@@ -31,8 +31,8 @@
                     </select>
                 </label><br/>
                 <label class="hiddenLabel" id="pivaLabel">PIVA:  <input type="text" name="piva" id="piva" /></label><br/>
-                <input type="button" value="Sign up" id="submit"/>
-                <input type="button" value="Reset" />
+                <input type="submit" value="Sign up" id="submit"/>
+                <input type="reset" value="Reset" />
             </form>
         </section>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

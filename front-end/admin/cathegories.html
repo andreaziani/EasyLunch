@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cathegories</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h1>Current cathegories</h1>
+        <ul>
+            <li>
+                Sweets<a class="remove"><img src="../resources/delete.png" alt="modify" width="15"></a>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <button type="button" name="addCathegory" id="addCathegory">Add cathegory</button>
+        <form class="hidden" action="" method="GET">
+            <label>Id: <input type="text" name="id"/></label><br/>
+            <label>Name: <input type="text" name="name" /></label><br/>
+            <input type="submit" name="saveCathegory" id="save" value="Save"/>
+            <input type="button" name="cancel" id="cancel" value="cancel"/>
+        </form>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <script src="cathegories.js"></script>
+</body>
+</html>

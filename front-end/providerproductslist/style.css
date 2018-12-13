@@ -1,0 +1,6 @@
+.error:not(input, textarea){
+    color:red;
+}
+.hidden, .saveModify{
+    display: none;
+}

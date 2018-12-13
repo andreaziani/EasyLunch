@@ -1,3 +1,11 @@
+.error:not(input){
+    color:red;
+}
+
 .hiddenLabel, .errorMessage, .hiddenButton{
     display: none;
+}
+
+.edit{
+    cursor: pointer;
 }
