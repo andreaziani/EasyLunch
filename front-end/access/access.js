@@ -1,35 +1,34 @@
 /* @flow */
 $(document).ready(function() {
-  function submit(){
-      var user = $("#username").val().toLowerCase();
-      var password = $("#password").val().toLowerCase();
-      var queries = ["select", "update", "delete", "insert", "alter", " "];
-      var isGood = true;
 
-      if(user.length === 0){
-          isGood = false;
-          $("#usernameError").show();
-      }
-      if(password.length === 0){
-          isGood = false;
-          $("#passwordError").show();
-      }
-      for (var i = 0; i < queries.length; i++){
-        if (user.search(queries[i]) != -1){
-            $("#usernameError").show();
-            isGood = false;
-        }
-        if (password.search(queries[i]) != -1){
-            $("#passwordError").show();
-            isGood = false;
-        }
-      }
-      if(isGood){
-          // TODO: send server request
-      }
-  }
+    var invalidStrings = ['select', 'alter', 'update', 'delete'];
 
-  $("#submit").click(submit);
-  $("#username").focusin(() => $("#usernameError").hide());
-  $("#password").focusin(() => $("#passwordError").hide());
+    function isValid(value, element, doCheck) {
+        var good = true;
+        if (doCheck) {
+            for (var i = 0; i < invalidStrings.length; i++) {
+                if (value.toLowerCase().includes(invalidStrings[i])) {
+                    good = false;
+                    break;
+                }
+            }
+        }
+        return this.optional(element) || good;
+    }
+
+    $.validator.addMethod("checkValid", isValid, "Please enter a diferent value.");
+    $("form").validate({
+        rules: {
+            username: {
+                required: true,
+                minlength: 3,
+                checkValid: true
+            },
+            password: {
+                required: true,
+                minlength: 3,
+                checkValid: true
+            }
+        }
+    });
 });
