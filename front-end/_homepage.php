@@ -1,5 +1,7 @@
 <?php 
-    require_once("header/__header.php")
+include ("utils/BaseController.php");
+    $base = new BaseController();    
+    $base->requireFromWebSitePath('header/_header.php');
 ?>
     
     <section>  
@@ -17,5 +19,5 @@
     </section>
 
 <?php 
-    require_once("footer/__footer.php");
+    $base->requireFromWebSitePath('footer/_footer.php');
 ?>

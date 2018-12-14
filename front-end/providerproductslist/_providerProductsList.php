@@ -1,5 +1,7 @@
 <?php 
-    require_once("header/__providerheader.php");
+include ("../utils/BaseController.php");
+    $base = new BaseController();
+    $base->requireFromWebSitePath('header/_header.php');
 ?>
 <link rel="stylesheet" href="style.css">
 <section id="productlist">
@@ -36,5 +38,5 @@
 <script src="productslist.js"></script>
 
 <?php 
-    require_once("footer/__footer.php");
+    $base->requireFromWebSitePath('footer/_footer.php');
 ?>
