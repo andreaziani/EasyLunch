@@ -1,16 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Product List</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        
-        <section id="productlist">
+<?php 
+    require_once("header/__providerheader.php");
+?>
+<link rel="stylesheet" href="style.css">
+<section id="productlist">
             <h1>Your products</h1>
             <div>
-                <!--TODO: AJAX request to fill this list with data taken from db-->
                 <ul>
                     <li>
                         <form action="" method="GET">
@@ -38,10 +32,9 @@
                 </form>
                 <button type="button" id="addProduct">Add product</button>
             </div>
-        </section>
+</section>
+<script src="productslist.js"></script>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
-        <script src="productslist.js"></script>
-    </body>
-</html>   
+<?php 
+    require_once("footer/__footer.php");
+?>
