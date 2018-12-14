@@ -1,0 +1,31 @@
+.c-rating {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.c-rating__item {
+    -webkit-box-flex: 0;
+     -webkit-flex: 0 0 12px;
+    -ms-flex: 0 0 12px; 
+    flex: 0 0 12px;
+    height: 24px;
+    background-position: -12px 0px;
+    background-image: url(http://svgshare.com/i/3KS.svg);
+    cursor: pointer;
+}
+.c-rating__item.left {
+    background-position: 0px 0px;
+}
+.c-rating__item.is-active,
+.c-rating__item:hover {
+    background-position: -36px 0;
+}
+.c-rating__item.left.is-active,
+.c-rating__item.left:hover {
+    background-position: -24px 0;
+}
