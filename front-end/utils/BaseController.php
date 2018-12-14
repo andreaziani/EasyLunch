@@ -3,7 +3,7 @@
         private $webSitePath;
 
         public function __construct(){
-            $this->webSitePath = $_SERVER['DOCUMENT_ROOT'] . '/front-end/';
+            $this->webSitePath = $_SERVER['DOCUMENT_ROOT'] . '/progetto/front-end/';
         }
         /**
          * Require one the file written in filePath
