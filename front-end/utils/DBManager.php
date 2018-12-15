@@ -7,7 +7,7 @@
         private $server = "localhost";
         private $user = "root";
         private $pass = "";
-        private $dbname = "progetto";
+        private $dbname = "easy_lunch";
 
         
         public function _construct(){
