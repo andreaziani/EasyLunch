@@ -93,10 +93,14 @@ $(document).ready(function(){
     
     /* Remove product */
     function removeProduct(){
-        
+        var name = $(this).siblings().find("input.name");
+        var li = $(this).parent();
         if (confirm("Are you sure to delete the product?")) { //shows a dialog to alert provider.
-            $(this).parent().hide();
-            //TODO: delete the product from db
+            // AJAX request to remove product from db.
+            $.get("removeProduct.php?name=" + name.val(), false).done(function(){
+                alert("Product correctly deleted");
+            });
+            li.remove();
         }
         
     }

@@ -21,9 +21,9 @@ include ("../utils/DBManager.php");
                                 echo "<li>" . 
                                             "<form action='modifyProduct.php' method='GET'> " . 
                                                 "<img src='..//" . $row["Image"] . "' alt='Product' width=100/><br/>
-                                                <label>Name: <input type='text' name='name' value='". $row["Name"] . "' disabled/></label><br/>
+                                                <label>Name: <input class='name' type='text' name='name' value='". $row["Name"] . "' disabled/></label><br/>
                                                 <label for='description'>Description:</label><br/>
-                                                <textarea name='description' id='description' cols='30' rows='5' disabled>" . $row["Description"] . "</textarea><br/>
+                                                <textarea name='description' class='description' cols='30' rows='5' disabled>" . $row["Description"] . "</textarea><br/>
                                                 <label>Price in euro: <input type='text' name='price' value='". $row["Price"] . "' disabled/></label><br/>
                                                 <button class='modify' type='button'>Modify</button>
                                                 <button class='remove' type='button'>Remove</button>
