@@ -19,7 +19,6 @@
     } else {
         echo $db->getConnection()->error;
     }
-
     $db->closeConnection();
     header("location: _providerProductsList.php");
 ?>
