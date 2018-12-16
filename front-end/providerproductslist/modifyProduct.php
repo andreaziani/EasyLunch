@@ -1,5 +1,4 @@
-<?php 
-    include ("product.php");
+<?php
     include ("../utils/BaseController.php");
     include ("../utils/DBManager.php");
 
@@ -20,7 +19,6 @@
     } else {
         echo $db->getConnection()->error;
     }
-    
     $db->closeConnection();
     header("location: _providerProductsList.php");
 ?>
