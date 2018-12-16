@@ -1,5 +1,10 @@
 <?php 
 include ("../utils/BaseController.php");
+include ("../utils/DBManager.php");
+
+    session_start();
+    $_SESSION["username"] = "provider1";
+    $db = new DBManager();
     $base = new BaseController();
     $base->requireFromWebSitePath('header/_header.php');
 ?>
@@ -23,12 +28,27 @@ include ("../utils/BaseController.php");
                         </form>
                     </li>
                 </ul>
-                <form class="hidden" action="" method="GET"> <!--Maybe it's ok to use get because they aren't sensitive data-->
+                <form class="hidden" action="insertProduct.php" method="POST" enctype="multipart/form-data">
                     <label>Name: <input type="text" name="name" /></label><br/>
                     <label for="description">Description:</label><br/>
                     <textarea name="description" id="description" cols="30" rows="5"></textarea><br/>
                     <label>Add image: <input type="file" name="image" id="image"/></label><br/>
                     <label>Price in euro: <input type="text" name="price"/></label><br/>
+                    <label for="category">Category: </label>
+                    <select name="category" id="category"> 
+                        <?php  
+                            $query = "SELECT * FROM Categories";
+                            $result = $db->getConnection()->query($query);
+                            if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+                                    echo '<option value="' . $row['Id'] . '">' . $row['Name'] . '</option>';
+                                }
+                            } else {
+                                echo "<option value='null'>----------</option>";
+                            }
+                            $db->closeConnection();
+                        ?>
+                    </select> <br/>
                     <button type="submit" class="saveProduct">Save product</button>
                     <button type="reset" class="cancel">Cancel</button>
                 </form>

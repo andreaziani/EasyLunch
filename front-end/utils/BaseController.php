@@ -5,9 +5,10 @@
      */
     class BaseController {
         private $webSitePath;
-
+        private $imagePath;
         public function __construct(){
             $this->webSitePath = $_SERVER['DOCUMENT_ROOT'] . '/progetto/front-end/';
+            $this->imagePath = $this->webSitePath . 'productsimages/';
         }
         /**
          * Require in the page the file written in filePath
@@ -15,6 +16,13 @@
          */
         public function requireFromWebSitePath($filePath){
             require_once $this->webSitePath . $filePath;
+        }
+
+        /**
+         * Get the path for saving images.
+         */
+        public function getImagePath(){
+            return $this->imagePath;
         }
     }
 ?>

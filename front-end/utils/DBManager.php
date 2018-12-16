@@ -10,11 +10,11 @@
         private $dbname = "easy_lunch";
 
         
-        public function _construct(){
-            $this->con = mysqli($server, $user, $pass, $dbname);
+        public function __construct(){
+            $this->con = new mysqli($this->server, $this->user, $this->pass, $this->dbname);
             //check connection 
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
+            if ($this->con->connect_error) {
+                die("Connection failed: " . $this->con->connect_error);
             } 
         }
 
@@ -29,7 +29,7 @@
          * Close the connection with db.
          */
         public function closeConnection(){
-            $this->conn->close();
+            $this->con->close();
         }
     }
 
