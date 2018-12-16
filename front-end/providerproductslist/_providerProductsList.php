@@ -13,20 +13,26 @@ include ("../utils/DBManager.php");
             <h1>Your products</h1>
             <div>
                 <ul>
-                    <li>
-                        <form action="" method="GET">
-                            <figure>
-                                <img src="../resources/food.png" alt="Image of the product" width="100"><br/>
-                            </figure>
-                            <label>Name: <input type="text" name="name" disabled/></label><br/>
-                            <label for="description">Description:</label><br/>
-                            <textarea name="description" id="description" cols="30" rows="5" disabled></textarea><br/>
-                            <label>Price in euro: <input type="text" name="price" disabled/></label><br/>
-                            <button class="modify" type="button">Modify</button>
-                            <button class="remove" type="button">Remove</button>
-                            <button type="submit" class="saveModify">Save product</button>
-                        </form>
-                    </li>
+                    <?php 
+                        $query1 = "SELECT Name, Description, Image, Price FROM Products WHERE ProviderId='" . $_SESSION["username"] . "'";
+                        $result1 = $db->getConnection()->query($query1);
+                        if ($result1->num_rows > 0) {
+                            while($row = $result1->fetch_assoc()) {
+                                echo "<li>" . 
+                                            "<form action='modifyProduct.php' method='GET'> " . 
+                                                "<img src='..//" . $row["Image"] . "' alt='Product' width=100/><br/>
+                                                <label>Name: <input type='text' name='name' value='". $row["Name"] . "' disabled/></label><br/>
+                                                <label for='description'>Description:</label><br/>
+                                                <textarea name='description' id='description' cols='30' rows='5' disabled>" . $row["Description"] . "</textarea><br/>
+                                                <label>Price in euro: <input type='text' name='price' value='". $row["Price"] . "' disabled/></label><br/>
+                                                <button class='modify' type='button'>Modify</button>
+                                                <button class='remove' type='button'>Remove</button>
+                                                <button type='submit' class='saveModify'>Save product</button>
+                                            </form>
+                                        </li>";
+                            }
+                        }
+                    ?>
                 </ul>
                 <form class="hidden" action="insertProduct.php" method="POST" enctype="multipart/form-data">
                     <label>Name: <input type="text" name="name" /></label><br/>
@@ -46,7 +52,6 @@ include ("../utils/DBManager.php");
                             } else {
                                 echo "<option value='null'>----------</option>";
                             }
-                            $db->closeConnection();
                         ?>
                     </select> <br/>
                     <button type="submit" class="saveProduct">Save product</button>

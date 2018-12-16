@@ -5,10 +5,19 @@
      */
     class BaseController {
         private $webSitePath;
-        private $imagePath;
+        private $globalProductImagePath;
+        private $localProductImagePath;
         public function __construct(){
             $this->webSitePath = $_SERVER['DOCUMENT_ROOT'] . '/ProgettoTecWeb/front-end/';
-            $this->imagePath = $this->webSitePath . 'productsimages/';
+            $this->localProductImagePath = 'productsimages/';
+            $this->globalProductImagePath = $this->webSitePath . $this->localProductImagePath;
+        }
+
+        /**
+         * Get the web site path.
+         */
+        public function getWebSitePath(){
+            return $this->webSitePath;
         }
         /**
          * Require in the page the file written in filePath
@@ -19,10 +28,16 @@
         }
 
         /**
-         * Get the path for saving images.
+         * Get the global path for saving images.
          */
-        public function getImagePath(){
-            return $this->imagePath;
+        public function getGlobalProductImagePath(){
+            return $this->globalProductImagePath;
+        }
+        /**
+         * Get the local path for saving images.
+         */
+        public function getLocalProductImagePath(){
+            return $this->localProductImagePath;
         }
     }
 ?>
