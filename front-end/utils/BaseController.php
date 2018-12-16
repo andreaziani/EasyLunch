@@ -7,7 +7,7 @@
         private $webSitePath;
         private $imagePath;
         public function __construct(){
-            $this->webSitePath = $_SERVER['DOCUMENT_ROOT'] . '/progetto/front-end/';
+            $this->webSitePath = $_SERVER['DOCUMENT_ROOT'] . '/ProgettoTecWeb/front-end/';
             $this->imagePath = $this->webSitePath . 'productsimages/';
         }
         /**
