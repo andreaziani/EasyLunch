@@ -1,6 +1,6 @@
 <?php
-    include ("../utils/BaseController.php");
-    include ("../utils/DBManager.php");
+    include ("../../utils/pathManager.php");
+    
 
     session_start();
 
@@ -17,4 +17,5 @@
     }
 
     $db->closeConnection();
+    header("location: _providerProductsList.php");
 ?>

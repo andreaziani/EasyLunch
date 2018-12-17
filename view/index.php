@@ -1,6 +1,6 @@
 <?php 
-include ("utils/BaseController.php");
-    $base = new BaseController();    
+include ("../../utils/pathManager.php");
+    $base = new PathManager();    
     $base->requireFromWebSitePath('header/_header.php');
 ?>
     

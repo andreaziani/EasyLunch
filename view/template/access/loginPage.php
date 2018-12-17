@@ -1,4 +1,7 @@
-<?php 
+<?php
+include "../../../utils/pathManager.php";
+
+    $base = new PathManager();
     $base->requireFromWebSitePath('header/_header.php');
 ?>
 
@@ -12,7 +15,7 @@
     </form>
 </section>
 
-<?php 
+<?php
     $base->requireFromWebSitePath('footer/_footer.php');
 ?>
 
