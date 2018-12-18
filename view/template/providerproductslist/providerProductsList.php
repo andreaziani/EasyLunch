@@ -1,6 +1,7 @@
 <?php 
 include ("../../../utils/pathManager.php");
 include ("../../../model/DBManager.php");
+include ("../../../controller/action/insertProduct.php");
     session_start();
     $_SESSION["username"] = "provider1";
     $db = new DBManager();

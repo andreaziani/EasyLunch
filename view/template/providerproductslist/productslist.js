@@ -97,7 +97,7 @@ $(document).ready(function(){
         var li = $(this).parent();
         if (confirm("Are you sure to delete the product?")) { //shows a dialog to alert provider.
             // AJAX request to remove product from db.
-            $.get("removeProduct.php?name=" + name.val(), false).done(function(){
+            $.get("../../../controller/action/removeProduct.php?name=" + name.val(), false).done(function(){
                 alert("Product correctly deleted");
             });
             li.remove();
