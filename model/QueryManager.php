@@ -15,7 +15,7 @@ namespace Model;
                 $keyValue = "'" . $keyValue . "' ";
             }
             $query = "SELECT * FROM " . $table . " WHERE " . $keyName . " = " . $keyValue;
-            return this->queryDataToObject(this->executeQuery($query));
+            return $this->queryDataToObject($this->executeQuery($query));
         }
 
         public function queryDataToList($data) {
