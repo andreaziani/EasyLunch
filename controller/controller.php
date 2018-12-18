@@ -40,7 +40,6 @@ class Controller
     public function login($username, $password) {
         if ($this->userManager->verifyLogin($username, $password)) {
             session_start();
-            //$_SESSION["username"] = $username;
             $_SESSION["user"] = $this->userManager->getUser($username);
         }
     }
