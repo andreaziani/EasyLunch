@@ -15,20 +15,21 @@ include ("../../../model/DBManager.php");
                     <?php 
                         $query1 = "SELECT Image, Name, Description, Price FROM Products WHERE ProviderId='" . $_SESSION["username"] . "'";
                         $result1 = $db->getConnection()->query($query1);
-                        $data = $db->queryDataToList($result1);
-                        for($i = 0; $i < count($data); $i+=4){
+                        if ($result1->num_rows > 0) {
+                            while($row = $result1->fetch_assoc()) {
                                 echo "<li>" . 
                                             "<form action='modifyProduct.php' method='GET'> " . 
-                                                "<img src='..//" . $data[$i] . "' alt='Product' width=100/><br/>
-                                                <label>Name: <input class='name' type='text' name='name' value='". $data[$i + 1] . "' disabled/></label><br/>
+                                                "<img src='..//" . $row["Image"] . "' alt='Product' width=100/><br/>
+                                                <label>Name: <input class='name' type='text' name='name' value='". $row["Name"] . "' disabled/></label><br/>
                                                 <label for='description'>Description:</label><br/>
-                                                <textarea name='description' class='description' cols='30' rows='5' disabled>" . $data[$i + 2] . "</textarea><br/>
-                                                <label>Price in euro: <input type='text' name='price' value='". $data[$i + 3] . "' disabled/></label><br/>
+                                                <textarea name='description' class='description' cols='30' rows='5' disabled>" . $data["Description"] . "</textarea><br/>
+                                                <label>Price in euro: <input type='text' name='price' value='". $data["Price"] . "' disabled/></label><br/>
                                                 <button class='modify' type='button'>Modify</button>
                                                 <button class='remove' type='button'>Remove</button>
                                                 <button type='submit' class='saveModify'>Save product</button>
                                             </form>
                                         </li>";
+                            }
                         }
                     ?>
                 </ul>
@@ -43,9 +44,11 @@ include ("../../../model/DBManager.php");
                         <?php  
                             $query = "SELECT * FROM Categories";
                             $result = $db->getConnection()->query($query);
-                            $data = $db->queryDataToList($result);
-                            for($i = 0; $i < count($data); $i+=2) {
-                                    echo '<option value="' . $data[$i] . '">' . $data[$i + 1] . '</option>';
+                            
+                            if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+                                    echo '<option value="' . $row["Id"] . '">' . $row["Name"] . '</option>';
+                                }
                             }
                         ?>
                     </select> <br/>

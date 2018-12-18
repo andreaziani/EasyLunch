@@ -7,7 +7,7 @@
             $result = array();
             if ($data->num_rows > 0) {
                 while($row = $data->fetch_assoc()) {
-                    $result[] = $row["valore"];
+                    array_push($result, $row["valore"]); //This should be the key but there isn't a unique value
                 }
             }
             return $result;
