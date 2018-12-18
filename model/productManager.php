@@ -2,6 +2,7 @@
 namespace Model;
 //include("DBManager.php");
 //include("../utils/pathManager.php");
+use Model\DBManager;
 use Utils\PathManager;
 
 class ProductManager

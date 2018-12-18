@@ -1,4 +1,6 @@
 <?php
+namespace Controller\Action;
+
 use Controller\Controller;
 
     session_start();

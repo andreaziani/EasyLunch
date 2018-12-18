@@ -1,7 +1,8 @@
 <?php 
 namespace Model;
 
-//include("QueryManager.php");
+use Model\QueryManager;
+
     /**
      * Class to manage the db connection and queries.
      */
@@ -15,7 +16,7 @@ namespace Model;
         
         public function __construct(){
             $this->queryManager = new QueryManager();
-            $this->con = new mysqli($this->server, $this->user, $this->pass, $this->dbname);
+            $this->con = new \mysqli($this->server, $this->user, $this->pass, $this->dbname);
             //check connection 
             if ($this->con->connect_error) {
                 die("Connection failed: " . $this->con->connect_error);
