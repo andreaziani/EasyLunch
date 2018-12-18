@@ -2,16 +2,19 @@
 namespace Controller;
 use Model\ProductManager;
 use Model\UserManager;
+use View\View;
 
 class Controller
 {
     static $instance = null;
     private $productManager;
     private $userManager;
+    private $view;
     private function _construct()
     {
         $this->productManager = new ProductManager();
         $this->userManager = new UserManager();
+        $this->view = View::getInstance();
     }
 
     public static function getInstance()
@@ -25,16 +28,19 @@ class Controller
     public function insertProduct($provider, $name, $description, $price, $tmp_name, $filename, $category)
     {
         $this->productManager->insertProduct($provider, $name, $description, $price, $tmp_name, $filename, $category);
+        $this->view->redirect("providerProductsList");
     }
 
     public function removeProduct($name, $provider)
     {
         $this->productManager->removeProduct($name, $provider);
+        $this->view->redirect("providerProductsList");
     }
 
     public function modifyProduct($name, $description, $price, $provider)
     {
         $this->productManager->modifyProduct($name, $description, $price, $provider);
+        $this->view->redirect("providerProductsList");
     }
 
     public function login($username, $password) {

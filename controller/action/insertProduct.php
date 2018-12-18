@@ -2,7 +2,6 @@
 namespace Controller\Action;
 
 use Controller\Controller;
-use View\View;
     session_start();
 
     $controller = Controller::getInstance();
@@ -18,6 +17,4 @@ use View\View;
         $filename = strtolower($_FILES['image']['name']); //Renaming the file here
         $controller->insertProduct($provider, $name, $description, $price, $tmp_name, $filename, $category);
     }
-
-    $view->redirect("providerProductsList");
 ?>
