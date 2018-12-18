@@ -1,6 +1,6 @@
 <?php 
-    include ("../utils/BaseController.php");
-    include ("../utils/DBManager.php");
+include ("../../utils/pathManager.php");
+include ("../../model/DBManager.php");
     
     session_start();
 
@@ -10,7 +10,7 @@
         && isset($_POST["description"]) && isset($_POST["price"])) { //check if all the variables are set.
 
         $db = new DBManager();
-        $base = new BaseController();
+        $base = new PathManager();
         $filename = strtolower($_FILES['image']['name']); //Renaming the file here
         
         move_uploaded_file($_FILES['image']['tmp_name'], $base->getGlobalProductImagePath().$filename); // Move the uploaded file to the desired folder            
@@ -21,5 +21,5 @@
         $db->closeConnection();
     }
 
-    header("location: _providerProductsList.php");
+    header("location: ../../view/template/providerproductlist/providerProductsList.php");
 ?>

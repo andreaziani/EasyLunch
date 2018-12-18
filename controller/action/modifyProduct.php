@@ -1,6 +1,5 @@
 <?php
-    include ("../utils/BaseController.php");
-    include ("../utils/DBManager.php");
+include ("../../model/DBManager.php");
 
     session_start();
 
@@ -20,5 +19,5 @@
         echo $db->getConnection()->error;
     }
     $db->closeConnection();
-    header("location: _providerProductsList.php");
+    header("location: ../../view/template/providerproductlist/providerProductsList.php");
 ?>

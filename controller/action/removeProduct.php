@@ -1,5 +1,5 @@
 <?php
-    include ("../../utils/pathManager.php");
+include ("../../model/DBManager.php");
     
 
     session_start();
@@ -17,5 +17,5 @@
     }
 
     $db->closeConnection();
-    header("location: _providerProductsList.php");
+    header("location: ../../view/template/providerproductlist/providerProductsList.php");
 ?>
