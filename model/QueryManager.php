@@ -8,7 +8,7 @@ namespace ProgettoTecWeb\Model;
             $result = array();
             if ($data->num_rows > 0) {
                 while($row = $data->fetch_assoc()) {
-                    array_push($result, $row["valore"]); //This should be the key but there isn't a unique value
+                    array_push($result, $row);
                 }
             }
             return $result;
