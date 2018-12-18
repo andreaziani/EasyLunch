@@ -1,7 +1,7 @@
 <?php
-namespace ProgettoTecWeb\Model;
-use ProgettoTecWeb\Model\Data\{Admin, Provider, Client};
-use ProgettoTecWeb\Utils\PathManager;
+namespace Model;
+use Model\Data\{Admin, Provider, Client};
+use Utils\PathManager;
 
 class UserManager
 {

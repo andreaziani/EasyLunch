@@ -1,5 +1,5 @@
 <?php
-namespace ProgettoTecWeb\Controller;
+namespace Controller;
     class InputValidator {
         
         public function __construct(){ }

@@ -1,5 +1,5 @@
 <?php
-use ProgettoTecWeb\Controller\Controller;
+use Controller\Controller;
 
     session_start();
     $controller = Controller::getInstance();

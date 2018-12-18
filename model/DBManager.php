@@ -1,5 +1,5 @@
 <?php 
-namespace ProgettoTecWeb\Model;
+namespace Model;
 
 //include("QueryManager.php");
     /**

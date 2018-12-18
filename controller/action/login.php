@@ -1,6 +1,6 @@
 <?php
-use ProgettoTecWeb\Controller\Controller;
-use ProgettoTecWeb\Controller\InputValidator;
+use Controller\Controller;
+use Controller\InputValidator;
 
     if(isset($_POST['username']) && isset($_POST['password'])) { 
         $manager = new QueryManager();

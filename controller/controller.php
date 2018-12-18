@@ -1,7 +1,7 @@
 <?php
-namespace ProgettoTecWeb\Controller;
-use ProgettoTecWeb\Model\ProductManager;
-use ProgettoTecWeb\Model\UserManager;
+namespace Controller;
+use Model\ProductManager;
+use Model\UserManager;
 
 class Controller
 {

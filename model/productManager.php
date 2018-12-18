@@ -1,8 +1,8 @@
 <?php
-namespace ProgettoTecWeb\Model;
+namespace Model;
 //include("DBManager.php");
 //include("../utils/pathManager.php");
-use ProgettoTecWeb\Utils\PathManager;
+use Utils\PathManager;
 
 class ProductManager
 {
