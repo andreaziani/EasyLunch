@@ -1,7 +1,5 @@
 <?php
 namespace Model;
-//include("DBManager.php");
-//include("../utils/pathManager.php");
 use Model\DBManager;
 use Utils\PathManager;
 
@@ -21,7 +19,7 @@ class ProductManager
         $query = "INSERT INTO Products(Name, Description, Image, Price, IsActive, CategoryId, ProviderId)
                   VALUES (" . "'" . $name . "', '" . $description . "', '" . $this->pathManager->dirUpload . $filename . "'," .
             $price . ", TRUE, " . $category . ",'" . $provider . "')";
-        $db->getConnection()->query($query);
+        $this->db->getConnection()->query($query);
     }
 
     public function removeProduct($name, $provider)
@@ -29,10 +27,10 @@ class ProductManager
         $query = "DELETE FROM Products
               WHERE Name='" . $name . "' AND ProviderId='" . $provider . "'";
 
-        if ($db->getConnection()->query($query) === true) {
+        if ($this->db->getConnection()->query($query) === true) {
             echo "Record updated successfully";
         } else {
-            echo $db->getConnection()->error;
+            echo $this->db->getConnection()->error;
         }
     }
 
@@ -48,7 +46,7 @@ class ProductManager
         if ($db->getConnection()->query($query) === true) {
             echo "Record updated successfully";
         } else {
-            echo $db->getConnection()->error;
+            echo $this->db->getConnection()->error;
         }
     }
 }

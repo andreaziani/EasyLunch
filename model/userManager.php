@@ -12,7 +12,7 @@ class UserManager
     }
 
     public function verifyLogin($username, $password) {
-        $user = this->queryManager->searchByKey("Users", "UserName", $username);
+        $user = $this->queryManager->searchByKey("Users", "UserName", $username);
         return $user != null and password_verify($password, $user["Password"]);
     }
 
