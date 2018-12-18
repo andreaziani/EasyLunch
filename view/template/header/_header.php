@@ -13,7 +13,7 @@
 <body>
     <header>
         <!--TODO: set the dimension of the icon with css-->
-        <a href="#">Easy Lunch</a>
+        <a href="../../index.php">Easy Lunch</a>
         <nav>
             <a href=#>Shop</a>
             <a href="../html/productslist.html">Login</a>

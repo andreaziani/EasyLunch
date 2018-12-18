@@ -6,7 +6,7 @@ include ("../../../model/DBManager.php");
     $_SESSION["username"] = "provider1";
     $db = new DBManager();
     $base = new PathManager();
-    $base->requireFromWebSitePath('header/_header.php');
+    $base->requireFromWebSitePath('header/_providerheader.php');
 ?>
 
 <link rel="stylesheet" href="style.css">

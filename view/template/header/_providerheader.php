@@ -14,7 +14,7 @@
     <header>
         <!--TODO: set the dimension of the icon with css-->
         <nav>
-            <a href="#">Easy Lunch</a>
+            <a href="../../index.php">Easy Lunch</a>
             <a href="../html/notifications.html"><img src="../resources/bell.png" alt="alarmbell" width="70" /></a>
             <!-- from here -->
             <a href="providerprofile.html">Profile</a>
