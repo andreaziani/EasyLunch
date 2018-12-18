@@ -1,6 +1,6 @@
 <?php
-include ("../utils/pathManager.php");
-include ("DBManager.php");
+include("DBManager.php");
+include("../utils/pathManager.php");
 
 class ProductManager
 {

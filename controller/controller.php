@@ -1,5 +1,5 @@
 <?php
-include ("../model/productManager.php");
+include("../model/productManager.php");
 
 class Controller
 {
