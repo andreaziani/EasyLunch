@@ -15,10 +15,10 @@
         <!--TODO: set the dimension of the icon with css-->
         <nav>
             <a href="../../index.php">Easy Lunch</a>
-            <a href="../html/notifications.html"><img src="../resources/bell.png" alt="alarmbell" width="70" /></a>
+            <a href="#"><img src="../../../images/icon/bell.png" alt="notifications" width="70" /></a>
             <!-- from here -->
-            <a href="providerprofile.html">Profile</a>
-            <a href="../html/providerproductslist.html">Personal Shop</a>
+            <a href="#">Profile</a>
+            <a href="#">Personal Shop</a>
             <a href="#">Logout</a>
         </nav>
     </header>
