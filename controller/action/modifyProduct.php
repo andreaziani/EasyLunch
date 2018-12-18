@@ -1,23 +1,15 @@
 <?php
-include ("../../model/DBManager.php");
+include ("../controller.php");
 
     session_start();
+    $controller = Controller.getInstance();
+    if(isset($_GET["name"]) && isset($_GET["description"]) && isset($_GET["price"])){
+        $provider = $_SESSION["username"];
+        $name = $_GET["name"];
+        $description = $_GET["description"];
+        $price = $_GET["price"];
 
-    $provider = $_SESSION["username"];
-    $db = new DBManager();
-
-    $query = "UPDATE Products 
-              SET Name='". $_GET["name"] . 
-              "', Description='" . $_GET["description"] . 
-              "', Price=" . $_GET["price"] .
-              "  WHERE ProviderId='" . $provider . 
-              "' AND Name='" . $_GET["name"] . "'";
-
-    if ($db->getConnection()->query($query) === TRUE) {
-        echo "Record updated successfully";
-    } else {
-        echo $db->getConnection()->error;
+        $controller->modifyProduct($name, $description, $price, $provider);
     }
-    $db->closeConnection();
     header("location: ../../view/template/providerproductslist/providerProductsList.php");
 ?>

@@ -1,24 +1,20 @@
 <?php 
-include ("../../utils/pathManager.php");
-include ("../../model/DBManager.php");
+include ("../controller.php");
     
     session_start();
 
-    $provider = $_SESSION["username"];
+    $controller = Controller.getInstance();
 
     if(isset($_FILES['image']) && isset($_POST["name"]) 
         && isset($_POST["description"]) && isset($_POST["price"])) { //check if all the variables are set.
-
-        $db = new DBManager();
-        $base = new PathManager();
+        $provider = $_SESSION["username"];
+        $name = $_POST["name"];
+        $description = $_POST["description"];
+        $price = $_POST["price"];
+        $category = $_POST["category"];
+        $tmp_name = $_FILES['image']['tmp_name'];
         $filename = strtolower($_FILES['image']['name']); //Renaming the file here
-        
-        move_uploaded_file($_FILES['image']['tmp_name'], $base->uploadPath.$filename); // Move the uploaded file to the desired folder            
-        $query = "INSERT INTO Products(Name, Description, Image, Price, IsActive, CategoryId, ProviderId) 
-                  VALUES (" . "'" . $_POST["name"] . "', '" . $_POST["description"] . "', '" . $base->dirUpload.$filename . "'," . 
-                          $_POST["price"] . ", TRUE, " . $_POST["category"] .",'" . $provider ."')";
-        $db->getConnection()->query($query);
-        $db->closeConnection();
+        $controller->insertProduct($provider, $name, $description, $price, $tmp_name, $filename, $category);
     }
 
     header("location: ../../view/template/providerproductslist/providerProductsList.php");

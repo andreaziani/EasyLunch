@@ -1,21 +1,12 @@
 <?php
-include ("../../model/DBManager.php");
+include ("../controller.php");
     
-
     session_start();
+    $controller = Controller.getInstance();
 
     $provider = $_SESSION["username"];
-    $db = new DBManager();
+    $name = $_REQUEST["name"];
+    $controller->removeProduct($name, $provider);
 
-    $query = "DELETE FROM Products 
-              WHERE Name='" . $_REQUEST["name"] . "' AND ProviderId='" . $provider . "'";
-
-    if ($db->getConnection()->query($query) === TRUE) {
-        echo "Record updated successfully";
-    } else {
-        echo $db->getConnection()->error;
-    }
-
-    $db->closeConnection();
     header("location: ../../view/template/providerproductlist/providerProductsList.php");
 ?>
