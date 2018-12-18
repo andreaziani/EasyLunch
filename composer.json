@@ -15,7 +15,8 @@
             "Model\\": "./model",
             "Utils\\": "./utils",
             "Controller\\": "./controller",
-            "Controller\\Action\\": "./controller/action"
+            "Controller\\Action\\": "./controller/action",
+            "View\\": "./view"
         }
     }
 }

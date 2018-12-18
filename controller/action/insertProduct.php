@@ -2,11 +2,11 @@
 namespace Controller\Action;
 
 use Controller\Controller;
-    
+use View\View;
     session_start();
 
     $controller = Controller::getInstance();
-
+    $view = View::getInstance();
     if(isset($_FILES['image']) && isset($_POST["name"]) 
         && isset($_POST["description"]) && isset($_POST["price"])) { //check if all the variables are set.
         $provider = $_SESSION["username"];
@@ -19,5 +19,5 @@ use Controller\Controller;
         $controller->insertProduct($provider, $name, $description, $price, $tmp_name, $filename, $category);
     }
 
-    header("location: ../../view/template/providerproductslist/providerProductsList.php");
+    $view->redirect("providerProductsList");
 ?>
