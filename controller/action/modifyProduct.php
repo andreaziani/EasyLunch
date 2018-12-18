@@ -19,5 +19,5 @@ include ("../../model/DBManager.php");
         echo $db->getConnection()->error;
     }
     $db->closeConnection();
-    header("location: ../../view/template/providerproductlist/providerProductsList.php");
+    header("location: ../../view/template/providerproductslist/providerProductsList.php");
 ?>

@@ -13,13 +13,13 @@ include ("../../model/DBManager.php");
         $base = new PathManager();
         $filename = strtolower($_FILES['image']['name']); //Renaming the file here
         
-        move_uploaded_file($_FILES['image']['tmp_name'], $base->getGlobalProductImagePath().$filename); // Move the uploaded file to the desired folder            
+        move_uploaded_file($_FILES['image']['tmp_name'], $base->uploadPath.$filename); // Move the uploaded file to the desired folder            
         $query = "INSERT INTO Products(Name, Description, Image, Price, IsActive, CategoryId, ProviderId) 
-                  VALUES (" . "'" . $_POST["name"] . "', '" . $_POST["description"] . "', '" . $base->getLocalProductImagePath().$filename . "'," . 
+                  VALUES (" . "'" . $_POST["name"] . "', '" . $_POST["description"] . "', '" . $base->dirUpload.$filename . "'," . 
                           $_POST["price"] . ", TRUE, " . $_POST["category"] .",'" . $provider ."')";
         $db->getConnection()->query($query);
         $db->closeConnection();
     }
 
-    header("location: ../../view/template/providerproductlist/providerProductsList.php");
+    header("location: ../../view/template/providerproductslist/providerProductsList.php");
 ?>
