@@ -1,5 +1,6 @@
 <?php
 namespace Controller;
+
 use Model\ProductManager;
 use Model\UserManager;
 use View\View;
