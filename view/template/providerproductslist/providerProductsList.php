@@ -20,22 +20,22 @@
             <div>
                 <ul>
                     <?php 
-                        $query1 = "SELECT Image, Name, Description, Price FROM Products WHERE ProviderId='" . $_SESSION["username"] . "'";
+                        $query1 = "SELECT Id, Image, Name, Description, Price FROM Products WHERE ProviderId='" . $_SESSION["username"] . "'";
                         $result1 = $db->getConnection()->query($query1);
                         if ($result1->num_rows > 0) {
                             while($row = $result1->fetch_assoc()) {
                                 echo "<li>" . 
-                                            "<form action='../../../controller/action/modifyProduct.php' method='GET'> " . 
-                                                "<img src='../../../" . $row["Image"] . "' alt='Product' width=100/><br/>
-                                                <label>Name: <input class='name' type='text' name='name' value='". $row["Name"] . "' disabled/></label><br/>
-                                                <label for='description'>Description:</label><br/>
-                                                <textarea name='description' class='description' cols='30' rows='5' disabled>" . $row["Description"] . "</textarea><br/>
-                                                <label>Price in euro: <input type='text' name='price' value='". $row["Price"] . "' disabled/></label><br/>
-                                                <button class='modify' type='button'>Modify</button>
-                                                <button class='remove' type='button'>Remove</button>
-                                                <button type='submit' class='saveModify'>Save product</button>
-                                            </form>
-                                        </li>";
+                                        "<form action='/ProgettoTecWeb/controller/action/modifyProduct.php' method='GET'> " . 
+                                            "<input type='number' value='". $row['Id'] . "' name='id' class='hidden', 'id' /><img src='../../../" . $row["Image"] . "' alt='Product' width=100/><br/>
+                                            <label>Name: <input class='name' type='text' name='name' value='". $row["Name"] . "' disabled/></label><br/>
+                                            <label for='description'>Description:</label><br/>
+                                            <textarea name='description' class='description' cols='30' rows='5' disabled>" . $row["Description"] . "</textarea><br/>
+                                            <label>Price in euro: <input type='text' name='price' value='". $row["Price"] . "' disabled/></label><br/>
+                                            <button class='modify' type='button'>Modify</button>
+                                            <button class='remove' type='button'>Remove</button>
+                                            <button type='submit' class='saveModify'>Save product</button>
+                                        </form>
+                                </li>";
                             }
                         }
                     ?>
@@ -57,7 +57,7 @@
                                     echo '<option value="' . $row["Id"] . '">' . $row["Name"] . '</option>';
                                 }
                             }
-                        ?>
+                            ?>
                     </select> <br/>
                     <button type="submit" class="saveProduct">Save product</button>
                     <button type="reset" class="cancel">Cancel</button>
