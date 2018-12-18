@@ -1,0 +1,21 @@
+{
+    "name": "andrea/progetto",
+    "type": "project",
+    "license": "Apache",
+    "authors": [
+        {
+            "name": "Andrea Ziani",
+            "email": "andrea.ziani@studio.unibo.it"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Model\\": "./model",
+            "Utils\\": "./utils",
+            "Controller\\": "./controller",
+            "Controller\\Action\\": "./controller/action"
+        }
+    }
+}

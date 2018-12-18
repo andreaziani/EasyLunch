@@ -1,7 +1,9 @@
 <?php 
-use ProgettoTecWeb\Utils\PathManager;
-use ProgettoTecWeb\Model\DBManager;
-
+    // require and include all the files
+    if(file_exists(dirname(__FILE__) . '/vendor/autoload.php')){
+        require_once dirname(__FILE__) . '/vendor/autoload.php';
+    }
+    
     session_start();
     $_SESSION["username"] = "provider1";
     $db = new DBManager();
