@@ -15,7 +15,7 @@
         <!--TODO: set the dimension of the icon with css-->
         <nav>
             <a href="../../index.php">Easy Lunch</a>
-            <a href="#"><img src="../../../images/icon/bell.png" alt="notifications" width="70" /></a>
+            <a href="#"><img src="../../../images/icons/bell.png" alt="notifications" width="70" /></a>
             <!-- from here -->
             <a href="#">Profile</a>
             <a href="#">Personal Shop</a>
