@@ -6,8 +6,8 @@ namespace Model;
             $this->db = new DBManager();
         }
 
-        private function executeQuery($query) {
-            $db->getConnection()->query($query);
+        public function executeQuery($query) {
+            return $this->db->getConnection()->query($query);
         }
 
         public function searchByKey($table, $keyName, $keyValue) {

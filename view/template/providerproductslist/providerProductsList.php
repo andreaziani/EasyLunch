@@ -4,26 +4,24 @@
         require_once $_SERVER['DOCUMENT_ROOT'] . '/ProgettoTecWeb/vendor/autoload.php';
     }
     
-    use Model\DBManager;
+    use Model\QueryManager;
     use Utils\PathManager;
 
     session_start();
     $_SESSION["username"] = "provider1";
-    $db = new DBManager();
+    $db = new QueryManager();
     $base = new PathManager();
     $base->requireFromWebSitePath('header/_providerheader.php');
 ?>
 
-<link rel="stylesheet" href="style.css">
 <section id="productlist">
             <h1>Your products</h1>
             <div>
                 <ul>
                     <?php 
                         $query1 = "SELECT Id, Image, Name, Description, Price FROM Products WHERE ProviderId='" . $_SESSION["username"] . "'";
-                        $result1 = $db->getConnection()->query($query1);
-                        if ($result1->num_rows > 0) {
-                            while($row = $result1->fetch_assoc()) {
+                        $result = $db->queryDataToList($db->executeQuery($query1));
+                        foreach($result as $row) {
                                 echo "<li>" . 
                                         "<form action='/ProgettoTecWeb/controller/action/modifyProduct.php' method='GET'> " . 
                                             "<input type='number' value='". $row['Id'] . "' name='id' class='hidden', 'id' /><img src='../../../" . $row["Image"] . "' alt='Product' width=100/><br/>
@@ -36,7 +34,6 @@
                                             <button type='submit' class='saveModify'>Save product</button>
                                         </form>
                                 </li>";
-                            }
                         }
                     ?>
                 </ul>
@@ -50,12 +47,9 @@
                     <select name="category" id="category"> 
                         <?php  
                             $query = "SELECT * FROM Categories";
-                            $result = $db->getConnection()->query($query);
-                            
-                            if ($result->num_rows > 0) {
-                                while($row = $result->fetch_assoc()) {
+                            $result = $db->queryDataToList($db->executeQuery($query));
+                            foreach($result as $row) {
                                     echo '<option value="' . $row["Id"] . '">' . $row["Name"] . '</option>';
-                                }
                             }
                             ?>
                     </select> <br/>
