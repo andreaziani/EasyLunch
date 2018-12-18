@@ -1,5 +1,6 @@
 <?php
-include("../model/productManager.php");
+namespace Controller\Controller;
+use Model\ProductManager;
 
 class Controller
 {

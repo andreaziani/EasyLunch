@@ -1,4 +1,5 @@
 <?php
+namespace Utils\PathManager;
 /**
  * Class that manage the path for php files.
  * For a correct usage, create in hodocs the folder "ProgettoTecWeb"

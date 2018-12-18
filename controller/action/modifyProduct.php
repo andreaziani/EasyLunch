@@ -1,5 +1,5 @@
 <?php
-include ("../controller.php");
+use Controller\Controller;
 
     session_start();
     $controller = Controller::getInstance();

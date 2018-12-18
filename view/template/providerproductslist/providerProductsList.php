@@ -1,6 +1,6 @@
 <?php 
-include("../../../utils/pathManager.php");
-include("../../../model/DBManager.php");
+use Utils\PathManager;
+use Model\DBManager;
 
     session_start();
     $_SESSION["username"] = "provider1";

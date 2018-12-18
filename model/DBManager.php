@@ -1,5 +1,7 @@
 <?php 
-include("QueryManager.php");
+namespace Model\DBManager;
+
+//include("QueryManager.php");
     /**
      * Class to manage the db connection and queries.
      */
