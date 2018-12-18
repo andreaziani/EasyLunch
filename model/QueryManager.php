@@ -4,7 +4,7 @@ namespace ProgettoTecWeb\Model;
         
         public function __construct(){ }
 
-        public function queryDataToList($data) {
+        public static function queryDataToList($data) {
             $result = array();
             if ($data->num_rows > 0) {
                 while($row = $data->fetch_assoc()) {
@@ -14,7 +14,7 @@ namespace ProgettoTecWeb\Model;
             return $result;
         }
 
-        public function queryDataToObject($data) {
+        public static function queryDataToObject($data) {
             if ($data->num_rows == 1) {
                 return $data->fetch_assoc();
             } else {
