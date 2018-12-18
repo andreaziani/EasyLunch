@@ -1,6 +1,6 @@
 <?php 
 include ("../../../utils/pathManager.php");
-
+include ("../../../model/DBManager.php");
     session_start();
     $_SESSION["username"] = "provider1";
     $db = new DBManager();
@@ -13,23 +13,22 @@ include ("../../../utils/pathManager.php");
             <div>
                 <ul>
                     <?php 
-                        $query1 = "SELECT Name, Description, Image, Price FROM Products WHERE ProviderId='" . $_SESSION["username"] . "'";
+                        $query1 = "SELECT Image, Name, Description, Price FROM Products WHERE ProviderId='" . $_SESSION["username"] . "'";
                         $result1 = $db->getConnection()->query($query1);
-                        if ($result1->num_rows > 0) {
-                            while($row = $result1->fetch_assoc()) {
+                        $data = $db->queryDataToList($result1);
+                        for($i = 0; $i < count($data); $i+=4){
                                 echo "<li>" . 
                                             "<form action='modifyProduct.php' method='GET'> " . 
-                                                "<img src='..//" . $row["Image"] . "' alt='Product' width=100/><br/>
-                                                <label>Name: <input class='name' type='text' name='name' value='". $row["Name"] . "' disabled/></label><br/>
+                                                "<img src='..//" . $data[$i] . "' alt='Product' width=100/><br/>
+                                                <label>Name: <input class='name' type='text' name='name' value='". $data[$i + 1] . "' disabled/></label><br/>
                                                 <label for='description'>Description:</label><br/>
-                                                <textarea name='description' class='description' cols='30' rows='5' disabled>" . $row["Description"] . "</textarea><br/>
-                                                <label>Price in euro: <input type='text' name='price' value='". $row["Price"] . "' disabled/></label><br/>
+                                                <textarea name='description' class='description' cols='30' rows='5' disabled>" . $data[$i + 2] . "</textarea><br/>
+                                                <label>Price in euro: <input type='text' name='price' value='". $data[$i + 3] . "' disabled/></label><br/>
                                                 <button class='modify' type='button'>Modify</button>
                                                 <button class='remove' type='button'>Remove</button>
                                                 <button type='submit' class='saveModify'>Save product</button>
                                             </form>
                                         </li>";
-                            }
                         }
                     ?>
                 </ul>
@@ -44,12 +43,9 @@ include ("../../../utils/pathManager.php");
                         <?php  
                             $query = "SELECT * FROM Categories";
                             $result = $db->getConnection()->query($query);
-                            if ($result->num_rows > 0) {
-                                while($row = $result->fetch_assoc()) {
-                                    echo '<option value="' . $row['Id'] . '">' . $row['Name'] . '</option>';
-                                }
-                            } else {
-                                echo "<option value='null'>----------</option>";
+                            $data = $db->queryDataToList($result);
+                            for($i = 0; $i < count($data); $i+=2) {
+                                    echo '<option value="' . $data[$i] . '">' . $data[$i + 1] . '</option>';
                             }
                         ?>
                     </select> <br/>

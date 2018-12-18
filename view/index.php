@@ -1,5 +1,5 @@
 <?php 
-include ("../../utils/pathManager.php");
+include ("../utils/pathManager.php");
     $base = new PathManager();    
     $base->requireFromWebSitePath('header/_header.php');
 ?>
