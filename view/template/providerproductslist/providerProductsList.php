@@ -1,6 +1,6 @@
 <?php 
-use Utils\PathManager;
-use Model\DBManager;
+use ProgettoTecWeb\Utils\PathManager;
+use ProgettoTecWeb\Model\DBManager;
 
     session_start();
     $_SESSION["username"] = "provider1";

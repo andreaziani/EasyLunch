@@ -1,4 +1,5 @@
 <?php
+namespace ProgettoTecWeb\Model;
     class QueryManager {
         
         public function __construct(){ }

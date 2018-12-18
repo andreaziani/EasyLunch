@@ -1,6 +1,6 @@
 <?php
-namespace Controller\Controller;
-use Model\ProductManager;
+namespace ProgettoTecWeb\Controller;
+use ProgettoTecWeb\Model\ProductManager;
 
 class Controller
 {
