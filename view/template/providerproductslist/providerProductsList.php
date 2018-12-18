@@ -1,9 +1,12 @@
 <?php 
     // require and include all the files
-    if(file_exists(dirname(__FILE__) . '/vendor/autoload.php')){
-        require_once dirname(__FILE__) . '/vendor/autoload.php';
+    if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/ProgettoTecWeb/vendor/autoload.php')){
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/ProgettoTecWeb/vendor/autoload.php';
     }
     
+    use Model\DBManager;
+    use Utils\PathManager;
+
     session_start();
     $_SESSION["username"] = "provider1";
     $db = new DBManager();
