@@ -1,14 +1,17 @@
 <?php
 namespace ProgettoTecWeb\Controller;
 use ProgettoTecWeb\Model\ProductManager;
+use ProgettoTecWeb\Model\UserManager;
 
 class Controller
 {
     static $instance = null;
     private $productManager;
+    private $userManager;
     private function _construct()
     {
         $this->productManager = new ProductManager();
+        $this->userManager = new UserManager();
     }
 
     public static function getInstance()
@@ -32,5 +35,13 @@ class Controller
     public function modifyProduct($name, $description, $price, $provider)
     {
         $this->productManager->modifyProduct($name, $description, $price, $provider);
+    }
+
+    public function login($username, $password) {
+        if ($this->userManager->verifyLogin($username, $password)) {
+            session_start();
+            //$_SESSION["username"] = $username;
+            $_SESSION["user"] = $this->userManager->getUser($username);
+        }
     }
 }

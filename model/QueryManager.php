@@ -2,9 +2,23 @@
 namespace ProgettoTecWeb\Model;
     class QueryManager {
         
-        public function __construct(){ }
+        public function __construct(){ 
+            $this->db = new DBManager();
+        }
 
-        public static function queryDataToList($data) {
+        private function executeQuery($query) {
+            $db->getConnection()->query($query);
+        }
+
+        public function searchByKey($table, $keyName, $keyValue) {
+            if (is_string($keyValue)) {
+                $keyValue = "'" . $keyValue . "' ";
+            }
+            $query = "SELECT * FROM " . $table . " WHERE " . $keyName . " = " . $keyValue;
+            return this->queryDataToObject(this->executeQuery($query));
+        }
+
+        public function queryDataToList($data) {
             $result = array();
             if ($data->num_rows > 0) {
                 while($row = $data->fetch_assoc()) {
@@ -14,7 +28,7 @@ namespace ProgettoTecWeb\Model;
             return $result;
         }
 
-        public static function queryDataToObject($data) {
+        public function queryDataToObject($data) {
             if ($data->num_rows == 1) {
                 return $data->fetch_assoc();
             } else {
