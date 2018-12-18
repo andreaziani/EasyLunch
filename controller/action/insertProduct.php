@@ -3,7 +3,7 @@ include ("../controller.php");
     
     session_start();
 
-    $controller = Controller.getInstance();
+    $controller = Controller::getInstance();
 
     if(isset($_FILES['image']) && isset($_POST["name"]) 
         && isset($_POST["description"]) && isset($_POST["price"])) { //check if all the variables are set.

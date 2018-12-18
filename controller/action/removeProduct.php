@@ -2,7 +2,7 @@
 include ("../controller.php");
     
     session_start();
-    $controller = Controller.getInstance();
+    $controller = Controller::getInstance();
 
     $provider = $_SESSION["username"];
     $name = $_REQUEST["name"];
