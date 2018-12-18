@@ -4,9 +4,9 @@ namespace View;
 class View
 {
     private $listTemplate = array(
-        "index" => "index.php",
-        "providerProductsList" => "template/providerproductslist/providerProductsList.php",
-        "loginPage" => "template/access/loginPage.php",
+        "index" => "/ProgettoTecWeb/view/index.php",
+        "providerProductsList" => "/ProgettoTecWeb/view/template/providerproductslist/providerProductsList.php",
+        "loginPage" => "ProgettoTecWeb/view/template/access/loginPage.php",
     );
     static $instance = null;
 
@@ -15,10 +15,10 @@ class View
 
     public static function getInstance()
     {
-        if ($instance == null) {
-            $instance = new View();
+        if (self::$instance === null) {
+            self::$instance = new View();
         }
-        return $instance;
+        return self::$instance;
     }
 
     public function redirect($name){

@@ -2,7 +2,7 @@
 namespace Controller\Action;
 
 use Controller\Controller;
-
+use Controller\InputValidator;
     session_start();
     
     if(isset($_GET["name"]) && isset($_GET["description"]) && isset($_GET["price"])){

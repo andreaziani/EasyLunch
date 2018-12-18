@@ -2,6 +2,7 @@
 namespace Controller\Action;
 
 use Controller\Controller;
+use Controller\InputValidator;
 
     session_start();
     $provider = InputValidator::validate($_SESSION["username"]);

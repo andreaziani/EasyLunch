@@ -11,7 +11,7 @@ class Controller
     private $productManager;
     private $userManager;
     private $view;
-    private function _construct()
+    public function __construct()
     {
         $this->productManager = new ProductManager();
         $this->userManager = new UserManager();
@@ -20,10 +20,10 @@ class Controller
 
     public static function getInstance()
     {
-        if ($instance == null) {
-            $instance = new Controller();
+        if (self::$instance === null) {
+            self::$instance = new Controller();
         }
-        return $instance;
+        return self::$instance;
     }
 
     public function insertProduct($provider, $name, $description, $price, $tmp_name, $filename, $category)

@@ -1,6 +1,7 @@
 <?php
 namespace Controller;
-    class InputValidator {
+    
+class InputValidator {
         
         public function __construct(){ }
 
