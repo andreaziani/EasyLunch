@@ -13,6 +13,7 @@ class UserManager
 
     public function verifyLogin($username, $password) {
         $user = $this->queryManager->searchByKey("Users", "UserName", $username);
+        echo password_hash("admin", PASSWORD_DEFAULT);
         return $user != null and password_verify($password, $user["Password"]);
     }
 

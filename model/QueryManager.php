@@ -7,7 +7,7 @@ namespace Model;
         }
 
         private function executeQuery($query) {
-            $db->getConnection()->query($query);
+            return $this->db->getConnection()->query($query);
         }
 
         public function searchByKey($table, $keyName, $keyValue) {
