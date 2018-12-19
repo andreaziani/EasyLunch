@@ -16,7 +16,17 @@
         <a href="../../index.php">Easy Lunch</a>
         <nav>
             <a href=#>Shop</a>
-            <a href="../html/productslist.html">Login</a>
-            <a href="../html/previousOrders.html">Registration</a>
+
+<?php 
+use Utils\PathManager;
+    $base = new PathManager();
+    if (!isset($_SESSION["user"])) {
+        $base->requireFromWebSitePath('_access_header.php');
+    } else if ($_SESSION["user"]->type == "CLIENT") {
+        $base->requireFromWebSitePath('_clientheader.php');
+    } else if ($_SESSION["user"]->type == "PROVIDER") {
+        $base->requireFromWebSitePath('_providerheader.php');
+    }
+?>
         </nav>
     </header>

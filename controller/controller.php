@@ -48,6 +48,7 @@ class Controller
         if ($this->userManager->verifyLogin($username, $password)) {
             session_start();
             $_SESSION["user"] = $this->userManager->getUser($username);
+            $this->view->redirect("mainPage");
         }
     }
 }
