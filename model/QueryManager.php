@@ -6,11 +6,7 @@ namespace Model;
             $this->db = new DBManager();
         }
 
-<<<<<<< HEAD
-        private function executeQuery($query) {
-=======
         public function executeQuery($query) {
->>>>>>> 416d3ac31d12a1038f356d5cba4d24b6c145bf12
             return $this->db->getConnection()->query($query);
         }
 
