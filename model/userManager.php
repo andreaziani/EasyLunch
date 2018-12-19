@@ -17,17 +17,17 @@ class UserManager
     }
 
     public function getUser($username) {
-        $userData = this->queryManager->searchByKey("Users", "UserName", $username);
+        $userData = $this->queryManager->searchByKey("Users", "UserName", $username);
         $user = null;
         switch ($userData["Type"]) {
             case "ADMIN":
-                $user = new Admin($userData, this->queryManager->searchByKey("Admins", "UserName", $username));
+                $user = new Admin($userData, $this->queryManager->searchByKey("Admins", "UserName", $username));
                 break;
             case "CLIENT":
-                $user = new Client($userData, this->queryManager->searchByKey("Clients", "UserName", $username));
+                $user = new Client($userData, $this->queryManager->searchByKey("Clients", "UserName", $username));
                 break;
             case "PROVIDER":
-                $user = new Provider($userData, this->queryManager->searchByKey("Providers", "UserName", $username));
+                $user = new Provider($userData, $this->queryManager->searchByKey("Providers", "UserName", $username));
                 break;
         }
         return $user;

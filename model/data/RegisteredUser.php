@@ -11,7 +11,7 @@ use Model\Data\User;
             parent::__construct($userData);
             $this->name = $registeredData["Name"];
             $this->surname = $registeredData["Surname"];
-            $this->birthdate = $registeredData"Birthdate"];
+            $this->birthdate = $registeredData["Birthdate"];
             $this->phoneNumber = $registeredData["PhoneNumber"];
             $this->email = $registeredData["Email"];
         }
