@@ -9,6 +9,7 @@
     <title>Easy Lunch</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
@@ -19,13 +20,14 @@
 
 <?php 
 use Utils\PathManager;
+    session_start();
     $base = new PathManager();
     if (!isset($_SESSION["user"])) {
-        $base->requireFromWebSitePath('_access_header.php');
+        $base->requireFromWebSitePath('header/_access_header.php');
     } else if ($_SESSION["user"]->type == "CLIENT") {
-        $base->requireFromWebSitePath('_clientheader.php');
+        $base->requireFromWebSitePath('header/_clientheader.php');
     } else if ($_SESSION["user"]->type == "PROVIDER") {
-        $base->requireFromWebSitePath('_providerheader.php');
+        $base->requireFromWebSitePath('header/_providerheader.php');
     }
 ?>
         </nav>

@@ -6,7 +6,9 @@ class View
     private $listTemplate = array(
         "index" => "/ProgettoTecWeb/view/index.php",
         "providerProductsList" => "/ProgettoTecWeb/view/template/providerproductslist/providerProductsList.php",
-        "loginPage" => "ProgettoTecWeb/view/template/access/loginPage.php",
+        "loginPage" => "/ProgettoTecWeb/view/template/access/loginPage.php",
+        "registerPage" => "/ProgettoTecWeb/view/template/access/registerPage.php",
+        "mainPage" => "/ProgettoTecWeb/view/template/mainPage.php",
     );
     static $instance = null;
 

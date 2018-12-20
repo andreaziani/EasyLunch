@@ -2,7 +2,7 @@
 namespace Model\Data;
 use Model\Data\User;
     class Admin extends User {
-        private $creditPerProduct;
+        public $creditPerProduct;
 
         public function __construct($userData, $adminData) {
             parent::__construct($userData);

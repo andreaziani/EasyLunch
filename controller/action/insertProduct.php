@@ -23,3 +23,5 @@ if (isset($_FILES['image']) && isset($_POST["name"])
     $controller = Controller::getInstance();
     Controller::getInstance()->insertProduct($provider, $name, $description, $price, $tmp_name, $filename, $category);
 }
+
+?>

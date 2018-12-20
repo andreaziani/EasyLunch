@@ -29,6 +29,6 @@ class PathManager
      */
     public function requireFromWebSitePath($filePath)
     {
-        require_once $this->webSitePath. self::DIR_TEMPLATE . $filePath;
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/ProgettoTecWeb'. self::DIR_TEMPLATE . $filePath;
     }
 }

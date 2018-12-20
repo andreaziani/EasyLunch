@@ -22,10 +22,10 @@ class ProductManager
         $this->db->getConnection()->query($query);
     }
 
-    public function removeProduct($name, $provider)
+    public function removeProduct($id)
     {
         $query = "DELETE FROM Products
-              WHERE Name='" . $name . "' AND ProviderId='" . $provider . "'";
+              WHERE Id=" . $id;
 
         if ($this->db->getConnection()->query($query) === true) {
             echo "Record updated successfully";
@@ -34,16 +34,15 @@ class ProductManager
         }
     }
 
-    public function modifyProduct($name, $description, $price, $provider)
+    public function modifyProduct($name, $description, $price, $id)
     {
         $query = "UPDATE Products
               SET Name='" . $name .
             "', Description='" . $description .
             "', Price=" . $price .
-            "  WHERE ProviderId='" . $provider .
-            "' AND Name='" . $name . "'";
+            "  WHERE Id=" . $id;
 
-        if ($db->getConnection()->query($query) === true) {
+        if ($this->db->getConnection()->query($query) === true) {
             echo "Record updated successfully";
         } else {
             echo $this->db->getConnection()->error;

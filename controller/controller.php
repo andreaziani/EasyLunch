@@ -32,15 +32,15 @@ class Controller
         $this->view->redirect("providerProductsList");
     }
 
-    public function removeProduct($name, $provider)
+    public function removeProduct($id)
     {
-        $this->productManager->removeProduct($name, $provider);
+        $this->productManager->removeProduct($id);
         $this->view->redirect("providerProductsList");
     }
 
-    public function modifyProduct($name, $description, $price, $provider)
+    public function modifyProduct($name, $description, $price, $id)
     {
-        $this->productManager->modifyProduct($name, $description, $price, $provider);
+        $this->productManager->modifyProduct($name, $description, $price, $id);
         $this->view->redirect("providerProductsList");
     }
 
@@ -49,6 +49,18 @@ class Controller
             session_start();
             $_SESSION["user"] = $this->userManager->getUser($username);
             $this->view->redirect("mainPage");
+        } else {
+            $this->view->redirect("loginPage");
         }
+    }
+
+    public function register($userData) {
+        if ($this->userManager->canRegister($userData)) {
+            $this->userManager->register($userData);
+            $this->view->redirect("mainPage");
+        } else {
+            $this->view->redirect("registerPage");
+        }
+        
     }
 }
