@@ -27,8 +27,13 @@ use Utils\PathManager;
                 <option value="provider">Provider</option>
             </select>
         </label><br/>
-        <label id="pivaLabel" style="display: none;">PIVA:  <input type="text" name="piva" id="piva" /></label><br/>
-        <label id="addressLabel" style="display: none;">PIVA:  <input type="text" name="address" id="address" /></label><br/>
+        <fieldset id="providerFields" style="display: none; border: 0px">
+            <label>PIVA:  <input type="text" name="piva" id="piva" /></label><br/>    
+            <label>City:  <input type="text" name="cityAddress" id="cityAddress" /></label><br/>
+            <label>Street:  <input type="text" name="addressStreet" id="addressStreet" /></label><br/>
+            <label>Street Number:  <input type="text" name="addressNumber" id="addressNumber" /></label><br/>
+        </fieldset>
+
         <input type="submit" value="Sign up" id="submit"/>
         <input type="reset" value="Reset" />
     </form>

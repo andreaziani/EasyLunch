@@ -99,14 +99,12 @@ $(document).ready(function() {
     //on change in the typology box, piva label appear and disappear
     $("#typology").change(function () {
         if ($("#typology option:selected").val() == "provider") {
-            $("#pivaLabel").show();
-            $("#addressLabel").show();
+            $("#providerFields").show();
         }
     });
     $("#typology").change(function () {
         if ($("#typology option:selected").val() == "client") {
-            $("#pivaLabel").hide();
-            $("#addressLabel").hide();
+            $("#providerFields").hide();
         }
     });
 });
