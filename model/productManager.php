@@ -59,6 +59,11 @@ class ProductManager
         if(count($result) > 0) {
             return $result;
         }
-        return $this->queryManager->searchByAttribute("Products", "ProviderId", $key);
+        $result = $this->queryManager->searchByAttribute("Products", "ProviderId", $key);
+        if(count($result) > 0) {
+            return $result;
+        }
+        $categories = $this->queryManager->searchByKey("Categories", "Name", $key);
+        return $this->queryManager->searchByAttribute("Products", "CategoryId", $categories["Id"]);
     }
 }
