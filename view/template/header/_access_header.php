@@ -1,2 +1,2 @@
-<a href="../view/template/access/loginPage.php">Login</a>
-<a href="../html/previousOrders.html">Registration</a>
+<a href="/ProgettoTecWeb/view/template/access/loginPage.php">Login</a>
+<a href="/ProgettoTecWeb/view/template/access/registerPage.php">Registration</a>

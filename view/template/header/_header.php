@@ -14,10 +14,9 @@
 <body>
     <header>
         <!--TODO: set the dimension of the icon with css-->
-        <a href="../../index.php">Easy Lunch</a>
+        <a href="/ProgettoTecWeb/view/index.php">Easy Lunch</a>
         <nav>
-            <a href=#>Shop</a>
-
+            <a href="/ProgettoTecWeb/view/template/clientproductslist/clientproductslist.php">Shop</a>
 <?php 
 use Utils\PathManager;
     session_start();

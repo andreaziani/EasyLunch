@@ -8,10 +8,9 @@ use Utils\PathManager;
     $base->requireFromWebSitePath('header/_header.php');
 ?>
 
-<a href="loginPage.php">Sign in</a>
 <section id="registration">
     <h1>Register</h1>
-    <form id="registerform" action="file.php" method="POST">
+    <form id="registerform" method="POST">
         <label>Name: <input type="text" name="name" id="name" /></label><br/>
         <label>Surname: <input type="text" name="surname" id="surname" /></label><br/>
         <label>Birthdate: <input type="date" name="birthdate" id="birthdate" /></label><br/>
@@ -28,7 +27,7 @@ use Utils\PathManager;
             </select>
         </label><br/>
         <label id="pivaLabel" style="display: none;">PIVA:  <input type="text" name="piva" id="piva" /></label><br/>
-        <label id="addressLabel" style="display: none;">PIVA:  <input type="text" name="address" id="address" /></label><br/>
+        <label id="addressLabel" style="display: none;">Address:  <input type="text" name="address" id="address" /></label><br/>
         <input type="submit" value="Sign up" id="submit"/>
         <input type="reset" value="Reset" />
     </form>
