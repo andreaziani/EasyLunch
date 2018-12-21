@@ -25,7 +25,9 @@ use Model\QueryManager;
         $userData["piva"] = null;
         if ($userData["type"] === "Provider") {
             $userData["piva"] = InputValidator::validate($_POST["piva"]);
-            $userData["address"] = InputValidator::validate($_POST["address"]);
+            $userData["cityAddress"] = InputValidator::validate($_POST["cityAddress"]);
+            $userData["addressStreet"] = InputValidator::validate($_POST["addressStreet"]);
+            $userData["addressNumber"] = InputValidator::validate($_POST["addressNumber"]);
         }
         Controller::getInstance()->register($userData);
     }

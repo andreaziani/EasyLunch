@@ -31,7 +31,9 @@ class UserManager
                 $registeredData["Credit"] = 0;
             } else {
                 $table = "Providers";
-                $registeredData["Address"] = $userData["address"];
+                $registeredData["CityAddress"] = $userData["cityAddress"];
+                $registeredData["AddressStreet"] = $userData["addressStreet"];
+                $registeredData["AddressNumber"] = $userData["addressNumber"];
                 $registeredData["IVA"] = $userData["piva"];
             }
             if ($this->queryManager->insertInTable($table, $simpleData)) {
