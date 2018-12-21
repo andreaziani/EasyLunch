@@ -8,7 +8,6 @@ use Utils\PathManager;
     $base->requireFromWebSitePath('header/_header.php');
 ?>
 
-<a href="loginPage.php">Sign in</a>
 <section id="registration">
     <h1>Register</h1>
     <form id="registerform" action="../../../controller/action/register.php" method="POST">

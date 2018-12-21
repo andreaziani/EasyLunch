@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="style.css">
 <?php 
     // require and include all the files
     if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/ProgettoTecWeb/vendor/autoload.php')){
@@ -7,13 +8,12 @@
     use Model\QueryManager;
     use Utils\PathManager;
 
-    session_start();
+    //session_start();
     $_SESSION["username"] = "provider1";
     $db = new QueryManager();
     $base = new PathManager();
-    $base->requireFromWebSitePath('header/_providerheader.php');
+    $base->requireFromWebSitePath('header/_header.php');
 ?>
-
 <section id="productlist">
             <h1>Your products</h1>
             <div>
@@ -37,7 +37,7 @@
                         }
                     ?>
                 </ul>
-                <form class="hidden" action="../../../controller/action/insertProduct.php" method="POST" enctype="multipart/form-data">
+                <form class="hidden" action="/ProgettoTecWeb/controller/action/insertProduct.php" method="POST" enctype="multipart/form-data">
                     <label>Name: <input type="text" name="name" /></label><br/>
                     <label for="description">Description:</label><br/>
                     <textarea name="description" id="description" cols="30" rows="5"></textarea><br/>

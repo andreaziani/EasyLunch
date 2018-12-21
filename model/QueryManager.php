@@ -37,6 +37,14 @@ namespace Model;
             return $this->queryDataToObject($this->executeQuery($query));
         }
 
+        public function searchByAttribute($table, $keyName, $keyValue) {
+            if (is_string($keyValue)) {
+                $keyValue = "'" . $keyValue . "' ";
+            }
+            $query = "SELECT * FROM " . $table . " WHERE " . $keyName . " = " . $keyValue;
+            return $this->queryDataToList($this->executeQuery($query));
+        }
+
         public function queryDataToList($data) {
             $result = array();
             if ($data->num_rows > 0) {

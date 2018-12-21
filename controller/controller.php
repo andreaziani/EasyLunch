@@ -63,4 +63,8 @@ class Controller
         }
         
     }
+
+    public function searchProducts($key){
+        return $this->productManager->searchProducts($key);
+    }
 }

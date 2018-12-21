@@ -9,18 +9,18 @@ use Utils\PathManager;
 
 $db = new QueryManager();
 $base = new PathManager();
-$base->requireFromWebSitePath('header/_clientheader.php');
+$base->requireFromWebSitePath('header/_header.php');
 ?>
 
 <section id="research">
-    <input id="searchBar" type="search" name="s" results=5 autocomplete="on"><br/>
+    <input id="searchBar" type="search" name="search" results=5 autocomplete="on"><br/>
 </section>
 
 <section id="productlist">
     <a href="reviews.html"><img src="/ProgettoTecWeb/images/icons/customer-review.png" alt="Show reviews" width="70"></a><br/>
     <div>
         <!--TODO: CSS For images-->
-    <ul>
+    <ul id="productslist">
             <?php
                 $query = "SELECT * FROM Products ORDER BY Name";
                 $result = $db->queryDataToList($db->executeQuery($query));
