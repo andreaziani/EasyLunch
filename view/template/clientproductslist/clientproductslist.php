@@ -11,9 +11,11 @@ $db = new QueryManager();
 $base = new PathManager();
 $base->requireFromWebSitePath('header/_header.php');
 ?>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <section id="research">
-    <input id="searchBar" type="search" name="search" results=5 autocomplete="on"><br/>
+        <input id="searchBar" type="text" placeholder="Search.." name="search" results=5 autocomplete="on">
+        <button id="searchButton"><i class="fa fa-search"></i></button>
+
 </section>
 
 <section id="productlist">
