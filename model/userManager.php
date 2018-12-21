@@ -22,8 +22,8 @@ class UserManager
         if($this->queryManager->insertInTable("Users", $simpleData)) {
             $registeredData["UserName"] = $userData["username"];
             $registeredData["Name"] = $userData["name"];
-            $registeredData["Surname"] = $userData["Surname"];
-            $registeredData["Birthdate"] = $userData["BirthDate"];
+            $registeredData["Surname"] = $userData["surname"];
+            $registeredData["Birthdate"] = $userData["birthDate"];
             $registeredData["PhoneNumber"] = $userData["telephone"];
             $registeredData["Email"] = $userData["email"];
             if ($simpleData["Type"] === "Client") {
