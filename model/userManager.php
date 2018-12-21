@@ -18,15 +18,15 @@ class UserManager
     public function register($userData) {
         $simpleData["UserName"] = $userData["username"];
         $simpleData["Password"] = $userData["password"];
-        $simpleData["Type"] = $userData["Type"];
+        $simpleData["Type"] = $userData["type"];
         if($this->queryManager->insertInTable("Users", $simpleData)) {
             $registeredData["UserName"] = $userData["username"];
             $registeredData["Name"] = $userData["name"];
             $registeredData["Surname"] = $userData["surname"];
-            $registeredData["Birthdate"] = $userData["birthDate"];
+            $registeredData["BirthDate"] = $userData["birthdate"];
             $registeredData["PhoneNumber"] = $userData["telephone"];
             $registeredData["Email"] = $userData["email"];
-            if ($simpleData["Type"] === "Client") {
+            if ($simpleData["Type"] === "client") {
                 $table = "Clients";
                 $registeredData["Credit"] = 0;
             } else {
@@ -36,8 +36,8 @@ class UserManager
                 $registeredData["AddressNumber"] = $userData["addressNumber"];
                 $registeredData["IVA"] = $userData["piva"];
             }
-            if ($this->queryManager->insertInTable($table, $simpleData)) {
-                return getUser($simpleData["username"]);
+            if ($this->queryManager->insertInTable($table, $registeredData)) {
+                return $this->getUser($simpleData["UserName"]);
             }
         }
         return null;
