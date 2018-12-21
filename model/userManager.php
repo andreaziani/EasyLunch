@@ -18,24 +18,26 @@ class UserManager
     public function register($userData) {
         $simpleData["UserName"] = $userData["username"];
         $simpleData["Password"] = $userData["password"];
-        $simpleData["Type"] = $userData["Type"];
+        $simpleData["Type"] = $userData["type"];
         if($this->queryManager->insertInTable("Users", $simpleData)) {
             $registeredData["UserName"] = $userData["username"];
             $registeredData["Name"] = $userData["name"];
-            $registeredData["Surname"] = $userData["Surname"];
-            $registeredData["Birthdate"] = $userData["BirthDate"];
+            $registeredData["Surname"] = $userData["surname"];
+            $registeredData["BirthDate"] = $userData["birthdate"];
             $registeredData["PhoneNumber"] = $userData["telephone"];
             $registeredData["Email"] = $userData["email"];
-            if ($simpleData["Type"] === "Client") {
+            if ($simpleData["Type"] === "client") {
                 $table = "Clients";
                 $registeredData["Credit"] = 0;
             } else {
                 $table = "Providers";
-                $registeredData["Address"] = $userData["address"];
+                $registeredData["CityAddress"] = $userData["cityAddress"];
+                $registeredData["AddressStreet"] = $userData["addressStreet"];
+                $registeredData["AddressNumber"] = $userData["addressNumber"];
                 $registeredData["IVA"] = $userData["piva"];
             }
-            if ($this->queryManager->insertInTable($table, $simpleData)) {
-                return getUser($simpleData["username"]);
+            if ($this->queryManager->insertInTable($table, $registeredData)) {
+                return $this->getUser($simpleData["UserName"]);
             }
         }
         return null;

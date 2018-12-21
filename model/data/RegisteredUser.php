@@ -2,11 +2,11 @@
 namespace Model\Data;
 use Model\Data\User;
     abstract class RegisteredUser extends User {
-        private $name;
-        private $surname;
-        private $birthdate;
-        private $phoneNumber;
-        private $email;
+        public $name;
+        public $surname;
+        public $birthdate;
+        public $phoneNumber;
+        public $email;
         protected function __construct($userData, $registeredData) {
             parent::__construct($userData);
             $this->name = $registeredData["Name"];

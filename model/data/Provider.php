@@ -6,7 +6,9 @@ use Model\Data\RegisteredUser;
         public $iva;
         public function __construct($userData, $registeredData) {
             parent::__construct($userData, $registeredData);
-            $this->address = $registeredData["Address"];
+            $this->city = $registeredData["AityAddress"];
+            $this->street = $registeredData["AddressStreet"];
+            $this->number = $registeredData["AddressNumber"];
             $this->iva = $registeredData["IVA"];
         }
     }
