@@ -36,11 +36,9 @@ class UserManager
                 $registeredData["AddressNumber"] = $userData["addressNumber"];
                 $registeredData["IVA"] = $userData["piva"];
             }
-            if ($this->queryManager->insertInTable($table, $registeredData)) {
-                return $this->getUser($simpleData["UserName"]);
-            }
+            return $this->queryManager->insertInTable($table, $registeredData);
         }
-        return null;
+        return false;
     }
 
     public function verifyLogin($username, $password) {

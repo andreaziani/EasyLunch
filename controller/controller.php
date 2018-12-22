@@ -55,8 +55,9 @@ class Controller
     }
 
     public function register($userData) {
-        if ($this->userManager->canRegister($userData)) {
-            $this->userManager->register($userData);
+        if ($this->userManager->canRegister($userData) and $this->userManager->register($userData)) {
+            session_start();
+            $_SESSION["user"] = $this->userManager->getUser($username);
             $this->view->redirect("mainPage");
         } else {
             $this->view->redirect("registerPage");
