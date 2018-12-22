@@ -33,6 +33,11 @@ $(document).ready(function() {
     });
 
     $.validator.addMethod("checkValid", isValid, "Please enter a diferent value.");
+    var isProvider = {
+        depends: function(element) {
+            return $("#typology option:selected").val() == "provider";
+        }
+    };
     $("#registerform").validate({
         rules: {
             name: {
@@ -75,20 +80,21 @@ $(document).ready(function() {
                 required: true,
                 email: true
             },
-            address: {
-                required: {
-                    depends: function(element) {
-                        return $("#typology option:selected").val() == "provider";
-                    }
-                },
-                //TODO
+            cityAddress: {
+                required: isProvider,
+                checkValid: true
+            },
+            addressStreet: {
+                required: isProvider,
+                checkValid: true
+            },
+            addressNumber: {
+                required: isProvider,
+                checkValid: true,
+                digits: true
             },
             piva: {
-                required: {
-                    depends: function(element) {
-                        return $("#typology option:selected").val() == "provider";
-                    }
-                },
+                required: isProvider,
                 minlength: 5,
                 maxlength: 20,
                 checkValid: true
@@ -96,7 +102,6 @@ $(document).ready(function() {
         }
     });
 
-    //on change in the typology box, piva label appear and disappear
     $("#typology").change(function () {
         if ($("#typology option:selected").val() == "provider") {
             $("#providerFields").show();
