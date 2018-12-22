@@ -6,7 +6,7 @@ use Controller\Controller;
 use Controller\InputValidator;
 use Model\QueryManager;
     
-    if(isset($_POST['name']) && isset($_POST['surname']) &&
+    if(isset($_POST['name']) && isset($_POST['companyName']) && isset($_POST['surname']) &&
        isset($_POST['username']) && isset($_POST['password']) && 
        isset($_POST['telephone']) && isset($_POST['rpassword']) && 
        $_POST['password'] === $_POST['rpassword'] &&
@@ -19,6 +19,7 @@ use Model\QueryManager;
         $userData["password"] = password_hash(InputValidator::validate($_POST['password']), PASSWORD_DEFAULT);
         $userData["rpassword"] = password_hash(InputValidator::validate($_POST['rpassword']), PASSWORD_DEFAULT);
         $userData["name"] = InputValidator::validate($_POST['name']);
+        $userData["companyName"] = InputValidator::validate($_POST['companyName']);
         $userData["surname"] = InputValidator::validate($_POST['surname']);
         $userData["telephone"] = InputValidator::validate($_POST['telephone']);
         $userData["birthdate"] = InputValidator::validate($_POST['birthdate']);

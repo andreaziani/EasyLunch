@@ -27,6 +27,7 @@ use Utils\PathManager;
             </select>
         </label><br/>
         <fieldset id="providerFields" style="display: none; border: 0px">
+            <label>Company name: <input type="text" name="companyName" id="companyName" /></label><br/>
             <label>PIVA:  <input type="text" name="piva" id="piva" /></label><br/>    
             <label>City:  <input type="text" name="cityAddress" id="cityAddress" /></label><br/>
             <label>Street:  <input type="text" name="addressStreet" id="addressStreet" /></label><br/>
