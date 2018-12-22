@@ -7,7 +7,12 @@
             <th>Price</th>
             <th>Quantity</th>
         </tr>
-        <!---->
+        <?php
+            session_start();
+            $cart = $_SESSION["cart"];
+            if ($cart != null and $cart)
+        ?>
+
             <tr>
             <td>Product1</td>
             <td>Provider1</td>
