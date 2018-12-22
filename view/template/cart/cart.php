@@ -10,19 +10,21 @@
         <?php
             session_start();
             $cart = $_SESSION["cart"];
-            if ($cart != null and $cart)
+            if ($cart != null) {
+                foreach ($cart->entries as $entry) {
+                    echo 
+                        "<tr>" .
+                            "<td>" . $entry->productName ."</td>" .
+                            //"<td>" . $entry->provider ."</td>" .
+                            "<td>" . $entry->price ."</td>" .
+                            "<td>" . $entry->quantity ."</td>" .
+                        "</tr>";
+                }
+            }
         ?>
-
-            <tr>
-            <td>Product1</td>
-            <td>Provider1</td>
-            <td>x€</td>
-            <td><input type="number" /></td>
-        </tr><!---->
-        <!--table rows will be created with text taken from db-->
     </table>
     <input type="submit" value="Submit" id="submit"/>
-    <a href="../clientproductlist/productslist.html">Back</a>
+    <a href="ProgettoTecWeb/view/template/clientproductlist/clientproductlist.php">Back</a>
     <input type="button" value="Cancel" id="cancel"/>
 </section>
 <script src="cart.js"></script>

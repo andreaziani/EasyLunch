@@ -1,9 +1,8 @@
 $(document).ready(function () {
     $("#submit").click(function (e) { 
-        $.post("flie.php", cartData, //TODO this must be a global variable somewhere.
-        );
+        $.post("ProgettoTecWeb/controller/action/submitCart.php");
     });
     $("#cancel").click(function(e) {
-        $.get("file.php"); //TODO
+        $.get("ProgettoTecWeb/controller/action/cancelCart.php");
     })
 });
