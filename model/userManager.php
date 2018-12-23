@@ -61,7 +61,6 @@ class UserManager
                 $user = new Provider($userData, $this->queryManager->searchByKey("Providers", "UserName", $username));
                 break;
         }
-        $user->userName = $userData["Username"];
         return $user;
     }
 
