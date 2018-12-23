@@ -46,7 +46,7 @@ class Controller
 
     public function login($username, $password) {
         if ($this->userManager->verifyLogin($username, $password)) {
-            session_start();
+            $this->startSession();
             $_SESSION["user"] = $this->userManager->getUser($username);
             $this->view->redirect("mainPage");
         } else {
@@ -56,7 +56,7 @@ class Controller
 
     public function register($userData) {
         if ($this->userManager->canRegister($userData) and $this->userManager->register($userData)) {
-            session_start();
+            $this->startSession();
             $_SESSION["user"] = $this->userManager->getUser($username);
             $this->view->redirect("mainPage");
         } else {
@@ -68,4 +68,20 @@ class Controller
     public function searchProducts($key){
         return $this->productManager->searchProducts($key);
     }
+
+    public function logout(){
+        $this->startSession();
+        session_destroy();
+        $this->view->redirect("mainPage");
+    }
+
+    /**
+     * Check if a session is already started.
+     */
+    private function startSession(){
+        if(session_id() == '') {
+            session_start();
+        }
+    }
 }
+

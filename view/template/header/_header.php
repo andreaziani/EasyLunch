@@ -16,7 +16,7 @@
         <!--TODO: set the dimension of the icon with css-->
         <a href="/ProgettoTecWeb/view/index.php">Easy Lunch</a>
         <nav>
-            <a href="/ProgettoTecWeb/view/template/clientproductslist/clientproductslist.php">Shop</a>
+        <a href="/ProgettoTecWeb/view/template/clientproductslist/clientproductslist.php">Shop</a>
 <?php 
 use Utils\PathManager;
     session_start();
@@ -26,6 +26,7 @@ use Utils\PathManager;
     } else if ($_SESSION["user"]->type == "CLIENT") {
         $base->requireFromWebSitePath('header/_clientheader.php');
     } else if ($_SESSION["user"]->type == "PROVIDER") {
+
         $base->requireFromWebSitePath('header/_providerheader.php');
     }
 ?>
