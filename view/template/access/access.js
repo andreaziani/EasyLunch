@@ -45,6 +45,11 @@ $(document).ready(function() {
                 minlength: 3,
                 checkValid: true
             },
+            companyName: {
+                required: true,
+                minlength: 3,
+                checkValid: true
+            },
             surname: {
                 required: true,
                 minlength: 3,

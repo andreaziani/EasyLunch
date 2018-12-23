@@ -31,16 +31,15 @@ class UserManager
                 $registeredData["Credit"] = 0;
             } else {
                 $table = "Providers";
+                $registeredData["CompanyName"] = $userData["companyName"];
                 $registeredData["CityAddress"] = $userData["cityAddress"];
                 $registeredData["AddressStreet"] = $userData["addressStreet"];
                 $registeredData["AddressNumber"] = $userData["addressNumber"];
                 $registeredData["IVA"] = $userData["piva"];
             }
-            if ($this->queryManager->insertInTable($table, $registeredData)) {
-                return $this->getUser($simpleData["UserName"]);
-            }
+            return $this->queryManager->insertInTable($table, $registeredData);
         }
-        return null;
+        return false;
     }
 
     public function verifyLogin($username, $password) {
