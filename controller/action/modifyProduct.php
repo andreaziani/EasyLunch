@@ -14,9 +14,8 @@ session_start();
 if (isset($_GET["name"]) && isset($_GET["description"]) && isset($_GET["price"])) {
     $name = InputValidator::validate($_GET["name"]);
     $description = InputValidator::validate($_GET["description"]);
-    $price = InputValidator::validate($_GET["price"]);
-    $id = InputValidator::validate($_GET["id"]);
-
+    $price = floatval(InputValidator::validate($_GET["price"]));
+    $id = intval(InputValidator::validate($_GET["id"]));
     Controller::getInstance()->modifyProduct($name, $description, $price, $id);
 }
 

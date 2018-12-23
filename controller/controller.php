@@ -76,7 +76,7 @@ class Controller
     }
     
     public function updateProfileInformations($data, $tableName, $username){
-        if($this->userManager->updateProfileInformations($data, $tableName) > 0){
+        if($this->userManager->updateProfileInformations($data, $tableName, $username) > 0){
             $_SESSION["user"] = $this->userManager->getUser($username);
             switch($tableName){
                 case "Clients":

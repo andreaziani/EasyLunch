@@ -1,5 +1,5 @@
 <a href="#"><img src="/ProgettoTecWeb/images/icons/bell.png" alt="notifications" width="70" /></a>
 <!-- from here -->
 <a href="/ProgettoTecWeb/view/template/profile/providerProfile.php">Profile</a>
-<a href="/ProgettoTecWeb/view/template/providerproductslist/providerProductslist.php">Personal Shop</a>
+<a href="/ProgettoTecWeb/view/template/providerproductslist/providerProductsList.php">Personal Shop</a>
 <a href="/ProgettoTecWeb/controller/action/logout.php">Logout</a>

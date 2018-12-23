@@ -26,12 +26,11 @@ class QueryManager
     private function surroundStrings($array)
     {
         return array_map(function ($val) {
-            return surroundOneString($val);
-            // if (is_string($val)) {
-            //     return "'" . $val . "'";
-            // } else {
-            //     return $val;
-            // }
+            if (is_string($val)) {
+                return "'" . $val . "'";
+            } else {
+                return $val;
+            }
         }, $array);
     }
 
@@ -49,12 +48,14 @@ class QueryManager
     /**
      * data is a dictionary and the keys must be in the same case format as the ones appearing in the database.
      */
-    public function updateInTable($table, $data)
+    public function updateInTable($table, $data, $keyName, $keyValue)
     {
         $query = "UPDATE " . $table . " SET ";
         foreach ($data as $key => $value) {
             $query = $query . $key . "=" . self::surroundOneString($value) . " ";
         }
+        $query = $query . " WHERE " . $keyName . "=". self::surroundOneString($keyValue); 
+        //echo $query;
         return $this->executeQuery($query);
     }
 

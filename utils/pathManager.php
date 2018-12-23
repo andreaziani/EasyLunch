@@ -9,7 +9,7 @@ class PathManager
 
     const DIR_ICON = "/images/icon/";
     const DIR_TEMPLATE = "/view/template/";
-    const DIR_UPLOAD = "/images/productsimages/";
+    const DIR_UPLOAD = "images/productsimages/";
     public $uploadPath;
     public $iconPath;
     public $webSitePath;

@@ -7,9 +7,6 @@
     
     use Model\QueryManager;
     use Utils\PathManager;
-
-    //session_start();
-    $_SESSION["username"] = "provider1";
     $db = new QueryManager();
     $base = new PathManager();
     $base->requireFromWebSitePath('header/_header.php');
@@ -19,7 +16,7 @@
             <div>
                 <ul>
                     <?php 
-                        $query1 = "SELECT Id, Image, Name, Description, Price FROM Products WHERE ProviderId='" . $_SESSION["username"] . "'";
+                        $query1 = "SELECT Id, Image, Name, Description, Price FROM Products WHERE ProviderId='" . $_SESSION["user"]->userName . "' AND IsActive=true";
                         $result = $db->queryDataToList($db->executeQuery($query1));
                         foreach($result as $row) {
                                 echo "<li>" . 

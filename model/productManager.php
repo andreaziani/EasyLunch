@@ -6,12 +6,10 @@ use Utils\PathManager;
 
 class ProductManager
 {
-    private $db;
     private $pathManager;
     private $queryManager;
     public function __construct()
     {
-        $this->db = new DBManager();
         $this->pathManager = new PathManager();
         $this->queryManager = new QueryManager();
     }
@@ -19,38 +17,36 @@ class ProductManager
     public function insertProduct($provider, $name, $description, $price, $tmp_name, $filename, $category)
     {
         move_uploaded_file($tmp_name, $this->pathManager->uploadPath . $filename); // Move the uploaded file to the desired folder
-        $query = "INSERT INTO Products(Name, Description, Image, Price, IsActive, CategoryId, ProviderId)
-                  VALUES (" . "'" . $name . "', '" . $description . "', '" . $this->pathManager->dirUpload . $filename . "'," .
-            $price . ", TRUE, " . $category . ",'" . $provider . "')";
-        $this->db->getConnection()->query($query);
+        $data = array();
+        $data["Name"] = $name;
+        $data["Description"] = $description;
+        $data["Image"] = $this->pathManager->dirUpload . $filename;
+        $data["Price"] = $price;
+        $data["IsActive"] = 1;
+        $data["CategoryId"] = $category;
+        $data["ProviderId"] = $provider;
+        $prev = $this->queryManager->searchByAttribute("Products", "Name", $name);
+        
+        //TODO: manage previous version id
+        $this->queryManager->insertInTable("Products", $data);
     }
 
     public function removeProduct($id)
     {
-        $query = "DELETE FROM Products
-              WHERE Id=" . $id;
-
-        if ($this->db->getConnection()->query($query) === true) {
-            echo "Record updated successfully";
-        } else {
-            echo $this->db->getConnection()->error;
-        }
+        $data = array();
+        $data["IsActive"] = 0;
+        $this->queryManager->updateInTable("Products", $data, "Id", $id);
     }
 
     public function modifyProduct($name, $description, $price, $id)
     {
-        $query = "UPDATE Products
-              SET Name='" . $name .
-            "', Description='" . $description .
-            "', Price=" . $price .
-            "  WHERE Id=" . $id;
-
-        if ($this->db->getConnection()->query($query) === true) {
-            echo "Record updated successfully";
-        } else {
-            echo $this->db->getConnection()->error;
-        }
+        $data = array();
+        $data["Name"] = $name;
+        $data["Description"] = $description;
+        $data["Price"] = $price;
+        $this->queryManager->updateInTable("Products", $data, "Id", $id);
     }
+    
     /*
      * Search if there are products with this name, if not, search by providerid
      */

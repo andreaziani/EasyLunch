@@ -64,7 +64,7 @@ class UserManager
         return $user;
     }
 
-    public function updateProfileInformations($data, $tableName){
-        return $this->queryManager->updateInTable($tableName, $data);
+    public function updateProfileInformations($data, $tableName, $username){
+        return $this->queryManager->updateInTable($tableName, $data, "UserName", $username);
     }
 }
