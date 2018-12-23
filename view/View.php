@@ -9,6 +9,8 @@ class View
         "loginPage" => "/ProgettoTecWeb/view/template/access/loginPage.php",
         "registerPage" => "/ProgettoTecWeb/view/template/access/registerPage.php",
         "mainPage" => "/ProgettoTecWeb/view/template/mainPage.php",
+        "providerProfile" => "/ProgettoTecWeb/view/template/profile/providerProfile.php",
+        "clientProfile" => "/ProgettoTecWeb/view/template/profile/clientProfile.php",
     );
     static $instance = null;
 

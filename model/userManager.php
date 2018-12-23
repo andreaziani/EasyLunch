@@ -61,6 +61,11 @@ class UserManager
                 $user = new Provider($userData, $this->queryManager->searchByKey("Providers", "UserName", $username));
                 break;
         }
+        $user->userName = $userData["Username"];
         return $user;
+    }
+
+    public function updateProfileInformations($data, $tableName){
+        return $this->queryManager->updateInTable($tableName, $data);
     }
 }

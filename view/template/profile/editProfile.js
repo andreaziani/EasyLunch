@@ -11,7 +11,7 @@ $(document).ready(function() {
       .children();
     if (input.is(":disabled")) {
       input.prop("disabled", false);
-      input.val(" ");
+      input.val("");
       hiddenButton.fadeIn();
     }
   }
@@ -29,39 +29,35 @@ $(document).ready(function() {
 
   /* Save the modified information */
   function saveChanges() {
+    $("form").children().prop("disabled", false);
     // TODO: send the modified info to webserver.
     $("form").validate({
       rules: {
-        name: {
+        Name: {
           required: true,
           minlength: 3,
           notEqualTo: invalidStrings
         },
-        surname: {
+        Surname: {
           required: true,
           minlength: 3,
           notEqualTo: invalidStrings
         },
-        password: {
-          required: true,
-          minlength: 3,
-          notEqualTo: invalidStrings
-        },
-        birthdate: {
+        Birthdate: {
           required: true,
           date: true
         },
-        telephone: {
+        PhoneNumber: {
           required: true,
           number: true,
           minlength: 5,
           maxlength: 10
         },
-        email: {
+        Email: {
           required: true,
           email: true
         },
-        piva: {
+        IVA: {
           required: true,
           minlength: 5,
           maxlength: 20,

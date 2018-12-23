@@ -13,24 +13,24 @@ use Utils\PathManager;
     <fieldset id="personalinfo">
         <legend>Personal informations</legend>
         <!--Span will be filled with text taken from db-->
-        <form id="profileInformations" action="" method="POST">
+        <form id="profileInformations" action="/ProgettoTecWeb/controller/action/modifyProfile.php" method="POST">
             <?php 
-                echo "<label>Name: <input type='text' name='name' id='name' value='" . $_SESSION["user"]->name .
+                echo "<label>Name: <input type='text' name='Name' id='name' value='" . $_SESSION["user"]->name .
                 "' disabled /></label>" .
                 " <a class='edit'><img src='/ProgettoTecWeb/images/icons/edit.png' alt='modify' width='15'></a><br />" .
-                " <label>Surname: <input type='text' name='surname' id='surname' value='" .
+                " <label>Surname: <input type='text' name='Surname' id='surname' value='" .
                 $_SESSION["user"]->surname .
                 "' disabled /></label>" .
                 " <a class='edit'><img src='/ProgettoTecWeb/images/icons/edit.png' alt='modify' width='15'></a><br />" .
-                " <label>Birthdate: <input type='text' name='surname' id='surname' value='" .
+                " <label>Birthdate: <input type='text' name='birthdate' id='birthdate' value='" .
                 $_SESSION["user"]->birthdate .
                 "' disabled /></label>" .
                 " <a class='edit'><img src='/ProgettoTecWeb/images/icons/edit.png' alt='modify' width='15'></a><br />" .
-                " <label>Telephone: <input type='text' name='surname' id='surname' value='" .
+                " <label>Telephone: <input type='text' name='PhoneNumber' id='phone' value='" .
                 $_SESSION["user"]->phoneNumber .
                 "' disabled /></label>" .
                 " <a class='edit'><img src='/ProgettoTecWeb/images/icons/edit.png' alt='modify' width='15'></a><br />" .
-                " <label>Email: <input type='text' name='surname' id='surname' value='" .
+                " <label>Email: <input type='text' name='Email' id='email' value='" .
                 $_SESSION["user"]->email .
                 "' disabled /></label>" .
                 " <a class='edit'><img src='/ProgettoTecWeb/images/icons/edit.png' alt='modify' width='15'></a><br />" .

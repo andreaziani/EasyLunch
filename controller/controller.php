@@ -75,11 +75,25 @@ class Controller
         $this->view->redirect("mainPage");
     }
     
+    public function updateProfileInformations($data, $tableName, $username){
+        if($this->userManager->updateProfileInformations($data, $tableName) > 0){
+            $_SESSION["user"] = $this->userManager->getUser($username);
+            switch($tableName){
+                case "Clients":
+                    $this->view->redirect("clientProfile");
+                    break;
+                case "Providers":
+                    $this->view->redirect("providerProfile");
+                    break;
+            }
+        }
+    }
+
     /**
-     * Check if a session is already started.
+     * Utility method for check if a session is already started.
      */
     private function startSession(){
-        if(session_id() == '') {
+        if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
     }
