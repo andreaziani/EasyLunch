@@ -74,7 +74,7 @@ class Controller
         session_destroy();
         $this->view->redirect("mainPage");
     }
-
+    
     /**
      * Check if a session is already started.
      */

@@ -10,7 +10,7 @@ use Model\Data\RegisteredUser;
         public function __construct($userData, $registeredData) {
             parent::__construct($userData, $registeredData);
 
-            $this->city = $registeredData["AityAddress"];
+            $this->city = $registeredData["CityAddress"];
             $this->street = $registeredData["AddressStreet"];
             $this->number = $registeredData["AddressNumber"];
             $this->iva = $registeredData["IVA"];
