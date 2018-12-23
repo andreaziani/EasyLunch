@@ -25,7 +25,7 @@ use Model\QueryManager;
         $userData["email"] = InputValidator::validate($_POST['email']);
         $userData["type"] = InputValidator::validate($_POST['typology']);
         $userData["piva"] = null;
-        if ($userData["type"] === "Provider") {
+        if ($userData["type"] === "provider") {
             $userData["piva"] = InputValidator::validate($_POST["piva"]);
             $userData["cityAddress"] = InputValidator::validate($_POST["cityAddress"]);
             $userData["addressStreet"] = InputValidator::validate($_POST["addressStreet"]);

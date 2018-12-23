@@ -32,7 +32,6 @@ use Utils\PathManager;
             <label>Street:  <input type="text" name="addressStreet" id="addressStreet" /></label><br/>
             <label>Street Number:  <input type="text" name="addressNumber" id="addressNumber" /></label><br/>
         </fieldset>
-
         <input type="submit" value="Sign up" id="submit"/>
         <input type="reset" value="Reset" />
     </form>
