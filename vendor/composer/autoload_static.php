@@ -17,6 +17,7 @@ class ComposerStaticInitd8f46290185cf80bb57110cf8efee312
         ),
         'M' => 
         array (
+            'Model\\Data\\' => 11,
             'Model\\' => 6,
         ),
         'C' => 
@@ -34,6 +35,10 @@ class ComposerStaticInitd8f46290185cf80bb57110cf8efee312
         'Utils\\' => 
         array (
             0 => __DIR__ . '/../..' . '/utils',
+        ),
+        'Model\\Data\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/model/data',
         ),
         'Model\\' => 
         array (
