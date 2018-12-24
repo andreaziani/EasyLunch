@@ -26,11 +26,7 @@ class QueryManager
     private function surroundStrings($array)
     {
         return array_map(function ($val) {
-            if (is_string($val)) {
-                return "'" . $val . "'";
-            } else {
-                return $val;
-            }
+            self::surroundOneString($val);
         }, $array);
     }
 
@@ -67,10 +63,16 @@ class QueryManager
 
     public function searchByKey($table, $keyName, $keyValue)
     {
-        if (is_string($keyValue)) {
-            $keyValue = "'" . $keyValue . "' ";
-        }
+        $keyValue = self::surroundOneString($keyValue);
         $query = "SELECT * FROM " . $table . " WHERE " . $keyName . " = " . $keyValue;
+        return $this->queryDataToObject($this->executeQuery($query));
+    }
+
+    public function searchByDoubleKey($table, $key1Name, $key1Value, $key2Name, $key2Value)
+    {
+        $key1Value = self::surroundOneString($key1Value);
+        $key2Value = self::surroundOneString($key2Value);
+        $query = "SELECT * FROM " . $table . " WHERE " . $key1Name . " = " . $key1Value . " AND " . $key2Name . " = " . $key2Value;
         return $this->queryDataToObject($this->executeQuery($query));
     }
 

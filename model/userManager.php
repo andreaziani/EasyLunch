@@ -28,7 +28,9 @@ class UserManager
             $registeredData["Email"] = $userData["email"];
             if ($simpleData["Type"] === "client") {
                 $table = "Clients";
-                $registeredData["Credit"] = 0;
+                //TODO check if not necessary
+                //$registeredData["Credit"] = 0;
+                //$registeredData["CurrentCartId"] = null;
             } else {
                 $table = "Providers";
                 $registeredData["CompanyName"] = $userData["companyName"];

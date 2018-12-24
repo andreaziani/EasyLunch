@@ -3,6 +3,7 @@ namespace Controller;
 
 use Model\ProductManager;
 use Model\UserManager;
+use Model\CartManager;
 use View\View;
 
 class Controller
@@ -10,11 +11,13 @@ class Controller
     static $instance = null;
     private $productManager;
     private $userManager;
+    private $cartManager;
     private $view;
     public function __construct()
     {
         $this->productManager = new ProductManager();
         $this->userManager = new UserManager();
+        $this->cartManager = new CartManager();
         $this->view = View::getInstance();
     }
 
@@ -48,6 +51,9 @@ class Controller
         if ($this->userManager->verifyLogin($username, $password)) {
             $this->startSession();
             $_SESSION["user"] = $this->userManager->getUser($username);
+            if ($_SESSION["user"]->currentCartId != null) {
+                $_SESSION["cart"] = $this->cartManager->getCart($_SESSION["user"]->currentCartId);
+            }
             $this->view->redirect("mainPage");
         } else {
             $this->view->redirect("loginPage");
@@ -87,6 +93,11 @@ class Controller
                     break;
             }
         }
+    }
+
+    public function checkoutOrder($spot, $dateTime) {
+        $this->cartManager.checkout($spot, $dateTime);
+        $this->view->redirect("mainPage");
     }
 
     /**
