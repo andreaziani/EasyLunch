@@ -89,6 +89,10 @@ class Controller
         }
     }
 
+    public function addProductToCart($data){
+        //return $cartManager->addEntry(new \Model\Data\CartEntry($data));
+    }
+
     /**
      * Utility method for check if a session is already started.
      */
