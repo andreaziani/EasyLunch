@@ -22,6 +22,7 @@ class CartManager
             $order["CartId"] = $car->id;
             $order["ProviderId"] = $providerId;
             $this->queryManager->insertInTable("Orders", $order);
+            $order = $this->queryManager->searchByDoubleKey("Carts", "CartId", $cart->id, "ProviderId", $providerId);
         }
         return $order;
     }
@@ -39,10 +40,24 @@ class CartManager
         return null;
     }
 
+    public function updateProductInCart($cart, $productId, $newQuantity) {
+        $cart->entries[$productId]->updateQuantity($newQuantity);
+        $entry = $cart->entries[$productId];
+        $providerId = $this->queryManager->searchByKey("Products", "Id", $entry->productId)["ProviderId"];
+        $order = $this->findOrCreateOrder($cart, $providerId);
+        $entryData["Quantity"] = $entry->quantity;
+        $this->queryManager->updateInTableDoubleKeys("OrderEntries", $entryData, "ProductId", $entry->productId, "OrderId", $entry->orderId);
+    }
+
     public function addProductToCart($cart, $entry) {
-        $cart->addEntry($entry); //TODO order, need provider
-        $this->queryManager->insertInTable("");
-        //TODO return ok?
+        $cart->addEntry($entry);
+        $providerId = $this->queryManager->searchByKey("Products", "Id", $entry->productId)["ProviderId"];
+        $order = $this->findOrCreateOrder($cart, $providerId);
+        $entryData["ProductId"] = $entry->productId;
+        $entryData["Quantity"] = $entry->quantity;
+        $entryData["Price"] = $entry->price;
+        $entryData["OrderId"] = $order["Id"];
+        return $this->queryManager->insertInTable("OrderEntries", $entryData);
     }
 
 }

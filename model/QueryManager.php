@@ -11,6 +11,7 @@ class QueryManager
 
     public function executeQuery($query)
     {
+        //TODO sql protection?
         return $this->db->getConnection()->query($query);
     }
 
@@ -41,11 +42,15 @@ class QueryManager
         return $this->executeQuery($query);
     }
 
-    /**
-     * data is a dictionary and the keys must be in the same case format as the ones appearing in the database.
-     */
-    public function updateInTable($table, $data, $keyName, $keyValue)
-    {
+    private function whereSQL($keyName, $keyValue) {
+        return " WHERE " . $keyName . "=". self::surroundOneString($keyValue);
+    }
+
+    private function andSQL($keyName, $keyValue) {
+        return " AND " . $keyName . "=" . self::surroundOneString($keyValue);
+    }
+
+    private function updateSQL($table, $data) {
         $query = "UPDATE " . $table . " SET ";
         $i = 0; //Tried with string manipulation but it doesn't work. On the contrary Brute force has worked.
         $len = count($data);
@@ -56,23 +61,35 @@ class QueryManager
             }
             $i++;
         }
-        $query = $query . " WHERE " . $keyName . "=". self::surroundOneString($keyValue); 
+        return $query;
+    }
+
+    /**
+     * data is a dictionary and the keys must be in the same case format as the ones appearing in the database.
+     */
+    public function updateInTable($table, $data, $keyName, $keyValue)
+    {
+        $query = updateSQL($table, $data) . whereSQL($keyName, $keyValue); 
+        //echo $query;
+        return $this->executeQuery($query);
+    }
+
+    public function updateInTableDoubleKeys($table, $data, $key1Name, $key1Value, $key2Name, $key2Value) 
+    {
+        $query = updateSQL($table, $data) . whereSQL($key1Name, $key1Value) . andSQL($key2Name, $key2Value); 
         //echo $query;
         return $this->executeQuery($query);
     }
 
     public function searchByKey($table, $keyName, $keyValue)
     {
-        $keyValue = self::surroundOneString($keyValue);
-        $query = "SELECT * FROM " . $table . " WHERE " . $keyName . " = " . $keyValue;
+        $query = "SELECT * FROM " . $table . whereSQL($keyName, $keyValue);
         return $this->queryDataToObject($this->executeQuery($query));
     }
 
     public function searchByDoubleKey($table, $key1Name, $key1Value, $key2Name, $key2Value)
     {
-        $key1Value = self::surroundOneString($key1Value);
-        $key2Value = self::surroundOneString($key2Value);
-        $query = "SELECT * FROM " . $table . " WHERE " . $key1Name . " = " . $key1Value . " AND " . $key2Name . " = " . $key2Value;
+        $query = "SELECT * FROM " . $table . whereSQL($key1Name, $key1Value) . andSQL($key2Name, $key2Value);
         return $this->queryDataToObject($this->executeQuery($query));
     }
 
@@ -81,7 +98,7 @@ class QueryManager
         if (is_string($keyValue)) {
             $keyValue = "'" . $keyValue . "' ";
         }
-        $query = "SELECT * FROM " . $table . " WHERE " . $keyName . " = " . $keyValue;
+        $query = "SELECT * FROM " . $table . whereSQL($keyName, $keyValue);
         return $this->queryDataToList($this->executeQuery($query));
     }
 
