@@ -69,27 +69,27 @@ class QueryManager
      */
     public function updateInTable($table, $data, $keyName, $keyValue)
     {
-        $query = updateSQL($table, $data) . whereSQL($keyName, $keyValue); 
+        $query = updateSQL($table, $data) . self::whereSQL($keyName, $keyValue); 
         //echo $query;
         return $this->executeQuery($query);
     }
 
     public function updateInTableDoubleKeys($table, $data, $key1Name, $key1Value, $key2Name, $key2Value) 
     {
-        $query = updateSQL($table, $data) . whereSQL($key1Name, $key1Value) . andSQL($key2Name, $key2Value); 
+        $query = updateSQL($table, $data) . self::whereSQL($key1Name, $key1Value) . self::andSQL($key2Name, $key2Value); 
         //echo $query;
         return $this->executeQuery($query);
     }
 
     public function searchByKey($table, $keyName, $keyValue)
     {
-        $query = "SELECT * FROM " . $table . whereSQL($keyName, $keyValue);
+        $query = "SELECT * FROM " . $table . self::whereSQL($keyName, $keyValue);
         return $this->queryDataToObject($this->executeQuery($query));
     }
 
     public function searchByDoubleKey($table, $key1Name, $key1Value, $key2Name, $key2Value)
     {
-        $query = "SELECT * FROM " . $table . whereSQL($key1Name, $key1Value) . andSQL($key2Name, $key2Value);
+        $query = "SELECT * FROM " . $table . self::whereSQL($key1Name, $key1Value) . self::andSQL($key2Name, $key2Value);
         return $this->queryDataToObject($this->executeQuery($query));
     }
 
@@ -98,7 +98,7 @@ class QueryManager
         if (is_string($keyValue)) {
             $keyValue = "'" . $keyValue . "' ";
         }
-        $query = "SELECT * FROM " . $table . whereSQL($keyName, $keyValue);
+        $query = "SELECT * FROM " . $table . self::whereSQL($keyName, $keyValue);
         return $this->queryDataToList($this->executeQuery($query));
     }
 

@@ -99,8 +99,13 @@ class Controller
         $this->cartManager.checkout($spot, $dateTime);
         $this->view->redirect("mainPage");
     }
+
     public function addProductToCart($data){
-        //return $cartManager->addEntry(new \Model\Data\CartEntry($data));
+        self::startSession();
+        if(!isset($_SESSION["cart"])){
+            $_SESSION["cart"] = $this->cartManager->createCart($_SESSION["user"]);
+        } 
+        return $this->cartManager->addProductToCart($_SESSION["cart"]->id, new \Model\Data\CartEntry($data));
     }
 
     /**
