@@ -29,7 +29,7 @@ $base->requireFromWebSitePath('header/_header.php');
                 foreach($result as $row) {
                         echo "<li> 
                                 <input class='hidden' name='id' type='number' value='" . $row["Id"] . "'/> 
-                                <img src=../../.." . $row["Image"] . " alt='Image of the product' width=70 />
+                                <img src=/ProgettoTecWeb/" . $row["Image"] . " alt='Image of the product' width=70 />
                                 <h2>" . $row["Name"] . "</h2>
                                 <p class='description'>" . $row["Description"] . "</p>
                                 <p class='price'> Prezzo: " . $row["Price"] . " euro</p>

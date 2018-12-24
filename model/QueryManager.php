@@ -51,8 +51,14 @@ class QueryManager
     public function updateInTable($table, $data, $keyName, $keyValue)
     {
         $query = "UPDATE " . $table . " SET ";
+        $i = 0; //Tried with string manipulation but it doesn't work. On the contrary Brute force has worked.
+        $len = count($data);
         foreach ($data as $key => $value) {
-            $query = $query . $key . "=" . self::surroundOneString($value) . " ";
+            $query = $query . $key . "=" . self::surroundOneString($value);
+            if($i != $len - 1){
+                $query = $query . ", ";
+            }
+            $i++;
         }
         $query = $query . " WHERE " . $keyName . "=". self::surroundOneString($keyValue); 
         //echo $query;
