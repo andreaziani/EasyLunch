@@ -8,8 +8,12 @@ use Model\Data\CartEntry;
         protected function __construct($cartData, $entriesData) {
             $this->id = $cartData["CartId"];
             foreach ($entriesData as $entryData) {
-                array_push($entries, new CartEntry($entryData));
+                $entries[$entrydata["ProductId"]] = new CartEntry($entryData);
             }
+        }
+
+        public function addEntry($entry) {
+            $entries[$entry->productId] = $entry;
         }
     }
 ?>
