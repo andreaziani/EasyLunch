@@ -28,13 +28,13 @@ $base->requireFromWebSitePath('header/_header.php');
                 $result = $db->queryDataToList($db->executeQuery($query));
                 foreach($result as $row) {
                         echo "<li> 
-                                <input class='hidden' name='id' type='number' value='" . $row["Id"] . "'/> 
+                                <input class='hidden id' name='id' type='number' value='" . $row["Id"] . "'/> 
                                 <img src=/ProgettoTecWeb/" . $row["Image"] . " alt='Image of the product' width=70 />
-                                <h2>" . $row["Name"] . "</h2>
+                                <h2 class='name'>" . $row["Name"] . "</h2>
                                 <p class='description'>" . $row["Description"] . "</p>
                                 <p class='price'> Prezzo: " . $row["Price"] . " euro</p>
-                                <input type='number' name='quantity' value='0'>
-                                <button>Add to cart</button>
+                                <input class='quantity' type='number' name='quantity' value='0'>
+                                <button class='addToCart'>Add to cart</button>
                               </li>";
                 }
             ?>

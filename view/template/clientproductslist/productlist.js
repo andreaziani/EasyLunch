@@ -46,6 +46,20 @@ $(function() {
       search();
     }
   }
+
+  function addToCart(){
+    var id = $(this).siblings(".id").val();
+    var name = $(this).siblings(".name").html();
+    var price = $(this).siblings(".price").html();
+    var quantity = $(this).siblings(".quantity").val();
+    if(quantity > 0){
+      $.get("/ProgettoTecWeb/controller/action/addProductToCart.php", {id: id, quantity: quantity, name: name, price: price}, function(data) {
+        alert(data);
+      });
+    }
+  }
+
   $("#searchBar").keypress(searchWithKeyPress);
   $("#searchButton").click(search);
+  $(".addToCart").click(addToCart);
 });
