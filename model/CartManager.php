@@ -67,4 +67,12 @@ class CartManager
         $data["DeliveryTime"] = $dateTime;
         return $this->queryManager->insertInTable("Purciases", $data);
     }
+
+    public function getOrders($cart) {
+        return $this->queryManager->searchByAttribute("Orders", "CartId", $cart->id);
+    }
+
+    public function getOrderData($order) {
+        return $this->queryManager->searchByAttribute("OrderData", "OrderId", $order["Id"]);
+    }
 }

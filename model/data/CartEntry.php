@@ -6,7 +6,7 @@ namespace Model\Data;
         public $price;
         public $quantity;
 
-        protected function __construct($data) {
+        public function __construct($data) {
             $this->productId = $data["ProductId"];
             $this->productName = $data["ProductName"];
             $this->price = $data["Price"];

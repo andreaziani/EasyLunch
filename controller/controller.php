@@ -96,8 +96,10 @@ class Controller
     }
 
     public function checkoutOrder($nominative, $spot, $dateTime) {
-        if ($this->cartManager.checkout($_SESSION["cart"], $nominative, $spot, $dateTime)) {
-            //TODO notification
+        if ($this->cartManager->checkout($_SESSION["cart"], $nominative, $spot, $dateTime)) {
+            foreach ($this->cartManager->getOrders($cart) as $order) {
+                $this->notificationManager->addNotification($this->cartManager->getOrderData($order));
+            }
         }
         $this->view->redirect("mainPage");
     }
