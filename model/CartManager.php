@@ -54,7 +54,7 @@ class CartManager
         $cart->addEntry($entry);
         $providerId = $this->queryManager->searchByKey("Products", "Id", intval($entry->productId))["ProviderId"];
         $order = $this->findOrCreateOrder($cart, $providerId);
-        $entryData["ProductId"] = intval($entry->productId);
+        $entryData["OrderProductId"] = intval($entry->productId);
         $entryData["Quantity"] = intval($entry->quantity);
         $entryData["Price"] = floatval($entry->price);
         $entryData["OrderId"] = intval($order["Id"]);

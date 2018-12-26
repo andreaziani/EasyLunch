@@ -39,7 +39,7 @@ class QueryManager
     {
         $query = "INSERT INTO " . $table . "(" . implode(", ", array_keys($data)) . ") VALUES (" .
         implode(", ", self::surroundStrings(array_values($data))) . ")";
-        echo $query;
+        //echo $query;
         return $this->executeQuery($query);
     }
 
@@ -71,7 +71,7 @@ class QueryManager
     public function updateInTable($table, $data, $keyName, $keyValue)
     {
         $query = self::updateSQL($table, $data) . self::whereSQL($keyName, $keyValue); 
-        echo $query;
+        //echo $query;
         return $this->executeQuery($query);
     }
 
@@ -92,6 +92,7 @@ class QueryManager
     public function searchByDoubleKey($table, $key1Name, $key1Value, $key2Name, $key2Value)
     {
         $query = "SELECT * FROM " . $table . self::whereSQL($key1Name, $key1Value) . self::andSQL($key2Name, $key2Value);
+        //echo $query;
         return $this->queryDataToObject($this->executeQuery($query));
     }
 
