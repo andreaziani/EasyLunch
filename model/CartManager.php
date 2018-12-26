@@ -19,7 +19,7 @@ class CartManager
         $order = $this->queryManager->searchByDoubleKey("Orders", "Id", intval($cart->id), "ProviderId", $providerId);
         if ($order == null) {
             $order = array();
-            $order["CartId"] = $cart->id;
+            $order["CartId"] = intval($cart->id);
             $order["ProviderId"] = $providerId;
             $this->queryManager->insertInTable("Orders", $order);
             $order = $this->queryManager->searchByDoubleKey("Orders", "CartId", intval($cart->id), "ProviderId", $providerId);
@@ -34,7 +34,7 @@ class CartManager
             $cartData = $this->queryManager->searchByAttribute("Carts", "ClientId", $user->userName);
             $cart = new Cart($cartData[count($cartData) - 1], array());
             $user->currentCartId = $cart->id;
-            $userData["CurrentCartId"] = $user->currentCartId;
+            $userData["CurrentCartId"] = intval($user->currentCartId);
             $this->queryManager->updateInTable("Clients", $userData, "UserName", $user->userName);
             return $cart;
         }
