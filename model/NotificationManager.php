@@ -3,6 +3,17 @@ namespace Model;
 use Model\QueryManager;
 use Model\Data\Notification;
 
+class NotificationKey 
+{
+    public $type;
+    public $orderId;
+    public function __construct($type, $oderId)
+    {
+        $this->type = $type;
+        $this->orderId = $oderId;
+    }
+}
+
 class NotificationManager
 {
     private $queryManager;
@@ -11,13 +22,34 @@ class NotificationManager
         $this->queryManager = new QueryManager();
     }
 
-//TODO how to get notification?
+    public function setNotificationToRead($user) {
+        $data["IsRead"] = 1;
+        $this->queryManager->updateInTable("Notifications", $data, "ReceiverId", $user->userName);
+    }
 
-    public function addNotification($orderData) {
-        $notification = new Notification($oderData);
-        $data["Typology"] = $notification->typology;
-        $data["Description"] = $notification->description;
-        $data["OrderId"] = $notification->orderId;
-        $this->queryManager->insertInTable($notification);
+    public function getUnreadNotifications($user) {
+        return $this->queryManager->searchByDoubleAttribute("Notifications", "ReceiverId", $user->userName, "IsRead", 0);
+    }
+    
+    public function createNewOrderNotification($orderData) {
+        $description = "Order for " . $orderData["Nominative"] . " at ". $orderData["DeliveryTime"] . " and ". $orderData["DeliveryPlace"] . "\n Order details:";
+        foreach ($orderData["Products"] as $productData) {
+            $description = $description . "\n" . $productData["Quantity"] . " " . $productData["ProductName"] . " (" . $productData["ProductId"] . ")";
+        }
+        return new Notification("NEW_ORDER", $description, $orderData["Id"], $orderData["ProviderId"]);
+    }
+
+    public function createOrderArrivedNotification($orderData) {
+        $description = "Arrived order for " . $orderData["Nominative"] . " at ". $orderData["DeliveryPlace"] . "\n Order details:";
+        foreach ($orderData["Products"] as $productData) {
+            $description = $description . "\n" . $productData["Quantity"] . " " . $productData["ProductName"] . " (" . $productData["ProductId"] . ")";
+        }
+        return new Notification("ORDER_ARRIVED", $description, $orderData["Id"], $orderData["ClientId"]);
+    }
+
+    public function createReviewNotification($orderData) {
+        $description = "Review available for order ";
+        return new Notification("REVIEW", $description, $orderData["Id"], $orderData["ClientId"]);
     }
 }
+?>

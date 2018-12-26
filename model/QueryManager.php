@@ -95,10 +95,13 @@ class QueryManager
 
     public function searchByAttribute($table, $keyName, $keyValue)
     {
-        if (is_string($keyValue)) {
-            $keyValue = "'" . $keyValue . "' ";
-        }
         $query = "SELECT * FROM " . $table . self::whereSQL($keyName, $keyValue);
+        return $this->queryDataToList($this->executeQuery($query));
+    }
+
+    public function searchByDoubleAttribute($table, $key1Name, $key1Value, $key2Name, $key2Value)
+    {
+        $query = "SELECT * FROM " . $table . self::whereSQL($key1Name, $key1Value) . self::andSQL($key2Name, $key2Value);
         return $this->queryDataToList($this->executeQuery($query));
     }
 
@@ -122,3 +125,4 @@ class QueryManager
         }
     }
 }
+?>

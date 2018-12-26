@@ -12,7 +12,7 @@ class CartManager
     }
 
     public function getCart($id) {
-        return new Cart($this->queryManager->searchByKey("Carts", "Id", $id));
+        return new Cart($this->queryManager->searchByKey("Carts", "Id", $id)); //TODO cartEntries
     }
 
     public function findOrCreateOrder($cart, $providerId) {
@@ -73,6 +73,20 @@ class CartManager
     }
 
     public function getOrderData($order) {
-        return $this->queryManager->searchByAttribute("OrderData", "OrderId", $order["Id"]);
+        $purchase = $this->queryManager->searchByKey("Purchases", "CartId", $order["CartId"]);
+        $data = $this->queryManager->searchByAttribute("OrderData", "OrderId", $order["Id"]);
+        $orderData["Nominative"] = $purchase["Nominative"];
+        $orderData["DeliverySpot"] = $purchase["DeliverySpot"];
+        $orderData["DeliveryTime"] = $purchase["DeliveryTime"];
+        $orderData["Id"] = $order["Id"];
+        $orderData["Products"] = array();
+        foreach ($data as $p) {
+            $pData["ProductId"] = $p["ProductId"];
+            $pData["ProductName"] = $p["ProductName"];
+            $pData["Quantity"] = $p["Quantity"];
+            array_push($orderData["Products"], $pData);
+        }
+        return $orderData; //TODO objec oriented maybe?
     }
 }
+?>

@@ -5,16 +5,12 @@ namespace Model\Data;
         public $timestamp;
         public $description;
         public $orderId;
-        private function __construct($type, $description, $orderId) {
+        public $receiverId;
+        public function __construct($type, $description, $orderId, $receiverId) {
             $this->$typology = $type;
-        }
-
-        public static function createNewOrderNotification($orderData) {
-            $description;
-            foreach ($orderData["products"] as $productData) {
-                $description = $description . "\n" . $productData["quantity"] . " " . $productData["productName"] . " (" . $productData["productId"] . ")";
-            }
-            return new Notification("NEW_ORDER", $description, $orderData["id"]);
+            $this->description = $description;
+            $this->orderId = $orderId;
+            $this->receiverId = $receiverId;
         }
     }
 ?>
