@@ -60,4 +60,11 @@ class CartManager
         return $this->queryManager->insertInTable("OrderEntries", $entryData);
     }
 
+    public function checkout($cart, $nominative, $spot, $dateTime) {
+        $data["CartId"] = $cart->id;
+        $data["Nominative"] = $nominative;
+        $data["DeliverySpot"] = $spot;
+        $data["DeliveryTime"] = $dateTime;
+        return $this->queryManager->insertInTable("Purciases", $data);
+    }
 }

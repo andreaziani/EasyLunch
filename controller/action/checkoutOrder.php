@@ -11,13 +11,14 @@ use Controller\Controller;
 session_start();
 
 if (isset($_SESSION["user"]) and isset ($_SESSION["cart"])
-    and isset($_POST["deliverySpot"]) and isset($_POST["deliveryDate"])
-    and isset($_POST["deliveryTime"])) {
+    and isset($_POST["nominative"]) and isset($_POST["deliverySpot"]) 
+    and isset($_POST["deliveryDate"]) and isset($_POST["deliveryTime"])) {
+        $nominative = InputValidator::validate($_POST["nominative"]);
         $spot = InputValidator::validate($_POST["deliverySpot"]);
         $d = InputValidator::validate($_POST["deliveryDate"]);
         $t = InputValidator::validate($_POST["deliveryTime"]);
         $dateTime = date($d . "T" . $t);
-        Controller::getInstance()->checkoutOrder($spot, $dateTime);
+        Controller::getInstance()->checkoutOrder($nominative, $spot, $dateTime);
 }
 
 ?>

@@ -95,8 +95,10 @@ class Controller
         }
     }
 
-    public function checkoutOrder($spot, $dateTime) {
-        $this->cartManager.checkout($spot, $dateTime);
+    public function checkoutOrder($nominative, $spot, $dateTime) {
+        if ($this->cartManager.checkout($_SESSION["cart"], $nominative, $spot, $dateTime)) {
+            //TODO notification
+        }
         $this->view->redirect("mainPage");
     }
 
