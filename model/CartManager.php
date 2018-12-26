@@ -28,7 +28,7 @@ class CartManager
     }
 
     public function createCart($user) {
-        $data["ClientId"] = $user->id;
+        $data["ClientId"] = $user->userName;
         if ($this->queryManager->insertInTable("Carts", $data)) {
             //TODO maybe can be done better
             $cart = new Cart(end($this->queryManager->searchByAttribute("Carts", "Id", $id)));
