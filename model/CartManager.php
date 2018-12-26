@@ -12,7 +12,7 @@ class CartManager
     }
 
     public function getCart($id) {
-        return new Cart($this->queryManager->searchByKey("Carts", "Id", $id)); //TODO cartEntries
+        return new Cart($this->queryManager->searchByKey("Carts", "Id", $id), $this->queryManager->searchByAttribute("CartData", "CartId", $id));
     }
 
     public function findOrCreateOrder($cart, $providerId) {
