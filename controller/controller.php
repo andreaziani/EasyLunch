@@ -108,8 +108,8 @@ class Controller
         self::startSession();
         if(!isset($_SESSION["cart"])){
             $_SESSION["cart"] = $this->cartManager->createCart($_SESSION["user"]);
-        } 
-        return $this->cartManager->addProductToCart($_SESSION["cart"]->id, new \Model\Data\CartEntry($data));
+        }
+        return $this->cartManager->addProductToCart($_SESSION["cart"], new \Model\Data\CartEntry($data));
     }
 
     /**

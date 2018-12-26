@@ -32,7 +32,7 @@ $base->requireFromWebSitePath('header/_header.php');
                                 <img src=/ProgettoTecWeb/" . $row["Image"] . " alt='Image of the product' width=70 />
                                 <h2 class='name'>" . $row["Name"] . "</h2>
                                 <p class='description'>" . $row["Description"] . "</p>
-                                <p class='price'> Prezzo: " . $row["Price"] . " euro</p>
+                                <p class='price'> Prezzo: <span class='value'>" . $row["Price"] . "</span> euro</p>
                                 <input class='quantity' type='number' name='quantity' value='0'>
                                 <button class='addToCart'>Add to cart</button>
                               </li>";

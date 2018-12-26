@@ -27,7 +27,7 @@ class QueryManager
     private function surroundStrings($array)
     {
         return array_map(function ($val) {
-            self::surroundOneString($val);
+            return self::surroundOneString($val);
         }, $array);
     }
 
@@ -39,6 +39,7 @@ class QueryManager
     {
         $query = "INSERT INTO " . $table . "(" . implode(", ", array_keys($data)) . ") VALUES (" .
         implode(", ", self::surroundStrings(array_values($data))) . ")";
+        echo $query;
         return $this->executeQuery($query);
     }
 
@@ -69,14 +70,14 @@ class QueryManager
      */
     public function updateInTable($table, $data, $keyName, $keyValue)
     {
-        $query = updateSQL($table, $data) . self::whereSQL($keyName, $keyValue); 
-        //echo $query;
+        $query = self::updateSQL($table, $data) . self::whereSQL($keyName, $keyValue); 
+        echo $query;
         return $this->executeQuery($query);
     }
 
     public function updateInTableDoubleKeys($table, $data, $key1Name, $key1Value, $key2Name, $key2Value) 
     {
-        $query = updateSQL($table, $data) . self::whereSQL($key1Name, $key1Value) . self::andSQL($key2Name, $key2Value); 
+        $query = self::updateSQL($table, $data) . self::whereSQL($key1Name, $key1Value) . self::andSQL($key2Name, $key2Value); 
         //echo $query;
         return $this->executeQuery($query);
     }
@@ -84,6 +85,7 @@ class QueryManager
     public function searchByKey($table, $keyName, $keyValue)
     {
         $query = "SELECT * FROM " . $table . self::whereSQL($keyName, $keyValue);
+        //echo $query;
         return $this->queryDataToObject($this->executeQuery($query));
     }
 
@@ -95,9 +97,6 @@ class QueryManager
 
     public function searchByAttribute($table, $keyName, $keyValue)
     {
-        if (is_string($keyValue)) {
-            $keyValue = "'" . $keyValue . "' ";
-        }
         $query = "SELECT * FROM " . $table . self::whereSQL($keyName, $keyValue);
         return $this->queryDataToList($this->executeQuery($query));
     }
@@ -115,7 +114,7 @@ class QueryManager
 
     public function queryDataToObject($data)
     {
-        if ($data !== null and $data->num_rows == 1) {
+        if ($data !== null && $data->num_rows == 1) {
             return $data->fetch_assoc();
         } else {
             return null;
