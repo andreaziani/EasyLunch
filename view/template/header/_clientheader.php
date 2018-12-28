@@ -1,4 +1,4 @@
-<a href="../html/notifications.html"><img src="/ProgettoTecWeb/images/icons/bell.png" alt="alarmbell" width="70" /></a>
+<a href="../html/notifications.html"><img src="/ProgettoTecWeb/images/icons/bell.png" alt="alarmbell" width="70" id="bell"/></a>
 <!--Put in the drop list from here-->
 <a href="../html/previousOrders.html">Orders</a> <!-- Fix this path-->
 <a href="/ProgettoTecWeb/view/template/cart/cartPage.php"><img src="/ProgettoTecWeb/images/icons/online-store.png" alt="cart" width="70" /></a>
