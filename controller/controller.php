@@ -4,6 +4,7 @@ namespace Controller;
 use Model\ProductManager;
 use Model\UserManager;
 use Model\CartManager;
+use Model\NotificationManager;
 use View\View;
 
 class Controller
@@ -12,12 +13,14 @@ class Controller
     private $productManager;
     private $userManager;
     private $cartManager;
+    private $notificationManager;
     private $view;
     public function __construct()
     {
         $this->productManager = new ProductManager();
         $this->userManager = new UserManager();
         $this->cartManager = new CartManager();
+        $this->notificationManager = new NotificationManager();
         $this->view = View::getInstance();
     }
 
@@ -110,6 +113,11 @@ class Controller
             $_SESSION["cart"] = $this->cartManager->createCart($_SESSION["user"]);
         }
         return $this->cartManager->addProductToCart($_SESSION["cart"], new \Model\Data\CartEntry($data));
+    }
+
+    public function getNotifications() {
+        $_SESSION["notifications"] = $this->notificationManager->getUnreadNotifications($_SESSION["user"]);
+        return $_SESSION["notifications"];
     }
 
     /**
