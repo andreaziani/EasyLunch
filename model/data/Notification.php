@@ -12,5 +12,9 @@ namespace Model\Data;
             $this->orderId = $orderId;
             $this->receiverId = $receiverId;
         }
+
+        public function cmp($other) {
+            return $this->timestamp - $other->timestamp;
+        }
     }
 ?>
