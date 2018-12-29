@@ -69,4 +69,15 @@ class UserManager
     public function updateProfileInformations($data, $tableName, $username){
         return $this->queryManager->updateInTable($tableName, $data, "UserName", $username);
     }
+
+    public function canReview($user, $orderId) {
+        return $this->queryManager->searchByDoubleKey("ReviewableOrders", "ClientId" ,$user->userName, "OrderId", $orderId) != null;
+    }
+
+    public function submitReview($orderId, $description, $rank) {
+        $data["OrderId"] = $orderId;
+        $data["Comment"] = $description;
+        $data["Rank"] = $rank;
+        return $this->queryManager->insertInTable("ReviewableOrders", $data);
+    }
 }

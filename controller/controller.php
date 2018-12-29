@@ -120,6 +120,14 @@ class Controller
         return $_SESSION["notifications"];
     }
 
+    public function submitReview($description, $rank) {
+        if ($this->userManager()->canReview($_SESSION["user"], $_SESSION["order"])) {
+            $this->userManager()->review($_SESSION["order"], $description, $rank);
+            unset($_SESSION["order"]);
+        }
+        $this->view->redirect("mainPage");
+    }
+
     /**
      * Utility method for check if a session is already started.
      */

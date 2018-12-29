@@ -10,8 +10,12 @@ use Controller\Controller;
 
 session_start();
 
-if (isset($_SESSION["user"]) and isset($_SESSION["order"])) {
+if (isset($_SESSION["user"]) and $_SESSION["user"]->type == "client" and isset($_SESSION["order"]) and 
+    isset($_POST['description']) && isset($_POST['rank'])) {
     
+    $description = InputValidator::validate($_POST['description']);
+    $rank = InputValidator::validate($_POST['rank']);
+    Controller::getInstance()->submitReview($description, $rank);
 }
 
 ?>
