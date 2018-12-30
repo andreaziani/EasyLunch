@@ -11,6 +11,7 @@ class View
         "mainPage" => "/ProgettoTecWeb/view/template/mainPage.php",
         "providerProfile" => "/ProgettoTecWeb/view/template/profile/providerProfile.php",
         "clientProfile" => "/ProgettoTecWeb/view/template/profile/clientProfile.php",
+        "reviewPage" => "/ProgettoTecWeb/view/template/review/ReviewPage.php"
     );
     static $instance = null;
 

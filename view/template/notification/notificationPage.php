@@ -24,8 +24,8 @@ use Utils\PathManager;
                         "<tr>" .
                             "<td>" . $notification->timestamp ."</td>" .
                             "<td>" . $notification->description ."</td>";
-                    if ($notification->typology == "REVIEW") {
-                        echo "<input type='button' value='Review'/>";//???
+                    if ($notification->typology == "REVIEW" && in_array($notification->orderId, $_SESSION["revieableOrders"])) {
+                        echo "<input type='button' value='Review' onclick='tryReview($notification->orderId)'/>";
                     }
                     echo  "</tr>";
                 }
