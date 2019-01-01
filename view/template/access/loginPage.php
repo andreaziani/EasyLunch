@@ -21,4 +21,4 @@ use Utils\PathManager;
     $base->requireFromWebSitePath('footer/_footer.php');
 ?>
 
-<script src="access.js"></script>
+<script src="/ProgettoTecWeb/view/template/access/access.js"></script>

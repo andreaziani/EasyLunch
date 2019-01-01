@@ -56,6 +56,7 @@ class Controller
             $_SESSION["user"] = $this->userManager->getUser($username);
             if ($_SESSION["user"]->currentCartId != null) {
                 $_SESSION["cart"] = $this->cartManager->getCart($_SESSION["user"]->currentCartId);
+                var_dump($this->cartManager->getCart($_SESSION["user"]->currentCartId));
             }
             $this->view->redirect("mainPage");
         } else {
