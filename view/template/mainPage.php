@@ -11,5 +11,3 @@ use Utils\PathManager;
 <?php
     $base->requireFromWebSitePath('footer/_footer.php');
 ?>
-
-<script src="access.js"></script>

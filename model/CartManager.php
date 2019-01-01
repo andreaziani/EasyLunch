@@ -65,11 +65,11 @@ class CartManager
     }
 
     public function checkout($cart, $nominative, $spot, $dateTime) {
-        $data["CartId"] = $cart->id;
+        $data["CartId"] = intval($cart->id);
         $data["Nominative"] = $nominative;
         $data["DeliverySpot"] = $spot;
         $data["DeliveryTime"] = $dateTime;
-        return $this->queryManager->insertInTable("Purciases", $data);
+        return $this->queryManager->insertInTable("Purchases", $data);
     }
 
     public function getOrders($cart) {

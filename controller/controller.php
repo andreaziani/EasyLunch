@@ -56,8 +56,6 @@ class Controller
             $_SESSION["user"] = $this->userManager->getUser($username);
             if ($_SESSION["user"]->currentCartId != null) {
                 $_SESSION["cart"] = $this->cartManager->getCart($_SESSION["user"]->currentCartId);
-                //var_dump($_SESSION["cart"]);
-                //var_dump($_SESSION["user"]);
             }
             $this->view->redirect("mainPage");
         } else {
@@ -102,9 +100,10 @@ class Controller
 
     public function checkoutOrder($nominative, $spot, $dateTime) {
         if ($this->cartManager->checkout($_SESSION["cart"], $nominative, $spot, $dateTime)) {
-            foreach ($this->cartManager->getOrders($cart) as $order) {
+            foreach ($this->cartManager->getOrders($_SESSION["cart"]) as $order) {
                 $this->notificationManager->createNewOrderNotification($this->cartManager->getOrderData($order));
             }
+            
         }
         $this->view->redirect("mainPage");
     }
