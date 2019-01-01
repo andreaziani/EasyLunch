@@ -47,17 +47,20 @@ class CartManager
         $providerId = $this->queryManager->searchByKey("Products", "Id", $entry->productId)["ProviderId"];
         $order = $this->findOrCreateOrder($cart, $providerId);
         $entryData["Quantity"] = $entry->quantity;
-        $this->queryManager->updateInTableDoubleKeys("OrderEntries", $entryData, "ProductId", $entry->productId, "OrderId", $entry->orderId);
+        return $this->queryManager->updateInTableDoubleKeys("OrderEntries", $entryData, "ProductId", $entry->productId, "OrderId", $entry->orderId);
     }
 
     public function addProductToCart($cart, $entry) {
         $cart->addEntry($entry);
         $providerId = $this->queryManager->searchByKey("Products", "Id", intval($entry->productId))["ProviderId"];
         $order = $this->findOrCreateOrder($cart, $providerId);
-        $entryData["OrderProductId"] = intval($entry->productId);
+        $entryData["ProductId"] = intval($entry->productId);
         $entryData["Quantity"] = intval($entry->quantity);
         $entryData["Price"] = floatval($entry->price);
         $entryData["OrderId"] = intval($order["Id"]);
+        if(isset($cart->entries[$entry->productId])){
+            return $this->updateProductInCart($cart, $entry->productId, $entry->quantity);
+        }
         return $this->queryManager->insertInTable("OrderEntries", $entryData);
     }
 

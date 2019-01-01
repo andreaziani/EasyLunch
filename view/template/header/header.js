@@ -3,7 +3,7 @@ $(document).ready(function () {
     var fullBell = "/ProgettoTecWeb/images/icons/bell2.png";
     $("#bell").attr("src", emptyBell);
     function doPoll(){
-        $.get('../../../controller/action/getNotifications.php', function(data) {
+        $.get('/ProgettoTecWeb/controller/action/getNotifications.php', function(data) {
             if (data) {
                 $("#bell").attr("src", fullBell);
                 $("#bell").attr("alt", "full alarm bell");

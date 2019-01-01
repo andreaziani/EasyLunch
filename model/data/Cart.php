@@ -13,7 +13,7 @@ use Model\Data\CartEntry;
         }
 
         public function addEntry($entry) {
-            $entries[$entry->productId] = $entry;
+            $this->entries[$entry->productId] = $entry;
         }
     }
 ?>

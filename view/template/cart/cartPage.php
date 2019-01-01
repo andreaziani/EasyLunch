@@ -17,7 +17,7 @@ use Utils\PathManager;
             <th>Quantity</th>
         </tr>
         <?php
-            session_start();
+            //session_start();
             $cart = $_SESSION["cart"];
             if ($cart != null) {
                 foreach ($cart->entries as $entry) {
