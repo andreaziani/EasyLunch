@@ -7,8 +7,9 @@ use Model\Data\CartEntry;
 
         public function __construct($cartData, $entriesData) {
             $this->id = $cartData["Id"];
+            //var_dump($entriesData);
             foreach ($entriesData as $entryData) {
-                $entries[$entrydata["ProductId"]] = new CartEntry($entryData);
+                $this->entries[$entryData["ProductId"]] = new CartEntry($entryData);
             }
         }
 
