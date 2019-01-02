@@ -7,13 +7,14 @@ use Model\Data\CartEntry;
 
         public function __construct($cartData, $entriesData) {
             $this->id = $cartData["Id"];
+            //var_dump($entriesData);
             foreach ($entriesData as $entryData) {
                 $this->entries[$entryData["ProductId"]] = new CartEntry($entryData);
             }
         }
 
         public function addEntry($entry) {
-            $entries[$entry->productId] = $entry;
+            $this->entries[$entry->productId] = $entry;
         }
     }
 ?>

@@ -42,8 +42,8 @@ $base->requireFromWebSitePath('header/_header.php');
                 </ul>
             </div>
 </section>
-<script src="productlist.js"></script>
-
+<script src="/ProgettoTecWeb/view/template/clientproductslist/productlist.js"></script>
+<link rel="stylesheet" href="/ProgettoTecWeb/view/template/clientproductslist/style.css">
 <?php
     $base->requireFromWebSitePath('footer/_footer.php');
 ?>

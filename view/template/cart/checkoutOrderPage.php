@@ -9,7 +9,7 @@ use Utils\PathManager;
 ?>
 <section>
     <h1>Checkout</h1>
-    <form id="checkoutform" action="../../../controller/action/checkoutOrder.php" method="POST">
+    <form id="checkoutform" action="/ProgettoTecWeb/controller/action/checkoutOrder.php" method="POST">
         <label>Nominative for order receipient: <input type="text" name="nominative" /></label><br/>
         <label>Select delivery spot: 
             <select name="deliverySpot">

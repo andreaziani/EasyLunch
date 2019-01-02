@@ -8,7 +8,10 @@ if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/ProgettoTecWeb/vendor/autoload.php'
 
 use Controller\Controller;
 use Controller\InputValidator;
+<<<<<<< HEAD
 
+=======
+>>>>>>> c41c7d811591058c508003cd09e483c172283187
 session_start();
 
 if (isset($_SESSION["user"]) and isset ($_SESSION["cart"])

@@ -32,7 +32,7 @@ class NotificationManager
     }
     
     public function createNewOrderNotification($orderData) {
-        $description = "Order for " . $orderData["Nominative"] . " at ". $orderData["DeliveryTime"] . " and ". $orderData["DeliveryPlace"] . "\n Order details:";
+        $description = "Order for " . $orderData["Nominative"] . " at ". $orderData["DeliveryTime"] . " and ". $orderData["DeliverySpot"] . "\n Order details:";
         foreach ($orderData["Products"] as $productData) {
             $description = $description . "\n" . $productData["Quantity"] . " " . $productData["ProductName"] . " (" . $productData["ProductId"] . ")";
         }

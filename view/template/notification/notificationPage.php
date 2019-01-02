@@ -38,4 +38,4 @@ use Utils\PathManager;
     $base->requireFromWebSitePath('footer/_footer.php');
 ?>
 
-<script src="notifcation.js"></script>
+<script src="/ProgettoTecWeb/view/template/notification/notification.js"></script>

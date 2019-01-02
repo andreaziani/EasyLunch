@@ -37,7 +37,7 @@ use Utils\PathManager;
         <input type="reset" value="Reset" />
     </form>
 </section>
-<script src="access.js"></script>
+<script src="/ProgettoTecWeb/view/template/access/access.js"></script>
 
 <?php
     $base->requireFromWebSitePath('footer/_footer.php');
