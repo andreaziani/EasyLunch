@@ -47,7 +47,7 @@ class CartManager
         $providerId = $this->queryManager->searchByKey("Products", "Id", $entry->productId)["ProviderId"];
         $order = $this->findOrCreateOrder($cart, $providerId);
         $entryData["Quantity"] = $entry->quantity;
-        $this->queryManager->updateInTableDoubleKeys("OrderEntries", $entryData, "ProductId", $entry->productId, "OrderId", $order["Id"]);
+        return $this->queryManager->updateInTableDoubleKeys("OrderEntries", $entryData, "ProductId", $entry->productId, "OrderId", $order["Id"]);
     }
 
     public function addProductToCart($cart, $entry) {
