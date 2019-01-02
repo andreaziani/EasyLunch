@@ -7,6 +7,7 @@ if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/ProgettoTecWeb/vendor/autoload.php'
 }
 
 use Controller\Controller;
+use Controller\InputValidator;
 
 session_start();
 

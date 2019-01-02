@@ -78,7 +78,7 @@ class QueryManager
     public function updateInTableDoubleKeys($table, $data, $key1Name, $key1Value, $key2Name, $key2Value) 
     {
         $query = self::updateSQL($table, $data) . self::whereSQL($key1Name, $key1Value) . self::andSQL($key2Name, $key2Value); 
-        //echo $query;
+        echo $query;
         return $this->executeQuery($query);
     }
 
