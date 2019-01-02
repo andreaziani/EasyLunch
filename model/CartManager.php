@@ -47,11 +47,7 @@ class CartManager
         $providerId = $this->queryManager->searchByKey("Products", "Id", $entry->productId)["ProviderId"];
         $order = $this->findOrCreateOrder($cart, $providerId);
         $entryData["Quantity"] = $entry->quantity;
-<<<<<<< HEAD
         $this->queryManager->updateInTableDoubleKeys("OrderEntries", $entryData, "ProductId", $entry->productId, "OrderId", $order["Id"]);
-=======
-        return $this->queryManager->updateInTableDoubleKeys("OrderEntries", $entryData, "ProductId", $entry->productId, "OrderId", $entry->orderId);
->>>>>>> c41c7d811591058c508003cd09e483c172283187
     }
 
     public function addProductToCart($cart, $entry) {
@@ -62,11 +58,7 @@ class CartManager
         $entryData["Quantity"] = intval($entry->quantity);
         $entryData["Price"] = floatval($entry->price);
         $entryData["OrderId"] = intval($order["Id"]);
-<<<<<<< HEAD
         if (isset($cart->entries[$entry->productId])) {
-=======
-        if(isset($cart->entries[$entry->productId])){
->>>>>>> c41c7d811591058c508003cd09e483c172283187
             return $this->updateProductInCart($cart, $entry->productId, $entry->quantity);
         }
         return $this->queryManager->insertInTable("OrderEntries", $entryData);
