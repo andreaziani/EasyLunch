@@ -13,8 +13,8 @@ use Utils\PathManager;
         <label>Nominative for order receipient: <input type="text" name="nominative" /></label><br/>
         <label>Select delivery spot: 
             <select name="deliverySpot">
-                <option>Entrance A</output> <!--TODO entrance names-->
-                <option>Entrance B</output>
+                <option>Entrance_A</output> <!--TODO entrance names-->
+                <option>Entrance_B</output>
             </select>
         </label><br/>
         <label>Select delivery date: <input type="date" name="deliveryDate" id="date" /></label><br/>

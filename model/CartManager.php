@@ -47,11 +47,7 @@ class CartManager
         $providerId = $this->queryManager->searchByKey("Products", "Id", $entry->productId)["ProviderId"];
         $order = $this->findOrCreateOrder($cart, $providerId);
         $entryData["Quantity"] = $entry->quantity;
-<<<<<<< HEAD
         $this->queryManager->updateInTableDoubleKeys("OrderEntries", $entryData, "ProductId", $entry->productId, "OrderId", $order["Id"]);
-=======
-        return $this->queryManager->updateInTableDoubleKeys("OrderEntries", $entryData, "ProductId", $entry->productId, "OrderId", $entry->orderId);
->>>>>>> c41c7d811591058c508003cd09e483c172283187
     }
 
     public function addProductToCart($cart, $entry) {
@@ -62,11 +58,7 @@ class CartManager
         $entryData["Quantity"] = intval($entry->quantity);
         $entryData["Price"] = floatval($entry->price);
         $entryData["OrderId"] = intval($order["Id"]);
-<<<<<<< HEAD
         if (isset($cart->entries[$entry->productId])) {
-=======
-        if(isset($cart->entries[$entry->productId])){
->>>>>>> c41c7d811591058c508003cd09e483c172283187
             return $this->updateProductInCart($cart, $entry->productId, $entry->quantity);
         }
         return $this->queryManager->insertInTable("OrderEntries", $entryData);
@@ -84,6 +76,11 @@ class CartManager
         return $this->queryManager->searchByAttribute("Orders", "CartId", $cart->id);
     }
 
+    public function startOrder($order) {
+        $data["State"] = "STARTED";
+        return $this->queryManager->updateInTable("Orders", $data, "Id", $order["Id"]);
+    }
+
     public function getOrderData($order) {
         $purchase = $this->queryManager->searchByKey("Purchases", "CartId", $order["CartId"]);
         $data = $this->queryManager->searchByAttribute("OrderData", "OrderId", $order["Id"]);
@@ -91,6 +88,7 @@ class CartManager
         $orderData["DeliverySpot"] = $purchase["DeliverySpot"];
         $orderData["DeliveryTime"] = $purchase["DeliveryTime"];
         $orderData["Id"] = $order["Id"];
+        $orderData["ProviderId"] = $data[0]["ProviderId"];
         $orderData["Products"] = array();
         foreach ($data as $p) {
             $pData["ProductId"] = $p["ProductId"];

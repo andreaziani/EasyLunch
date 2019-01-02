@@ -6,11 +6,14 @@ namespace Model\Data;
         public $description;
         public $orderId;
         public $receiverId;
-        public function __construct($type, $description, $orderId, $receiverId) {
-            $this->$typology = $type;
+        public $isRead;
+        public function __construct($type, $description, $orderId, $receiverId, $time, $isRead) {
+            $this->typology = $type;
             $this->description = $description;
             $this->orderId = $orderId;
             $this->receiverId = $receiverId;
+            $this->timestamp = $time;
+            $this->isRead = $isRead;
         }
 
         public function cmp($other) {

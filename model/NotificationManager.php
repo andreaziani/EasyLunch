@@ -31,12 +31,26 @@ class NotificationManager
         return $this->queryManager->searchByDoubleAttribute("Notifications", "ReceiverId", $user->userName, "IsRead", 0);
     }
     
+    private function newNotification($type, $description, $orderId, $receiverId) {
+        return new Notification($type, $description, $orderId, $receiverId, date('Y-m-d G:i:s'), 0);
+    }
+
+    private function saveNotification(Notification $notification) {
+        $data["Tipology"] = $notification->typology;
+        $data["Timestamp"] = $notification->timestamp;
+        $data["Description"] = $notification->description;
+        $data["OrderId"] = $notification->orderId;
+        $data["ReceiverId"] = $notification->receiverId;
+        $data["IsRead"] = $notification->isRead;
+        return $this->queryManager->insertInTable("Notifications", $data);
+    }
+
     public function createNewOrderNotification($orderData) {
         $description = "Order for " . $orderData["Nominative"] . " at ". $orderData["DeliveryTime"] . " and ". $orderData["DeliverySpot"] . "\n Order details:";
         foreach ($orderData["Products"] as $productData) {
             $description = $description . "\n" . $productData["Quantity"] . " " . $productData["ProductName"] . " (" . $productData["ProductId"] . ")";
         }
-        return new Notification("NEW_ORDER", $description, $orderData["Id"], $orderData["ProviderId"]);
+        return $this->saveNotification($this->newNotification("NEW_ORDER", $description, $orderData["Id"], $orderData["ProviderId"]));
     }
 
     public function createOrderArrivedNotification($orderData) {
@@ -44,12 +58,12 @@ class NotificationManager
         foreach ($orderData["Products"] as $productData) {
             $description = $description . "\n" . $productData["Quantity"] . " " . $productData["ProductName"] . " (" . $productData["ProductId"] . ")";
         }
-        return new Notification("ORDER_ARRIVED", $description, $orderData["Id"], $orderData["ClientId"]);
+        return $this->saveNotification($this->newNotification("ORDER_ARRIVED", $description, $orderData["Id"], $orderData["ClientId"]));
     }
 
     public function createReviewNotification($orderData) {
         $description = "Review available for order ";
-        return new Notification("REVIEW", $description, $orderData["Id"], $orderData["ClientId"]);
+        return $this->saveNotification($this->newNotification("REVIEW", $description, $orderData["Id"], $orderData["ClientId"]));
     }
 }
 ?>

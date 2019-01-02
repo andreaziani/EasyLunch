@@ -80,4 +80,9 @@ class UserManager
         $data["Rank"] = $rank;
         return $this->queryManager->insertInTable("ReviewableOrders", $data);
     }
+
+    public function removeCart($user) {
+        $data["CurrentCartId"] = null;
+        return $this->queryManager->updateInTable("Clients", $data, "Username", $user->userName);
+    }
 }

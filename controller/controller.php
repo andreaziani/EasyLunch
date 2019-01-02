@@ -101,9 +101,11 @@ class Controller
     public function checkoutOrder($nominative, $spot, $dateTime) {
         if ($this->cartManager->checkout($_SESSION["cart"], $nominative, $spot, $dateTime)) {
             foreach ($this->cartManager->getOrders($_SESSION["cart"]) as $order) {
+                $this->cartManager->startOrder($order);
+                $this->userManager->removeCart($_SESSION["user"]);
                 $this->notificationManager->createNewOrderNotification($this->cartManager->getOrderData($order));
             }
-            
+            unset($_SESSION["cart"]);
         }
         $this->view->redirect("mainPage");
     }
