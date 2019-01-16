@@ -19,7 +19,6 @@ $base->requireFromWebSitePath('header/_header.php');
 </section>
 
 <section>
-    <a href="reviews.html"><img src="/ProgettoTecWeb/images/icons/customer-review.png" alt="Show reviews" width="70"></a><br/>
     <div id="providers">
         <h1> Restaurants </h1>
         <ul id="providerlist">
