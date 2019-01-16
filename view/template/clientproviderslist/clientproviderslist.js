@@ -44,7 +44,7 @@ $(document).ready(function () {
           }
         );
         $("#searchBar").val(""); //clear the search bar
-      }
+    }
       //Search the product written by the user
       function searchWithKeyPress(e) {
         if (e.which == 13) {
@@ -53,9 +53,9 @@ $(document).ready(function () {
         }
       }
 
-    $("li").click(function (e) { 
-       $(this).children("form").submit();
-    });
+    $("#providerlist").on('click', 'li', function(e){
+        $(this).children("form").submit();
+    })
     $("#searchBar").keypress(searchWithKeyPress);
     $("#searchButton").click(search);
 });

@@ -21,23 +21,22 @@ $(function() {
           for (var i = 0; i < obj.length; i++) {
             html =
               html +
-              "<li> <input class='hidden' name='id' type='number' value='" +
+              "<li> <input class='hidden id' name='id' type='number' value='" +
               obj[i].Id +
               "'/> <img src=/ProgettoTecWeb/" +
               obj[i].Image +
-              " alt='Image of the product' width=70 /><h2>" +
+              " alt='Image of the product' width=70 /><h2 class='name'>" +
               obj[i].Name +
               "</h2><p class='description'>" +
               obj[i].Description +
-              "</p><p class='price'> Prezzo: " +
-              obj[i].Price +
-              " euro</p><input type='number' name='quantity' value='0'><button>Add to cart</button> </li> ";
+              "<p class='price'> Prezzo: <span class='value'>" + obj[i].Price + "</span> euro</p> " +
+              "<input type='number' class='quantity' name='quantity' value='0'><button class='addToCart'>Add to cart</button> </li> ";
           }
           $("#productslist").html(html);
         }
       }
     );
-    $("#searchBar").val(" "); //clear the search bar
+    $("#searchBar").val(""); //clear the search bar
   }
   //Search the product written by the user
   function searchWithKeyPress(e) {
@@ -51,7 +50,7 @@ $(function() {
     var id = $(this).siblings(".id").val();
     var name = $(this).siblings(".name").html();
     var price = $(this).siblings(".price").children(".value").html();
-    console.log(price);
+    console.log(id + " "+ price + " " + name);
     var quantity = $(this).siblings(".quantity").val();
     if(quantity > 0){
       $.get("/ProgettoTecWeb/controller/action/addProductToCart.php", {id: id, quantity: quantity, name: name, price: price}, function(data) {
@@ -62,5 +61,5 @@ $(function() {
 
   $("#searchBar").keypress(searchWithKeyPress);
   $("#searchButton").click(search);
-  $(".addToCart").click(addToCart);
+  $("#productslist").on('click',".addToCart",addToCart);
 });
