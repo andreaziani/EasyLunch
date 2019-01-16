@@ -78,6 +78,10 @@ class Controller
         return $this->productManager->searchProducts($key);
     }
 
+    public function searchProvider($key){
+        return $this->productManager->searchProvider($key);
+    }
+
     public function logout(){
         $this->startSession();
         session_destroy();
