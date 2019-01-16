@@ -15,16 +15,14 @@ $base->requireFromWebSitePath('header/_header.php');
 <section id="research">
         <input id="searchBar" type="text" placeholder="Search.." name="search" results=5 autocomplete="on">
         <button id="searchButton"><i class="fa fa-search"></i></button>
-
 </section>
 
 <section id="productlist">
-    <a href="reviews.html"><img src="/ProgettoTecWeb/images/icons/customer-review.png" alt="Show reviews" width="70"></a><br/>
     <div>
         <!--TODO: CSS For images-->
     <ul id="productslist">
             <?php
-                $query = "SELECT * FROM Products ORDER BY Name";
+                $query = "SELECT * FROM Products WHERE ProviderId='". $_POST["username"] ."' ORDER BY Name";
                 $result = $db->queryDataToList($db->executeQuery($query));
                 foreach($result as $row) {
                         echo "<li> 

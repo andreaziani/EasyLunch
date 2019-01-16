@@ -15,7 +15,7 @@
         <!--TODO: set the dimension of the icon with css-->
         <a href="/ProgettoTecWeb/view/index.php">Easy Lunch</a>
         <nav>
-        <a href="/ProgettoTecWeb/view/template/clientproductslist/clientproductslist.php">Shop</a>
+        <a href="/ProgettoTecWeb/view/template/clientproviderslist/clientproviderslist.php">Shop</a>
 <?php 
 use Utils\PathManager;
     session_start();
