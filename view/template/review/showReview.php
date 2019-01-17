@@ -1,9 +1,21 @@
-<?php ?>
+<?php 
+// require and include all the files
+if (file_exists($_SERVER['DOCUMENT_ROOT'] . '/ProgettoTecWeb/vendor/autoload.php')) {
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/ProgettoTecWeb/vendor/autoload.php';
+}
+
+use Model\QueryManager;
+use Utils\PathManager;
+
+$db = new QueryManager();
+$base = new PathManager();
+$base->requireFromWebSitePath('header/_header.php');
+?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <section>
         <ul id="reviews">
             <?php
-                $query = "SELECT * FROM ProvidersReviews WHERE CompanyName='" . $_POST["companyname"] . "' AND ProviderId='" . $_POST["username"] . "'";
+                $query = "SELECT * FROM ProvidersReviews WHERE CompanyName='" . $_GET["companyname"] . "'";
                 $result = $db->queryDataToList($db->executeQuery($query));
                 foreach($result as $row) {
                         $html =  "<li>";
@@ -16,3 +28,7 @@
             ?>
         </ul>
 </section>
+
+<?php
+    $base->requireFromWebSitePath('footer/_footer.php');
+?>

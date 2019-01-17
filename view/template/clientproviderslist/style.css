@@ -2,6 +2,18 @@
     display: none;
 }
 
-li:hover{
+
+.fa-star {
+    color:gray;
+}
+
+.orange-star {
+    color:orange;
+}
+
+.companyname:hover{
     cursor: pointer;
+}
+.companyname {
+    text-decoration: underline;
 }

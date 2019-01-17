@@ -26,15 +26,24 @@ $base->requireFromWebSitePath('header/_header.php');
                 $query = "SELECT * FROM Providers ORDER BY CompanyName";
                 $result = $db->queryDataToList($db->executeQuery($query));
                 foreach($result as $row) {
-                        echo "<li> 
+                    $rate_query = "SELECT AVG(Rank) FROM ProvidersReviews WHERE ProviderId='" . $row["UserName"] . "'";
+                    $rate = $db->queryDataToObject($db->executeQuery($rate_query));
+                    if(is_null($rate["AVG(Rank)"])) $rate["AVG(Rank)"] = 0;
+                    $listItem = "<br/><li> 
                                 <form action='/ProgettoTecWeb/view/template/clientproductslist/clientproductslist.php' method='POST'>
                                     <input class='hidden username' name='username' type='text' value='" . $row["UserName"] . "'/> 
-                                    <h2 class='companyname'>" . $row["CompanyName"] . "</h2>
-                                    <p class='phonenumber'> Tel: " . $row["PhoneNumber"] . "</p>
-                                    <p class='email'> Email: ". $row["Email"] . "</p>
-                                    <p class='address'> Address: " . $row["AddressStreet"] . "<span>" . $row["AddressNumber"] . "<span/></p>
-                                </form>
-                            </li>";
+                                    <h2 class='companyname'>" . $row["CompanyName"] . "</h2>";
+                    for($i = 0; $i < 5; $i++){ //stars
+                        if($i < $rate["AVG(Rank)"])
+                            $listItem = $listItem . '<span class="fa fa-star orange-star"></span>';
+                        else 
+                            $listItem = $listItem . '<span class="fa fa-star"></span>';
+                    }
+                    echo $listItem . "<p class='phonenumber'> Tel: " . $row["PhoneNumber"] . "</p>
+                                      <p class='email'> Email: ". $row["Email"] . "</p>
+                                      <p class='address'> Address: " . $row["AddressStreet"] . "<span>" . $row["AddressNumber"] . "<span/></p>
+                                   </form>
+                                </li>";
                 }
             ?>
         </ul>

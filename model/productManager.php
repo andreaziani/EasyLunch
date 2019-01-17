@@ -55,15 +55,16 @@ class ProductManager
         if(count($result) > 0) {
             return $result;
         }
-        // $result = $this->queryManager->searchByAttribute("Products", "ProviderId", $key);
-        // if(count($result) > 0) {
-        //     return $result;
-        // }
         $categories = $this->queryManager->searchByKey("Categories", "Name", $key);
         return $this->queryManager->searchByAttribute("Products", "CategoryId", $categories["Id"]);
     }
 
     public function searchProvider($key){
-        return $result = $this->queryManager->searchByAttribute("Providers", "CompanyName", $key);
+        $result = $this->queryManager->searchByAttribute("Providers", "CompanyName", $key);
+        //var_dump($result);
+        $rate_query = "SELECT AVG(Rank) FROM ProvidersReviews WHERE ProviderId='" . $result[0]["UserName"] . "'";
+        $rate = $this->queryManager->queryDataToObject($this->queryManager->executeQuery($rate_query));
+        $result[0]["Rate"] = $rate["AVG(Rank)"];
+        return $result;
     }
 }
