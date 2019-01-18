@@ -9,20 +9,22 @@ use Utils\PathManager;
     $base = new PathManager();    
     $base->requireFromWebSitePath('header/_header.php');
 ?>
-    
-    <section>  
-        <!---<img src="resources/lunch-icon.png" alt="Logo"/>-->
-            <div>
-                <h1> Order your lunch in few simple steps! </h1>
-            </div>
-    </section>
-    <!-- Other pretty images here-->
-    <section>
-        <p> 
-            We're working for giving users an extraordinary lunch experience,
-            selecting the best providers with the highiest quality of products.
-        </p>
-    </section>
+
+    <link rel="stylesheet" href="/ProgettoTecWeb/view/indexStylesheet.css">
+    <div class='jumbotron jumbotron-fluid text-center'>
+        <div class="container index-text">
+            <h1> The beauty is in taste </h1>
+            <p> Choose your lunch among thousands of restaurants!</p>
+        </div>
+    </div>
+
+    <div class="container-fluid text-center text-container">
+        <h2 id="mission">Our Mission</h2>
+        <p id="mission-text">We strive to guarantee only the best restaurants with the highest quality dishes. All at your smartphone's reach!</p>
+        <!--maybe an icon is good-->
+    </div>
+  </div>
+</div>
 
 <?php 
     $base->requireFromWebSitePath('footer/_footer.php');

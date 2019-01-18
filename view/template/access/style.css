@@ -1,0 +1,24 @@
+.login, .registration{
+    display: block;
+    margin: 10%;
+    text-align: center;
+}
+.login > * {
+    margin:auto;
+}
+
+user-psw {
+    background-color:#d3d3d3;
+    margin-bottom: 30%;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#registerform{
+    display: block;
+}
+
+footer {
+    display: block;
+    margin-top: 30%;
+}

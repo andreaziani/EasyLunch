@@ -1,0 +1,27 @@
+.nav {
+    background-color: transparent;
+}
+
+.jumbotron {
+    overflow: hidden;
+    background-image: url("../images/backgrounds/pizza.jpg") ;
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: cover;
+    background-size: cover;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0 0 10% black;
+    padding: 10%;
+}
+
+h1 {
+    font-size: 400%;
+}
+
+h2{
+    font-size: 300%;
+}
+p {
+    font-size: 150%;
+}
