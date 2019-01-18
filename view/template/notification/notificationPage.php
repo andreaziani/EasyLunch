@@ -6,6 +6,11 @@ use Utils\PathManager;
 
     $base = new PathManager();
     $base->requireFromWebSitePath('header/_header.php');
+
+    
+    function cmp($a, $b) {
+        return strtotime($b->timestamp) - strtotime($a->timestamp);
+    }
 ?>
 
 <section>
@@ -23,12 +28,13 @@ use Utils\PathManager;
                     echo 
                         "<tr>" .
                             "<td>" . $notification->timestamp ."</td>" .
-                            "<td>" . $notification->description ."</td>";
+                            "<td><pre>" . $notification->description ."</pre></td>";
                     if ($notification->typology == "REVIEW" && in_array($notification->orderId, $_SESSION["revieableOrders"])) {
                         echo "<input type='button' value='Review' onclick='tryReview($notification->orderId)'/>";
                     }
                     echo  "</tr>";
                 }
+                echo "<input type='button' value='Reset notifications' onclick='setRead()'/>";
             }
         ?>
         <tr></tr>

@@ -28,7 +28,12 @@ class NotificationManager
     }
 
     public function getUnreadNotifications($user) {
-        return $this->queryManager->searchByDoubleAttribute("Notifications", "ReceiverId", $user->userName, "IsRead", 0);
+        $array = $this->queryManager->searchByDoubleAttribute("Notifications", "ReceiverId", $user->userName, "IsRead", 0);
+        $result = [];
+        foreach ($array as $data) {
+            array_push($result, new Notification($data["Tipology"], $data["Description"], $data["OrderId"], $data["ReceiverId"], $data["Timestamp"], $data["IsRead"]));
+        }
+        return $result;
     }
     
     private function newNotification($type, $description, $orderId, $receiverId) {
@@ -46,9 +51,9 @@ class NotificationManager
     }
 
     public function createNewOrderNotification($orderData) {
-        $description = "Order for " . $orderData["Nominative"] . " at ". $orderData["DeliveryTime"] . " and ". $orderData["DeliverySpot"] . "\n Order details:";
+        $description = "Order for " . $orderData["Nominative"] . " at ". $orderData["DeliveryTime"] . " and ". $orderData["DeliverySpot"]. "\n Order details:";
         foreach ($orderData["Products"] as $productData) {
-            $description = $description . "\n" . $productData["Quantity"] . " " . $productData["ProductName"] . " (" . $productData["ProductId"] . ")";
+            $description = $description . "\n\t" . $productData["Quantity"] . " " . $productData["ProductName"] . " (" . $productData["ProductId"] . ")";
         }
         return $this->saveNotification($this->newNotification("NEW_ORDER", $description, $orderData["Id"], $orderData["ProviderId"]));
     }
@@ -56,7 +61,7 @@ class NotificationManager
     public function createOrderArrivedNotification($orderData) {
         $description = "Arrived order for " . $orderData["Nominative"] . " at ". $orderData["DeliveryPlace"] . "\n Order details:";
         foreach ($orderData["Products"] as $productData) {
-            $description = $description . "\n" . $productData["Quantity"] . " " . $productData["ProductName"] . " (" . $productData["ProductId"] . ")";
+            $description = $description . "\n\t" . $productData["Quantity"] . " " . $productData["ProductName"] . " (" . $productData["ProductId"] . ")";
         }
         return $this->saveNotification($this->newNotification("ORDER_ARRIVED", $description, $orderData["Id"], $orderData["ClientId"]));
     }

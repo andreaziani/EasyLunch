@@ -135,6 +135,12 @@ class Controller
             $this->view->redirect("mainPage");
         }
     }
+    
+    public function setRead() {
+        echo "Ciao";
+        $this->notificationManager->setNotificationRead($_SESSION["user"]);
+        //$this->view->redirect("mainPage");
+    }
 
     public function submitReview($description, $rank) {
         if ($this->userManager()->canReview($_SESSION["user"], $_SESSION["order"])) { //TODO check if if is useful

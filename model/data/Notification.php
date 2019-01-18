@@ -15,9 +15,5 @@ namespace Model\Data;
             $this->timestamp = $time;
             $this->isRead = $isRead;
         }
-
-        public function cmp($other) {
-            return $this->timestamp - $other->timestamp;
-        }
     }
 ?>
