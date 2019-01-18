@@ -128,23 +128,20 @@ class Controller
     }
 
     public function tryReview($orderId) {
-        if ($this->userManager()->canReview($_SESSION["user"], $orderId)) {
+        if ($this->userManager->canReview($_SESSION["user"], $orderId)) {
             $_SESSION["order"] = $orderId;
-            $this->view->redirect("reviewPage");
-        } else {
-            $this->view->redirect("mainPage");
+            echo $this->view->getHref("reviewPage");
         }
     }
     
     public function setRead() {
-        echo "Ciao";
         $this->notificationManager->setNotificationRead($_SESSION["user"]);
-        //$this->view->redirect("mainPage");
+        echo $this->view->getHref("mainPage");
     }
 
     public function submitReview($description, $rank) {
-        if ($this->userManager()->canReview($_SESSION["user"], $_SESSION["order"])) { //TODO check if if is useful
-            $this->userManager()->submitReview($_SESSION["order"], $description, $rank);
+        if ($this->userManager->canReview($_SESSION["user"], $_SESSION["order"])) { //TODO check if if is useful
+            $this->userManager->submitReview($_SESSION["order"], $description, $rank);
             unset($_SESSION["order"]);
         }
         $this->view->redirect("mainPage");

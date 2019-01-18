@@ -15,12 +15,14 @@ use Utils\PathManager;
 
 <section>
     <h1>Notifications</h1>
-    <table>
+    <table id="notificationTable" style="display: none;">
         <tr>
             <th>Time</th>
             <th>Description</th>
         </tr>
+
         <?php
+        /*
             if (isset($_SESSION["notifications"])) {
                 $notifications = $_SESSION["notifications"];
                 usort($notifications, "cmp");
@@ -34,11 +36,13 @@ use Utils\PathManager;
                     }
                     echo  "</tr>";
                 }
-                echo "<input type='button' value='Reset notifications' onclick='setRead()'/>";
+                echo "";
             }
+        */
         ?>
         <tr></tr>
     </table>
+    <input type='button' value='Reset notifications' id="resetButton"/>
 </section>
 <?php
     $base->requireFromWebSitePath('footer/_footer.php');

@@ -26,6 +26,10 @@ class View
         return self::$instance;
     }
 
+    public function getHref($name) {
+        return $this->listTemplate[$name];
+    }
+
     public function redirect($name){
         header("location: " . $this->listTemplate[$name]);
     }

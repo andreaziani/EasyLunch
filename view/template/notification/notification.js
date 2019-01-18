@@ -1,25 +1,53 @@
 $(document).ready(function () {
-    function tryReview(orderId) {
-        $.get("../../../controller/action/tryReview.php", orderId);
-    }
-    function setRead() {
-        console.log("Ciao");
-        $.get("../../../controller/action/setRead.php");
-    }
+    $("#resetButton").click( function setRead() {
+        $.ajax({
+            type: 'GET',
+            url: "../../../controller/action/setRead.php",
+            data: {},
+            success: function(data) { 
+                    window.location.href = data;
+                }
+        });
+    });
 
+    function doPoll(){
+        $.get('/ProgettoTecWeb/controller/action/getNotifications.php', function(data) {
+            data = JSON.parse(data);
+            if (Array.isArray(data) && data.length) {
+                var html = "<tr><th>Time</th><th>Description</th></tr>";
+                for (var i = 0; i < data.length; i++) {
+                    html += "<tr>" +
+                    "<td>" + data[i].timestamp + "</td>" +
+                    "<td><pre>" + data[i].description + "</pre></td>";
+                    //TODO: review already done set read to true!
+                    if (data[i].typology == "REVIEW") {
+                        html += "<td><input type='button' value='Review' onclick='tryReview("+ data[i].orderId +")'/></td>";
+                    }
+                    html += "</tr>";
+                }
+                html += "<input type='button' value='Reset notifications' onclick='setRead()'/>";
+                $("#notificationTable").html(html);
+                $("#notificationTable").show();
+                $("#resetButton").show();
+            } else {
+                $("#notificationTable").hide();
+                $("#resetButton").hide();
+            }
+            setTimeout(doPoll, 1000);
+        });
+    }
+    doPoll();
 });
 function tryReview(orderId) {
     var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", "../../../controller/action/tryReview.php");
-    xmlHttp.send(orderId);
-    return xmlHttp.responseText;
-}
-function setRead() {
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", "../../../controller/action/setRead.php");
+    xmlHttp.onreadystatechange = function()
+    {
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+        {
+            window.location.href = xmlHttp.responseText;
+        }
+    }; 
+    xmlHttp.open("GET", "../../../controller/action/tryReview.php?orderId=" + orderId);
     xmlHttp.send(null);
     return xmlHttp.responseText;
-}
-function a() {
-    console.log("Ciao");
 }
