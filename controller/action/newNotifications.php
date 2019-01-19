@@ -13,6 +13,8 @@ session_start();
 
 if (isset($_SESSION["user"])) {
     echo empty(Controller::getInstance()->getNotifications());
+} else {
+    echo "0";
 }
 
 ?>

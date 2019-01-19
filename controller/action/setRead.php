@@ -13,6 +13,8 @@ session_start();
 
 if (isset($_SESSION["user"])) {
     Controller::getInstance()->setRead();
+} else {
+    Controller::getInstance()->actionError();
 }
 
 ?>

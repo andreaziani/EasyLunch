@@ -13,6 +13,8 @@ session_start();
 
 if (isset($_SESSION["user"])) {
     echo json_encode(Controller::getInstance()->getNotifications());
+} else {
+    echo "[]";
 }
 
 ?>

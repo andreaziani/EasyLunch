@@ -21,6 +21,8 @@ if (isset($_FILES['image']) && isset($_POST["name"])
     $tmp_name = $_FILES['image']['tmp_name'];
     $filename = strtolower($_FILES['image']['name']); //Renaming the file here
     Controller::getInstance()->insertProduct($provider, $name, $description, $price, $tmp_name, $filename, $category);
+} else {
+    Controller::getInstance()->actionError();
 }
 
 ?>

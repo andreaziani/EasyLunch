@@ -33,5 +33,7 @@ use Model\QueryManager;
             $userData["addressNumber"] = InputValidator::validate($_POST["addressNumber"]);
         }
         Controller::getInstance()->register($userData);
+    } else {
+        Controller::getInstance()->actionError();
     }
 ?>

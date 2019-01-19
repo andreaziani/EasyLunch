@@ -17,6 +17,8 @@ if (isset($_GET["name"]) && isset($_GET["description"]) && isset($_GET["price"])
     $price = floatval(InputValidator::validate($_GET["price"]));
     $id = intval(InputValidator::validate($_GET["id"]));
     Controller::getInstance()->modifyProduct($name, $description, $price, $id);
+} else {
+    Controller::getInstance()->actionError();
 }
 
 ?>

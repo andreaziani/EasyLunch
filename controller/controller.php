@@ -59,6 +59,8 @@ class Controller
             }
             $this->view->redirect("mainPage");
         } else {
+            $this->startSession();
+            $_SESSION["error"] = "Username or password not correct";
             $this->view->redirect("loginPage");
         }
     }
@@ -69,6 +71,7 @@ class Controller
             $_SESSION["user"] = $this->userManager->getUser($username);
             $this->view->redirect("mainPage");
         } else {
+            $_SESSION["error"] = "Registration failed";
             $this->view->redirect("registerPage");
         }
         
@@ -147,6 +150,12 @@ class Controller
         $this->view->redirect("mainPage");
     }
 
+    /**
+     * Method to redirect the page when the action inputs are wrong.
+     */
+    public function actionError() {
+        $this->view->redirect("index");
+    }
     /**
      * Utility method for check if a session is already started.
      */

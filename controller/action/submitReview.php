@@ -17,6 +17,8 @@ if (isset($_SESSION["user"]) and $_SESSION["user"]->type == "client" and isset($
     $description = InputValidator::validate($_POST['description']);
     $rank = InputValidator::validate($_POST['rank']);
     Controller::getInstance()->submitReview($description, $rank);
+} else {
+    Controller::getInstance()->actionError();
 }
 
 ?>
