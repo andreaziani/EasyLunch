@@ -66,7 +66,7 @@ class NotificationManager
     }
 
     public function createOrderComingNotification($orderData, $afterMinutes) {
-        $description = "Received order for " . $orderData["Nominative"] . " at ". $orderData["DeliveryPlace"] . "\n Order details:";
+        $description = "Received order for " . $orderData["Nominative"] . " at ". $orderData["DeliverySpot"] . "\n Order details:";
         foreach ($orderData["Products"] as $productData) {
             $description = $description . "\n\t" . $productData["Quantity"] . " " . $productData["ProductName"];
         }
@@ -76,7 +76,7 @@ class NotificationManager
     }
 
     public function createOrderArrivedNotification($orderData, $afterMinutes) {
-        $description = "Arrived order for " . $orderData["Nominative"] . " at ". $orderData["DeliveryPlace"] . "\n Order details:";
+        $description = "Arrived order for " . $orderData["Nominative"] . " at ". $orderData["DeliverySpot"] . "\n Order details:";
         foreach ($orderData["Products"] as $productData) {
             $description = $description . "\n\t" . $productData["Quantity"] . " " . $productData["ProductName"];
         }

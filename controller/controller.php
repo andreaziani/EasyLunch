@@ -164,11 +164,13 @@ class Controller
         $this->view->redirect("categories");
     }
     
-    public function sendOrder($order, $minutes) {
+    public function sendOrder($orderId, $minutes) {
+        $order = $this->cartManager->getOrder($orderId);
         $orderData = $this->cartManager->getOrderData($order);
         $this->notificationManager->createOrderComingNotification($orderData, $minutes);
-        $this->createReviewNotification->createOrderArrivedNotification($orderData, $minutes);
+        $this->notificationManager->createOrderArrivedNotification($orderData, $minutes);
         $this->cartManager->setOrderArrived($order);
+        $this->view->redirect("mainPage");
     }
 
     /**

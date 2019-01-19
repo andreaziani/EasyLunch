@@ -15,6 +15,10 @@ class CartManager
         return new Cart($this->queryManager->searchByKey("Carts", "Id", $id), $this->queryManager->searchByAttribute("CartData", "CartId", intval($id)));
     }
 
+    public function getOrder($orderId) {
+        return $this->queryManager->searchByKey("Orders", "Id", $orderId);
+    }
+
     public function findOrCreateOrder($cart, $providerId) {
         $order = $this->queryManager->searchByDoubleKey("Orders", "CartId", intval($cart->id), "ProviderId", $providerId);
         if ($order == null) {
@@ -89,12 +93,14 @@ class CartManager
     }
 
     public function getOrderData($order) {
+        $clientId = $this->queryManager->searchByKey("Carts", "Id", $order["CartId"])["ClientId"];
         $purchase = $this->queryManager->searchByKey("Purchases", "CartId", $order["CartId"]);
         $data = $this->queryManager->searchByAttribute("OrderData", "OrderId", $order["Id"]);
         $orderData["Nominative"] = $purchase["Nominative"];
         $orderData["DeliverySpot"] = $purchase["DeliverySpot"];
         $orderData["DeliveryTime"] = $purchase["DeliveryTime"];
         $orderData["Id"] = $order["Id"];
+        $orderData["ClientId"] = $clientId;
         $orderData["ProviderId"] = $data[0]["ProviderId"];
         $orderData["Products"] = array();
         foreach ($data as $p) {
