@@ -5,6 +5,7 @@ use Model\ProductManager;
 use Model\UserManager;
 use Model\CartManager;
 use Model\NotificationManager;
+use Model\OrderProvider;
 use View\View;
 
 class Controller
@@ -177,6 +178,7 @@ class Controller
     private function startSession(){
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
+            $_SESSION["orderProvider"] = new OrderProvider();
         }
     }
 }

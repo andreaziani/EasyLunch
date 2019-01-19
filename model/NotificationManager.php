@@ -60,7 +60,7 @@ class NotificationManager
     public function createNewOrderNotification($orderData) {
         $description = "Order for " . $orderData["Nominative"] . " at ". $orderData["DeliveryTime"] . " and ". $orderData["DeliverySpot"]. "\n Order details:";
         foreach ($orderData["Products"] as $productData) {
-            $description = $description . "\n\t" . $productData["Quantity"] . " " . $productData["ProductName"] . " (" . $productData["ProductId"] . ")";
+            $description = $description . "\n\t" . $productData["Quantity"] . " " . $productData["ProductName"];
         }
         return $this->saveNotification($this->newNotification("NEW_ORDER", $description, $orderData["Id"], $orderData["ProviderId"], date('Y-m-d G:i:s')));
     }
@@ -68,7 +68,7 @@ class NotificationManager
     public function createOrderComingNotification($orderData, $afterMinutes) {
         $description = "Received order for " . $orderData["Nominative"] . " at ". $orderData["DeliveryPlace"] . "\n Order details:";
         foreach ($orderData["Products"] as $productData) {
-            $description = $description . "\n\t" . $productData["Quantity"] . " " . $productData["ProductName"] . " (" . $productData["ProductId"] . ")";
+            $description = $description . "\n\t" . $productData["Quantity"] . " " . $productData["ProductName"];
         }
         $date = date('Y-m-d G:i:s', strtotime('now +' . $afterMinutes . ' minutes'));
         $description = $description . "\nExpected arrival at: " . $date;
@@ -78,7 +78,7 @@ class NotificationManager
     public function createOrderArrivedNotification($orderData, $afterMinutes) {
         $description = "Arrived order for " . $orderData["Nominative"] . " at ". $orderData["DeliveryPlace"] . "\n Order details:";
         foreach ($orderData["Products"] as $productData) {
-            $description = $description . "\n\t" . $productData["Quantity"] . " " . $productData["ProductName"] . " (" . $productData["ProductId"] . ")";
+            $description = $description . "\n\t" . $productData["Quantity"] . " " . $productData["ProductName"];
         }
         $date = date('Y-m-d G:i:s', strtotime('now +' . $afterMinutes . ' minutes'));
         return $this->saveNotification($this->newNotification("ORDER_ARRIVED", $description, $orderData["Id"], $orderData["ClientId"], $date));
