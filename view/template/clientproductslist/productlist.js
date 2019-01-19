@@ -21,16 +21,16 @@ $(function() {
           for (var i = 0; i < obj.length; i++) {
             html =
               html +
-              "<li> <input class='hidden id' name='id' type='number' value='" +
+              "<li class='product'> <input class='hidden id' name='id' type='number' value='" +
               obj[i].Id +
-              "'/> <img src=/ProgettoTecWeb/" +
-              obj[i].Image +
-              " alt='Image of the product' width=70 /><h2 class='name'>" +
+              "' /><h2 class='name'>" +
               obj[i].Name +
-              "</h2><p class='description'>" +
+              "</h2> <img class='productimg' src=/ProgettoTecWeb/" +
+              obj[i].Image +
+              " alt='Image of the product' /><p class='description'>" +
               obj[i].Description +
-              "<p class='price'> Prezzo: <span class='value'>" + obj[i].Price + "</span> euro</p> " +
-              "<input type='number' class='quantity' name='quantity' value='0'><button class='addToCart'>Add to cart</button> </li> ";
+              "<p class='price'> Price: <span class='value'>" + obj[i].Price + "</span> euro</p> " +
+              "<div class='input-group'><input type='number' class='form-control quantity' name='quantity' value='0'><div class='input-group-btn'><button class='btn btn-default addToCart'>Add to cart</button> </div></div></li> ";
           }
           $("#productslist").html(html);
         }

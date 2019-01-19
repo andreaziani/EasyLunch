@@ -23,7 +23,7 @@ $(document).ready(function() {
           for (var i = 0; i < obj.length; i++) {
             html =
               html +
-              "<li> " +
+              "<li class='provider'> " +
               "<form action='/ProgettoTecWeb/view/template/clientproductslist/clientproductslist.php' method='POST'>" +
               "<h2 class='companyname'>" +
               obj[i].CompanyName +

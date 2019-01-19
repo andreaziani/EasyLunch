@@ -13,32 +13,32 @@ use Utils\PathManager;
     <h1>Registration</h1>
     <form id="registerform" action="../../../controller/action/register.php" method="POST">
         <div class="form-group user-psw">
-            <label>Name: <input class="form-control" type="text" name="name" id="name" /></label><br/>
-            <label>Surname: <input class="form-control" type="text" name="surname" id="surname" /></label><br/>
-            <label>Birthdate: <input class="form-control" type="date" name="birthdate" id="birthdate" /></label><br/>
-            <label>Telephone: <input class="form-control" type="tel" name="telephone" id="telephone" /></label><br/>
-            <label>Email: <input class="form-control" type="email" name="email" id="email" /></label><br/>
+            <label>Name: <input class="form-control input-sm" type="text" name="name" id="name" /></label><br/>
+            <label>Surname: <input class="form-control input-sm" type="text" name="surname" id="surname" /></label><br/>
+            <label>Birthdate: <input class="form-control input-sm" type="date" name="birthdate" id="birthdate" /></label><br/>
+            <label>Telephone: <input class="form-control input-sm" type="tel" name="telephone" id="telephone" /></label><br/>
+            <label>Email: <input class="form-control input-sm" type="email" name="email" id="email" /></label><br/>
         </div>  
         <div class="form-group user-psw">
-            <label>Username: <input class="form-control" type="text" name="username" id="username" /></label><br/>
-            <label>Password: <input class="form-control" type="password" name="password" id="password" /></label><br/>
-            <label>Repeat Password: <input class="form-control" type="password" name="rpassword" id="rPassword" /></label><br/>
+            <label>Username: <input class="form-control input-sm" type="text" name="username" id="username" /></label><br/>
+            <label>Password: <input class="form-control input-sm" type="password" name="password" id="password" /></label><br/>
+            <label>Repeat Password: <input class="form-control input-sm" type="password" name="rpassword" id="rPassword" /></label><br/>
         </div>
 
-            <label>
-            Are you a provider or a client?: 
-            <select name="typology" id="typology">
-                <option value="client">Client</option>
-                <option value="provider">Provider</option>
-            </select>
-        </label><br/>
         <div class="form-group user-psw">
+                <label>
+                Are you a provider or a client?: 
+                <select class="form-control input-sm" name="typology" id="typology">
+                    <option value="client">Client</option>
+                    <option value="provider">Provider</option>
+                </select>
+            </label><br/>
             <fieldset id="providerFields" style="display: none; border: 0px">
-                <label>Company name: <input class="form-control" type="text" name="companyName" id="companyName" /></label><br/>
-                <label>PIVA:  <input class="form-control" type="text" name="piva" id="piva" /></label><br/>    
-                <label>City:  <input class="form-control" type="text" name="cityAddress" id="cityAddress" /></label><br/>
-                <label>Street:  <input class="form-control" type="text" name="addressStreet" id="addressStreet" /></label><br/>
-                <label>Street Number:  <input class="form-control" type="text" name="addressNumber" id="addressNumber" /></label><br/>
+                <label>Company name: <input class="form-control input-sm" type="text" name="companyName" id="companyName" /></label><br/>
+                <label>PIVA:  <input class="form-control input-sm" type="text" name="piva" id="piva" /></label><br/>    
+                <label>City:  <input class="form-control input-sm" type="text" name="cityAddress" id="cityAddress" /></label><br/>
+                <label>Street:  <input class="form-control input-sm" type="text" name="addressStreet" id="addressStreet" /></label><br/>
+                <label>Street Number:  <input class="form-control input-sm" type="text" name="addressNumber" id="addressNumber" /></label><br/>
             </fieldset>
         </div>
         <input class="btn btn-primary" type="submit" value="Sign up" id="submit"/>

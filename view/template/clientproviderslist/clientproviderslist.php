@@ -12,15 +12,16 @@ $base = new PathManager();
 $base->requireFromWebSitePath('header/_header.php');
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<section id="research">
-        <input id="searchBar" type="text" placeholder="Search.." name="search" results=5 autocomplete="on">
-        <button id="searchButton"><i class="fa fa-search"></i></button>
-
-</section>
-
-<section>
+<div class="container">
+    <div class="input-group" id="research">
+        <input class="form-control" id="searchBar" type="text" placeholder="Search.." name="search" results=5 autocomplete="on">
+        <div class="input-group-btn">
+            <button class="btn btn-default" id="searchButton"><i class="glyphicon glyphicon-search"></i></button>
+        </div>
+    </div>
+</div>
+<div>
     <div id="providers">
-        <h1> Restaurants </h1>
         <ul id="providerlist">
             <?php
                 $query = "SELECT * FROM Providers ORDER BY CompanyName";
@@ -29,7 +30,7 @@ $base->requireFromWebSitePath('header/_header.php');
                     $rate_query = "SELECT AVG(Rank) FROM ProvidersReviews WHERE ProviderId='" . $row["UserName"] . "'";
                     $rate = $db->queryDataToObject($db->executeQuery($rate_query));
                     if(is_null($rate["AVG(Rank)"])) $rate["AVG(Rank)"] = 0;
-                    $listItem = "<br/><li> 
+                    $listItem = "<br/><li class='provider'> 
                                 <form action='/ProgettoTecWeb/view/template/clientproductslist/clientproductslist.php' method='POST'>
                                     <input class='hidden username' name='username' type='text' value='" . $row["UserName"] . "'/> 
                                     <h2 class='companyname'>" . $row["CompanyName"] . "</h2>";
@@ -49,7 +50,7 @@ $base->requireFromWebSitePath('header/_header.php');
         </ul>
     </div>
     
-</section>
+</div>
 
 <script src="/ProgettoTecWeb/view/template/clientproviderslist/clientproviderslist.js"></script>
 <link rel="stylesheet" href="/ProgettoTecWeb/view/template/clientproviderslist/style.css">

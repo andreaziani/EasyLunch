@@ -85,7 +85,7 @@ class Controller
     public function logout(){
         $this->startSession();
         session_destroy();
-        $this->view->redirect("mainPage");
+        $this->view->redirect("index");
     }
     
     public function updateProfileInformations($data, $tableName, $username){

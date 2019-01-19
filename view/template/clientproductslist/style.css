@@ -1,3 +1,31 @@
 .hidden {
     display: none;
 }
+
+header {
+    margin-bottom: 20%;
+}
+
+#productslist {
+    margin:auto;
+    list-style-type: none;
+}
+
+.product {
+    margin:auto;
+    border-bottom: 1px solid #281919;
+    width: 80%;
+}
+
+.research {
+    margin: auto;   
+}
+
+.input-group {
+    width: 60%;
+    margin-bottom:5%;
+}
+
+.productimg {
+    width: 50%;
+}

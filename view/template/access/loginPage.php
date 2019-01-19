@@ -13,8 +13,8 @@ use Utils\PathManager;
     <h1>Log in</h1>
     <form id="loginform" action="/ProgettoTecWeb/controller/action/login.php" method="POST">
         <div class="form-group user-psw">
-            <label>Username: <input class="form-control" type="text" name="username" /></label><br/>
-            <label>Password: <input class="form-control" type="password" name="password" /></label><br/>
+            <label>Username: <input class="form-control input-sm" type="text" name="username" /></label><br/>
+            <label>Password: <input class="form-control input-sm" type="password" name="password" /></label><br/>
         <div>
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Log in" id="submit"/>

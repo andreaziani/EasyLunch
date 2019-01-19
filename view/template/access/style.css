@@ -1,12 +1,17 @@
-.login, .registration{
+header {
+    margin-bottom: 20%;
+}
+
+.login, .registration {
     display: block;
-    margin: 10%;
+    margin: auto;
+    width: 100%;
     text-align: center;
 }
 .login > * {
-    margin:auto;
+    width: 100%;
+    text-align: center;
 }
-
 user-psw {
     background-color:#d3d3d3;
     margin-bottom: 30%;
@@ -16,9 +21,19 @@ user-psw {
 
 #registerform{
     display: block;
+    width: 100%;
+    text-align: center;
 }
 
 footer {
     display: block;
     margin-top: 30%;
+}
+
+.btn {
+    width: 20%;
+}
+
+.error{
+    color:red;
 }
