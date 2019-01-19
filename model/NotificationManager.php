@@ -22,7 +22,12 @@ class NotificationManager
         $this->queryManager = new QueryManager();
     }
 
-    public function setNotificationRead($user) {
+    public function setRead($orderId) {
+        $data["IsRead"] = 1;
+        $this->queryManager->updateInTable("Notifications", $data, "orderId", $orderId);
+    }
+
+    public function setAllRead($user) {
         $data["IsRead"] = 1;
         $this->queryManager->updateInTable("Notifications", $data, "ReceiverId", $user->userName);
     }

@@ -138,13 +138,14 @@ class Controller
     }
     
     public function setRead() {
-        $this->notificationManager->setNotificationRead($_SESSION["user"]);
+        $this->notificationManager->setAllRead($_SESSION["user"]);
         echo $this->view->getHref("mainPage");
     }
 
     public function submitReview($description, $rank) {
         if ($this->userManager->canReview($_SESSION["user"], $_SESSION["order"])) { //TODO check if if is useful
             $this->userManager->submitReview($_SESSION["order"], $description, $rank);
+            $this->notificationManager->setRead($_SESSION["order"]);
             unset($_SESSION["order"]);
         }
         $this->view->redirect("mainPage");
