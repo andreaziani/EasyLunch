@@ -67,4 +67,9 @@ class ProductManager
         $result[0]["Rate"] = $rate["AVG(Rank)"];
         return $result;
     }
+
+    public function insertCategory($name){
+        $query = "INSERT INTO Categories(Name) VALUES('" . $name . "')";
+        return $this->queryManager->executeQuery($query);
+    }
 }

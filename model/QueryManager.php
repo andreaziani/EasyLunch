@@ -127,5 +127,6 @@ class QueryManager
             return null;
         }
     }
+
 }
 ?>
