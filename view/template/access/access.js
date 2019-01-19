@@ -78,6 +78,7 @@ $(document).ready(function() {
             telephone: {
                 required: true,
                 number: true,
+                digits: true,
                 minlength: 5,
                 maxlength: 10
             },

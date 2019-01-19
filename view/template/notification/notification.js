@@ -19,9 +19,11 @@ $(document).ready(function () {
                     html += "<tr>" +
                     "<td>" + data[i].timestamp + "</td>" +
                     "<td><pre>" + data[i].description + "</pre></td>";
-                    //TODO: review already done set read to true!
-                    if (data[i].typology == "REVIEW") {
+                    //TODO: change way to make action maybe
+                    if (data[i].typology == "ORDER_ARRIVED") {
                         html += "<td><input type='button' value='Review' onclick='tryReview("+ data[i].orderId +")'/></td>";
+                    } else if (data[i].typology == "NEW_ORDER") {
+                        html += "<td><input type='button' value='SendOrder' onclick='trySend("+ data[i].orderId +")'/></td>";
                     }
                     html += "</tr>";
                 }

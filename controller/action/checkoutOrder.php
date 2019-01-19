@@ -15,16 +15,10 @@ use Controller\InputValidator;
         and isset($_POST["deliveryDate"]) and isset($_POST["deliveryTime"])) {
             $nominative = InputValidator::validate($_POST["nominative"]);
             $spot = InputValidator::validate($_POST["deliverySpot"]);
-            //var_dump($spot);
             $d = InputValidator::validate($_POST["deliveryDate"]);
             $t = InputValidator::validate($_POST["deliveryTime"]);
-            //var_dump($d);
-            //var_dump($t);
             $timestamp = strtotime(date($d . "T" . $t));
-            //var_dump(date($d . "T" . $t));
-            //var_dump($timestamp);
             $dateTime = date('Y-m-d G:i:s', $timestamp);
-            //var_dump($dateTime);
             Controller::getInstance()->checkoutOrder($nominative, $spot, $dateTime);
     } else {
         Controller::getInstance()->actionError();

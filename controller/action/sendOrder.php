@@ -11,12 +11,11 @@ use Controller\InputValidator;
 
 session_start();
 
-if (isset($_SESSION["user"]) and $_SESSION["user"]->type == "CLIENT" and isset($_SESSION["order"]) and 
-    isset($_POST['description']) && isset($_POST['rank'])) {
+if (isset($_SESSION["user"]) and $_SESSION["user"]->type == "PROVIDER" and 
+    isset($_SESSION["order"]) and isset($_POST['minutes'])) {
     
-    $description = InputValidator::validate($_POST['description']);
-    $rank = InputValidator::validate($_POST['rank']);
-    Controller::getInstance()->submitReview($description, $rank);
+    $minutes = InputValidator::validate($_POST['minutes']);
+    Controller::getInstance()->sendOrder($_SESSION["order"], $minutes);
 } else {
     Controller::getInstance()->actionError();
 }
