@@ -10,27 +10,30 @@ use Utils\PathManager;
 <section>
 <?php
         if (isset($_SESSION["cart"])) {
-            echo 
+            $html = 
                 "<h1>Cart Summary</h1>" .
                 "<table>" .
                     "<tr>" .
                         "<th>Product</th>" .
                         "<th>Price</th>" .
                         "<th>Quantity</th>" .
-                    "</tr>" .      
-                "</table>" .
-                "<a href='/ProgettoTecWeb/view/template/cart/checkoutOrderPage.php'>Checkout</a>";
+                    "</tr>";
             //<input type="button" value="Cancel" id="cancel"/>;
             //session_start();
             $cart = $_SESSION["cart"];
+            //var_dump($cart);
             foreach ($cart->entries as $entry) {
-                echo 
+                $html = $html . 
                     "<tr>" .
                         "<td>" . $entry->productName ."</td>" .
                         "<td>" . $entry->price ."</td>" .
                         "<td>" . $entry->quantity ."</td>" .
                     "</tr>";
             }
+            $html = $html .
+                "</table>" .
+                "<a href='/ProgettoTecWeb/view/template/cart/checkoutOrderPage.php'>Checkout</a>";
+            echo $html;
         } else {
             echo "<h1>Your cart is empty</h1>";
         }
