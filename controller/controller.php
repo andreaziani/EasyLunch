@@ -160,7 +160,7 @@ class Controller
 
     public function sendOrder($order, $minutes) {
         $orderData = $this->cartManager->getOrderData($order);
-        $this->notificationManager->createOrderArrivedNotification($orderData, $minutes);
+        $this->notificationManager->createOrderComingNotification($orderData, $minutes);
         $this->createReviewNotification->createOrderArrivedNotification($orderData, $minutes);
         $this->cartManager->setOrderArrived($order);
     }

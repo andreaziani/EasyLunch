@@ -65,6 +65,16 @@ class NotificationManager
         return $this->saveNotification($this->newNotification("NEW_ORDER", $description, $orderData["Id"], $orderData["ProviderId"], date('Y-m-d G:i:s')));
     }
 
+    public function createOrderComingNotification($orderData, $afterMinutes) {
+        $description = "Received order for " . $orderData["Nominative"] . " at ". $orderData["DeliveryPlace"] . "\n Order details:";
+        foreach ($orderData["Products"] as $productData) {
+            $description = $description . "\n\t" . $productData["Quantity"] . " " . $productData["ProductName"] . " (" . $productData["ProductId"] . ")";
+        }
+        $date = date('Y-m-d G:i:s', strtotime('now +' . $afterMinutes . ' minutes'));
+        $description = $description . "\nExpected arrival at: " . $date;
+        return $this->saveNotification($this->newNotification("ORDER_COMING", $description, $orderData["Id"], $orderData["ClientId"], date('Y-m-d G:i:s')));
+    }
+
     public function createOrderArrivedNotification($orderData, $afterMinutes) {
         $description = "Arrived order for " . $orderData["Nominative"] . " at ". $orderData["DeliveryPlace"] . "\n Order details:";
         foreach ($orderData["Products"] as $productData) {
@@ -72,12 +82,6 @@ class NotificationManager
         }
         $date = date('Y-m-d G:i:s', strtotime('now +' . $afterMinutes . ' minutes'));
         return $this->saveNotification($this->newNotification("ORDER_ARRIVED", $description, $orderData["Id"], $orderData["ClientId"], $date));
-    }
-
-    public function createReviewNotification($orderData, $afterMinutes) {
-        $description = "Review available for order ";
-        $date = date('Y-m-d G:i:s', strtotime('now +' . $afterMinutes . ' minutes'));
-        return $this->saveNotification($this->newNotification("REVIEW", $description, $orderData["Id"], $orderData["ClientId"]), $date);
     }
 }
 ?>

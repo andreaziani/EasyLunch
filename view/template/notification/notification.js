@@ -20,7 +20,7 @@ $(document).ready(function () {
                     "<td>" + data[i].timestamp + "</td>" +
                     "<td><pre>" + data[i].description + "</pre></td>";
                     //TODO: change way to make action maybe
-                    if (data[i].typology == "REVIEW") {
+                    if (data[i].typology == "ORDER_ARRIVED") {
                         html += "<td><input type='button' value='Review' onclick='tryReview("+ data[i].orderId +")'/></td>";
                     } else if (data[i].typology == "NEW_ORDER") {
                         html += "<td><input type='button' value='SendOrder' onclick='trySend("+ data[i].orderId +")'/></td>";
