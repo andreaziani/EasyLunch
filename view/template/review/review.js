@@ -1,5 +1,6 @@
 $(document).ready(function() {
     $("form").validate({
+        ignore: "",
         rules: {
             rank: {
                 required: true

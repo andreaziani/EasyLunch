@@ -83,7 +83,7 @@ class UserManager
         $data["OrderId"] = $orderId;
         $data["Comment"] = $description;
         $data["Rank"] = $rank;
-        return $this->queryManager->insertInTable("ReviewableOrders", $data);
+        return $this->queryManager->insertInTable("Reviews", $data);
     }
 
     public function removeCart($user) {

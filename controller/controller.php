@@ -134,14 +134,14 @@ class Controller
     public function tryReview($orderId) {
         if ($this->userManager->canReview($_SESSION["user"], $orderId)) {
             $_SESSION["order"] = $orderId;
-            echo $this->view->getHref("sendOrderPage");
+            echo $this->view->getHref("reviewPage");
         }
     }
     
     public function trySend($orderId) {
         if ($this->userManager->canSend($_SESSION["user"], $orderId)) {
             $_SESSION["order"] = $orderId;
-            echo $this->view->getHref("reviewPage");
+            echo $this->view->getHref("sendOrderPage");
         }
     }
     
@@ -151,7 +151,7 @@ class Controller
     }
 
     public function submitReview($description, $rank) {
-        if ($this->userManager->canReview($_SESSION["user"], $_SESSION["order"])) { //TODO check if if is useful
+        if ($this->userManager->canReview($_SESSION["user"], $_SESSION["order"])) {
             $this->userManager->submitReview($_SESSION["order"], $description, $rank);
             $this->notificationManager->setRead($_SESSION["order"]);
             unset($_SESSION["order"]);

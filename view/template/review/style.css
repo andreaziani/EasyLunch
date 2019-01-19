@@ -10,7 +10,7 @@
 
 .c-rating__item {
     -webkit-box-flex: 0;
-     -webkit-flex: 0 0 12px;
+    -webkit-flex: 0 0 12px;
     -ms-flex: 0 0 12px; 
     flex: 0 0 12px;
     height: 24px;

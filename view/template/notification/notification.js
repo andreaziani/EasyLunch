@@ -40,7 +40,7 @@ $(document).ready(function () {
     }
     doPoll();
 });
-function tryReview(orderId) {
+function tryOrderAction(orderId, action) {
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function()
     {
@@ -49,7 +49,16 @@ function tryReview(orderId) {
             window.location.href = xmlHttp.responseText;
         }
     }; 
-    xmlHttp.open("GET", "../../../controller/action/tryReview.php?orderId=" + orderId);
+    xmlHttp.open("GET", "../../../controller/action/" + action + ".php?orderId=" + orderId);
     xmlHttp.send(null);
     return xmlHttp.responseText;
+}
+
+
+function tryReview(orderId) {
+    return tryOrderAction(orderId, "tryReview");
+}
+
+function trySend(orderId) {
+    return tryOrderAction(orderId, "trySend");
 }
