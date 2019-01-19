@@ -12,7 +12,6 @@ use Utils\PathManager;
     <table>
         <tr>
             <th>Product</th>
-            <th>Provider</th>
             <th>Price</th>
             <th>Quantity</th>
         </tr>
@@ -24,7 +23,6 @@ use Utils\PathManager;
                     echo 
                         "<tr>" .
                             "<td>" . $entry->productName ."</td>" .
-                            //"<td>" . $entry->provider ."</td>" .
                             "<td>" . $entry->price ."</td>" .
                             "<td>" . $entry->quantity ."</td>" .
                         "</tr>";
