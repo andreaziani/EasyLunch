@@ -19,5 +19,4 @@ use Controller\Controller;
     } else{
         echo "Something's wrong with the inseriment in the cart.";
     }
-
 ?>

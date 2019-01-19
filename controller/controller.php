@@ -119,7 +119,7 @@ class Controller
 
     public function addProductToCart($data){
         self::startSession();
-        if(!isset($_SESSION["cart"])){
+        if(!isset($_SESSION["cart"]) || $_SESSION["cart"] == ''){
             $_SESSION["cart"] = $this->cartManager->createCart($_SESSION["user"]);
         }
         return $this->cartManager->addProductToCart($_SESSION["cart"], new \Model\Data\CartEntry($data));
@@ -150,6 +150,10 @@ class Controller
         $this->view->redirect("mainPage");
     }
 
+    public function insertCategory($name){
+        $this->productManager->insertCategory($name);
+        $this->view->redirect("categories");
+    }
     /**
      * Method to redirect the page when the action inputs are wrong.
      */
