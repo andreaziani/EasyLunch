@@ -15,6 +15,12 @@ use Utils\PathManager;
         <label>Password: <input type="password" name="password" /></label><br/>
         <input type="submit" value="Sign in" id="submit"/>
     </form>
+<?php
+    if (isset($_SESSION["error"])) {
+        echo "<p>" . $_SESSION["error"] ."</p>";
+        unset($_SESSION["error"]);
+    }
+?>
 </section>
 
 <?php
