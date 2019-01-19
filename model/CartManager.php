@@ -81,6 +81,11 @@ class CartManager
         return $this->queryManager->updateInTable("Orders", $data, "Id", $order["Id"]);
     }
 
+    public function setOrderArrived($order) {
+        $data["State"] = "ARRIVED";
+        return $this->queryManager->updateInTable("Orders", $data, "Id", $order["Id"]);
+    }
+
     public function getOrderData($order) {
         $purchase = $this->queryManager->searchByKey("Purchases", "CartId", $order["CartId"]);
         $data = $this->queryManager->searchByAttribute("OrderData", "OrderId", $order["Id"]);

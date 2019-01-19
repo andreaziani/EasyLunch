@@ -70,6 +70,11 @@ class UserManager
         return $this->queryManager->updateInTable($tableName, $data, "UserName", $username);
     }
 
+    public function canSend($user, $orderId) {
+        $order = $this->queryManager->searchByKey("Orders", "Id", $orderId);
+        return $order != null && $order["ProviderId"] === $user->userName && $order["State"] === "STARTED";
+    }
+
     public function canReview($user, $orderId) {
         return $this->queryManager->searchByDoubleKey("ReviewableOrders", "ClientId" ,$user->userName, "OrderId", $orderId) != null;
     }

@@ -133,6 +133,13 @@ class Controller
     public function tryReview($orderId) {
         if ($this->userManager->canReview($_SESSION["user"], $orderId)) {
             $_SESSION["order"] = $orderId;
+            echo $this->view->getHref("sendOrderPage");
+        }
+    }
+    
+    public function trySend($orderId) {
+        if ($this->userManager->canSend($_SESSION["user"], $orderId)) {
+            $_SESSION["order"] = $orderId;
             echo $this->view->getHref("reviewPage");
         }
     }
@@ -149,6 +156,13 @@ class Controller
             unset($_SESSION["order"]);
         }
         $this->view->redirect("mainPage");
+    }
+
+    public function sendOrder($order, $minutes) {
+        $orderData = $this->cartManager->getOrderData($order);
+        $this->notificationManager->createOrderArrivedNotification($orderData, $minutes);
+        $this->createReviewNotification->createOrderArrivedNotification($orderData, $minutes);
+        $this->cartManager->setOrderArrived($order);
     }
 
     /**

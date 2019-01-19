@@ -10,13 +10,8 @@ use Controller\Controller;
 use Controller\InputValidator;
 
 session_start();
-
-if (isset($_SESSION["user"]) and $_SESSION["user"]->type == "CLIENT" and isset($_SESSION["order"]) and 
-    isset($_POST['description']) && isset($_POST['rank'])) {
-    
-    $description = InputValidator::validate($_POST['description']);
-    $rank = InputValidator::validate($_POST['rank']);
-    Controller::getInstance()->submitReview($description, $rank);
+if (isset($_SESSION["user"]) and $_SESSION["user"]->type == "PROVIDER" and isset($_GET['orderId'])) {
+    Controller::getInstance()->trySend(InputValidator::validate($_GET['orderId']));
 } else {
     Controller::getInstance()->actionError();
 }
