@@ -49,4 +49,13 @@ $(document).ready(function () {
             }
         }
     });
+    $("button[name='remove']").click(function() {
+        var productId = $(this).attr("id").split('_')[1];
+        $.get("/ProgettoTecWeb/controller/action/dropCartEntry.php?id=" + productId, false).done(function(message){
+            alert(message);
+            Console.log($(this).parent().parent());
+            $(this).parent().parent().remove();
+        });
+        $(this).parent().parent().remove();
+    });
 });

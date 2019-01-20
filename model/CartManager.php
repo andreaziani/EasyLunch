@@ -45,13 +45,30 @@ class CartManager
         return null;
     }
 
+    public function removeProductFromCart($cart, $productId) {
+        if (isset($cart->entries[$productId])) {
+            $entry = $cart->entries[$productId];
+            $providerId = $this->queryManager->searchByKey("Products", "Id", $entry->productId)["ProviderId"];
+            $order = $this->findOrCreateOrder($cart, $providerId);
+            unset($cart->entries[$productId]);
+            return $this->queryManager->deleteFromTableDoubleKeys("OrderEntries", "ProductId", $productId, "OrderId", $order["Id"]);
+        }
+    }
+
     public function updateProductInCart($cart, $productId, $newQuantity) {
-        $cart->entries[$productId]->updateQuantity($newQuantity);
-        $entry = $cart->entries[$productId];
-        $providerId = $this->queryManager->searchByKey("Products", "Id", $entry->productId)["ProviderId"];
-        $order = $this->findOrCreateOrder($cart, $providerId);
-        $entryData["Quantity"] = $entry->quantity;
-        return $this->queryManager->updateInTableDoubleKeys("OrderEntries", $entryData, "ProductId", $entry->productId, "OrderId", $order["Id"]);
+        if (!isset($cart->entries[$productId])) {
+            return false;
+        }
+        if ($newQuantity > 0 && $newQuantity != $cart->entries[$productId]->quantity) {
+            $cart->entries[$productId]->updateQuantity($newQuantity);
+            $entry = $cart->entries[$productId];
+            $providerId = $this->queryManager->searchByKey("Products", "Id", $entry->productId)["ProviderId"];
+            $order = $this->findOrCreateOrder($cart, $providerId);
+            $entryData["Quantity"] = $entry->quantity;
+            return $this->queryManager->updateInTableDoubleKeys("OrderEntries", $entryData, "ProductId", $productId, "OrderId", $order["Id"]);
+        } else {
+            return $this->removeProductFromCart($cart, $productId);
+        }
     }
 
     public function addProductToCart($cart, $entry) {
@@ -64,9 +81,10 @@ class CartManager
         $entryData["OrderId"] = intval($order["Id"]);
         if (isset($cart->entries[$entry->productId])) {
             $result = $this->updateProductInCart($cart, $entry->productId, $entry->quantity);
+        } else if ($entry->quantity > 0) {
+            $cart->addEntry($entry);
+            $result = $this->queryManager->insertInTable("OrderEntries", $entryData);
         }
-        $cart->addEntry($entry);
-        $result = $this->queryManager->insertInTable("OrderEntries", $entryData);
         return $result;
     }
 

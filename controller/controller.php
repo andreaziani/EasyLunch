@@ -119,11 +119,21 @@ class Controller
     }
 
     public function addProductToCart($data){
-        self::startSession();
+        $this->startSession();
         if(!isset($_SESSION["cart"]) || $_SESSION["cart"] == ''){
             $_SESSION["cart"] = $this->cartManager->createCart($_SESSION["user"]);
         }
         return $this->cartManager->addProductToCart($_SESSION["cart"], new \Model\Data\CartEntry($data));
+    }
+
+    public function updateCartEntry($productId, $newQuantity) {
+        $this->startSession();
+        return $this->cartManager->updateProductInCart($_SESSION["cart"], $productId, $newQuantity);
+    }
+
+    public function dropCartEntry($productId) {
+        $this->startSession();
+        return $this->cartManager->removeProductFromCart($_SESSION["cart"], $productId);
     }
 
     public function getNotifications() {

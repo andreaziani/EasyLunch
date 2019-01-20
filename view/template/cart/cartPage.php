@@ -17,6 +17,7 @@ use Utils\PathManager;
                         "<th>Product</th>" .
                         "<th>Price</th>" .
                         "<th>Quantity</th>" .
+                        "<th>Remove</th>" .
                     "</tr>";
             //<input type="button" value="Cancel" id="cancel"/>;
             //session_start();
@@ -28,6 +29,7 @@ use Utils\PathManager;
                         "<td>" . $entry->productName ."</td>" .
                         "<td>" . $entry->price ."</td>" .
                         "<td>" . $entry->quantity ."</td>" .
+                        "<td>" . "<button name='remove' id='btnRemove_" . $entry->productId . "'>Remove</button>" . "</td>" .
                     "</tr>";
             }
             $html = $html .

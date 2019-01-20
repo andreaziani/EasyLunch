@@ -67,6 +67,11 @@ class QueryManager
         return $query;
     }
 
+    public function deleteFromTableDoubleKeys($table, $key1Name, $key1Value, $key2Name, $key2Value) {
+        $query = "DELETE FROM " . $table . self::whereSQL($key1Name, $key1Value) . self::andSQL($key2Name, $key2Value);
+        return $this->executeQuery($query);
+    }
+
     /**
      * data is a dictionary and the keys must be in the same case format as the ones appearing in the database.
      */
