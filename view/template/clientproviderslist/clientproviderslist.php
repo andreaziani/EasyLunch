@@ -12,9 +12,12 @@ $base = new PathManager();
 $base->requireFromWebSitePath('header/_header.php');
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="/ProgettoTecWeb/view/template/clientproviderslist/clientproviderslist.js"></script>
+<link rel="stylesheet" href="/ProgettoTecWeb/view/template/clientproviderslist/style.css">
+
 <div class="container">
     <div class="input-group" id="research">
-        <input class="form-control" id="searchBar" type="text" placeholder="Search.." name="search" results=5 autocomplete="on">
+        <input class="form-control" id="searchBar" type="text" placeholder="Search restaurant.." name="search" results=5 autocomplete="on">
         <div class="input-group-btn">
             <button class="btn btn-default" id="searchButton"><i class="glyphicon glyphicon-search"></i></button>
         </div>
@@ -33,13 +36,14 @@ $base->requireFromWebSitePath('header/_header.php');
                     $listItem = "<br/><li class='provider'> 
                                 <form action='/ProgettoTecWeb/view/template/clientproductslist/clientproductslist.php' method='POST'>
                                     <input class='hidden username' name='username' type='text' value='" . $row["UserName"] . "'/> 
-                                    <h2 class='companyname'>" . $row["CompanyName"] . "</h2>";
+                                    <h4 class='companyname'>" . $row["CompanyName"] . "</h4>";
                     for($i = 0; $i < 5; $i++){ //stars
                         if($i < $rate["AVG(Rank)"])
                             $listItem = $listItem . '<span class="fa fa-star orange-star"></span>';
                         else 
                             $listItem = $listItem . '<span class="fa fa-star"></span>';
                     }
+                    $listItem = $listItem . "<span class='review'> <a> (Reviews) </a> </span>";
                     echo $listItem . "<p class='phonenumber'> Tel: " . $row["PhoneNumber"] . "</p>
                                       <p class='email'> Email: ". $row["Email"] . "</p>
                                       <p class='address'> Address: " . $row["AddressStreet"] . "<span>" . $row["AddressNumber"] . "<span/></p>
@@ -52,8 +56,6 @@ $base->requireFromWebSitePath('header/_header.php');
     
 </div>
 
-<script src="/ProgettoTecWeb/view/template/clientproviderslist/clientproviderslist.js"></script>
-<link rel="stylesheet" href="/ProgettoTecWeb/view/template/clientproviderslist/style.css">
 <?php
     $base->requireFromWebSitePath('footer/_footer.php');
 ?>

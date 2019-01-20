@@ -15,7 +15,7 @@ $base->requireFromWebSitePath('header/_header.php');
 <link rel="stylesheet" href="/ProgettoTecWeb/view/template/clientproductslist/style.css">
 <div class="container">
     <div class="input-group" id="research">
-        <input class="form-control" id="searchBar" type="text" placeholder="Search.." name="search" results=5 autocomplete="on">
+        <input class="form-control" id="searchBar" type="text" placeholder="Search product.." name="search" results=5 autocomplete="on">
         <div class="input-group-btn">
             <button class="btn btn-default" id="searchButton"><i class="glyphicon glyphicon-search"></i></button>
         </div>
@@ -32,10 +32,10 @@ $base->requireFromWebSitePath('header/_header.php');
                 foreach($result as $row) {
                         echo "<li class='product'> 
                                 <input class='hidden id' name='id' type='number' value='" . $row["Id"] . "'/> 
-                                <h2 class='name'>" . $row["Name"] . "</h2>
+                                <h4 class='name'>" . $row["Name"] . "</h4>
                                 <img class='productimg' src=/ProgettoTecWeb/" . $row["Image"] . " alt='Image of the product' />
                                 <p class='description'>" . $row["Description"] . "</p>
-                                <p class='price'> Price: <span class='value'>" . $row["Price"] . "</span> euro</p>
+                                <p class='price'> Price: € <span class='value'>" . $row["Price"] . "</span> </p>
                                 <div class='input-group'>
                                     <input class='form-control quantity' type='number' name='quantity' value='0'>
                                     <div class='input-group-btn'>

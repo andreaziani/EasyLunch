@@ -47,11 +47,11 @@ $(function() {
   }
 
   function addToCart(){
-    var id = $(this).siblings(".id").val();
-    var name = $(this).siblings(".name").html();
-    var price = $(this).siblings(".price").children(".value").html();
+    var id = $(this).parent().parent().siblings(".id").val();
+    var name = $(this).parent().parent().siblings(".name").html();
+    var price = $(this).parent().parent().siblings(".price").children(".value").html();
     console.log(id + " "+ price + " " + name);
-    var quantity = $(this).siblings(".quantity").val();
+    var quantity = $(this).parent().siblings(".quantity").val();
     if(quantity > 0){
       $.get("/ProgettoTecWeb/controller/action/addProductToCart.php", {id: id, quantity: quantity, name: name, price: price}, function(data) {
         alert(data);

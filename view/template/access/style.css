@@ -1,5 +1,5 @@
 header {
-    margin-bottom: 20%;
+    margin-bottom: 12%;
 }
 
 .login, .registration {
@@ -30,9 +30,6 @@ footer {
     margin-top: 30%;
 }
 
-.btn {
-    width: 20%;
-}
 
 .error{
     color:red;

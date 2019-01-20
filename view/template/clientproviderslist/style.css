@@ -2,7 +2,6 @@
     display: none;
 }
 
-
 .fa-star {
     color:gray;
 }
@@ -23,7 +22,13 @@
 }
 
 header {
-    margin-bottom: 20%;
+    margin-bottom: 10%;
+}
+
+@media screen and (max-width: 480px) {
+    header {
+      margin-bottom: 20%;
+    }
 }
 
 #providerlist {

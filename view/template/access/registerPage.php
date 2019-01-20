@@ -29,8 +29,8 @@ use Utils\PathManager;
                 <label>
                 Are you a provider or a client?: 
                 <select class="form-control input-sm" name="typology" id="typology">
-                    <option value="client">Client</option>
-                    <option value="provider">Provider</option>
+                    <option class="input-sm" value="client">Client</option>
+                    <option class="input-sm" value="provider">Provider</option>
                 </select>
             </label><br/>
             <fieldset id="providerFields" style="display: none; border: 0px">

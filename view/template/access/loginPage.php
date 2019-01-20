@@ -17,7 +17,7 @@ use Utils\PathManager;
             <label>Password: <input class="form-control input-sm" type="password" name="password" /></label><br/>
         <div>
         <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="Log in" id="submit"/>
+            <input type="submit" class="btn btn-primary input-sm" value="Log in" id="submit"/>
         <div>
     </form>
 </div>

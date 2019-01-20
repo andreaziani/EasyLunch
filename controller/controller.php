@@ -64,7 +64,7 @@ class Controller
             if ($_SESSION["user"]->currentCartId != null) {
                 $_SESSION["cart"] = $this->cartManager->getCart($_SESSION["user"]->currentCartId);
             }
-            $this->view->redirect("mainPage");
+            $this->view->redirect("index");
         } else {
             $this->startSession();
             $_SESSION["error"] = "Username or password not correct";
