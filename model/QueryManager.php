@@ -111,6 +111,11 @@ class QueryManager
         return $this->queryDataToList($this->executeQuery($query));
     }
 
+    public function searchSmaller($table, $keyName, $keyValue) {
+        $query = "SELECT * FROM " . $table . " WHERE " . $keyName . "<". self::surroundOneString($keyValue);
+        return $this->queryDataToList($this->executeQuery($query));
+    }
+
     public function queryDataToList($data)
     {
         $result = array();

@@ -105,8 +105,24 @@ class CartManager
         return $this->queryManager->updateInTable("Orders", $data, "Id", $order["Id"]);
     }
 
+    public function setOrderArriving($order) {
+        $data["State"] = "ARRIVING";
+        return $this->queryManager->updateInTable("Orders", $data, "Id", $order["Id"]);
+    }
     public function setOrderArrived($order) {
         $data["State"] = "ARRIVED";
+        return $this->queryManager->updateInTable("Orders", $data, "Id", $order["Id"]);
+    }
+
+    public function checkOrdersArriving() {
+        $arrived = $this->queryManager->searchSmaller("OrdersToArrive", "Timestamp", date('Y-m-d G:i:s'));
+        foreach($arrived as $toArrive) {
+            $this->setOrderArrived($toArrive);
+        }
+    }
+
+    public function setOrderCompleted($order) {
+        $data["State"] = "COMPLETED";
         return $this->queryManager->updateInTable("Orders", $data, "Id", $order["Id"]);
     }
 

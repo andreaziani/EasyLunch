@@ -15,32 +15,13 @@ use Utils\PathManager;
 
 <section>
     <h1>Notifications</h1>
+    <p id="noNotificationMessage">There are currently no unread notifications</p>
+    <p id="notificationMessage">There are notifications unread, visit <a href="/ProgettoTecWeb/view/template/orders/orderPage.php">My Orders</a> to see what you can do</p>
     <table id="notificationTable" style="display: none;">
         <tr>
             <th>Time</th>
             <th>Description</th>
         </tr>
-
-        <?php
-        /*
-            if (isset($_SESSION["notifications"])) {
-                $notifications = $_SESSION["notifications"];
-                usort($notifications, "cmp");
-                foreach ($notifications as $notification) {
-                    echo 
-                        "<tr>" .
-                            "<td>" . $notification->timestamp ."</td>" .
-                            "<td><pre>" . $notification->description ."</pre></td>";
-                    if ($notification->typology == "REVIEW" && in_array($notification->orderId, $_SESSION["revieableOrders"])) {
-                        echo "<input type='button' value='Review' onclick='tryReview($notification->orderId)'/>";
-                    }
-                    echo  "</tr>";
-                }
-                echo "";
-            }
-        */
-        ?>
-        <tr></tr>
     </table>
     <input type='button' value='Reset notifications' id="resetButton"/>
 </section>

@@ -42,7 +42,7 @@ class NotificationManager
         }
         return $result;
     }
-    
+
     private function newNotification($type, $description, $orderId, $receiverId, $date) {
         return new Notification($type, $description, $orderId, $receiverId, $date, 0);
     }
@@ -58,7 +58,7 @@ class NotificationManager
     }
 
     public function createNewOrderNotification($orderData) {
-        $description = "Order for " . $orderData["Nominative"] . " at ". $orderData["DeliveryTime"] . " and ". $orderData["DeliverySpot"]. "\n Order details:";
+        $description = "Order for " . $orderData["Nominative"] . "\nRequested arrival at ". $orderData["DeliveryTime"] . "\nRequested delivery at ". $orderData["DeliverySpot"]. "\nOrder details:";
         foreach ($orderData["Products"] as $productData) {
             $description = $description . "\n\t" . $productData["Quantity"] . " " . $productData["ProductName"];
         }
@@ -66,7 +66,7 @@ class NotificationManager
     }
 
     public function createOrderComingNotification($orderData, $afterMinutes) {
-        $description = "Received order for " . $orderData["Nominative"] . " at ". $orderData["DeliverySpot"] . "\n Order details:";
+        $description = "Received order for " . $orderData["Nominative"] . "\nRequested arrival at ". $orderData["DeliveryTime"] . "\nRequested delivery at ". $orderData["DeliverySpot"]. "\nOrder details:";
         foreach ($orderData["Products"] as $productData) {
             $description = $description . "\n\t" . $productData["Quantity"] . " " . $productData["ProductName"];
         }
@@ -76,7 +76,7 @@ class NotificationManager
     }
 
     public function createOrderArrivedNotification($orderData, $afterMinutes) {
-        $description = "Arrived order for " . $orderData["Nominative"] . " at ". $orderData["DeliverySpot"] . "\n Order details:";
+        $description = "Arrived order for " . $orderData["Nominative"] . "\nRequested arrival at ". $orderData["DeliveryTime"] . "\nRequested delivery at ". $orderData["DeliverySpot"]. "\nOrder details:";
         foreach ($orderData["Products"] as $productData) {
             $description = $description . "\n\t" . $productData["Quantity"] . " " . $productData["ProductName"];
         }

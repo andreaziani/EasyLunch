@@ -31,9 +31,9 @@ $base->requireFromWebSitePath('header/_header.php');
                             "<td><pre>" . $entry["Description"] ."</pre></td>" .
                             "<td>" . $entry["TotalPrice"] ."</td>";
 
-                    if ($_SESSION["user"]->type === "PROVIDER") {
+                    if ($_SESSION["user"]->type === "PROVIDER" && $entry["State"] === "STARTED") {
                         echo "<td><input type='button' value='SendOrder' onclick='trySend(" . $entry["Id"] . ")'/></td>";
-                    } else if ($_SESSION["user"]->type === "CLIENT" && ($entry["State"] === "ARRIVED" || $entry["State"] === "COMPLETED")) {
+                    } else if ($_SESSION["user"]->type === "CLIENT" && $entry["State"] === "ARRIVED") {
                         echo "<td><input type='button' value='Review' onclick='tryReview(" . $entry["Id"] . ")'/></td>";
                     } else {
                         echo "<td></td>";

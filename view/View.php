@@ -14,6 +14,7 @@ class View
         "reviewPage" => "/ProgettoTecWeb/view/template/review/reviewPage.php",
         "categories" => "/ProgettoTecWeb/view/template/admin/categories.php",
         "sendOrderPage" => "/ProgettoTecWeb/view/template/sendorder/sendOrderPage.php",
+        "ordersPage" => "/ProgettoTecWeb/view/template/orders/orderPage.php"
     );
     static $instance = null;
 

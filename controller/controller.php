@@ -143,6 +143,7 @@ class Controller
     }
 
     public function getNotifications() {
+        $this->cartManager->checkOrdersArriving();
         $_SESSION["notifications"] = $this->notificationManager->getUnreadNotifications($_SESSION["user"]);
         return $_SESSION["notifications"];
     }
@@ -169,10 +170,11 @@ class Controller
     public function submitReview($description, $rank) {
         if ($this->userManager->canReview($_SESSION["user"], $_SESSION["order"])) {
             $this->userManager->submitReview($_SESSION["order"], $description, $rank);
-            $this->notificationManager->setRead($_SESSION["order"]);
+            $this->cartManager->setOrderCompleted($order);
+            //$this->notificationManager->setRead($_SESSION["order"]);
             unset($_SESSION["order"]);
         }
-        $this->view->redirect("mainPage");
+        $this->view->redirect("ordersPage");
     }
 
     public function insertCategory($name){
@@ -185,8 +187,8 @@ class Controller
         $orderData = $this->cartManager->getOrderData($order);
         $this->notificationManager->createOrderComingNotification($orderData, $minutes);
         $this->notificationManager->createOrderArrivedNotification($orderData, $minutes);
-        $this->cartManager->setOrderArrived($order);
-        $this->view->redirect("mainPage");
+        $this->cartManager->setOrderArriving($order);
+        $this->view->redirect("ordersPage");
     }
 
     /**
