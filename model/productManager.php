@@ -72,4 +72,8 @@ class ProductManager
         $query = "INSERT INTO Categories(Name) VALUES('" . $name . "')";
         return $this->queryManager->executeQuery($query);
     }
+
+    public function removeCategory($id){
+        $this->queryManager->removeFromTable("Categories", "Name", $id);
+    }
 }

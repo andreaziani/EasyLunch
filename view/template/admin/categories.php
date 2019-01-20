@@ -21,7 +21,7 @@ $base->requireFromWebSitePath('header/_header.php');
             $result = $db->queryDataToList($db->executeQuery($query));
             foreach($result as $row) {
                 echo "<li>" . $row["Name"] . 
-                " <a class='remove'><img src='/ProgettoTecWeb/images/icons/delete.png' alt='modify' width='15'></a>
+                "<input name='name' type='text' class='hidden' value='". $row["Name"] . "'/> <a class='remove'><img src='/ProgettoTecWeb/images/icons/delete.png' alt='modify' width='15'></a>
                 </li>";
             }
         ?>
@@ -29,7 +29,7 @@ $base->requireFromWebSitePath('header/_header.php');
     </div>
     <div>
         <button type="button" name="addCathegory" id="addCathegory">Add cathegory</button>
-        <form class="hidden" action="/ProgettoTecWeb/controller/action/insertCategory.php" method="POST">
+        <form class="hidden insert" action="/ProgettoTecWeb/controller/action/insertCategory.php" method="POST">
             <label>Name: <input type="text" name="name" /></label><br/>
             <input type="submit" name="saveCathegory" id="save" value="Save"/>
             <input type="button" name="cancel" id="cancel" value="cancel"/>

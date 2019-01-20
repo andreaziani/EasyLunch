@@ -45,6 +45,12 @@ class Controller
         $this->view->redirect("providerProductsList");
     }
 
+    public function removeCategory($id)
+    {
+        $this->productManager->removeCategory($id);
+        $this->view->redirect("categories");
+    }
+
     public function modifyProduct($name, $description, $price, $id)
     {
         $this->productManager->modifyProduct($name, $description, $price, $id);
