@@ -13,13 +13,17 @@ $base->requireFromWebSitePath('header/_header.php');
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="showreview.css">
-<section>
+<div class='container'>
+    <div class='col-12'>
+        <?php
+            echo "<h2 class='display-4'>Rates of ". $_GET["companyname"] ."</h2>";
+        ?>
         <ul id="reviews">
             <?php
                 $query = "SELECT * FROM ProvidersReviews WHERE CompanyName='" . $_GET["companyname"] . "'";
                 $result = $db->queryDataToList($db->executeQuery($query));
                 foreach($result as $row) {
-                        $html =  "<li>";
+                        $html =  "<li class='review'>";
                         for($i = 0; $i < 5; $i++){ //stars
                             if($i < $row["Rank"])
                                 $html = $html . '<span class="fa fa-star orange-star"></span>';
@@ -31,8 +35,8 @@ $base->requireFromWebSitePath('header/_header.php');
                 }
             ?>
         </ul>
-</section>
-
+    </div>
+</div>
 <?php
     $base->requireFromWebSitePath('footer/_footer.php');
 ?>

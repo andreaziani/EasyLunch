@@ -8,36 +8,38 @@ use Utils\PathManager;
     $base->requireFromWebSitePath('header/_header.php');
 ?>
 <link rel="stylesheet" href="style.css">
-<div>
-    <img src="/ProgettoTecWeb/images/icons/user.png" alt="Personal profile" width="70">
-    <fieldset id="personalinfo">
-        <legend>Personal informations</legend>
-        <!--Span will be filled with text taken from db-->
-        <form id="profileInformations" action="/ProgettoTecWeb/controller/action/modifyProfile.php" method="POST">
-            <?php 
-                echo "<label>Name: <input type='text' name='Name' id='name' value='" . $_SESSION["user"]->name .
-                "' disabled /></label>" .
-                " <a class='edit'><img src='/ProgettoTecWeb/images/icons/edit.png' alt='modify' width='15'></a><br />" .
-                " <label>Surname: <input type='text' name='Surname' id='surname' value='" .
-                $_SESSION["user"]->surname .
-                "' disabled /></label>" .
-                " <a class='edit'><img src='/ProgettoTecWeb/images/icons/edit.png' alt='modify' width='15'></a><br />" .
-                " <label>Birthdate: <input type='text' name='birthdate' id='birthdate' value='" .
-                $_SESSION["user"]->birthdate .
-                "' disabled /></label>" .
-                " <a class='edit'><img src='/ProgettoTecWeb/images/icons/edit.png' alt='modify' width='15'></a><br />" .
-                " <label>Telephone: <input type='text' name='PhoneNumber' id='phone' value='" .
-                $_SESSION["user"]->phoneNumber .
-                "' disabled /></label>" .
-                " <a class='edit'><img src='/ProgettoTecWeb/images/icons/edit.png' alt='modify' width='15'></a><br />" .
-                " <label>Email: <input type='text' name='Email' id='email' value='" .
-                $_SESSION["user"]->email .
-                "' disabled /></label>" .
-                " <a class='edit'><img src='/ProgettoTecWeb/images/icons/edit.png' alt='modify' width='15'></a><br />" .
-                " <button type='submit' id='saveChanges' class='hiddenButton'>Save changes</button>"
-            ?>
-        </form>
-    </fieldset>
+<div class='container'>
+    <div class='col-12 form'>
+            <h1 class='display-4'>Personal informations</h1>
+            
+            <div class="form-group">
+                <form id="profileInformations" action="/ProgettoTecWeb/controller/action/modifyProfile.php" method="POST">
+                    <?php 
+                        echo "<label>Name: <input class='form-control input-sm' type='text' name='Name' id='name' value='" . $_SESSION["user"]->name .
+                        "' disabled /></label>" .
+                        " <a class='edit'> <span class='glyphicon glyphicon-pencil'></span> </a><br />" .
+                        " <label>Surname: <input class='form-control input-sm' type='text' name='Surname' id='surname' value='" .
+                        $_SESSION["user"]->surname .
+                        "' disabled /></label>" .
+                        " <a class='edit'> <span class='glyphicon glyphicon-pencil'></span></a><br />" .
+                        " <label>Birthdate: <input class='form-control input-sm' type='text' name='birthdate' id='birthdate' value='" .
+                        $_SESSION["user"]->birthdate .
+                        "' disabled /></label>" .
+                        " <a class='edit'> <span class='glyphicon glyphicon-pencil'></span></a><br />" .
+                        " <label>Telephone: <input class='form-control input-sm' type='text' name='PhoneNumber' id='phone' value='" .
+                        $_SESSION["user"]->phoneNumber .
+                        "' disabled /></label>" .
+                        " <a class='edit'> <span class='glyphicon glyphicon-pencil'></span></a><br />" .
+                        " <label>Email: <input class='form-control input-sm' type='text' name='Email' id='email' value='" .
+                        $_SESSION["user"]->email .
+                        "' disabled /></label>" .
+                        " <a class='edit'> <span class='glyphicon glyphicon-pencil'></span></a><br /> " .
+                        "<div class='form-group'><button class='btn btn-primary input-sm hiddenButton' type='submit' id='saveChanges'>Save changes</button></div>"
+                    ?>
+                </form>
+            </div>
+        </fieldset>
+    </div>
 </div>
 <script src="editProfile.js"></script>
 

@@ -5,7 +5,26 @@
 .hiddenLabel, .errorMessage, .hiddenButton{
     display: none;
 }
-
+header {
+    margin-bottom: 10%;
+}
+@media screen and (max-width: 480px) {
+    header {
+      margin-bottom: 20%;
+    }
+}
 .edit{
     cursor: pointer;
 }
+
+.container{
+    margin:auto;
+}
+
+.form {
+    margin: auto;
+    background-color: #eee;
+    border-radius: 3px;
+    padding: 5%;
+}
+
