@@ -13,6 +13,7 @@ $(document).ready(function () {
     function doPoll(){
         $.get('/ProgettoTecWeb/controller/action/getNotifications.php', function(data) {
             data = JSON.parse(data);
+            //console.log(data);
             if (Array.isArray(data) && data.length) {
                 var html = "<tr><th>Time</th><th>Description</th></tr>";
                 for (var i = 0; i < data.length; i++) {
@@ -23,7 +24,7 @@ $(document).ready(function () {
                     if (data[i].typology == "ORDER_ARRIVED") {
                         html += "<td><input type='button' value='Review' onclick='tryReview("+ data[i].orderId +")'/></td>";
                     } else if (data[i].typology == "NEW_ORDER") {
-                        html += "<td><input type='button' value='SendOrder' onclick='trySend("+ data[i].orderId +")'/></td>";
+                        html += "<td><input class='sendOrder' type='button' value='SendOrder' onclick='trySend("+ data[i].orderId +")'/></td>";
                     }
                     html += "</tr>";
                 }
