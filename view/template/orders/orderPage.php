@@ -48,3 +48,5 @@ $base->requireFromWebSitePath('header/_header.php');
 <?php 
     $base->requireFromWebSitePath('footer/_footer.php');
 ?>
+
+<script src="order.js"></script>
