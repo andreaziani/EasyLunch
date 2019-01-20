@@ -36,12 +36,12 @@ $base->requireFromWebSitePath('header/_header.php');
                                 <img class='productimg' src=/ProgettoTecWeb/" . $row["Image"] . " alt='Image of the product' />
                                 <p class='description'>" . $row["Description"] . "</p>
                                 <p class='price'> Price: € <span class='value'>" . $row["Price"] . "</span> </p>
-                                <div class='input-group'>
+                                <div class='input-group buttons'>
                                     <input class='form-control quantity' type='number' name='quantity' value='0'>
                                     <div class='input-group-btn'>
                                         <button class='btn btn-default addToCart'>Add to cart</button>
                                     </div>
-                                 </div>
+                                </div>
                               </li>";
                 }
             ?>
