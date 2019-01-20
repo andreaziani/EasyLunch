@@ -131,5 +131,9 @@ class QueryManager
         }
     }
 
+    public function removeFromTable($table, $key1Name, $key1Value){
+        $query = "DELETE FROM " . $table . self::whereSQL($key1Name, $key1Value);
+        return $this->executeQuery($query);
+    }
 }
 ?>

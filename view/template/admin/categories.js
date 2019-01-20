@@ -40,12 +40,20 @@ $(document).ready(function () {
 
     function removeCathegory(e){
         e.preventDefault();
-        $(this).parent().hide();
-        //TODO: delete the product from db
+        var id = $(this).siblings("input.hidden");
+        console.log(id);
+        var li = $(this).parent();
+        if (confirm("Are you sure to delete the product?")) { //shows a dialog to alert admin.
+            // AJAX request to remove category from db.
+            $.get("/ProgettoTecWeb/controller/action/removeCategory.php?name=" + id.val(), false).done(function(){
+                alert("Product correctly deleted");
+            });
+            li.remove();
+        }
     }
     function add(e) { 
         e.preventDefault();
-        $(".hidden").fadeIn();
+        $(".insert").fadeIn();
         addCathegoryButton.hide();
     };    
     /* Save the cathegory */
