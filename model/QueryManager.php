@@ -3,6 +3,7 @@ namespace Model;
 
 class QueryManager
 {
+    public $db;
 
     public function __construct()
     {

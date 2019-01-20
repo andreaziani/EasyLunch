@@ -11,6 +11,8 @@ class OrderProvider
     }
 
     public function getOrders($user) {
+        //$this->queryManager->db = new DBManager();
+        $queryManager = new QueryManager();
         $key = "";
         if ($user->type === "CLIENT") {
             $key = "ClientId";
@@ -19,6 +21,6 @@ class OrderProvider
         } else {
             return [];
         }
-        return $this->queryManager->searchByAttribute("VisibleOrders", $key, $user->userName);
+        return $queryManager->searchByAttribute("VisibleOrders", $key, $user->userName);
     }
 }

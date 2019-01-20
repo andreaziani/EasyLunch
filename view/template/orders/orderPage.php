@@ -17,8 +17,8 @@ $base->requireFromWebSitePath('header/_header.php');
     <table>
         <tr>
             <th>Status</th>
-            <th>Total Price</th>
             <th>Details</th>
+            <th>Total Price</th>
             <th>Action</th>
         </tr>
         <?php
@@ -28,12 +28,12 @@ $base->requireFromWebSitePath('header/_header.php');
                     echo 
                         "<tr>" .
                             "<td>" . $entry["State"] ."</td>" .
-                            "<td>" . $entry["TotalPrice"] ."</td>" .
-                            "<td><pre>" . $entry["Description"] ."</pre></td>";
+                            "<td><pre>" . $entry["Description"] ."</pre></td>" .
+                            "<td>" . $entry["TotalPrice"] ."</td>";
 
-                    if ($_SESSION["user"]->type == "PROVIDER") {
+                    if ($_SESSION["user"]->type === "PROVIDER") {
                         echo "<td><input type='button' value='SendOrder' onclick='trySend(" . $entry["Id"] . ")'/></td>";
-                    } else if ($_SESSION["user"]->type == "PROVIDER" && ($entry["State"] === "ARRIVED" || $entry["State"] === "COMPLETED")) {
+                    } else if ($_SESSION["user"]->type === "CLIENT" && ($entry["State"] === "ARRIVED" || $entry["State"] === "COMPLETED")) {
                         echo "<td><input type='button' value='Review' onclick='tryReview(" . $entry["Id"] . ")'/></td>";
                     } else {
                         echo "<td></td>";
