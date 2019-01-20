@@ -6,7 +6,8 @@ use Utils\PathManager;
 
     $base = new PathManager();
     $base->requireFromWebSitePath('header/_header.php');
-?>        
+?>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">        
 <link rel="stylesheet" href="style.css"> <!--TODO header?-->
 <section>
     <h1>Review</h1>
@@ -15,24 +16,19 @@ use Utils\PathManager;
 
         <fieldset id="ratingSet">
             <legend>Please rate this order:</legend>
-            <ul class="c-rating">
-                <li class="c-rating__item rating left" data-index="0"></li>
-                <li class="c-rating__item" data-index="1"></li>
-                <li class="c-rating__item left" data-index="2"></li>
-                <li class="c-rating__item" data-index="3"></li>
-                <li class="c-rating__item left" data-index="4"></li>
-                <li class="c-rating__item" data-index="5"></li>
-                <li class="c-rating__item left" data-index="6"></li>
-                <li class="c-rating__item" data-index="7"></li>
-                <li class="c-rating__item left" data-index="8"></li>
-                <li class="c-rating__item" data-index="9"></li>
+            <ul class="c-rating">        
+                <li class="c-rating__item fa fa-star"></li>
+                <li class="c-rating__item fa fa-star"></li>
+                <li class="c-rating__item fa fa-star"></li>
+                <li class="c-rating__item fa fa-star"></li>
+                <li class="c-rating__item fa fa-star"></li>
             </ul>
             <input type="hidden" id="rank" name="rank" value=""/>
         </fieldset>
 
         <input type="submit" value="Confirm" id="confirm"/>
     </form>
-    <a href="../mainPage.php">Skip review</a>
+    <a href="../orders/orderPage.php">Skip review</a>
 </section>
 
 <?php

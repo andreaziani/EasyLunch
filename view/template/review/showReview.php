@@ -12,7 +12,7 @@ $base = new PathManager();
 $base->requireFromWebSitePath('header/_header.php');
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="showreview.css">
+<link rel="stylesheet" href="style.css">
 <section>
         <ul id="reviews">
             <?php
@@ -22,7 +22,7 @@ $base->requireFromWebSitePath('header/_header.php');
                         $html =  "<li>";
                         for($i = 0; $i < 5; $i++){ //stars
                             if($i < $row["Rank"])
-                                $html = $html . '<span class="fa fa-star orange-star"></span>';
+                                $html = $html . '<span class="fa fa-star is-active"></span>';
                             else 
                                 $html = $html . '<span class="fa fa-star"></span>';
                         }
