@@ -87,7 +87,7 @@ class UserManager
     }
 
     public function removeCart($user) {
-        $data["CurrentCartId"] = null;
+        $data["CurrentCartId"] = "NULL";
         return $this->queryManager->updateInTable("Clients", $data, "Username", $user->userName);
     }
 }

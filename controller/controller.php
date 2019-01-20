@@ -112,7 +112,7 @@ class Controller
                 $this->cartManager->startOrder($order);
                 $this->notificationManager->createNewOrderNotification($this->cartManager->getOrderData($order));
             }
-            echo $this->userManager->removeCart($_SESSION["user"]);
+            $this->userManager->removeCart($_SESSION["user"]);
             unset($_SESSION["cart"]);
         }
         $this->view->redirect("mainPage");
