@@ -3,6 +3,7 @@ namespace Model;
 
 class QueryManager
 {
+    public $db;
 
     public function __construct()
     {
@@ -12,12 +13,14 @@ class QueryManager
     public function executeQuery($query)
     {
         //TODO sql protection?
+        //echo $query;
+        //echo "<br/>";
         return $this->db->getConnection()->query($query);
     }
 
     private function surroundOneString($val)
     {
-        if (is_string($val)) {
+        if ($val != "NULL" && is_string($val)) {
             return "'" . $val . "'";
         } else {
             return $val;
@@ -39,7 +42,6 @@ class QueryManager
     {
         $query = "INSERT INTO " . $table . "(" . implode(", ", array_keys($data)) . ") VALUES (" .
         implode(", ", self::surroundStrings(array_values($data))) . ")";
-        //echo $query;
         return $this->executeQuery($query);
     }
 
@@ -70,29 +72,25 @@ class QueryManager
      */
     public function updateInTable($table, $data, $keyName, $keyValue)
     {
-        $query = self::updateSQL($table, $data) . self::whereSQL($keyName, $keyValue); 
-        //echo $query;
+        $query = self::updateSQL($table, $data) . self::whereSQL($keyName, $keyValue);
         return $this->executeQuery($query);
     }
 
     public function updateInTableDoubleKeys($table, $data, $key1Name, $key1Value, $key2Name, $key2Value) 
     {
-        $query = self::updateSQL($table, $data) . self::whereSQL($key1Name, $key1Value) . self::andSQL($key2Name, $key2Value); 
-        //echo $query;
+        $query = self::updateSQL($table, $data) . self::whereSQL($key1Name, $key1Value) . self::andSQL($key2Name, $key2Value);
         return $this->executeQuery($query);
     }
 
     public function searchByKey($table, $keyName, $keyValue)
     {
         $query = "SELECT * FROM " . $table . self::whereSQL($keyName, $keyValue);
-        //echo $query;
         return $this->queryDataToObject($this->executeQuery($query));
     }
 
     public function searchByDoubleKey($table, $key1Name, $key1Value, $key2Name, $key2Value)
     {
         $query = "SELECT * FROM " . $table . self::whereSQL($key1Name, $key1Value) . self::andSQL($key2Name, $key2Value);
-        //echo $query;
         return $this->queryDataToObject($this->executeQuery($query));
     }
 
@@ -126,6 +124,11 @@ class QueryManager
         } else {
             return null;
         }
+    }
+
+    public function removeFromTable($table, $key1Name, $key1Value){
+        $query = "DELETE FROM " . $table . self::whereSQL($key1Name, $key1Value);
+        return $this->executeQuery($query);
     }
 }
 ?>

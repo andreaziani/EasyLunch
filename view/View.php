@@ -11,7 +11,9 @@ class View
         "mainPage" => "/ProgettoTecWeb/view/template/mainPage.php",
         "providerProfile" => "/ProgettoTecWeb/view/template/profile/providerProfile.php",
         "clientProfile" => "/ProgettoTecWeb/view/template/profile/clientProfile.php",
-        "reviewPage" => "/ProgettoTecWeb/view/template/review/ReviewPage.php"
+        "reviewPage" => "/ProgettoTecWeb/view/template/review/reviewPage.php",
+        "categories" => "/ProgettoTecWeb/view/template/admin/categories.php",
+        "sendOrderPage" => "/ProgettoTecWeb/view/template/sendorder/sendOrderPage.php",
     );
     static $instance = null;
 
@@ -24,6 +26,10 @@ class View
             self::$instance = new View();
         }
         return self::$instance;
+    }
+
+    public function getHref($name) {
+        return $this->listTemplate[$name];
     }
 
     public function redirect($name){

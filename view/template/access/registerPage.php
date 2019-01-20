@@ -44,6 +44,12 @@ use Utils\PathManager;
         <input class="btn btn-primary" type="submit" value="Sign up" id="submit"/>
         <input class="btn btn-primary" type="reset" value="Reset" />
     </form>
+<?php
+    if (isset($_SESSION["error"])) {
+        echo "<p>" . $_SESSION["error"] ."</p>";
+        unset($_SESSION["error"]);
+    }
+?>
 </section>
 <script src="/ProgettoTecWeb/view/template/access/access.js"></script>
 

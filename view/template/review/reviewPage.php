@@ -10,13 +10,13 @@ use Utils\PathManager;
 <link rel="stylesheet" href="style.css"> <!--TODO header?-->
 <section>
     <h1>Review</h1>
-    <form action="submitReview.php" method="POST">
+    <form action="/ProgettoTecWeb/controller/action/submitReview.php" method="POST">
         <label>Add description (optional): <input type="text" name="description" id="description" /></label><br/>
 
         <fieldset id="ratingSet">
             <legend>Please rate this order:</legend>
             <ul class="c-rating">
-                <li class="c-rating__item rating is-active left" data-index="0"></li>
+                <li class="c-rating__item rating left" data-index="0"></li>
                 <li class="c-rating__item" data-index="1"></li>
                 <li class="c-rating__item left" data-index="2"></li>
                 <li class="c-rating__item" data-index="3"></li>
@@ -27,7 +27,7 @@ use Utils\PathManager;
                 <li class="c-rating__item left" data-index="8"></li>
                 <li class="c-rating__item" data-index="9"></li>
             </ul>
-            <input type="hidden" id="rank" name="rank" />
+            <input type="hidden" id="rank" name="rank" value=""/>
         </fieldset>
 
         <input type="submit" value="Confirm" id="confirm"/>

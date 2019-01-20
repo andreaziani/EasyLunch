@@ -12,5 +12,7 @@
         $result = Controller::getInstance()->searchProvider($key);
         $json = json_encode($result);
         echo $json;
-    }    
+    } else {
+        Controller::getInstance()->actionError();
+    }
 ?>

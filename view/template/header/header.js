@@ -3,13 +3,13 @@ $(document).ready(function () {
     var fullBell = "/ProgettoTecWeb/images/icons/bell2.png";
     $("#bell").attr("src", emptyBell);
     function doPoll(){
-        $.get('/ProgettoTecWeb/controller/action/getNotifications.php', function(data) {
-            if (data) {
-                $("#bell").attr("src", fullBell);
-                $("#bell").attr("alt", "full alarm bell");
-            } else {
+        $.get('/ProgettoTecWeb/controller/action/newNotifications.php', function(isEmpty) {
+            if (isEmpty) {
                 $("#bell").attr("src", emptyBell);
                 $("#bell").attr("alt", "empty alarm bell");
+            } else {
+                $("#bell").attr("src", fullBell);
+                $("#bell").attr("alt", "full alarm bell");
             }
             setTimeout(doPoll, 1000);
         });

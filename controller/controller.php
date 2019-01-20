@@ -5,6 +5,7 @@ use Model\ProductManager;
 use Model\UserManager;
 use Model\CartManager;
 use Model\NotificationManager;
+use Model\OrderProvider;
 use View\View;
 
 class Controller
@@ -44,6 +45,12 @@ class Controller
         $this->view->redirect("providerProductsList");
     }
 
+    public function removeCategory($id)
+    {
+        $this->productManager->removeCategory($id);
+        $this->view->redirect("categories");
+    }
+
     public function modifyProduct($name, $description, $price, $id)
     {
         $this->productManager->modifyProduct($name, $description, $price, $id);
@@ -59,6 +66,8 @@ class Controller
             }
             $this->view->redirect("mainPage");
         } else {
+            $this->startSession();
+            $_SESSION["error"] = "Username or password not correct";
             $this->view->redirect("loginPage");
         }
     }
@@ -69,6 +78,7 @@ class Controller
             $_SESSION["user"] = $this->userManager->getUser($username);
             $this->view->redirect("mainPage");
         } else {
+            $_SESSION["error"] = "Registration failed";
             $this->view->redirect("registerPage");
         }
         
@@ -106,9 +116,9 @@ class Controller
         if ($this->cartManager->checkout($_SESSION["cart"], $nominative, $spot, $dateTime)) {
             foreach ($this->cartManager->getOrders($_SESSION["cart"]) as $order) {
                 $this->cartManager->startOrder($order);
-                $this->userManager->removeCart($_SESSION["user"]);
                 $this->notificationManager->createNewOrderNotification($this->cartManager->getOrderData($order));
             }
+            $this->userManager->removeCart($_SESSION["user"]);
             unset($_SESSION["cart"]);
         }
         $this->view->redirect("mainPage");
@@ -116,7 +126,7 @@ class Controller
 
     public function addProductToCart($data){
         self::startSession();
-        if(!isset($_SESSION["cart"])){
+        if(!isset($_SESSION["cart"]) || $_SESSION["cart"] == ''){
             $_SESSION["cart"] = $this->cartManager->createCart($_SESSION["user"]);
         }
         return $this->cartManager->addProductToCart($_SESSION["cart"], new \Model\Data\CartEntry($data));
@@ -128,28 +138,60 @@ class Controller
     }
 
     public function tryReview($orderId) {
-        if ($this->userManager()->canReview($_SESSION["user"], $orderId)) {
+        if ($this->userManager->canReview($_SESSION["user"], $orderId)) {
             $_SESSION["order"] = $orderId;
-            $this->view->redirect("reviewPage");
-        } else {
-            $this->view->redirect("mainPage");
+            echo $this->view->getHref("reviewPage");
         }
+    }
+    
+    public function trySend($orderId) {
+        if ($this->userManager->canSend($_SESSION["user"], $orderId)) {
+            $_SESSION["order"] = $orderId;
+            echo $this->view->getHref("sendOrderPage");
+        }
+    }
+    
+    public function setRead() {
+        $this->notificationManager->setAllRead($_SESSION["user"]);
+        echo $this->view->getHref("mainPage");
     }
 
     public function submitReview($description, $rank) {
-        if ($this->userManager()->canReview($_SESSION["user"], $_SESSION["order"])) { //TODO check if if is useful
-            $this->userManager()->submitReview($_SESSION["order"], $description, $rank);
+        if ($this->userManager->canReview($_SESSION["user"], $_SESSION["order"])) {
+            $this->userManager->submitReview($_SESSION["order"], $description, $rank);
+            $this->notificationManager->setRead($_SESSION["order"]);
             unset($_SESSION["order"]);
         }
         $this->view->redirect("mainPage");
     }
 
+    public function insertCategory($name){
+        $this->productManager->insertCategory($name);
+        $this->view->redirect("categories");
+    }
+    
+    public function sendOrder($orderId, $minutes) {
+        $order = $this->cartManager->getOrder($orderId);
+        $orderData = $this->cartManager->getOrderData($order);
+        $this->notificationManager->createOrderComingNotification($orderData, $minutes);
+        $this->notificationManager->createOrderArrivedNotification($orderData, $minutes);
+        $this->cartManager->setOrderArrived($order);
+        $this->view->redirect("mainPage");
+    }
+
+    /**
+     * Method to redirect the page when the action inputs are wrong.
+     */
+    public function actionError() {
+        $this->view->redirect("index");
+    }
     /**
      * Utility method for check if a session is already started.
      */
     private function startSession(){
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
+            $_SESSION["orderProvider"] = new OrderProvider();
         }
     }
 }

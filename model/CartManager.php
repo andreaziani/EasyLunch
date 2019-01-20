@@ -15,8 +15,12 @@ class CartManager
         return new Cart($this->queryManager->searchByKey("Carts", "Id", $id), $this->queryManager->searchByAttribute("CartData", "CartId", intval($id)));
     }
 
+    public function getOrder($orderId) {
+        return $this->queryManager->searchByKey("Orders", "Id", $orderId);
+    }
+
     public function findOrCreateOrder($cart, $providerId) {
-        $order = $this->queryManager->searchByDoubleKey("Orders", "Id", intval($cart->id), "ProviderId", $providerId);
+        $order = $this->queryManager->searchByDoubleKey("Orders", "CartId", intval($cart->id), "ProviderId", $providerId);
         if ($order == null) {
             $order = array();
             $order["CartId"] = intval($cart->id);
@@ -51,7 +55,7 @@ class CartManager
     }
 
     public function addProductToCart($cart, $entry) {
-        $cart->addEntry($entry);
+        $result = false;
         $providerId = $this->queryManager->searchByKey("Products", "Id", intval($entry->productId))["ProviderId"];
         $order = $this->findOrCreateOrder($cart, $providerId);
         $entryData["ProductId"] = intval($entry->productId);
@@ -59,9 +63,11 @@ class CartManager
         $entryData["Price"] = floatval($entry->price);
         $entryData["OrderId"] = intval($order["Id"]);
         if (isset($cart->entries[$entry->productId])) {
-            return $this->updateProductInCart($cart, $entry->productId, $entry->quantity);
+            $result = $this->updateProductInCart($cart, $entry->productId, $entry->quantity);
         }
-        return $this->queryManager->insertInTable("OrderEntries", $entryData);
+        $cart->addEntry($entry);
+        $result = $this->queryManager->insertInTable("OrderEntries", $entryData);
+        return $result;
     }
 
     public function checkout($cart, $nominative, $spot, $dateTime) {
@@ -81,13 +87,20 @@ class CartManager
         return $this->queryManager->updateInTable("Orders", $data, "Id", $order["Id"]);
     }
 
+    public function setOrderArrived($order) {
+        $data["State"] = "ARRIVED";
+        return $this->queryManager->updateInTable("Orders", $data, "Id", $order["Id"]);
+    }
+
     public function getOrderData($order) {
+        $clientId = $this->queryManager->searchByKey("Carts", "Id", $order["CartId"])["ClientId"];
         $purchase = $this->queryManager->searchByKey("Purchases", "CartId", $order["CartId"]);
         $data = $this->queryManager->searchByAttribute("OrderData", "OrderId", $order["Id"]);
         $orderData["Nominative"] = $purchase["Nominative"];
         $orderData["DeliverySpot"] = $purchase["DeliverySpot"];
         $orderData["DeliveryTime"] = $purchase["DeliveryTime"];
         $orderData["Id"] = $order["Id"];
+        $orderData["ClientId"] = $clientId;
         $orderData["ProviderId"] = $data[0]["ProviderId"];
         $orderData["Products"] = array();
         foreach ($data as $p) {
@@ -96,7 +109,7 @@ class CartManager
             $pData["Quantity"] = $p["Quantity"];
             array_push($orderData["Products"], $pData);
         }
-        return $orderData; //TODO objec oriented maybe?
+        return $orderData;
     }
 }
 ?>

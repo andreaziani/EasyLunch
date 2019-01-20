@@ -8,34 +8,37 @@ use Utils\PathManager;
     $base->requireFromWebSitePath('header/_header.php');
 ?>
 <section>
-    <h1>Cart Summary</h1>
-    <table>
-        <tr>
-            <th>Product</th>
-            <th>Provider</th>
-            <th>Price</th>
-            <th>Quantity</th>
-        </tr>
-        <?php
+<?php
+        if (isset($_SESSION["cart"])) {
+            $html = 
+                "<h1>Cart Summary</h1>" .
+                "<table>" .
+                    "<tr>" .
+                        "<th>Product</th>" .
+                        "<th>Price</th>" .
+                        "<th>Quantity</th>" .
+                    "</tr>";
+            //<input type="button" value="Cancel" id="cancel"/>;
             //session_start();
             $cart = $_SESSION["cart"];
-            if ($cart != null) {
-                foreach ($cart->entries as $entry) {
-                    echo 
-                        "<tr>" .
-                            "<td>" . $entry->productName ."</td>" .
-                            //"<td>" . $entry->provider ."</td>" .
-                            "<td>" . $entry->price ."</td>" .
-                            "<td>" . $entry->quantity ."</td>" .
-                        "</tr>";
-                }
+            //var_dump($cart);
+            foreach ($cart->entries as $entry) {
+                $html = $html . 
+                    "<tr>" .
+                        "<td>" . $entry->productName ."</td>" .
+                        "<td>" . $entry->price ."</td>" .
+                        "<td>" . $entry->quantity ."</td>" .
+                    "</tr>";
             }
-        ?>
-    </table>
-    <!--<input type="submit" value="Submit" id="submit"/>-->
-    <a href="/ProgettoTecWeb/view/template/cart/checkoutOrderPage.php">Checkout</a>
-    <a href="/ProgettoTecWeb/view/template/clientproductlist/clientproductlist.php">Back</a>
-    <input type="button" value="Cancel" id="cancel"/>
+            $html = $html .
+                "</table>" .
+                "<a href='/ProgettoTecWeb/view/template/cart/checkoutOrderPage.php'>Checkout</a>";
+            echo $html;
+        } else {
+            echo "<h1>Your cart is empty</h1>";
+        }
+?>
+    <a href='/ProgettoTecWeb/view/template/clientproviderslist/clientproviderslist.php'>Back</a>
 </section>
 
 <?php

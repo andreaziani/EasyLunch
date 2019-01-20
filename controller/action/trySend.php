@@ -10,8 +10,8 @@ use Controller\Controller;
 use Controller\InputValidator;
 
 session_start();
-if (isset($_SESSION["user"]) and $_SESSION["user"]->type == "CLIENT" and isset($_GET['orderId'])) {
-    Controller::getInstance()->tryReview(InputValidator::validate($_GET['orderId']));
+if (isset($_SESSION["user"]) and $_SESSION["user"]->type == "PROVIDER" and isset($_GET['orderId'])) {
+    Controller::getInstance()->trySend(InputValidator::validate($_GET['orderId']));
 } else {
     Controller::getInstance()->actionError();
 }

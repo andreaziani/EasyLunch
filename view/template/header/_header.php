@@ -32,6 +32,8 @@ use Utils\PathManager;
     } else if ($_SESSION["user"]->type == "PROVIDER") {
 
         $base->requireFromWebSitePath('header/_providerheader.php');
+    } else if ($_SESSION["user"]->type == "ADMIN") {
+        $base->requireFromWebSitePath('header/_adminheader.php');
     }
 ?>
             </div>

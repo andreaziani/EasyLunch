@@ -12,7 +12,9 @@ use Controller\InputValidator;
 session_start();
 
 if (isset($_SESSION["user"])) {
-    echo empty(Controller::getInstance()->getNotifications()); //TODO test it
+    echo json_encode(Controller::getInstance()->getNotifications());
+} else {
+    echo "[]";
 }
 
 ?>
