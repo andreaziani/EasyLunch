@@ -1,7 +1,7 @@
 /* @flow */
 $(document).ready(function() {
 
-    var invalidStrings = ['select', 'alter', 'update', 'delete'];
+    var invalidStrings = ['select', 'alter', 'update', 'delete', 'drop', 'insert'];
 
     function isValid(value, element, doCheck) {
         var good = true;

@@ -76,9 +76,10 @@ class Controller
         if ($this->userManager->canRegister($userData) and $this->userManager->register($userData)) {
             $this->startSession();
             $_SESSION["user"] = $this->userManager->getUser($username);
-            $this->view->redirect("mainPage");
+            $this->view->redirect("loginPage");
         } else {
-            $_SESSION["error"] = "Registration failed";
+            $this->startSession();
+            $_SESSION["error"] = "This username is already used";
             $this->view->redirect("registerPage");
         }
         

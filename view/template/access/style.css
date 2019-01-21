@@ -1,6 +1,11 @@
 header {
     margin-bottom: 12%;
 }
+@media screen and (max-width: 480px) {
+    header {
+      margin-bottom: 20%;
+    }
+}
 
 .login, .registration {
     display: block;
@@ -33,4 +38,9 @@ footer {
 
 .error{
     color:red;
+}
+
+.alert {
+    margin-bottom: 3%;
+    text-align: center;
 }

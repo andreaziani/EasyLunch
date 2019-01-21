@@ -9,6 +9,12 @@ use Utils\PathManager;
 ?>
 <link rel="stylesheet" href="/ProgettoTecWeb/view/template/access/style.css">
 <br/>
+<?php
+    if (isset($_SESSION["error"])) {
+        echo "<div class='alert alert-danger'>". $_SESSION["error"] ."</div> <br/>";
+        unset($_SESSION["error"]);
+    }
+?>
 <div class="container login-container login" id="access">
     <h1>Log in</h1>
     <form id="loginform" action="/ProgettoTecWeb/controller/action/login.php" method="POST">
@@ -21,12 +27,6 @@ use Utils\PathManager;
         <div>
     </form>
 </div>
-<?php
-    if (isset($_SESSION["error"])) {
-        echo "<p>" . $_SESSION["error"] ."</p>";
-        unset($_SESSION["error"]);
-    }
-?>
 </section>
 
 <?php
