@@ -56,7 +56,7 @@ $(document).ready(function(){
                 },
                 image: {
                     required: true,
-                    extension: "png,jpeg,gif"
+                    extension: "png,jpeg,gif,jpg"
                 }, 
                 category: {
                     required: true

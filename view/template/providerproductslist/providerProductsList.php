@@ -21,7 +21,7 @@
                         foreach($result as $row) {
                                 echo "<li>" . 
                                         "<form action='/ProgettoTecWeb/controller/action/modifyProduct.php' method='GET'> " . 
-                                            "<input type='number' value='". $row['Id'] . "' name='id' class='hidden', 'id' /><img src='../../../" . $row["Image"] . "' alt='Product' width=100/><br/>
+                                            "<input type='number' value='". $row['Id'] . "' name='id' class='hidden', 'id' /><img src='/ProgettoTecWeb/" . $row["Image"] . "' alt='Product' width=100/><br/>
                                             <label>Name: <input class='name' type='text' name='name' value='". $row["Name"] . "' disabled/></label><br/>
                                             <label for='description'>Description:</label><br/>
                                             <textarea name='description' class='description' cols='30' rows='5' disabled>" . $row["Description"] . "</textarea><br/>

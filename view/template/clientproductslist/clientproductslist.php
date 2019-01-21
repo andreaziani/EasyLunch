@@ -22,7 +22,7 @@ $base->requireFromWebSitePath('header/_header.php');
         <!--TODO: CSS For images-->
     <ul id="productslist">
             <?php
-                $query = "SELECT * FROM Products WHERE ProviderId='". $_POST["username"] ."' ORDER BY Name";
+                $query = "SELECT * FROM Products WHERE ProviderId='". $_POST["username"] ."' AND IsActive=true ORDER BY Name";
                 $result = $db->queryDataToList($db->executeQuery($query));
                 foreach($result as $row) {
                         echo "<li> 

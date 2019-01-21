@@ -7,7 +7,7 @@ function tryOrderAction(orderId, action) {
             window.location.href = xmlHttp.responseText;
         }
     }; 
-    xmlHttp.open("GET", "../../../controller/action/" + action + ".php?orderId=" + orderId);
+    xmlHttp.open("GET", "/ProgettoTecWeb/controller/action/" + action + ".php?orderId=" + orderId);
     xmlHttp.send(null);
     return xmlHttp.responseText;
 }
