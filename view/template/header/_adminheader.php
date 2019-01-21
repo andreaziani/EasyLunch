@@ -9,7 +9,6 @@
 <script src="/ProgettoTecWeb/view/template/header/header.js"></script>
 <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="/ProgettoTecWeb/view/template/clientproviderslist/clientproviderslist.php">Shop</a></li>
             <li><a href="/ProgettoTecWeb/view/template/admin/categories.php">Categories</a></li>
             <li><a href="/ProgettoTecWeb/controller/action/logout.php">Logout</a></li>
         </ul>

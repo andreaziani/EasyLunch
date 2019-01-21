@@ -10,10 +10,9 @@ use Utils\PathManager;
 <link rel="stylesheet" href="style.css">
 <div class='container'>
     <div class='col-12 form'>
-            <h1 class='display-4'>Personal informations</h1>
-            
-            <div class="form-group">
-                <form id="profileInformations" action="/ProgettoTecWeb/controller/action/modifyProfile.php" method="POST">
+        <h1 class='display-4'>Personal informations</h1>
+        <div class="form-group">
+            <form id="profileInformations" action="/ProgettoTecWeb/controller/action/modifyProfile.php" method="POST">
                     <?php 
                         echo "<label>Name: <input class='form-control input-sm' type='text' name='Name' id='name' value='" . $_SESSION["user"]->name .
                         "' disabled /></label>" .
@@ -36,8 +35,8 @@ use Utils\PathManager;
                         " <a class='edit'> <span class='glyphicon glyphicon-pencil'></span></a><br /> " .
                         "<div class='form-group'><button class='btn btn-primary input-sm hiddenButton' type='submit' id='saveChanges'>Save changes</button></div>"
                     ?>
-                </form>
-            </div>
+            </form>
+        </div>
     </div>
 </div>
 <script src="editProfile.js"></script>

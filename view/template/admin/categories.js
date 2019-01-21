@@ -53,9 +53,10 @@ $(document).ready(function () {
     }
     function add(e) { 
         e.preventDefault();
-        $(".insert").fadeIn();
-        addCathegoryButton.hide();
+        $(".insert").removeClass("hidden");
+        addCathegoryButton.addClass("hidden");
     };    
+
     /* Save the cathegory */
     function saveCathegory(){
         validation();

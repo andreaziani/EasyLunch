@@ -1,4 +1,12 @@
-.hidden, .saveModify{
+header {
+    margin-bottom: 12%;
+}
+@media screen and (max-width: 480px) {
+    header {
+      margin-bottom: 20%;
+    }
+}
+hidden, .saveModify{
     display: none;
 }
 
@@ -8,4 +16,23 @@
 
 .error:not(input){
     color:red;
+}
+
+.container{
+    margin:auto;
+}
+
+.form {
+    background-color: #eee;
+    border-radius: 3px;
+    padding: 5%;
+    margin: auto;
+}
+
+#addnew{
+    text-align: center;
+} 
+
+.category {
+    width: 30%;
 }
