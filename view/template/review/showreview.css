@@ -1,0 +1,40 @@
+header {
+    margin-bottom: 10%;
+}
+@media screen and (max-width: 480px) {
+    header {
+      margin-bottom: 20%;
+    }
+}
+
+.fa-star {
+    color:gray;
+}
+
+.orange-star {
+    color:orange;
+}
+
+#reviews {
+    margin:auto;
+    list-style-type: none;
+}
+
+.col-12{
+    margin:auto;
+    background-color: #eee;
+    border-radius: 5px;
+    padding: 3%;
+}
+
+h2{
+    color: #281919;
+    text-align: center;
+}
+
+.review {
+    color: #281919;
+    text-align: left;
+    margin: auto;
+    margin-bottom: 3%;
+}

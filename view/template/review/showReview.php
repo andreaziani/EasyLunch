@@ -19,7 +19,7 @@ $base->requireFromWebSitePath('header/_header.php');
                 $query = "SELECT * FROM ProvidersReviews WHERE CompanyName='" . $_GET["companyname"] . "'";
                 $result = $db->queryDataToList($db->executeQuery($query));
                 foreach($result as $row) {
-                        $html =  "<li>";
+                        $html =  "<li class='review'>";
                         for($i = 0; $i < 5; $i++){ //stars
                             if($i < $row["Rank"])
                                 $html = $html . '<span class="fa fa-star is-active"></span>';
@@ -31,8 +31,8 @@ $base->requireFromWebSitePath('header/_header.php');
                 }
             ?>
         </ul>
-</section>
-
+    </div>
+</div>
 <?php
     $base->requireFromWebSitePath('footer/_footer.php');
 ?>

@@ -23,7 +23,7 @@ $(document).ready(function() {
           for (var i = 0; i < obj.length; i++) {
             html =
               html +
-              "<li> " +
+              "<li class='provider'> " +
               "<form action='/ProgettoTecWeb/view/template/clientproductslist/clientproductslist.php' method='POST'>" +
               "<h2 class='companyname'>" +
               obj[i].CompanyName +
@@ -72,7 +72,7 @@ $(document).ready(function() {
       .parent("form")
       .submit();
   });
-  $("#providerlist").on("click", ".fa-star", function(e) {
+  $("#providerlist").on("click", ".fa-star, .review", function(e) {
     window.location = "/ProgettoTecWeb/view/template/review/showReview.php?companyname=" + $(this).siblings(".companyname").html();
   });
   $("#searchBar").keypress(searchWithKeyPress);

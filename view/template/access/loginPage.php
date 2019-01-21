@@ -7,14 +7,20 @@ use Utils\PathManager;
     $base = new PathManager();
     $base->requireFromWebSitePath('header/_header.php');
 ?>
-
-<section id="access">
-    <h1>Sign in!</h1>
+<link rel="stylesheet" href="/ProgettoTecWeb/view/template/access/style.css">
+<br/>
+<div class="container login-container login" id="access">
+    <h1>Log in</h1>
     <form id="loginform" action="/ProgettoTecWeb/controller/action/login.php" method="POST">
-        <label>Username: <input type="text" name="username" /></label><br/>
-        <label>Password: <input type="password" name="password" /></label><br/>
-        <input type="submit" value="Sign in" id="submit"/>
+        <div class="form-group user-psw">
+            <label>Username: <input class="form-control input-sm" type="text" name="username" /></label><br/>
+            <label>Password: <input class="form-control input-sm" type="password" name="password" /></label><br/>
+        <div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary input-sm" value="Log in" id="submit"/>
+        <div>
     </form>
+</div>
 <?php
     if (isset($_SESSION["error"])) {
         echo "<p>" . $_SESSION["error"] ."</p>";

@@ -2,7 +2,6 @@
     display: none;
 }
 
-
 .fa-star {
     color:gray;
 }
@@ -14,6 +13,35 @@
 .companyname:hover{
     cursor: pointer;
 }
-.companyname {
+.companyname:hover {
     text-decoration: underline;
+}
+
+.hidden {
+    display: none;
+}
+
+header {
+    margin-bottom: 10%;
+}
+
+@media screen and (max-width: 480px) {
+    header {
+      margin-bottom: 20%;
+    }
+}
+
+#providerlist {
+    margin:auto;
+    list-style-type: none;
+}
+
+.provider {
+    margin:auto;
+    border-bottom: 1px solid #281919;
+    width: 80%;
+}
+
+.research {
+    margin: auto;
 }

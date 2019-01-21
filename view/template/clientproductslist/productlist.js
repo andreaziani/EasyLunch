@@ -21,16 +21,16 @@ $(function() {
           for (var i = 0; i < obj.length; i++) {
             html =
               html +
-              "<li> <input class='hidden id' name='id' type='number' value='" +
+              "<li class='product'> <input class='hidden id' name='id' type='number' value='" +
               obj[i].Id +
-              "'/> <img src=/ProgettoTecWeb/" +
-              obj[i].Image +
-              " alt='Image of the product' width=70 /><h2 class='name'>" +
+              "' /><h2 class='name'>" +
               obj[i].Name +
-              "</h2><p class='description'>" +
+              "</h2> <img class='productimg' src=/ProgettoTecWeb/" +
+              obj[i].Image +
+              " alt='Image of the product' /><p class='description'>" +
               obj[i].Description +
-              "<p class='price'> Prezzo: <span class='value'>" + obj[i].Price + "</span> euro</p> " +
-              "<input type='number' class='quantity' name='quantity' value='0'><button class='addToCart'>Add to cart</button> </li> ";
+              "<p class='price'> Price: <span class='value'>" + obj[i].Price + "</span> euro</p> " +
+              "<div class='input-group'><input type='number' class='form-control quantity' name='quantity' value='0'><div class='input-group-btn'><button class='btn btn-default addToCart'>Add to cart</button> </div></div></li> ";
           }
           $("#productslist").html(html);
         }
@@ -47,11 +47,11 @@ $(function() {
   }
 
   function addToCart(){
-    var id = $(this).siblings(".id").val();
-    var name = $(this).siblings(".name").html();
-    var price = $(this).siblings(".price").children(".value").html();
+    var id = $(this).parent().parent().siblings(".id").val();
+    var name = $(this).parent().parent().siblings(".name").html();
+    var price = $(this).parent().parent().siblings(".price").children(".value").html();
     console.log(id + " "+ price + " " + name);
-    var quantity = $(this).siblings(".quantity").val();
+    var quantity = $(this).parent().siblings(".quantity").val();
     if(quantity > 0){
       $.get("/ProgettoTecWeb/controller/action/addProductToCart.php", {id: id, quantity: quantity, name: name, price: price}, function(data) {
         alert(data);

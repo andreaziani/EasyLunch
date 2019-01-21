@@ -1,0 +1,53 @@
+.nav {
+    background-color: transparent;
+}
+
+.jumbotron, .jumbotron:not(.index-text){
+    overflow: hidden;
+    background-image: url("../images/backgrounds/cuisine.jpg") ;
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: cover;
+    background-size: cover;
+    padding: 20%;
+    margin: 0%;
+}
+
+.index-text {
+    color: white;
+    font-weight: bold;
+    text-shadow: 0 0 10% black;
+}
+
+
+.howtoprovider{
+    padding: 10%;
+    color: white;
+    background-color: #281919;
+    text-align: justify;
+    text-justify: inter-word;
+    margin-bottom: 0;
+}
+
+.howtoclient {
+    padding: 10%;
+    text-align: justify;
+    text-justify: inter-word;    
+}
+
+.aboutus{
+    padding: 10%;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+h1:not(footer > *) {
+    font-size: 500%;
+}
+
+h2:not(footer > *){
+    font-size: 400%;
+}
+p:not(footer > *){
+    font-size: 200%;
+}
