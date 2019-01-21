@@ -2,7 +2,7 @@ $(document).ready(function () {
     var addCathegoryButton = $("#addCathegory");
     var cancelButton = $("#cancel");
     var saveButton = $("#save");
-    var removeButton = $(".remove");
+    var removeButton = $(".glyphicon-remove");
     var invalidStrings = ['select', 'alter', 'update', 'delete'];
    
     /* Validation starts here */
@@ -38,19 +38,6 @@ $(document).ready(function () {
         addCathegoryButton.show();
     }
 
-    function removeCathegory(e){
-        e.preventDefault();
-        var id = $(this).siblings("input.hidden");
-        console.log(id);
-        var li = $(this).parent();
-        if (confirm("Are you sure to delete the product?")) { //shows a dialog to alert admin.
-            // AJAX request to remove category from db.
-            $.get("/ProgettoTecWeb/controller/action/removeCategory.php?name=" + id.val(), false).done(function(){
-                alert("Product correctly deleted");
-            });
-            li.remove();
-        }
-    }
     function add(e) { 
         e.preventDefault();
         $(".insert").removeClass("hidden");
@@ -67,5 +54,13 @@ $(document).ready(function () {
     addCathegoryButton.click(add);
     cancelButton.click(cancel);
     saveButton.click(saveCathegory);
-    removeButton.click(removeCathegory);
+    removeButton.click(function(){
+        $(this).parent().parent().submit();
+    });
+
+    $("body").on('click', ".container", function(){
+        setTimeout(function(){
+          $(".alert-danger").fadeOut();
+        }, 1000);
+      })
 });

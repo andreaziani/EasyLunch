@@ -74,6 +74,6 @@ class ProductManager
     }
 
     public function removeCategory($id){
-        $this->queryManager->removeFromTable("Categories", "Name", $id);
+        return $this->queryManager->removeFromTable("Categories", "Name", $id);
     }
 }

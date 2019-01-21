@@ -34,5 +34,14 @@ hidden, .saveModify{
 } 
 
 .category {
-    width: 30%;
+    display: inline;
 }
+
+.glyphicon-remove{
+    color:red;
+}
+.glyphicon-remove:hover {
+    cursor: pointer;
+}
+
+

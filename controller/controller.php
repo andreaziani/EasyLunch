@@ -47,8 +47,13 @@ class Controller
 
     public function removeCategory($id)
     {
-        $this->productManager->removeCategory($id);
-        $this->view->redirect("categories");
+        if($this->productManager->removeCategory($id)){
+            $this->view->redirect("categories");
+        } else {
+            $this->startSession();
+            $_SESSION["error"] = "Category can't be removed";
+            $this->view->redirect("categories");
+        }
     }
 
     public function modifyProduct($name, $description, $price, $id)
@@ -179,8 +184,13 @@ class Controller
     }
 
     public function insertCategory($name){
-        $this->productManager->insertCategory($name);
-        $this->view->redirect("categories");
+        if($this->productManager->insertCategory($name)){
+            $this->view->redirect("categories");
+        } else {
+            $this->startSession();
+            $_SESSION["error"] = "Category already present";
+            $this->view->redirect("categories");
+        }
     }
     
     public function sendOrder($orderId, $minutes) {

@@ -12,6 +12,14 @@ $base = new PathManager();
 $base->requireFromWebSitePath('header/_header.php');
 
 ?>
+
+<?php
+    if (isset($_SESSION["error"])) {
+        echo "<div class='alert alert-danger'>". $_SESSION["error"] ."</div> <br/>";
+        unset($_SESSION["error"]);
+    }
+?>
+
 <link rel="stylesheet" href="/ProgettoTecWeb/view/template/admin/style.css">
 <div class='container'>
     <div class='col-12 form'>
@@ -21,8 +29,8 @@ $base->requireFromWebSitePath('header/_header.php');
             $query = "SELECT Name FROM Categories";
             $result = $db->queryDataToList($db->executeQuery($query));
             foreach($result as $row) {
-                echo "<li class='category'>" . $row["Name"] . 
-                "<input name='name' type='text' class='hidden' value='". $row["Name"] . "'/> <a class='remove'><img src='/ProgettoTecWeb/images/icons/delete.png' alt='modify' width='15'></a>
+                echo "<li >" . $row["Name"] . 
+                "<form class='category' action='/ProgettoTecWeb/controller/action/removeCategory.php' method='GET'><input name='name' type='text' class='hidden' value='". $row["Name"] . "'/><a><span class='glyphicon glyphicon-remove'</span></a></form>
                 </li>";
             }
         ?>
