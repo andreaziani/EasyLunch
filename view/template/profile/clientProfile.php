@@ -38,7 +38,6 @@ use Utils\PathManager;
                     ?>
                 </form>
             </div>
-        </fieldset>
     </div>
 </div>
 <script src="editProfile.js"></script>

@@ -13,7 +13,7 @@ use Utils\PathManager;
     <link rel="stylesheet" href="/ProgettoTecWeb/view/indexStylesheet.css">
     <div class='jumbotron jumbotron-fluid text-center'>
         <div class="container index-text">
-            <h1>The beauty is in taste.</h1>
+            <h1> The beauty is in taste </h1>
             <p> Choose your lunch among thousands of restaurants!</p>
         </div>
     </div>
