@@ -2,18 +2,19 @@
 $(document).ready(function(){
     //variables
     var addProductButton = $("#addProduct");
-    var hiddenForm = $("form.hidden");
+    var hiddenForm = $("ul.hidden");
     var invalidStrings = ['select', 'alter', 'update', 'delete'];
 
     /* shows the form to adding a new product */
     function addProduct(){
         addProductButton.hide();
-        hiddenForm.fadeIn();
+        //console.log(hiddenForm);
+        hiddenForm.removeClass("hidden");
     }
     
     /* Hide the form for adding new product */
     function cancel(){
-        hiddenForm.hide();
+        hiddenForm.addClass("hidden");
         $(".error:not(input, textarea)").hide();
         addProductButton.show();
     }
@@ -67,7 +68,7 @@ $(document).ready(function(){
     
     /* Save the product */
     function saveProduct(){
-        validation(".hidden");
+        validation(".newP");
     }
     
     /* Modify product */

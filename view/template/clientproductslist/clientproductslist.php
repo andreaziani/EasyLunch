@@ -24,31 +24,29 @@ $base->requireFromWebSitePath('header/_header.php');
 
 <div>
     <div>
-        <!--TODO: CSS For images-->
-    <ul id="productslist">
-            <?php
-                $query = "SELECT * FROM Products WHERE ProviderId='". $_POST["username"] ."' AND IsActive=true ORDER BY Name";
-                $result = $db->queryDataToList($db->executeQuery($query));
-                foreach($result as $row) {
-                        echo "<li class='product'> 
-                                <input class='hidden id' name='id' type='number' value='" . $row["Id"] . "'/> 
-                                <h4 class='name'>" . $row["Name"] . "</h4>
-                                <img class='productimg' src=/ProgettoTecWeb/" . $row["Image"] . " alt='Image of the product' />
-                                <p class='description'>" . $row["Description"] . "</p>
-                                <p class='price'> Price: € <span class='value'>" . $row["Price"] . "</span> </p>
-                                <div class='input-group buttons'>
-                                    <input class='form-control quantity' type='number' name='quantity' value='0'>
-                                    <div class='input-group-btn'>
-                                        <button class='btn btn-default addToCart'>Add to cart</button>
+        <ul id="productslist">
+                <?php
+                    $query = "SELECT * FROM Products WHERE ProviderId='". $_POST["username"] ."' AND IsActive=true ORDER BY Name";
+                    $result = $db->queryDataToList($db->executeQuery($query));
+                    foreach($result as $row) {
+                            echo "<li class='product'> 
+                                    <input class='hidden id' name='id' type='number' value='" . $row["Id"] . "'/> 
+                                    <h4 class='name'>" . $row["Name"] . "</h4>
+                                    <img class='productimg' src=/ProgettoTecWeb/" . $row["Image"] . " alt='Image of the product' />
+                                    <p class='description'>" . $row["Description"] . "</p>
+                                    <p class='price'> Price: € <span class='value'>" . $row["Price"] . "</span> </p>
+                                    <div class='input-group buttons'>
+                                        <input class='form-control quantity' type='number' name='quantity' value='0'>
+                                        <div class='input-group-btn'>
+                                            <button class='btn btn-default addToCart'>Add to cart</button>
+                                        </div>
                                     </div>
-                                </div>
-                              </li>";
-                }
-            ?>
-                    </li>
-                </ul>
-            </div>
-</section>
+                                </li>";
+                    }
+                ?>
+        </ul>
+    </div>
+</div>
 <script src="/ProgettoTecWeb/view/template/clientproductslist/productlist.js"></script>
 <?php
     $base->requireFromWebSitePath('footer/_footer.php');

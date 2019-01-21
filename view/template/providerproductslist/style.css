@@ -1,6 +1,41 @@
-.error:not(input, textarea){
+header {
+    margin-bottom: 5%;
+}
+@media screen and (max-width: 480px) {
+    header {
+      margin-bottom: 20%;
+    }
+}
+
+form {
+    margin-bottom: 5%;
+}
+
+.error {
     color:red;
 }
+
 .hidden, .saveModify {
     display: none;
+}
+
+
+#productslist, .newProduct {
+    margin:auto;
+    list-style-type: none;
+}
+
+.product, .new{
+    margin:auto;
+    border-bottom: 1px solid #281919;
+    width: 80%;
+}
+
+.productimg {
+    width: 30%;
+}
+
+.productinseriment{
+   text-align: center;
+   margin-top: 5%;
 }
