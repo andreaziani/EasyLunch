@@ -121,9 +121,9 @@ class CartManager
         }
     }
 
-    public function setOrderCompleted($order) {
+    public function setOrderCompleted($orderId) {
         $data["State"] = "COMPLETED";
-        return $this->queryManager->updateInTable("Orders", $data, "Id", $order["Id"]);
+        return $this->queryManager->updateInTable("Orders", $data, "Id", $orderId);
     }
 
     public function getOrderData($order) {

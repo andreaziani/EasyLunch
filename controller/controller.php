@@ -170,7 +170,7 @@ class Controller
     public function submitReview($description, $rank) {
         if ($this->userManager->canReview($_SESSION["user"], $_SESSION["order"])) {
             $this->userManager->submitReview($_SESSION["order"], $description, $rank);
-            $this->cartManager->setOrderCompleted($order);
+            $this->cartManager->setOrderCompleted($_SESSION["order"]);
             //$this->notificationManager->setRead($_SESSION["order"]);
             unset($_SESSION["order"]);
         }
