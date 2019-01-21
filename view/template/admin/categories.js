@@ -33,9 +33,8 @@ $(document).ready(function () {
     /* Hide the form for adding new product */
     function cancel(e){
         e.preventDefault();
-        $(".hidden").hide();
-        $(".error:not(input, textarea)").hide();
-        addCathegoryButton.show();
+        $(".insert").addClass("hidden");
+        addCathegoryButton.removeClass("hidden");
     }
 
     function add(e) { 
