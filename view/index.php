@@ -9,12 +9,17 @@ use Utils\PathManager;
     $base = new PathManager();    
     $base->requireFromWebSitePath('header/_header.php');
 ?>
-
+    <script src="/ProgettoTecWeb/view/index.js"></script>
     <link rel="stylesheet" href="/ProgettoTecWeb/view/indexStylesheet.css">
     <div class='jumbotron jumbotron-fluid text-center'>
         <div class="container index-text">
             <h1> The beauty is in taste </h1>
             <p> Choose your lunch among thousands of restaurants!</p>
+            <?php 
+                if(!isset($_SESSION["user"])){
+                    echo "<button id='begin'> Begin now </button>";
+                }
+            ?>
         </div>
     </div>
     

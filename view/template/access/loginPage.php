@@ -26,6 +26,8 @@ use Utils\PathManager;
             <input type="submit" class="btn btn-primary input-sm" value="Log in" id="submit"/>
         <div>
     </form>
+    <br/>
+    <p>Are you not registered? <a href="/ProgettoTecWeb/view/template/access/registerPage.php">Register now</a></p>
 </div>
 </section>
 

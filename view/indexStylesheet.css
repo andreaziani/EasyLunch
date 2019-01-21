@@ -13,12 +13,26 @@
     margin: 0%;
 }
 
+
 .index-text {
     color: white;
     font-weight: bold;
     text-shadow: 0 0 10% black;
 }
 
+#begin {
+    color: #281919;
+    background-color: white;
+    border-radius: 3px;
+    padding-left: 7%;
+    padding-right: 7%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+#begin:hover{
+    background-color: #eee;
+}
 
 .howtoprovider{
     padding: 10%;
