@@ -33,5 +33,11 @@ header {
 #research {
     width: 100%;
     margin: auto;
+    margin-bottom: 5%;
+}
+
+.pagination {
+    cursor: pointer;
+    margin: auto !important;
     margin-bottom: 10%;
 }

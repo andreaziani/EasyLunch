@@ -7,9 +7,10 @@
     
     use Controller\Controller;
     use Controller\InputValidator;
-    if(isset($_GET["key"])){
+    if(isset($_GET["key"]) && isset($_GET["provider"])){
         $key = InputValidator::validate($_GET["key"]);
-        $result = Controller::getInstance()->searchProducts($key);
+        $provider = InputValidator::validate($_GET["provider"]);
+        $result = Controller::getInstance()->searchProducts($key, $provider);
         $json = json_encode($result);
         echo $json;
     } else {

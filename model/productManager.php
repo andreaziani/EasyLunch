@@ -47,16 +47,15 @@ class ProductManager
         $this->queryManager->updateInTable("Products", $data, "Id", $id);
     }
     
-    /*
-     * Search if there are products with this name, if not, search by providerid
-     */
-    public function searchProducts($key){
-        $result = $this->queryManager->searchByAttribute("Products", "Name", $key);
+    public function searchProducts($key, $provider) {
+        $query = "SELECT * FROM Products WHERE Name='" . $key . "' AND ProviderId='" . $provider . "' AND IsActive=true"; 
+        $result = $this->queryManager->queryDataToList($this->queryManager->executeQuery($query));
         if(count($result) > 0) {
             return $result;
         }
         $categories = $this->queryManager->searchByKey("Categories", "Name", $key);
-        return $this->queryManager->searchByAttribute("Products", "CategoryId", $categories["Id"]);
+        $query = "SELECT * FROM Products WHERE CategoryId=" . $categories["Id"] . " AND ProviderId='" . $provider . "' AND IsActive=true"; 
+        return $this->queryManager->queryDataToList($this->queryManager->executeQuery($query));
     }
 
     public function searchProvider($key){

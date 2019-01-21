@@ -140,5 +140,9 @@ class QueryManager
         $query = "DELETE FROM " . $table . self::whereSQL($key1Name, $key1Value);
         return $this->executeQuery($query);
     }
+
+    public function preparedStatement($query) {
+        return $this->db->getConnection()->prepare($query);
+    }
 }
 ?>

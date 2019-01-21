@@ -22,6 +22,18 @@ $base->requireFromWebSitePath('header/_header.php');
     </div>
 </div>
 
+<div class='container'>
+    <ul class="pagination">
+    <?php 
+            $query = 'SELECT DISTINCT(Categories.Name) FROM Categories, Products WHERE Products.ProviderId = "' . $_POST["username"] . '" AND Products.CategoryId = Categories.Id';
+            $result = $db->queryDataToList($db->executeQuery($query));
+            foreach($result as $row) {
+                echo "<li><a class='category'>". $row["Name"]."</a></li>";
+            }
+            echo "<input id='provider' class='hidden' type='text' value='". $_POST["username"] . "' />";
+    ?>
+    </ul>
+</div>
 <div>
     <div>
         <ul id="productslist">

@@ -90,8 +90,8 @@ class Controller
         
     }
 
-    public function searchProducts($key){
-        return $this->productManager->searchProducts($key);
+    public function searchProducts($key, $provider){
+        return $this->productManager->searchProducts($key, $provider);
     }
 
     public function searchProvider($key){
