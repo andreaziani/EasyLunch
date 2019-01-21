@@ -50,11 +50,13 @@ $(function() {
     var id = $(this).parent().parent().siblings(".id").val();
     var name = $(this).parent().parent().siblings(".name").html();
     var price = $(this).parent().parent().siblings(".price").children(".value").html();
-    console.log(id + " "+ price + " " + name);
+    var li = $(this).parent().parent().parent();
+    //console.log(id + " "+ price + " " + name);
     var quantity = $(this).parent().siblings(".quantity").val();
     if(quantity > 0){
       $.get("/ProgettoTecWeb/controller/action/addProductToCart.php", {id: id, quantity: quantity, name: name, price: price}, function(data) {
-        alert(data);
+        var html = "<div class='alert alert-success'>" + data + "</div> <br/>";
+        li.append(html);
       });
     }
   }
@@ -62,4 +64,9 @@ $(function() {
   $("#searchBar").keypress(searchWithKeyPress);
   $("#searchButton").click(search);
   $("#productslist").on('click',".addToCart",addToCart);
+  $("#productslist").on('focusin', ".quantity", function(){
+    setTimeout(function(){
+      $(".alert-success").fadeOut();
+    }, 1000);
+  })
 });
