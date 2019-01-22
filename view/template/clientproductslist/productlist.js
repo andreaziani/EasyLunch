@@ -31,7 +31,7 @@ $(function() {
               " alt='Image of the product' /><p class='description'>" +
               obj[i].Description +
               "<p class='price'> Price: <span class='value'>" + obj[i].Price + "</span> euro</p> " +
-              "<div class='input-group'><input type='number' class='form-control quantity' name='quantity' value='0'><div class='input-group-btn'><button class='btn btn-default addToCart'>Add to cart</button> </div></div></li> ";
+              "<div class='input-group'><input type='number' min='0' class='form-control quantity' name='quantity' value='0'><div class='input-group-btn'><button class='btn btn-default addToCart'>Add to cart</button> </div></div></li> ";
           }
           $("#productslist").html(html);
         }
@@ -62,7 +62,7 @@ $(function() {
               " alt='Image of the product' /><p class='description'>" +
               obj[i].Description +
               "<p class='price'> Price: <span class='value'>" + obj[i].Price + "</span> euro</p> " +
-              "<div class='input-group'><input type='number' class='form-control quantity' name='quantity' value='0'><div class='input-group-btn'><button class='btn btn-default addToCart'>Add to cart</button> </div></div></li> ";
+              "<div class='input-group'><input type='number' class='form-control quantity' min='0' name='quantity' value='0'><div class='input-group-btn'><button class='btn btn-default addToCart'>Add to cart</button> </div></div></li> ";
           }
           $("#productslist").html(html);
         }

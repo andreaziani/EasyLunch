@@ -48,7 +48,7 @@ $base->requireFromWebSitePath('header/_header.php');
                                     <p class='description'>" . $row["Description"] . "</p>
                                     <p class='price'> Price: € <span class='value'>" . $row["Price"] . "</span> </p>
                                     <div class='input-group buttons'>
-                                        <input class='form-control quantity' type='number' name='quantity' value='0'>
+                                        <input class='form-control quantity' type='number' min='0' name='quantity' value='0'>
                                         <div class='input-group-btn'>
                                             <button class='btn btn-default addToCart'>Add to cart</button>
                                         </div>

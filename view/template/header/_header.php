@@ -20,7 +20,7 @@
         <!--TODO: set the dimension of the icon with css-->
         <nav class="navbar navbar-default navbar-fixed-top .navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/ProgettoTecWeb/view/index.php"><img src="/ProgettoTecWeb/images/icons/easylunch.png" alt="brand logo"></a>
+                <a class="navbar-brand" href="/ProgettoTecWeb/view/index.php"><img src="/ProgettoTecWeb/images/icons/easylunch.png" alt="brand logo" longdesc='/ProgettoTecWeb/images/icons/logodesc.txt'></a>
 <?php 
 use Utils\PathManager;
     session_start();

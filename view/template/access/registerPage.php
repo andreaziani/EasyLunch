@@ -31,13 +31,12 @@ use Utils\PathManager;
         </div>
 
         <div class="form-group user-psw">
-                <label>
-                Are you a provider or a client?: 
+                <label for='typology'>
+                Are you a provider or a client?: </label>
                 <select class="form-control input-sm" name="typology" id="typology">
                     <option class="input-sm" value="client">Client</option>
                     <option class="input-sm" value="provider">Provider</option>
-                </select>
-            </label><br/>
+                </select><br/>
             <fieldset id="providerFields" style="display: none; border: 0px">
                 <label>Company name: <input class="form-control input-sm" type="text" name="companyName" id="companyName" /></label><br/>
                 <label>PIVA:  <input class="form-control input-sm" type="text" name="piva" id="piva" /></label><br/>    
