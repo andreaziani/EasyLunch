@@ -22,10 +22,10 @@
                         foreach($result as $row) {
                                 echo "<li class='product'>" . 
                                         "<form action='/ProgettoTecWeb/controller/action/modifyProduct.php' method='GET'> " . 
-                                            "<input type='number' value='". $row['Id'] . "' name='id' class='hidden', 'id' /><img class='productimg' src='/ProgettoTecWeb/" . $row["Image"] . "' alt='Product image'/><br/>
+                                            "<input type='number' value='". $row['Id'] . "' name='id' class='hidden'/><img class='productimg' src='/ProgettoTecWeb/" . $row["Image"] . "' alt='Product image'/><br/>
                                             <label>Name: <input class='form-control input-sm name' type='text' name='name' value='". $row["Name"] . "' disabled/></label><br/>
-                                            <label for='description'>Description:</label><br/>
-                                            <textarea class='form-control input-sm description' name='description' cols='30' rows='5' disabled>" . $row["Description"] . "</textarea><br/>
+                                            <label for='desc" . $row['Id'] . "'>Description:</label><br/>
+                                            <textarea class='form-control input-sm description' name='description' cols='30' rows='5' id='desc". $row["Id"] ."' disabled>" . $row["Description"] . "</textarea><br/>
                                             <label>Price in euro: <input class='form-control input-sm' type='text' name='price' value='". $row["Price"] . "' disabled/></label><br/>
                                             <button class='btn btn-primary input-sm modify' type='button'>Modify</button>
                                             <button class='btn btn-primary input-sm remove' type='button'>Remove</button>

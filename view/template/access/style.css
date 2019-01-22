@@ -44,3 +44,14 @@ footer {
     margin-bottom: 3%;
     text-align: center;
 }
+
+#typology {
+    width: 40%;
+    margin: auto;
+}
+
+@media screen and (min-width: 480px) {
+    #typology {
+        width: 11%;
+    }
+}
