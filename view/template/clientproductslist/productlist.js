@@ -24,14 +24,14 @@ $(function() {
               html +
               "<li class='product'> <input class='hidden id' name='id' type='number' value='" +
               obj[i].Id +
-              "' /><h2 class='name'>" +
+              "' /><h4 class='name'>" +
               obj[i].Name +
-              "</h2> <img class='productimg' src=/ProgettoTecWeb/" +
+              "</h4> <img class='productimg' src=/ProgettoTecWeb/" +
               obj[i].Image +
-              " alt='Image of the product' /><p class='description'>" +
+              " alt='" +  obj[i].Description +"' /><p class='description'>" +
               obj[i].Description +
               "<p class='price'> Price: <span class='value'>" + obj[i].Price + "</span> euro</p> " +
-              "<div class='input-group'><input type='number' min='0' class='form-control quantity' name='quantity' value='0'><div class='input-group-btn'><button class='btn btn-default addToCart'>Add to cart</button> </div></div></li> ";
+              "<div class='input-group'><label class='hidden' for='id" + obj[i].Id +"'> Quantity </label><input type='number' class='form-control quantity' min='0' name='quantity' value='0' id='"+ obj[i].Id + "'><div class='input-group-btn'><button class='btn btn-default addToCart'>Add to cart</button> </div></div></li> ";
           }
           $("#productslist").html(html);
         }
@@ -55,14 +55,14 @@ $(function() {
               html +
               "<li class='product'> <input class='hidden id' name='id' type='number' value='" +
               obj[i].Id +
-              "' /><h2 class='name'>" +
+              "' /><h4 class='name'>" +
               obj[i].Name +
-              "</h2> <img class='productimg' src=/ProgettoTecWeb/" +
+              "</h4> <img class='productimg' src=/ProgettoTecWeb/" +
               obj[i].Image +
-              " alt='Image of the product' /><p class='description'>" +
+              " alt='" +  obj[i].Description +"' /> <p class='description'>" +
               obj[i].Description +
               "<p class='price'> Price: <span class='value'>" + obj[i].Price + "</span> euro</p> " +
-              "<div class='input-group'><input type='number' class='form-control quantity' min='0' name='quantity' value='0'><div class='input-group-btn'><button class='btn btn-default addToCart'>Add to cart</button> </div></div></li> ";
+              "<div class='input-group'><label class='hidden' for='id" + obj[i].Id +"'> Quantity </label><input type='number' class='form-control quantity' min='0' name='quantity' value='0' id='"+ obj[i].Id + "'><div class='input-group-btn'><button class='btn btn-default addToCart'>Add to cart</button> </div></div></li> ";
           }
           $("#productslist").html(html);
         }

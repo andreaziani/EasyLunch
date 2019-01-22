@@ -17,9 +17,10 @@ $base->requireFromWebSitePath('header/_header.php');
 
 <div class="container">
     <div class="input-group" id="research">
-        <input class="form-control" id="searchBar" type="text" placeholder="Search restaurant.." name="search" results=5 autocomplete="on">
+        <label class='hidden' for="searchBar">Search bar</label>
+        <input class="form-control" id="searchBar" type="text" placeholder="Search restaurant.." name="search" autocomplete="on">
         <div class="input-group-btn">
-            <button class="btn btn-default" id="searchButton"><i class="glyphicon glyphicon-search"></i></button>
+            <button class="btn btn-default" id="searchButton"><span class="glyphicon glyphicon-search"></span></button>
         </div>
     </div>
 </div>
@@ -33,7 +34,7 @@ $base->requireFromWebSitePath('header/_header.php');
                     $rate_query = "SELECT AVG(Rank) FROM ProvidersReviews WHERE ProviderId='" . $row["UserName"] . "'";
                     $rate = $db->queryDataToObject($db->executeQuery($rate_query));
                     if(is_null($rate["AVG(Rank)"])) $rate["AVG(Rank)"] = 0;
-                    $listItem = "<br/><li class='provider'> 
+                    $listItem = "<li class='provider'> 
                                 <form action='/ProgettoTecWeb/view/template/clientproductslist/clientproductslist.php' method='POST'>
                                     <input class='hidden username' name='username' type='text' value='" . $row["UserName"] . "'/> 
                                     <h4 class='companyname'>" . $row["CompanyName"] . "</h4>";

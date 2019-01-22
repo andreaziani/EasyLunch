@@ -15,9 +15,10 @@ $base->requireFromWebSitePath('header/_header.php');
 <link rel="stylesheet" href="/ProgettoTecWeb/view/template/clientproductslist/style.css">
 <div class="container">
     <div class="input-group" id="research">
-        <input class="form-control" id="searchBar" type="text" placeholder="Search product.." name="search" results=5 autocomplete="on">
+        <label class='hidden' for="searchBar">Search bar</label>
+        <input class="form-control" id="searchBar" type="text" placeholder="Search product.." name="search" autocomplete="on">
         <div class="input-group-btn">
-            <button class="btn btn-default" id="searchButton"><i class="glyphicon glyphicon-search"></i></button>
+            <button class="btn btn-default" id="searchButton"><span class="glyphicon glyphicon-search"></span></button>
         </div>
     </div>
 </div>
@@ -30,9 +31,11 @@ $base->requireFromWebSitePath('header/_header.php');
             foreach($result as $row) {
                 echo "<li><a class='category'>". $row["Name"]."</a></li>";
             }
-            echo "<input id='provider' class='hidden' type='text' value='". $_POST["username"] . "' />";
     ?>
     </ul>
+    <?php
+        echo "<input id='provider' class='hidden' type='text' value='". $_POST["username"] . "' />";
+    ?>
 </div>
 <div>
     <div>
@@ -41,14 +44,15 @@ $base->requireFromWebSitePath('header/_header.php');
                     $query = "SELECT * FROM Products WHERE ProviderId='". $_POST["username"] ."' AND IsActive=true ORDER BY Name";
                     $result = $db->queryDataToList($db->executeQuery($query));
                     foreach($result as $row) {
-                            echo "<li class='product'> 
+                            echo "<li class='product'>
                                     <input class='hidden id' name='id' type='number' value='" . $row["Id"] . "'/> 
                                     <h4 class='name'>" . $row["Name"] . "</h4>
-                                    <img class='productimg' src=/ProgettoTecWeb/" . $row["Image"] . " alt='Image of the product' />
+                                    <img class='productimg' src=/ProgettoTecWeb/" . $row["Image"] . " alt='". $row["Description"] . "' />
                                     <p class='description'>" . $row["Description"] . "</p>
                                     <p class='price'> Price: € <span class='value'>" . $row["Price"] . "</span> </p>
                                     <div class='input-group buttons'>
-                                        <input class='form-control quantity' type='number' min='0' name='quantity' value='0'>
+                                        <label class='hidden' for='id". $row["Id"] . "'> Quantity </label>
+                                        <input class='form-control quantity' type='number' min='0' name='quantity' value='0' id='id" . $row["Id"] . "'/>
                                         <div class='input-group-btn'>
                                             <button class='btn btn-default addToCart'>Add to cart</button>
                                         </div>
