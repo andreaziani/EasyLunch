@@ -24,9 +24,9 @@ $(function() {
               html +
               "<li class='product'> <input class='hidden id' name='id' type='number' value='" +
               obj[i].Id +
-              "' /><h4 class='name'>" +
+              "' /><h2 class='name'>" +
               obj[i].Name +
-              "</h4> <img class='productimg' src=/ProgettoTecWeb/" +
+              "</h2> <img class='productimg' src=/ProgettoTecWeb/" +
               obj[i].Image +
               " alt='" +  obj[i].Description +"' /><p class='description'>" +
               obj[i].Description +
@@ -55,9 +55,9 @@ $(function() {
               html +
               "<li class='product'> <input class='hidden id' name='id' type='number' value='" +
               obj[i].Id +
-              "' /><h4 class='name'>" +
+              "' /><h2 class='name'>" +
               obj[i].Name +
-              "</h4> <img class='productimg' src=/ProgettoTecWeb/" +
+              "</h2> <img class='productimg' src=/ProgettoTecWeb/" +
               obj[i].Image +
               " alt='" +  obj[i].Description +"' /> <p class='description'>" +
               obj[i].Description +

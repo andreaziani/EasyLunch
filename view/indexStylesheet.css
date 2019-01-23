@@ -4,7 +4,7 @@
 
 .jumbotron, .jumbotron:not(.index-text){
     overflow: hidden;
-    background-image: url("../images/backgrounds/cuisine.jpg") ;
+    background-image: url("../images/backgrounds/hamburger.jpg") ;
     background-repeat: no-repeat;
     background-position: center;
     -webkit-background-size: cover;
@@ -17,7 +17,11 @@
 .index-text {
     color: white;
     font-weight: bold;
-    text-shadow: 0 0 10% black;
+    text-shadow: 10% 0 30% black;
+}
+
+#beauty {
+    font-size: 170%;
 }
 
 #begin {
