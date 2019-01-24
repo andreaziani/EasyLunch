@@ -20,3 +20,16 @@ function tryReview(orderId) {
 function trySend(orderId) {
     return tryOrderAction(orderId, "trySend");
 }
+
+$(document).ready(function(){
+    $("button[name=toggle_details]").click(function() {
+        var pre = $(this).parent().find("pre");
+        if(pre.is(":visible")) {
+            $(this).text("Show details");
+            pre.hide();
+        } else {
+            $(this).text("Hide details");
+            pre.show();
+        }
+    });
+});
