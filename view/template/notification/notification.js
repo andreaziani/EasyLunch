@@ -19,15 +19,22 @@ $(document).ready(function () {
             data = JSON.parse(data);
             //console.log(data);
             if (Array.isArray(data) && data.length) {
-                var html = "<tr><th>Time</th><th>Description</th></tr>";
+                var html = "<caption>Unread notifications</caption>" +
+                            "<thead>" +
+                                "<tr>" +
+                                    "<th id='timeH'>Time</th>" +
+                                    "<th id='descriptionH'>Description</th>" +
+                                "</tr>" +
+                            "</thead>" +
+                            "<tbody>";
                 for (var i = 0; i < data.length; i++) {
                     html += 
                         "<tr name='notification'>" +
-                            "<td>" + data[i].timestamp + "</td>" +
-                            "<td><pre>" + data[i].description + "</pre></td>" +
+                            "<td headers='timeH'>" + data[i].timestamp + "</td>" +
+                            "<td headers='descriptionH'><pre>" + data[i].description + "</pre></td>" +
                         "</tr>";
                 }
-                html += "<input type='button' value='Reset notifications' onclick='setRead()'/>";
+                html += "</tbody><input type='button' value='Reset notifications' onclick='setRead()'/>";
                 $("#notificationTable").html(html);
                 $("#notificationTable").show();
                 $("#resetButton").show();

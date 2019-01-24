@@ -9,16 +9,19 @@ use Utils\PathManager;
 ?>
 <section>
 <?php
-        if (isset($_SESSION["cart"])) {
+        if (isset($_SESSION["cart"]) && !empty($_SESSION["cart"]->entries)) {
             $html = 
                 "<h1>Cart Summary</h1>" .
-                "<table>" .
-                    "<tr>" .
-                        "<th>Product</th>" .
-                        "<th>Price</th>" .
-                        "<th>Quantity</th>" .
-                        "<th>Remove</th>" .
-                    "</tr>";
+                "<table class='table table-striped'>" .
+                    "<thead>" .
+                        "<tr>" .
+                            "<th id='nameH'>Product</th>" .
+                            "<th id='priceH'>Price</th>" .
+                            "<th id='quantityH'>Quantity</th>" .
+                            "<th id='removeH'>Remove</th>" .
+                        "</tr>" .
+                    "</thead>" .
+                    "<tbody>";
             //<input type="button" value="Cancel" id="cancel"/>;
             //session_start();
             $cart = $_SESSION["cart"];
@@ -26,21 +29,21 @@ use Utils\PathManager;
             foreach ($cart->entries as $entry) {
                 $html = $html . 
                     "<tr>" .
-                        "<td>" . $entry->productName ."</td>" .
-                        "<td>" . $entry->price ."</td>" .
-                        "<td>" . $entry->quantity ."</td>" .
-                        "<td>" . "<button name='remove' id='btnRemove_" . $entry->productId . "'>Remove</button>" . "</td>" .
+                        "<td headers='nameH'>" . $entry->productName ."</td>" .
+                        "<td headers='priceH'>" . $entry->price ."</td>" .
+                        "<td headers='quantityH'>" . $entry->quantity ."</td>" .
+                        "<td headers='removeH'>" . "<button name='remove' id='btnRemove_" . $entry->productId . "' class='btn btn-danger'><span class='glyphicon glyphicon-trash'></span></button>" . "</td>" .
                     "</tr>";
             }
-            $html = $html .
+            $html = $html . "</tbody>" .
                 "</table>" .
-                "<a href='/ProgettoTecWeb/view/template/cart/checkoutOrderPage.php'>Checkout</a>";
+                "<a href='/ProgettoTecWeb/view/template/cart/checkoutOrderPage.php' class='btn btn-default'>Checkout</a>";
             echo $html;
         } else {
             echo "<h1>Your cart is empty</h1>";
         }
 ?>
-    <a href='/ProgettoTecWeb/view/template/clientproviderslist/clientproviderslist.php'>Back</a>
+    <a href='/ProgettoTecWeb/view/template/clientproviderslist/clientproviderslist.php' class='btn btn-default' style='float: right'>Back</a>
 </section>
 
 <?php
