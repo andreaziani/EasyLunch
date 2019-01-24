@@ -5,9 +5,11 @@
 .fa-star {
     color:gray;
 }
+
 .review:hover {
     cursor: pointer;
 }
+
 .orange-star {
     color:orange;
 }
