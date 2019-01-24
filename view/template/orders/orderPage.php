@@ -14,6 +14,7 @@ $base->requireFromWebSitePath('header/_header.php');
 <section id="productlist">
     <h1>Orders</h1>
     <!--checkbox hide done-->
+    <label><input type="checkbox" id="showCompleted" checked="true"/>Show completed orders</label>
     <div class='container-fluid'> 
         <div class='row'>
             <div class='col-xs-12'>

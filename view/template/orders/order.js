@@ -32,4 +32,7 @@ $(document).ready(function(){
             pre.show();
         }
     });
+    $('#showCompleted').click(function() {
+        $(".table-success").toggle(this.checked);
+    });
 });
