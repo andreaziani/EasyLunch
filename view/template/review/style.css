@@ -14,8 +14,7 @@
 .fa-star {
     color:gray;
 }
-.fa-star.is-active,
-.c-rating__item:hover {
+.fa-star.is-active, .c-rating__item:hover {
     color:orange;
 }
 
@@ -24,15 +23,22 @@
     margin-bottom: 10%;
     text-align: center;
 }
+.stars ul {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    /* For IE, the outcast */
+    zoom:1;
+    *display: inline;
+}
+
+.stars li {
+    float: left;
+}
+
 header {
     margin-bottom: 5%;
 }
-
-@media screen and (min-width: 1920px) {
-    header{
-        margin-bottom: 35%;
-    }
-  }
 
 @media screen and (max-width: 480px) {
     header {
@@ -51,8 +57,6 @@ fieldset{
 legend {
     border-bottom:none;
 }
-
-
 
 .container{
     margin:auto;

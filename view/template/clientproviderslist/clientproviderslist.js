@@ -31,12 +31,13 @@ $(document).ready(function() {
             if (obj[i].Rate !== null) {
               rate = obj[i].Rate;
             }
-            for (var j = 0; j < 5; j++) { //stars
-            	if (i < rate)
-                	html = html + '<span class="fa fa-star orange-star"></span>';
-				else 
-				  	html = html + '<span class="fa fa-star"></span>';
+            for (var j = 0; j < 5; j++) {
+              //stars
+              if (i < rate)
+                html = html + '<span class="fa fa-star orange-star"></span>';
+              else html = html + '<span class="fa fa-star"></span>';
             }
+            html = html + "<span class='review'> <a> (Reviews) </a> </span>";
             html =
               html +
               "<p class='phonenumber'> Tel: " +
@@ -73,7 +74,11 @@ $(document).ready(function() {
       .submit();
   });
   $("#providerlist").on("click", ".fa-star, .review", function(e) {
-    window.location = "/ProgettoTecWeb/view/template/review/showReview.php?companyname=" + $(this).siblings(".companyname").html();
+    window.location =
+      "/ProgettoTecWeb/view/template/review/showReview.php?companyname=" +
+      $(this)
+        .siblings(".companyname")
+        .html();
   });
   $("#searchBar").keypress(searchWithKeyPress);
   $("#searchButton").click(search);
