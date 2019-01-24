@@ -43,21 +43,25 @@ $(document).ready(function() {
             name: {
                 required: true,
                 minlength: 3,
+                maxlength: 20,
                 checkValid: true
             },
             companyName: {
                 required: true,
                 minlength: 3,
+                maxlength: 20,
                 checkValid: true
             },
             surname: {
                 required: true,
                 minlength: 3,
+                maxlength: 20,
                 checkValid: true
             },
             username: {
                 required: true,
                 minlength: 3,
+                maxlength: 20,
                 checkValid: true
             },
             password: {
@@ -83,6 +87,7 @@ $(document).ready(function() {
                 maxlength: 10
             },
             email: {
+                maxlength: 30,
                 required: true,
                 email: true
             },
