@@ -7,6 +7,10 @@ header {
     }
 }
 
+section {
+    margin-bottom: 20%;
+}
+
 form {
     margin-bottom: 5%;
 }

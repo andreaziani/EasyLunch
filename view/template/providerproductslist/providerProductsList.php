@@ -29,7 +29,7 @@
                                                 <textarea class='form-control input-sm description' name='description' cols='30' rows='5' id='desc". $row["Id"] ."' disabled>" . $row["Description"] . "</textarea><br/>
                                                 <label>Price in euro: <input class='form-control input-sm' type='text' name='price' value='". $row["Price"] . "' disabled/></label><br/>
                                                 <button class='btn btn-primary input-sm modify' type='button'>Modify</button>
-                                                <button class='btn btn-primary input-sm remove' type='button'>Remove</button>
+                                                <button class='btn btn-primary input-sm btn-danger remove' type='button'>Remove</button>
                                                 <button type='submit' class='btn btn-primary input-sm saveModify'>Save product</button>
                                             </form>
                                     </li>";

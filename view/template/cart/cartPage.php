@@ -11,7 +11,7 @@ use Utils\PathManager;
 <link rel="stylesheet" href="style.css">
 <section>
     <div class='container'>
-        <div class='col-xs-12'>
+        <div class='col-xs-12 cart'>
 <?php
         if (isset($_SESSION["cart"]) && !empty($_SESSION["cart"]->entries)) {
             $html = 

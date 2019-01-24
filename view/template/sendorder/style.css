@@ -28,15 +28,10 @@ section {
     padding: 5%;
 }
 
-.cart {
-    margin: auto;
-    padding: 5%;
+#submit {
+    margin-right: 5%;
 }
 
-.cart > table {
-    border: 2px solid #eee;
-}
-
-caption{
-    text-align: center;
+.error{
+    color: red;
 }
