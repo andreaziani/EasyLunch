@@ -26,16 +26,9 @@ user-psw {
 }
 
 #registerform{
-    display: block;
     width: 100%;
     text-align: center;
 }
-
-footer {
-    display: block;
-    margin-top: 30%;
-}
-
 
 .error{
     color:red;
@@ -45,14 +38,19 @@ footer {
     margin-bottom: 3%;
     text-align: center;
 }
-
-#typology {
-    width: 40%;
+#typology{
     margin: auto;
+    width: 44%;
 }
 
-@media screen and (min-width: 480px) {
-    #typology {
+@media screen and (min-width: 780px) {
+    #typology{
+        margin: auto;
         width: 11%;
     }
 }
+
+section {
+    margin-bottom: 30%;
+}
+

@@ -39,6 +39,7 @@ hidden, .saveModify{
 
 .glyphicon-remove{
     color:red;
+    float: right;
 }
 .glyphicon-remove:hover {
     cursor: pointer;

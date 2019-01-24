@@ -13,7 +13,7 @@ use Utils\PathManager;
     }
 ?>
 
-<link rel="stylesheet" href="/ProgettoTecWeb/view/template/access/style.css">
+<link rel="stylesheet" href="style.css">
 <section>
     <div class="container login-container registration" id="registration">
         <h1>Registration</h1>
@@ -21,7 +21,7 @@ use Utils\PathManager;
             <div class="form-group user-psw">
                 <label>Name: <input class="form-control input-sm" type="text" name="name" id="name" /></label><br/>
                 <label>Surname: <input class="form-control input-sm" type="text" name="surname" id="surname" /></label><br/>
-                <label>Birthdate: <input class="form-control input-sm" type="date" name="birthdate" id="birthdate" /></label><br/>
+                <label>Birthdate: <input class="form-control input-sm" type="date" name="birthdate" id="birthdate"/></label><br/>
                 <label>Telephone: <input class="form-control input-sm" type="tel" name="telephone" id="telephone" /></label><br/>
                 <label>Email: <input class="form-control input-sm" type="email" name="email" id="email" /></label><br/>
             </div>  
@@ -32,12 +32,12 @@ use Utils\PathManager;
             </div>
 
             <div class="form-group user-psw">
-                    <label for='typology'>
-                    Are you a provider or a client?: </label>
-                    <select class="form-control input-sm" name="typology" id="typology">
-                        <option class="input-sm" value="client">Client</option>
-                        <option class="input-sm" value="provider">Provider</option>
-                    </select><br/>
+                        <label for='typology'> Register as: </label>
+                        <select class="form-control" name="typology" id="typology">
+                            <option class="input-sm" value="client">Client</option>
+                            <option class="input-sm" value="provider">Provider</option>
+                        </select>
+                    <br/>
                 <fieldset id="providerFields" style="display: none; border: 0px">
                     <label>Company name: <input class="form-control input-sm" type="text" name="companyName" id="companyName" /></label><br/>
                     <label>PIVA:  <input class="form-control input-sm" type="text" name="piva" id="piva" /></label><br/>    
@@ -52,7 +52,6 @@ use Utils\PathManager;
     </div>
 </section>
 <script src="/ProgettoTecWeb/view/template/access/access.js"></script>
-
 <?php
     $base->requireFromWebSitePath('footer/_footer.php');
 ?>

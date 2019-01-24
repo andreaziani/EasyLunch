@@ -16,7 +16,7 @@ use Utils\PathManager;
             <div class="container index-text">
                 <div class='row'>
                     <div class='col-xs-12'>
-                        <h1> The beauty is in taste </h1>
+                        <h1> Are you hungry? </h1>
                         <p id='beauty'> Choose your lunch among hundreds of restaurants!</p>
                         <?php 
                             if(!isset($_SESSION["user"])){
