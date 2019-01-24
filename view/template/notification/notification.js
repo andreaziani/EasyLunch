@@ -19,6 +19,9 @@ $(document).ready(function () {
             data = JSON.parse(data);
             //console.log(data);
             if (Array.isArray(data) && data.length) {
+                data.sort(function(a, b) {
+                    return Date.parse(a.timestamp) > Date.parse(b.timestamp);
+                });
                 var html = "<caption>Unread notifications</caption>" +
                             "<thead>" +
                                 "<tr>" +

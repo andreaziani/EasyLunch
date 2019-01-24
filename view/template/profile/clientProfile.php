@@ -10,7 +10,7 @@ use Utils\PathManager;
 <link rel="stylesheet" href="style.css">
 <section>
     <div class='container'>
-        <div class='col-12 form'>
+        <div class='col-xs-12 form'>
             <h1 class='display-4'>Personal informations</h1>
             <div class="form-group">
                 <form id="profileInformations" action="/ProgettoTecWeb/controller/action/modifyProfile.php" method="POST">

@@ -1,0 +1,17 @@
+header {
+    margin-bottom: 10%;
+}
+
+@media screen and (max-width: 480px) {
+    header {
+      margin-bottom: 20%;
+    }
+}
+
+.container-fluid {
+    width: 100%;
+}
+
+section {
+    margin-bottom: 20%;
+}

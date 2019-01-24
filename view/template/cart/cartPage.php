@@ -7,7 +7,11 @@ use Utils\PathManager;
     $base = new PathManager();
     $base->requireFromWebSitePath('header/_header.php');
 ?>
+
+<link rel="stylesheet" href="style.css">
 <section>
+    <div class='container'>
+        <div class='col-xs-12'>
 <?php
         if (isset($_SESSION["cart"]) && !empty($_SESSION["cart"]->entries)) {
             $html = 
@@ -44,7 +48,9 @@ use Utils\PathManager;
             echo "<h1>Your cart is empty</h1>";
         }
 ?>
-    <a href='/ProgettoTecWeb/view/template/clientproviderslist/clientproviderslist.php' class='btn btn-primary' style='float: right'>Back</a>
+            <a href='/ProgettoTecWeb/view/template/clientproviderslist/clientproviderslist.php' class='btn btn-primary' style='float: right'>Back</a>
+        </div>
+    </div>
 </section>
 
 <?php

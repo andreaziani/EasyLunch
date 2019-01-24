@@ -31,7 +31,7 @@ class NotificationManager
         $data["IsRead"] = 1;
         $this->queryManager->updateInTable("Notifications", $data, "ReceiverId", $user->userName);
     }
-
+    
     public function getUnreadNotifications($user) {
         $array = $this->queryManager->searchByDoubleAttribute("Notifications", "ReceiverId", $user->userName, "IsRead", 0);
         $result = [];
@@ -40,6 +40,9 @@ class NotificationManager
                 array_push($result, new Notification($data["Tipology"], $data["Description"], $data["OrderId"], $data["ReceiverId"], $data["Timestamp"], $data["IsRead"]));
             }
         }
+        usort($result, function($a, $b) {
+            return strtotime($b->timestamp) - strtotime($a->timestamp);
+        });
         return $result;
     }
 

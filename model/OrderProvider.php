@@ -21,6 +21,24 @@ class OrderProvider
         } else {
             return [];
         }
-        return $queryManager->searchByAttribute("VisibleOrders", $key, $user->userName);
+        $result = $queryManager->searchByAttribute("VisibleOrders", $key, $user->userName);
+        usort($result, function($a, $b) {
+            if ($b["State"] === "COMPLETED") {
+                return -1;
+            } else if ($a["State"] === "COMPLETED") {
+                return 1;
+            } else if ($b["State"] === "ARRIVED") {
+                return -1;
+            } else if ($a["State"] === "ARRIVED") {
+                return 1;
+            } else if ($b["State"] === "ARRIVING") {
+                return -1;
+            } else if ($a["State"] === "ARRIVING") {
+                return 1;
+            } else {
+                return 0;
+            }
+        });
+        return $result;
     }
 }
