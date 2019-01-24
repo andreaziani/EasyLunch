@@ -127,7 +127,7 @@ class Controller
             $this->userManager->removeCart($_SESSION["user"]);
             unset($_SESSION["cart"]);
         }
-        $this->view->redirect("mainPage");
+        $this->view->redirect("index");
     }
 
     public function addProductToCart($data){
@@ -170,7 +170,7 @@ class Controller
     
     public function setRead() {
         $this->notificationManager->setAllRead($_SESSION["user"]);
-        echo $this->view->getHref("mainPage");
+        echo $this->view->getHref("index");
     }
 
     public function submitReview($description, $rank) {

@@ -10,17 +10,17 @@ use Utils\PathManager;
 <section>
     <h1>Checkout</h1>
     <form id="checkoutform" action="/ProgettoTecWeb/controller/action/checkoutOrder.php" method="POST">
-        <label>Nominative for order receipient: <input type="text" name="nominative" /></label><br/>
+        <label>Nominative for order receipient: <input type="text" name="nominative" class="form-control input-sm"/></label><br/>
         <label>Select delivery spot: 
-            <select name="deliverySpot">
+            <select name="deliverySpot" class="form-control input-sm">
                 <option>Entrance_A</output> <!--TODO entrance names-->
                 <option>Entrance_B</output>
             </select>
         </label><br/>
-        <label>Select delivery date: <input type="date" name="deliveryDate" id="date" /></label><br/>
-        <label>Select delivery time: <input type="text" name="deliveryTime" id="time" /></label><br/>
-        <input type="submit" value="Submit" id="submit"/>
-        <a href="/ProgettoTecWeb/view/template/cart/cartPage.php">Back</a>
+        <label>Select delivery date: <input type="date" name="deliveryDate" id="date" class="form-control input-sm"/></label><br/>
+        <label>Select delivery time: <input type="text" name="deliveryTime" id="time" class="form-control input-sm"/></label><br/>
+        <input type="submit" value="Submit" id="submit" class='btn btn-primary' />
+        <a href="/ProgettoTecWeb/view/template/cart/cartPage.php" class='btn btn-primary'>Back</a>
     </form>
 </section>
 
