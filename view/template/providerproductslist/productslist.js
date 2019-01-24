@@ -4,7 +4,6 @@ $(document).ready(function(){
     var addProductButton = $("#addProduct");
     var hiddenForm = $("ul.hidden");
     var invalidStrings = ['select', 'alter', 'update', 'delete'];
-
     /* shows the form to adding a new product */
     function addProduct(){
         addProductButton.hide();
@@ -95,16 +94,13 @@ $(document).ready(function(){
     /* Remove product */
     function removeProduct(){
         var id = $(this).siblings("input.hidden");
-        console.log(id);
-        var li = $(this).parent();
-        if (confirm("Are you sure to delete the product?")) { //shows a dialog to alert provider.
-            // AJAX request to remove product from db.
-            $.get("/ProgettoTecWeb/controller/action/removeProduct.php?id=" + id.val(), false).done(function(){
-                alert("Product correctly deleted");
-            });
-            li.remove();
-        }
-        
+        //console.log(id);
+        var form = $(this).parent();
+        console.log(form);
+        removedProducts = id.val();
+        var html = "<div class='alert alert-warning'> Are you sure to delete the product? ";
+        html = html + "<input type='button' class='yes btn btn-primary btn-danger' value='Yes remove' /> <input type='button' class='no btn btn-primary' value='No' /> </div>"
+        form.append(html);        
     }
     
     //add jQuery validator rule 
@@ -116,4 +112,24 @@ $(document).ready(function(){
     $(".remove").click(removeProduct);
     $(".saveProduct").click(saveProduct);
     $(".cancel").click(cancel);
+    
+    $('li').on('click', '.yes', function(e){
+        e.preventDefault();
+        var form = $(this).parent().parent();
+        var id = $(this).parent().siblings("input.hidden").val();
+        console.log(id);
+        $.get("/ProgettoTecWeb/controller/action/removeProduct.php?id=" + id , false).done(function(){
+            $('.alert-warning').hide();
+            var html = "<div class='alert alert-success'> Product correctly deleted </div> <br/>";
+            form.append(html);
+            setTimeout(function(){
+                form.parent().remove();
+              }, 1500);
+        });
+    });
+
+    $('li').on('click', '.no', function(e){
+        e.preventDefault();
+        $('.alert-warning').hide();
+    });
 });
