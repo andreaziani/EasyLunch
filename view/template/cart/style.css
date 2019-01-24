@@ -15,3 +15,14 @@ header {
 section {
     margin-bottom: 20%;
 }
+
+.container{
+    margin:auto;
+}
+
+.form {
+    margin: auto;
+    background-color: #eee;
+    border-radius: 3px;
+    padding: 5%;
+}
