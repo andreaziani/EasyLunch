@@ -14,7 +14,7 @@ $base->requireFromWebSitePath('header/_header.php');
 <section id="productlist">
     <h1>Orders</h1>
     <!--checkbox hide done-->
-    <table class="table table-striped">
+    <table class="table table-striped table-responsive">
         <caption>Your orders</caption>
         <thead>
             <tr>
@@ -44,7 +44,7 @@ $base->requireFromWebSitePath('header/_header.php');
                     echo 
                         "<tr class='" . getRowClass($entry["State"]) . "'>" .
                             "<td headers='statusH'>" . $entry["State"] ."</td>" .
-                            "<td headers='detailsH'><pre>" . $entry["Description"] ."</pre></td>" .
+                            "<td headers='detailsH'><pre><p style='font-size: 50%'>" . $entry["Description"] ."</p></pre></td>" .
                             "<td headers='priceH'>" . $entry["TotalPrice"] ."</td>";
 
                     if ($_SESSION["user"]->type === "PROVIDER" && $entry["State"] === "STARTED") {
