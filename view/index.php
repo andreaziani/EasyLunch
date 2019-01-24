@@ -12,21 +12,25 @@ use Utils\PathManager;
     <script src="/ProgettoTecWeb/view/index.js"></script>
     <link rel="stylesheet" href="/ProgettoTecWeb/view/indexStylesheet.css">
     <section>
-        <div class='jumbotron jumbotron-fluid text-center'>
+        <div class='jumbotron jumbotron-fluid text-center col-12'>
             <div class="container index-text">
-                <h1> The beauty is in taste </h1>
-                <p id='beauty'> Choose your lunch among hundreds of restaurants!</p>
-                <?php 
-                    if(!isset($_SESSION["user"])){
-                        echo "<button id='begin'> Begin now </button>";
-                    }
-                ?>
+                <div class='row'>
+                    <div class='col-xs-12'>
+                        <h1> The beauty is in taste </h1>
+                        <p id='beauty'> Choose your lunch among hundreds of restaurants!</p>
+                        <?php 
+                            if(!isset($_SESSION["user"])){
+                                echo "<button id='begin'> Begin now </button>";
+                            }
+                        ?>
+                    </div>
+                </div>
             </div>
         </div>
         <section>
             <div class="container-fluid .bg-grey text-center text-container howtoclient">
                 <div class="row">
-                    <div class="col-sm-8">    
+                    <div class="col-xs-12">    
                         <h2>Do you want to have lunch?</h2>
                             <p>Follow this simple steps:</p>
                             <ol>
@@ -43,6 +47,8 @@ use Utils\PathManager;
         </section>
         <section>
             <div class="container-fluid text-center text-container howtoprovider">
+            <div class="row">
+                <div class="col-xs-12">  
                 <h2>Are you a restaurant?</h2>
                 <p>Follow this simple steps:</p>
                 <ol>
@@ -53,6 +59,7 @@ use Utils\PathManager;
                     <li> Remember, the delivery man comes to take the order 10 minutes before the delivery time </li>
                 </ol>
                 <!--maybe an icon is good-->
+                </div>
             </div>
         </section>
     </section>
