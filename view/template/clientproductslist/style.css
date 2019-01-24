@@ -41,3 +41,13 @@ header {
     margin: auto !important;
     margin-bottom: 10%;
 }
+
+h1 {
+    text-align: center;
+    font-size: 190% !important;
+    margin-bottom: 5%;
+}
+
+h2 {
+    font-size: 130% !important;
+}

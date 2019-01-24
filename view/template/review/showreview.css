@@ -27,6 +27,12 @@ header {
     padding: 3%;
 }
 
+h1 {
+    text-align: center;
+    font-size: 190% !important;
+    margin-bottom: 5%;
+}
+
 h2{
     color: #281919;
     text-align: center;
@@ -37,4 +43,24 @@ h2{
     text-align: left;
     margin: auto;
     margin-bottom: 3%;
+}
+.c-rating {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.c-rating__item {
+    cursor: pointer;
+}
+.fa-star {
+    color:gray;
+}
+.fa-star.is-active,
+.c-rating__item:hover {
+    color:orange;
 }

@@ -15,20 +15,21 @@ use Utils\PathManager;
         unset($_SESSION["error"]);
     }
 ?>
-<div class="container login-container login" id="access">
-    <h1>Log in</h1>
-    <form id="loginform" action="/ProgettoTecWeb/controller/action/login.php" method="POST">
-        <div class="form-group user-psw">
-            <label>Username: <input class="form-control input-sm" type="text" name="username" /></label><br/>
-            <label>Password: <input class="form-control input-sm" type="password" name="password" /></label><br/>
-        <div>
-        <div class="form-group">
-            <input type="submit" class="btn btn-primary input-sm" value="Log in" id="submit"/>
-        <div>
-    </form>
-    <br/>
-    <p>Are you not registered? <a href="/ProgettoTecWeb/view/template/access/registerPage.php">Register now</a></p>
-</div>
+<section>
+    <div class="container login-container login" id="access">
+        <h1>Log in</h1>
+        <form id="loginform" action="/ProgettoTecWeb/controller/action/login.php" method="POST">
+            <div class="form-group user-psw">
+                <label>Username: <input class="form-control input-sm" type="text" name="username" /></label><br/>
+                <label>Password: <input class="form-control input-sm" type="password" name="password" /></label><br/>
+            <div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary input-sm" value="Log in" id="submit"/>
+            <div>
+        </form>
+        <br/>
+        <p>Are you not registered? <a href="/ProgettoTecWeb/view/template/access/registerPage.php">Register now</a></p>
+    </div>
 </section>
 
 <?php

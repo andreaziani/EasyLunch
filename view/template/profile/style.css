@@ -28,3 +28,7 @@ header {
     padding: 5%;
 }
 
+.alt {
+    display: none;
+    visibility: hidden;
+}
