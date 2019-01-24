@@ -50,7 +50,7 @@ $base->requireFromWebSitePath('header/_header.php');
                         $listItem = $listItem . "<span class='review'> <a> (Reviews) </a> </span>";
                         echo $listItem . "<p class='phonenumber'> Tel: " . $row["PhoneNumber"] . "</p>
                                         <p class='email'> Email: ". $row["Email"] . "</p>
-                                        <p class='address'> Address: " . $row["AddressStreet"] . "<span>" . $row["AddressNumber"] . "<span/></p>
+                                        <p class='address'> Address: " . $row["AddressStreet"] . "  <span> " . $row["AddressNumber"] . "<span/></p>
                                     </form>
                                     </li>";
                     }
