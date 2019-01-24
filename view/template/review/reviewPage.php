@@ -12,7 +12,7 @@ use Utils\PathManager;
 <section>
     <h1>Review</h1>
     <form action="/ProgettoTecWeb/controller/action/submitReview.php" method="POST">
-        <label>Add description (optional): <input type="text" name="description" id="description" /></label><br/>
+        <label>Add description (optional): <textarea name="description" id="description" class="form-control input-lg"></textarea></label><br/>
 
         <fieldset id="ratingSet">
             <legend>Please rate this order:</legend>
@@ -26,9 +26,9 @@ use Utils\PathManager;
             <input type="hidden" id="rank" name="rank" value=""/>
         </fieldset>
 
-        <input type="submit" value="Confirm" id="confirm"/>
+        <input type="submit" value="Confirm" id="confirm" class='btn btn-primary'/>
+        <a href="../orders/orderPage.php" class='btn btn-primary' style='float: right'>Cancel Operation</a>
     </form>
-    <a href="../orders/orderPage.php">Skip review</a>
 </section>
 
 <?php

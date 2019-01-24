@@ -12,7 +12,6 @@ use Utils\PathManager;
         return strtotime($b->timestamp) - strtotime($a->timestamp);
     }
 ?>
-<link rel="stylesheet" href="style.css">
 <section>
     <h1>Notifications</h1>
     <p id="noNotificationMessage">There are currently no unread notifications</p>
@@ -26,7 +25,7 @@ use Utils\PathManager;
             </tr>
         </thead>
     </table>
-    <input type='button' value='Reset notifications' id="resetButton"/>
+    <input type='button' value='Reset notifications' id="resetButton" class='btn btn-warning'/>
 </section>
 <?php
     $base->requireFromWebSitePath('footer/_footer.php');

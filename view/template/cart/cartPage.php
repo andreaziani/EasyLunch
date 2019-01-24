@@ -13,6 +13,7 @@ use Utils\PathManager;
             $html = 
                 "<h1>Cart Summary</h1>" .
                 "<table class='table table-striped'>" .
+                    "<caption>Your cart</caption>" .
                     "<thead>" .
                         "<tr>" .
                             "<th id='nameH'>Product</th>" .
@@ -37,13 +38,13 @@ use Utils\PathManager;
             }
             $html = $html . "</tbody>" .
                 "</table>" .
-                "<a href='/ProgettoTecWeb/view/template/cart/checkoutOrderPage.php' class='btn btn-default'>Checkout</a>";
+                "<a href='/ProgettoTecWeb/view/template/cart/checkoutOrderPage.php' class='btn btn-primary'>Checkout</a>";
             echo $html;
         } else {
             echo "<h1>Your cart is empty</h1>";
         }
 ?>
-    <a href='/ProgettoTecWeb/view/template/clientproviderslist/clientproviderslist.php' class='btn btn-default' style='float: right'>Back</a>
+    <a href='/ProgettoTecWeb/view/template/clientproviderslist/clientproviderslist.php' class='btn btn-primary' style='float: right'>Back</a>
 </section>
 
 <?php

@@ -14,34 +14,51 @@ $base->requireFromWebSitePath('header/_header.php');
 <section id="productlist">
     <h1>Orders</h1>
     <!--checkbox hide done-->
-    <table>
-        <tr>
-            <th>Status</th>
-            <th>Details</th>
-            <th>Total Price</th>
-            <th>Action</th>
-        </tr>
+    <table class="table table-striped">
+        <caption>Your orders</caption>
+        <thead>
+            <tr>
+                <th id="statusH">Status</th>
+                <th id="detailsH">Details</th>
+                <th id="priceH">Total Price</th>
+                <th id="actionH">Action</th>
+            </tr>
+        </thead>
+        <tbody>
         <?php
+            //TODO bug fix
+            function getRowClass($state) {
+                switch ($state) {
+                    case "COMPLETED":
+                        return "table-success";
+                    case "ARRIVED":
+                        return "table-primary";
+                    case "STARTED":
+                        return "table-secondary";
+                }
+            }
+
             $orderProvider = $_SESSION["orderProvider"];
             if ($orderProvider != null) {
                 foreach ($orderProvider->getOrders($_SESSION["user"]) as $entry) {
                     echo 
-                        "<tr>" .
-                            "<td>" . $entry["State"] ."</td>" .
-                            "<td><pre>" . $entry["Description"] ."</pre></td>" .
-                            "<td>" . $entry["TotalPrice"] ."</td>";
+                        "<tr class='" . getRowClass($entry["State"]) . "'>" .
+                            "<td headers='statusH'>" . $entry["State"] ."</td>" .
+                            "<td headers='detailsH'><pre>" . $entry["Description"] ."</pre></td>" .
+                            "<td headers='priceH'>" . $entry["TotalPrice"] ."</td>";
 
                     if ($_SESSION["user"]->type === "PROVIDER" && $entry["State"] === "STARTED") {
-                        echo "<td><input type='button' value='SendOrder' onclick='trySend(" . $entry["Id"] . ")'/></td>";
+                        echo "<td headers='actionH'><input type='button' value='SendOrder' onclick='trySend(" . $entry["Id"] . ")' class='btn btn-primary'/></td>";
                     } else if ($_SESSION["user"]->type === "CLIENT" && $entry["State"] === "ARRIVED") {
-                        echo "<td><input type='button' value='Review' onclick='tryReview(" . $entry["Id"] . ")'/></td>";
+                        echo "<td headers='actionH'><input type='button' value='Review' onclick='tryReview(" . $entry["Id"] . ")' class='btn btn-primary'/></td>";
                     } else {
-                        echo "<td></td>";
+                        echo "<td headers='actionH'></td>";
                     }
                     echo "</tr>";
                 }
             }
         ?>
+        </tbody>
     </table>
 </section>
 
