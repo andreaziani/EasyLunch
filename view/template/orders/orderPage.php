@@ -48,7 +48,7 @@ $base->requireFromWebSitePath('header/_header.php');
                     echo 
                         "<tr class='" . getRowClass($entry["State"]) . "'>" .
                             "<td headers='statusH'>" . $entry["State"] ."</td>" .
-                            "<td headers='detailsH'><button name='toggle_details' class='btn btn-info btn-sm'>Show details</button><br/><pre style='display: none;'><p style='font-size: 70%'>" . $entry["Description"] ."</p></pre></td>" .
+                            "<td headers='detailsH'><button name='toggle_details' class='btn btn-info btn-sm'>Show details</button><br/><pre style='display: none;'><p style='font-size: 85%'>" . $entry["Description"] ."</p></pre></td>" .
                             "<td headers='priceH'>" . round($entry["TotalPrice"], 2) ."</td>";
 
                                     if ($_SESSION["user"]->type === "PROVIDER" && $entry["State"] === "STARTED") {
