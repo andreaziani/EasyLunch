@@ -19,13 +19,15 @@ use Utils\PathManager;
                     <textarea name="description" id="description" class="form-control input-sm" cols="30" rows="5"></textarea>
                     <fieldset id="ratingSet">
                         <legend>Please rate this order:</legend>
-                        <ul class="c-rating">        
-                            <li class="c-rating__item fa fa-star"></li>
-                            <li class="c-rating__item fa fa-star"></li>
-                            <li class="c-rating__item fa fa-star"></li>
-                            <li class="c-rating__item fa fa-star"></li>
-                            <li class="c-rating__item fa fa-star"></li>
-                        </ul>
+                        <div class='stars'>
+                            <ul class="c-rating">        
+                                <li class="c-rating__item fa fa-star"></li>
+                                <li class="c-rating__item fa fa-star"></li>
+                                <li class="c-rating__item fa fa-star"></li>
+                                <li class="c-rating__item fa fa-star"></li>
+                                <li class="c-rating__item fa fa-star"></li>
+                            </ul>
+                        </div>
                         <input type="hidden" id="rank" name="rank" value=""/>
                     </fieldset>
 

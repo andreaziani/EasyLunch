@@ -28,6 +28,12 @@ header {
     margin-bottom: 5%;
 }
 
+@media screen and (min-width: 1920px) {
+    header{
+        margin-bottom: 35%;
+    }
+  }
+
 @media screen and (max-width: 480px) {
     header {
       margin-bottom: 20%;
@@ -63,3 +69,4 @@ legend {
 #confirm {
     margin-right: 2%;
 }
+
