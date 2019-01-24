@@ -80,7 +80,7 @@ class Controller
     public function register($userData) {
         if ($this->userManager->canRegister($userData) and $this->userManager->register($userData)) {
             $this->startSession();
-            $_SESSION["user"] = $this->userManager->getUser($username);
+            $_SESSION["user"] = $this->userManager->getUser($userData["username"]);
             $this->view->redirect("index");
         } else {
             $this->startSession();
