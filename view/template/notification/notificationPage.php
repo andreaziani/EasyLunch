@@ -16,7 +16,7 @@ use Utils\PathManager;
     <h1>Notifications</h1>
     <p id="noNotificationMessage">There are currently no unread notifications</p>
     <p id="notificationMessage">There are notifications unread, visit <a href="/ProgettoTecWeb/view/template/orders/orderPage.php">My Orders</a> to see what you can do</p>
-    <table id="notificationTable" style="display: none;" class="table table-striped">
+    <table id="notificationTable" style="display: none;" class="table table-striped table-responsive">
         <caption>Unread notifications</caption>
         <thead>
             <tr>
