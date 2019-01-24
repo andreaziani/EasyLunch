@@ -15,7 +15,7 @@ use Utils\PathManager;
         <div class='jumbotron jumbotron-fluid text-center'>
             <div class="container index-text">
                 <h1> The beauty is in taste </h1>
-                <p id='beauty'> Choose your lunch among thousands of restaurants!</p>
+                <p id='beauty'> Choose your lunch among hundreds of restaurants!</p>
                 <?php 
                     if(!isset($_SESSION["user"])){
                         echo "<button id='begin'> Begin now </button>";

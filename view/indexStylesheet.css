@@ -2,7 +2,7 @@
     background-color: transparent;
 }
 
-.jumbotron, .jumbotron:not(.index-text){
+.jumbotron {
     overflow: hidden;
     background-image: url("../images/backgrounds/hamburger.jpg") ;
     background-repeat: no-repeat;
