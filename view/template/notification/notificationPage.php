@@ -6,11 +6,6 @@ use Utils\PathManager;
 
     $base = new PathManager();
     $base->requireFromWebSitePath('header/_header.php');
-
-    
-    function cmp($a, $b) {
-        return strtotime($b->timestamp) - strtotime($a->timestamp);
-    }
 ?>
 <link rel="stylesheet" href="style.css">
 <section>
