@@ -31,7 +31,7 @@ $(document).ready(function () {
                     html += 
                         "<tr name='notification'>" +
                             "<td headers='timeH'>" + data[i].timestamp + "</td>" +
-                            "<td headers='descriptionH'><pre><p style='font-size: 50%'>" + data[i].description + "</p></pre></td>" +
+                            "<td headers='descriptionH'><pre><p>" + data[i].description + "</p></pre></td>" +
                         "</tr>";
                 }
                 html += "</tbody><input type='button' value='Reset notifications' onclick='setRead()'/>";
