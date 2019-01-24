@@ -18,3 +18,48 @@
 .c-rating__item:hover {
     color:orange;
 }
+
+#ratingSet{
+    margin: auto;
+    margin-bottom: 10%;
+    text-align: center;
+}
+header {
+    margin-bottom: 5%;
+}
+
+@media screen and (max-width: 480px) {
+    header {
+      margin-bottom: 20%;
+    }
+}
+
+section {
+    margin-bottom: 10%;
+}
+
+fieldset{
+    margin: auto;
+}
+
+legend {
+    border-bottom:none;
+}
+
+
+
+.container{
+    margin:auto;
+}
+
+.form {
+    margin: auto;
+    text-align: center;
+    background-color: #eee;
+    border-radius: 3px;
+    padding: 5%;
+}
+
+#confirm {
+    margin-right: 2%;
+}

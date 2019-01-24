@@ -12,10 +12,12 @@ body {
 .footer {
   position: absolute;
   bottom: 0;
+  box-sizing: border-box;
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 60px;
   background-color: white;
+  padding: 3%;
 }
 
 .navbar-brand >img {
@@ -23,4 +25,16 @@ body {
   margin-right: -5%;
   width: 75%;
   display: inline-block;
+}
+
+@media screen and (max-width: 240px) {
+  header{
+      margin-bottom: 35%;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  header{
+      margin-bottom: 35%;
+  }
 }

@@ -20,3 +20,7 @@ table {
 section {
     margin-bottom: 20%;
 }
+
+caption {
+    text-align: center;
+}
