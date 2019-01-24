@@ -12,8 +12,10 @@ $base = new PathManager();
 $base->requireFromWebSitePath('header/_header.php');
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="showreview.css">
 <section>
+    <?php echo "<h1> Reviews about " . $_GET["companyname"]  . "</h1>";
+    ?>
         <ul id="reviews">
             <?php
                 $query = "SELECT * FROM ProvidersReviews WHERE CompanyName='" . $_GET["companyname"] . "'";
