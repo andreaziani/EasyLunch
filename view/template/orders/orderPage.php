@@ -14,6 +14,7 @@ $base->requireFromWebSitePath('header/_header.php');
 <section id="productlist">
     <h1>Orders</h1>
     <!--checkbox hide done-->
+    <label><input type="checkbox" id="showCompleted" checked="true"/>Show completed orders</label>
     <div class='container-fluid'> 
         <div class='row'>
             <div class='col-xs-12'>
@@ -34,11 +35,9 @@ $base->requireFromWebSitePath('header/_header.php');
                             function getRowClass($state) {
                                 switch ($state) {
                                     case "COMPLETED":
-                                        return "table-success";
+                                        return "success";
                                     case "ARRIVED":
-                                        return "table-primary";
-                                    case "STARTED":
-                                        return "table-secondary";
+                                        return "info";
                                 }
                             }
 
