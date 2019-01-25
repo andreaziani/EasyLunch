@@ -56,7 +56,6 @@ use Utils\PathManager;
                     <li> Once you are registered, log into your personal account </li>
                     <li> Start creating your personal menu </li>
                     <li> Once someone have ordered, EasyLunch will send to you a notification </li>
-                    <li> Remember, the delivery man comes to take the order 10 minutes before the delivery time </li>
                 </ol>
                 <!--maybe an icon is good-->
                 </div>

@@ -7,6 +7,7 @@ use Utils\PathManager;
     $base = new PathManager();
     $base->requireFromWebSitePath('header/_header.php');
 ?>
+
 <link rel="stylesheet" href="/ProgettoTecWeb/view/template/access/style.css">
 <br/>
 <?php
@@ -28,7 +29,9 @@ use Utils\PathManager;
                         <label for='password'>Password:</label><br/>
                         <input class="form-control input-sm" type="password" name="password" id='password'/><br/>
                         <label for='remember'>Remember me </label>
-                        <input type="checkbox" id="remember" name='remember' checked="true"/>
+                        <input type="checkbox" id="remember" name='remember' checked="true"/><br/>
+                        <p> By checking this box you agree with our <span><a href='policy.php'> Cookies policy </a></span></p>
+
                     <div>
                     <div class="form-group">
                         <input type="submit" class="btn btn-primary input-sm" value="Log in" id="submit"/>
