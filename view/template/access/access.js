@@ -16,7 +16,7 @@ $(document).ready(function() {
         return this.optional(element) || good;
     }
 
-    $.validator.addMethod("checkValid", isValid, "Please enter a diferent value.");
+    $.validator.addMethod("checkValid", isValid, "Invalid value");
     $("#loginform").validate({
         rules: {
             username: {
@@ -32,12 +32,13 @@ $(document).ready(function() {
         }
     });
 
-    $.validator.addMethod("checkValid", isValid, "Please enter a diferent value.");
+    $.validator.addMethod("checkValid", isValid, "Invalid value");
     var isProvider = {
         depends: function(element) {
             return $("#typology option:selected").val() == "provider";
         }
     };
+
     $("#registerform").validate({
         rules: {
             name: {
@@ -113,6 +114,7 @@ $(document).ready(function() {
             $("#providerFields").show();
         }
     });
+    
     $("#typology").change(function () {
         if ($("#typology option:selected").val() == "client") {
             $("#providerFields").hide();

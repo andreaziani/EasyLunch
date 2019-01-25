@@ -18,17 +18,24 @@ use Utils\PathManager;
 <section>
     <div class="container login-container login" id="access">
         <h1>Log in</h1>
-        <form id="loginform" action="/ProgettoTecWeb/controller/action/login.php" method="POST">
-            <div class="form-group user-psw">
-                <label>Username: <input class="form-control input-sm" type="text" name="username" /></label><br/>
-                <label>Password: <input class="form-control input-sm" type="password" name="password" /></label><br/>
-            <div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary input-sm" value="Log in" id="submit"/>
-            <div>
-        </form>
-        <br/>
-        <p>Are you not registered? <a href="/ProgettoTecWeb/view/template/access/registerPage.php">Register now</a></p>
+        <div class='row'>
+            <div class='col-xs-6 col-xs-offset-3'>
+                <form id="loginform" action="/ProgettoTecWeb/controller/action/login.php" method="POST">
+                    <div class="form-group user-psw">
+                        <label for='username'>Username:</label><br/>
+                        <input class="form-control input-sm" type="text" name="username" id='username'/>
+                        <br/>
+                        <label for='password'>Password:</label><br/>
+                        <input class="form-control input-sm" type="password" name="password" id='password'/><br/>
+                    <div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary input-sm" value="Log in" id="submit"/>
+                    <div>
+                </form>
+                <br/>
+                <p>Are you not registered? <a href="/ProgettoTecWeb/view/template/access/registerPage.php">Register now</a></p>
+            </div>
+        </div>
     </div>
 </section>
 
