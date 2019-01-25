@@ -12,7 +12,7 @@ use Controller\Controller;
     $data["ProductId"] = $_GET["id"];
     $data["ProductName"] = $_GET["name"];
     $data["Price"] = $_GET["price"];
-    $data["Quantity"] = $_GET["quantity"];
+    $data["Quantity"] = round($_GET["quantity"], 0);
     
     if(Controller::getInstance()->addProductToCart($data)){
         echo "Product inserted in the cart.";

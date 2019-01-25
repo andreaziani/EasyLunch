@@ -14,7 +14,7 @@ $(function() {
     var provider = $("#provider").val();
     $.get(
       "/ProgettoTecWeb/controller/action/searchProducts.php",
-      { key: key , provider: provider},
+      { key: key, provider: provider },
       function(data) {
         if (isJson(data)) {
           var obj = JSON.parse(data);
@@ -28,10 +28,18 @@ $(function() {
               obj[i].Name +
               "</h2> <img class='productimg' src=/ProgettoTecWeb/" +
               obj[i].Image +
-              " alt='" +  obj[i].Description +"' /><p class='description'>" +
+              " alt='" +
               obj[i].Description +
-              "<p class='price'> Price: € <span class='value'>" + obj[i].Price + "</span> </p> " +
-              "<div class='input-group'><label class='hidden' for='id" + obj[i].Id +"'> Quantity </label><input type='number' class='form-control quantity' min='0' name='quantity' value='0' id='"+ obj[i].Id + "'><div class='input-group-btn'><button class='btn btn-default addToCart'>Add to cart</button> </div></div></li> ";
+              "' /><p class='description'>" +
+              obj[i].Description +
+              "<p class='price'> Price: € <span class='value'>" +
+              obj[i].Price +
+              "</span> </p> " +
+              "<div class='input-group'><label class='hidden' for='id" +
+              obj[i].Id +
+              "'> Quantity </label><input type='number' class='form-control quantity' min='0' name='quantity' value='0' id='" +
+              obj[i].Id +
+              "'><div class='input-group-btn'><button class='btn btn-default addToCart'>Add to cart</button> </div></div></li> ";
           }
           $("#productslist").html(html);
         }
@@ -45,7 +53,7 @@ $(function() {
     var provider = $("#provider").val();
     $.get(
       "/ProgettoTecWeb/controller/action/searchProducts.php",
-      { key: key , provider: provider},
+      { key: key, provider: provider },
       function(data) {
         if (isJson(data)) {
           var obj = JSON.parse(data);
@@ -59,10 +67,18 @@ $(function() {
               obj[i].Name +
               "</h2> <img class='productimg' src=/ProgettoTecWeb/" +
               obj[i].Image +
-              " alt='" +  obj[i].Description +"' /> <p class='description'>" +
+              " alt='" +
               obj[i].Description +
-              "<p class='price'> Price:  €  <span class='value'>" + obj[i].Price + "</span> </p> " +
-              "<div class='input-group'><label class='hidden' for='id" + obj[i].Id +"'> Quantity </label><input type='number' class='form-control quantity' min='0' name='quantity' value='0' id='"+ obj[i].Id + "'><div class='input-group-btn'><button class='btn btn-default addToCart'>Add to cart</button> </div></div></li> ";
+              "' /> <p class='description'>" +
+              obj[i].Description +
+              "<p class='price'> Price:  €  <span class='value'>" +
+              obj[i].Price +
+              "</span> </p> " +
+              "<div class='row'><div class='input-group buttons col-xs-3 col-2 col-xs-offset-3 col-offset-3'><label class='hidden' for='id" +
+              obj[i].Id +
+              "'> Quantity </label><input type='number' class='form-control quantity' min='0' name='quantity' value='0' id='" +
+              obj[i].Id +
+              "'><div class='input-group-btn'><button class='btn btn-default addToCart'>Add to cart</button> </div></div></div></li> ";
           }
           $("#productslist").html(html);
         }
@@ -77,35 +93,71 @@ $(function() {
     }
   }
 
-  function addToCart(){
-    var id = $(this).parent().parent().siblings(".id").val();
-    var name = $(this).parent().parent().siblings(".name").html();
-    var price = $(this).parent().parent().siblings(".price").children(".value").html();
-    var li = $(this).parent().parent().parent();
+  function addToCart() {
+    var id = $(this)
+      .parent()
+      .parent()
+      .parent()
+      .siblings(".id")
+      .val();
+    var name = $(this)
+      .parent()
+      .parent()
+      .parent()
+      .siblings(".name")
+      .html();
+    var price = $(this)
+      .parent()
+      .parent()
+      .parent()
+      .siblings(".price")
+      .children(".value")
+      .html();
+    var li = $(this)
+      .parent()
+      .parent()
+      .parent()
+      .parent();
     //console.log(id + " "+ price + " " + name);
-    var quantity = $(this).parent().siblings(".quantity").val();
-    
-    if(quantity > 0){
-      $.get("/ProgettoTecWeb/controller/action/addProductToCart.php", {id: id, quantity: quantity, name: name, price: price}, function(data) {
-        var html = "<div class='alert alert-success'>" + data + "</div> <br/>";
-        li.append(html);
+    var quantity = $(this)
+      .parent()
+      .siblings(".quantity")
+      .val();
 
-      });
-    } else if(quantity < 0) {
-      var html = "<div class='alert alert-danger'>Negative value are not permitted </div> <br/>";
-        li.append(html);
+    if (quantity > 0) {
+      $.get(
+        "/ProgettoTecWeb/controller/action/addProductToCart.php",
+        { id: id, quantity: quantity, name: name, price: price },
+        function(data) {
+          if (data === "Something's wrong with the inseriment in the cart.") {
+            var html =
+              "<div class='alert alert-danger'>" + data + "</div> <br/>";
+          } else {
+            var html =
+              "<div class='alert alert-success'>" + data + "</div> <br/>";
+          }
+          li.append(html);
+        }
+      );
+    } else if (quantity < 0) {
+      var html =
+        "<div class='alert alert-danger'>Negative value are not permitted </div> <br/>";
+      li.append(html);
     }
-    $(this).parent().siblings(".quantity").val("0"); 
+    $(this)
+      .parent()
+      .siblings(".quantity")
+      .val("0");
   }
 
   $(".category").click(searchCategory);
   $("#searchBar").keypress(searchWithKeyPress);
   $("#searchButton").click(search);
-  $("#productslist").on('click',".addToCart",addToCart);
-  $("#productslist").on('focusin', ".quantity", function(){
-    setTimeout(function(){
+  $("#productslist").on("click", ".addToCart", addToCart);
+  $("#productslist").on("focusin", ".quantity", function() {
+    setTimeout(function() {
       $(".alert-success").fadeOut();
       $(".alert-danger").fadeOut();
     }, 1000);
-  })
+  });
 });
