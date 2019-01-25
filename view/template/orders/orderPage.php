@@ -35,11 +35,9 @@ $base->requireFromWebSitePath('header/_header.php');
                             function getRowClass($state) {
                                 switch ($state) {
                                     case "COMPLETED":
-                                        return "table-success";
+                                        return "success";
                                     case "ARRIVED":
-                                        return "table-primary";
-                                    case "STARTED":
-                                        return "table-secondary";
+                                        return "info";
                                 }
                             }
 

@@ -33,6 +33,6 @@ $(document).ready(function(){
         }
     });
     $('#showCompleted').click(function() {
-        $(".table-success").toggle(this.checked);
+        $("tr.success").toggle(this.checked);
     });
 });
