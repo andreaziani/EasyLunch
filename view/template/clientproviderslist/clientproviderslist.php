@@ -15,17 +15,15 @@ $base->requireFromWebSitePath('header/_header.php');
 <script src="/ProgettoTecWeb/view/template/clientproviderslist/clientproviderslist.js"></script>
 <link rel="stylesheet" href="/ProgettoTecWeb/view/template/clientproviderslist/style.css">
 <section id='first'>
-    <section>
-        <div class="container">
-            <div class="input-group" id="research">
-                <label class='hidden' for="searchBar">Search bar</label>
-                <input class="form-control" id="searchBar" type="text" placeholder="Search restaurant.." name="search" autocomplete="on">
-                <div class="input-group-btn">
-                    <button class="btn btn-default" id="searchButton"><span class="glyphicon glyphicon-search"></span></button>
-                </div>
+    <div class="container">
+        <div class="input-group" id="research">
+            <label class='hidden' for="searchBar">Search bar</label>
+            <input class="form-control" id="searchBar" type="text" placeholder="Search restaurant.." name="search" autocomplete="on">
+            <div class="input-group-btn">
+                <button class="btn btn-default" id="searchButton"><span class="glyphicon glyphicon-search"></span></button>
             </div>
         </div>
-    </section>
+    </div>
     <section id='restaurant'>
         <h1> Restaurants </h1>
         <div class='container'>

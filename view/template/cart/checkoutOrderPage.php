@@ -18,15 +18,15 @@ use Utils\PathManager;
                         <form id="checkoutform" action="/ProgettoTecWeb/controller/action/checkoutOrder.php" method="POST">
                             <label for='nominative'>Nominative:</label><br/>
                             <input type="text" id='nominative' name="nominative" class="form-control input-sm"/><br/>
-                            <label for='time'>Select delivery time:</label><br/>
-                            <input type="text" name="deliveryTime" id="time" class="form-control input-sm"/><br/>
                             <label for='deliverySpot'>Select delivery spot: </label><br/>
                             <select id='deliverySpot' name="deliverySpot" class="form-control input-small">
-                                    <option value='FIRST_FLOOR'>FIRST_FLOOR</output> <!--TODO entrance names-->
-                                    <option value='SECOND_FLOOR'>SECOND_FLOOR</output>
+                                <option value='FIRST_FLOOR'>FIRST_FLOOR</output> <!--TODO entrance names-->
+                                <option value='SECOND_FLOOR'>SECOND_FLOOR</output>
                             </select><br/>
                             <label for='date'>Select delivery date:</label><br/>
                             <input type="date" name="deliveryDate" id="date" class="form-control input-sm"/><br/>
+                            <label for='time'>Select delivery time:</label><br/>
+                            <input type="text" name="deliveryTime" id="time" class="form-control input-sm"/><br/>
                             
                             <input type="submit" value="Submit" id="submit" class='btn btn-primary' />
                             <a href="/ProgettoTecWeb/view/template/cart/cartPage.php" class='btn btn-primary'>Back</a>
