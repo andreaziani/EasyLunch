@@ -21,8 +21,15 @@
                 <a class="navbar-brand" href="/ProgettoTecWeb/view/index.php"><img src="/ProgettoTecWeb/images/icons/easylunch.png" alt="brand logo" longdesc='/ProgettoTecWeb/images/icons/logodesc.txt'></a>
 <?php 
 use Utils\PathManager;
+use Controller\Controller;
+
     session_start();
     $base = new PathManager();
+    
+    if(isset($_COOKIE["user"]) && isset($_COOKIE["password"]) && !isset($_SESSION["user"])){
+        Controller::getInstance()->login($_COOKIE["user"], $_COOKIE["password"]);
+    }
+
     if (!isset($_SESSION["user"])) {
         $base->requireFromWebSitePath('header/_access_header.php');
     } else if ($_SESSION["user"]->type == "CLIENT") {

@@ -27,6 +27,8 @@ use Utils\PathManager;
                         <br/>
                         <label for='password'>Password:</label><br/>
                         <input class="form-control input-sm" type="password" name="password" id='password'/><br/>
+                        <label for='remember'>Remember me </label>
+                        <input type="checkbox" id="remember" name='remember' checked="true"/>
                     <div>
                     <div class="form-group">
                         <input type="submit" class="btn btn-primary input-sm" value="Log in" id="submit"/>

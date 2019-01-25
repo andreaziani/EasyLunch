@@ -14,7 +14,7 @@ $base->requireFromWebSitePath('header/_header.php');
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="/ProgettoTecWeb/view/template/clientproviderslist/clientproviderslist.js"></script>
 <link rel="stylesheet" href="/ProgettoTecWeb/view/template/clientproviderslist/style.css">
-<section>
+<section id='first'>
     <section>
         <div class="container">
             <div class="input-group" id="research">
@@ -26,9 +26,9 @@ $base->requireFromWebSitePath('header/_header.php');
             </div>
         </div>
     </section>
-    <section>
+    <section id='restaurant'>
         <h1> Restaurants </h1>
-        <div id="providers">
+        <div class='container'>
             <ul id="providerlist">
                 <?php
                     $query = "SELECT * FROM Providers ORDER BY CompanyName";
