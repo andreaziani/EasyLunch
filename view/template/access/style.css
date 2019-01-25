@@ -16,7 +16,13 @@ header {
 .user-psw {
     margin: auto;
 }
-
+@media only screen and (min-width: 768px) {
+    /* For mobile phones: */
+    .col-xs-6 {
+      width: 50%;
+    }
+  }
+  
 #registerform{
     width: 100%;
     text-align: center;
@@ -29,18 +35,6 @@ header {
 .alert {
     margin-bottom: 3%;
     text-align: center;
-}
-
-#typology{
-    margin: auto;
-    width: 44%;
-}
-
-@media screen and (min-width: 780px) {
-    #typology{
-        margin: auto;
-        width: 11%;
-    }
 }
 
 section {

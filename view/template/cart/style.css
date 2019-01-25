@@ -37,6 +37,9 @@ section {
     border: 2px solid #eee;
 }
 
+.error{
+    color: red;
+}
 caption{
     text-align: center;
 }

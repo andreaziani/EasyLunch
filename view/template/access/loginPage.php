@@ -19,7 +19,7 @@ use Utils\PathManager;
     <div class="container login-container login" id="access">
         <h1>Log in</h1>
         <div class='row'>
-            <div class='col-xs-6 col-xs-offset-3'>
+            <div class='col-xs-6 col-2 col-xs-offset-3 col-offset-3'>
                 <form id="loginform" action="/ProgettoTecWeb/controller/action/login.php" method="POST">
                     <div class="form-group user-psw">
                         <label for='username'>Username:</label><br/>

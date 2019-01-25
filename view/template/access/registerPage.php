@@ -17,38 +17,41 @@ use Utils\PathManager;
 <section>
     <div class="container login-container registration" id="registration">
         <h1>Registration</h1>
-        <form id="registerform" action="../../../controller/action/register.php" method="POST">
-            <div class="form-group user-psw">
-                <label>Name: <input class="form-control input-sm" type="text" name="name" id="name" /></label><br/>
-                <label>Surname: <input class="form-control input-sm" type="text" name="surname" id="surname" /></label><br/>
-                <label>Birthdate: <input class="form-control input-sm" type="date" name="birthdate" id="birthdate"/></label><br/>
-                <label>Telephone: <input class="form-control input-sm" type="tel" name="telephone" id="telephone" /></label><br/>
-                <label>Email: <input class="form-control input-sm" type="email" name="email" id="email" /></label><br/>
-            </div>  
-            <div class="form-group user-psw">
-                <label>Username: <input class="form-control input-sm" type="text" name="username" id="username" /></label><br/>
-                <label>Password: <input class="form-control input-sm" type="password" name="password" id="password" /></label><br/>
-                <label>Repeat Password: <input class="form-control input-sm" type="password" name="rpassword" id="rPassword" /></label><br/>
+        <div class='row'>
+            <div class='col-xs-6 col-xs-offset-3'>
+                <form id="registerform" action="../../../controller/action/register.php" method="POST">
+                    <div class="form-group user-psw">
+                        <label for='name'>Name:</label><br/><input class="form-control input-sm" type="text" name="name" id="name" /><br/>
+                        <label for='surname'>Surname: </label><br/><input class="form-control input-sm" type="text" name="surname" id="surname" /><br/>
+                        <label for='birthdate'>Birthdate:</label><br/><input class="form-control input-sm" type="date" name="birthdate" id="birthdate"/><br/>
+                        <label for='telephone'>Telephone:</label><br/><input class="form-control input-sm" type="tel" name="telephone" id="telephone" /><br/>
+                        <label for='email'>Email: </label><br/><input class="form-control input-sm" type="email" name="email" id="email" /><br/>
+                    </div>  
+                    <div class="form-group user-psw">
+                        <label for='username'>Username: </label><br/><input class="form-control input-sm" type="text" name="username" id="username" /><br/>
+                        <label for='password'>Password: </label><br/><input class="form-control input-sm" type="password" name="password" id="password" /><br/>
+                        <label for='rPassword'>Repeat Password: </label><br/><input class="form-control input-sm" type="password" name="rpassword" id="rPassword" /><br/>
+                    </div>
+                    <div class="form-group user-psw">
+                                <label for='typology'> Register as: </label>
+                                <select class="form-control" name="typology" id="typology">
+                                    <option class="input-sm" value="client">Client</option>
+                                    <option class="input-sm" value="provider">Provider</option>
+                                </select>
+                            <br/>
+                        <fieldset id="providerFields" style="display: none; border: 0px">
+                            <label for='companyName'>Company name: </label><br/><input class="form-control input-sm" type="text" name="companyName" id="companyName" /><br/>
+                            <label for='piva'>PIVA: </label><br/> <input class="form-control input-sm" type="text" name="piva" id="piva" /><br/>
+                            <label for='cityAddress'>City: </label><br/><input class="form-control input-sm" type="text" name="cityAddress" id="cityAddress" /><br/>
+                            <label for='addressStreet'>Street: </label><br/><input class="form-control input-sm" type="text" name="addressStreet" id="addressStreet" /><br/>
+                            <label for='addressNumber'>Street Number: </label><br/><input class="form-control input-sm" type="text" name="addressNumber" id="addressNumber" /><br/>
+                        </fieldset>
+                    </div>
+                    <input class="btn btn-primary" type="submit" value="Sign up" id="submit"/>
+                    <input class="btn btn-primary" type="reset" value="Reset" />
+                </form>
             </div>
-
-            <div class="form-group user-psw">
-                        <label for='typology'> Register as: </label>
-                        <select class="form-control" name="typology" id="typology">
-                            <option class="input-sm" value="client">Client</option>
-                            <option class="input-sm" value="provider">Provider</option>
-                        </select>
-                    <br/>
-                <fieldset id="providerFields" style="display: none; border: 0px">
-                    <label>Company name: <input class="form-control input-sm" type="text" name="companyName" id="companyName" /></label><br/>
-                    <label>PIVA:  <input class="form-control input-sm" type="text" name="piva" id="piva" /></label><br/>    
-                    <label>City:  <input class="form-control input-sm" type="text" name="cityAddress" id="cityAddress" /></label><br/>
-                    <label>Street:  <input class="form-control input-sm" type="text" name="addressStreet" id="addressStreet" /></label><br/>
-                    <label>Street Number:  <input class="form-control input-sm" type="text" name="addressNumber" id="addressNumber" /></label><br/>
-                </fieldset>
-            </div>
-            <input class="btn btn-primary" type="submit" value="Sign up" id="submit"/>
-            <input class="btn btn-primary" type="reset" value="Reset" />
-        </form>
+        </div>
     </div>
 </section>
 <script src="/ProgettoTecWeb/view/template/access/access.js"></script>
