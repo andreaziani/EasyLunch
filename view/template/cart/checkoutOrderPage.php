@@ -29,7 +29,7 @@ use Utils\PathManager;
                             <input type="text" name="deliveryTime" id="time" class="form-control input-sm"/><br/>
                             
                             <input type="submit" value="Submit" id="submit" class='btn btn-primary' />
-                            <a href="/ProgettoTecWeb/view/template/cart/cartPage.php" class='btn btn-primary'>Back</a>
+                            <a id='back' href="/ProgettoTecWeb/view/template/cart/cartPage.php" class='btn btn-primary'>Back</a>
                         </form>
                     </div>
                 </div>

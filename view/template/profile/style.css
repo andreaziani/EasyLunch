@@ -8,11 +8,12 @@
 header {
     margin-bottom: 10%;
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
     header {
       margin-bottom: 20%;
     }
 }
+
 .edit{
     cursor: pointer;
 }
