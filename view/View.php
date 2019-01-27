@@ -8,7 +8,6 @@ class View
         "providerProductsList" => "/ProgettoTecWeb/view/template/providerproductslist/providerProductsList.php",
         "loginPage" => "/ProgettoTecWeb/view/template/access/loginPage.php",
         "registerPage" => "/ProgettoTecWeb/view/template/access/registerPage.php",
-        "mainPage" => "/ProgettoTecWeb/view/template/mainPage.php",
         "providerProfile" => "/ProgettoTecWeb/view/template/profile/providerProfile.php",
         "clientProfile" => "/ProgettoTecWeb/view/template/profile/clientProfile.php",
         "reviewPage" => "/ProgettoTecWeb/view/template/review/reviewPage.php",
