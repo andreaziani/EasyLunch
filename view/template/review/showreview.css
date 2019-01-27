@@ -70,3 +70,6 @@ h2{
 .c-rating__item:hover {
     color:orange;
 }
+section{
+    margin-bottom: 20%;
+}

@@ -39,7 +39,7 @@ $base->requireFromWebSitePath('header/_header.php');
             ?>
         </ul>
     </div>
-</div>
+</section>
 <?php
     $base->requireFromWebSitePath('footer/_footer.php');
 ?>
