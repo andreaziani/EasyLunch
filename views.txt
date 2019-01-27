@@ -1,0 +1,51 @@
+CREATE VIEW CartData AS
+SELECT Carts.Id as CartId, Products.Id as ProductId, Products.Name as ProductName, OrderEntries.Price as Price, OrderEntries.Quantity as Quantity
+FROM Carts 
+JOIN Orders ON Carts.Id = Orders.CartId 
+JOIN OrderEntries ON Orders.Id = OrderEntries.OrderId 
+JOIN Products ON OrderEntries.ProductId = Products.Id;
+
+CREATE VIEW OrderData AS
+SELECT Orders.Id as OrderId, Products.ProviderId as ProviderId, Products.Id as ProductId, Products.Name as ProductName, OrderEntries.Quantity as Quantity
+FROM Orders 
+JOIN OrderEntries ON Orders.Id = OrderEntries.OrderId 
+JOIN Products ON OrderEntries.ProductId = Products.Id;
+
+CREATE VIEW ReviewableOrders AS
+SELECT Clients.UserName as ClientId, Orders.Id as OrderId
+FROM Orders
+JOIN Carts ON Carts.Id = Orders.CartId
+JOIN Clients ON Clients.UserName = Carts.ClientId
+WHERE Orders.State = 'ARRIVED' AND 0 = (SELECT COUNT(*)
+	FROM Reviews
+    	WHERE Reviews.OrderId = Orders.Id);
+
+CREATE VIEW ProviderRatings AS
+SELECT Providers.UserName AS Name, AVG(Reviews.Rank) AS Rating, COUNT(Reviews.Id) AS ReviewNumber
+FROM Providers
+JOIN Orders ON Orders.ProviderId = Providers.UserName
+JOIN Reviews ON Reviews.OrderId = Orders.Id
+GROUP BY Providers.UserName;
+
+CREATE VIEW ProvidersReviews AS
+
+SELECT Reviews.Comment, Reviews.Rank, Reviews.OrderId, Orders.ProviderId, Providers.CompanyName, Providers.Email, Providers.PhoneNumber, Providers.AddressStreet, Providers.AddressNumber
+
+FROM Reviews, Orders, Providers
+
+WHERE Orders.Id = Reviews.OrderId AND Providers.UserName = Orders.ProviderId;
+
+CREATE VIEW VisibleOrders AS
+SELECT Orders.Id AS Id, Carts.ClientId AS ClientId, Orders.ProviderId AS ProviderId, Orders.State AS State, SUM(OrderEntries.Price * OrderEntries.Quantity) AS TotalPrice, Notifications.Description AS Description
+FROM Orders
+JOIN Notifications ON Orders.Id = Notifications.OrderId
+JOIN OrderEntries ON Orders.Id = OrderEntries.OrderId
+JOIN Carts ON Carts.Id = Orders.CartId
+WHERE Notifications.Tipology = 'NEW_ORDER'
+GROUP BY Orders.Id, Orders.State, Notifications.ReceiverId, Carts.ClientId, Orders.ProviderId, Notifications.Description;
+
+CREATE VIEW OrdersToArrive AS 
+SELECT Orders.Id AS Id, Notifications.Timestamp AS Timestamp 
+FROM Orders
+JOIN Notifications ON Orders.Id = Notifications.OrderId
+WHERE Orders.State = 'ARRIVING' AND Notifications.Tipology = 'ORDER_ARRIVED';
