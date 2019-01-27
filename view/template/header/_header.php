@@ -27,7 +27,7 @@ use Controller\Controller;
     $base = new PathManager();
     
     if(isset($_COOKIE["user"]) && isset($_COOKIE["password"]) && !isset($_SESSION["user"])){
-        Controller::getInstance()->login($_COOKIE["user"], $_COOKIE["password"]);
+        Controller::getInstance()->login($_COOKIE["user"], $_COOKIE["password"], false);
     }
 
     if (!isset($_SESSION["user"])) {
