@@ -15,7 +15,7 @@ use Controller\Controller;
     $data["Quantity"] = round($_GET["quantity"], 0);
     
     if(Controller::getInstance()->addProductToCart($data)){
-        echo "Product inserted in the cart.";
+        echo "Product insert in the cart.";
     } else{
         echo "Something's wrong with the inseriment in the cart.";
     }
