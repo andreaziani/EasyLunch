@@ -46,9 +46,9 @@ $base->requireFromWebSitePath('header/_header.php');
                 foreach ($orderProvider->getOrders($_SESSION["user"]) as $entry) {
                     echo 
                         "<tr class='" . getRowClass($entry["State"]) . "'>" .
-                            "<td headers='statusH'>" . $entry["State"] ."</td>" .
+                            "<td headers='statusH'>" . str_replace("_", " ", strtolower($entry["State"])) ."</td>" .
                             "<td headers='detailsH'><button name='toggle_details' class='btn btn-info btn-sm'>Show details</button><br/><pre style='display: none;'><p style='font-size: 85%'>" . $entry["Description"] ."</p></pre></td>" .
-                            "<td headers='priceH'>" . round($entry["TotalPrice"], 2) ."</td>";
+                            "<td headers='priceH'>" . round($entry["TotalPrice"], 2) ."€</td>";
 
                                     if ($_SESSION["user"]->type === "PROVIDER" && $entry["State"] === "STARTED") {
                                         echo "<td headers='actionH'><input type='button' value='SendOrder' onclick='trySend(" . $entry["Id"] . ")' class='btn btn-primary'/></td>";
