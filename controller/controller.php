@@ -62,8 +62,12 @@ class Controller
         $this->view->redirect("providerProductsList");
     }
 
-    public function login($username, $password) {
+    public function login($username, $password, $cookie) {
         if ($this->userManager->verifyLogin($username, $password)) {
+            if($cookie){
+                setcookie("user", $username, time() + (86400 * 30), "/"); //coockie username 1 day
+                setcookie("password", $password, time() + (86400 * 30), "/"); //coockie username 1 day
+            }
             $this->startSession();
             $_SESSION["user"] = $this->userManager->getUser($username);
             if ($_SESSION["user"]->currentCartId != null) {
