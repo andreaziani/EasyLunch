@@ -53,6 +53,7 @@ $(document).ready(function () {
         var productId = $(this).attr("id").split('_')[1];
         $.get("/ProgettoTecWeb/controller/action/dropCartEntry.php?id=" + productId, false).done(function(message){
             //alert(message);
+            console.log(message);
         });
         $(this).parent().parent().remove();
         if ($("tbody tr").length === 0) {
