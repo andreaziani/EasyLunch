@@ -1,1 +1,1 @@
-Notification bell, it will inform to you if a notification arrives.
+There are currently no unread notifications.
