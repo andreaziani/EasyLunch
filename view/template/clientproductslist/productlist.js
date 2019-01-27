@@ -34,12 +34,16 @@ $(function() {
               obj[i].Description +
               "<p class='price'> Price:  €  <span class='value'>" +
               obj[i].Price +
-              "</span> </p> " +
-              "<div class='row'><div class='input-group buttons col-xs-3 col-2 col-xs-offset-3 col-offset-3'><label class='hidden' for='id" +
-              obj[i].Id +
-              "'> Quantity </label><input type='number' class='form-control quantity' min='0' name='quantity' value='1' id='" +
-              obj[i].Id +
-              "'><div class='input-group-btn'><button class='btn btn-default addToCart'>Add to cart</button> </div></div></div></li> ";
+              "</span> </p> ";
+              if($("#isClient").val() === 'true'){
+                html = html + "<div class='row'><div class='input-group buttons col-xs-3 col-2 col-xs-offset-3 col-offset-3'><label class='hidden' for='id" +
+                obj[i].Id +
+                "'> Quantity </label><input type='number' class='form-control quantity' min='0' name='quantity' value='1' id='" +
+                obj[i].Id +
+                "'><div class='input-group-btn'><button class='btn btn-default addToCart'>Add to cart</button> </div></div></div></li> ";
+              } else{
+                html = html + "</li> ";
+              }
           }
           $("#productslist").html(html);
         }
@@ -72,12 +76,16 @@ $(function() {
               obj[i].Description +
               "<p class='price'> Price:  €  <span class='value'>" +
               obj[i].Price +
-              "</span> </p> " +
-              "<div class='row'><div class='input-group buttons col-xs-3 col-2 col-xs-offset-3 col-offset-3'><label class='hidden' for='id" +
-              obj[i].Id +
-              "'> Quantity </label><input type='number' class='form-control quantity' min='0' name='quantity' value='1' id='" +
-              obj[i].Id +
-              "'><div class='input-group-btn'><button class='btn btn-default addToCart'>Add to cart</button> </div></div></div></li> ";
+              "</span> </p> ";
+              if($("#isClient").val() === 'true'){
+                html = html + "<div class='row'><div class='input-group buttons col-xs-3 col-2 col-xs-offset-3 col-offset-3'><label class='hidden' for='id" +
+                obj[i].Id +
+                "'> Quantity </label><input type='number' class='form-control quantity' min='0' name='quantity' value='1' id='" +
+                obj[i].Id +
+                "'><div class='input-group-btn'><button class='btn btn-default addToCart'>Add to cart</button> </div></div></div></li> ";
+              } else{
+                html = html + "</li> ";
+              }
           }
           $("#productslist").html(html);
         }

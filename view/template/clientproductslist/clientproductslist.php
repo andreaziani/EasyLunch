@@ -43,27 +43,39 @@ $base->requireFromWebSitePath('header/_header.php');
     <section>
         <h1> Products </h1>
         <div class='container'>
+        <?php 
+            if($_SESSION["user"]->type === "CLIENT")
+                    echo "<input type='text' class='hidden' id='isClient' value='true' />";
+            else
+                echo "<input type='text' class='hidden' id='isClient' value='false' />";
+        ?>
             <ul id="productslist">
                     <?php
                         $query = "SELECT * FROM Products WHERE ProviderId='". $_POST["username"] ."' AND IsActive=true ORDER BY Name";
                             $result = $db->queryDataToList($db->executeQuery($query));
                             foreach($result as $row) {
-                                    echo "<li class='product'>
+                                $string = "";
+                                $string = $string . "<li class='product'>
                                             <input class='hidden id' name='id' type='number' value='" . $row["Id"] . "'/> 
                                             <h2 class='name'>" . $row["Name"] . "</h2><br/>
                                             <img class='productimg' src=/ProgettoTecWeb/" . $row["Image"] . " alt='". $row["Description"] . "' /><br/>
                                             <p class='description'>" . $row["Description"] . "</p><br/>
-                                            <p class='price'> Price: € <span class='value'>" . $row["Price"] . "</span> </p><br/>
-                                            <div class='row'>
-                                                <div class='input-group buttons col-xs-3 col-2 col-xs-offset-3 col-offset-3'>
-                                                    <label class='hidden' for='id". $row["Id"] . "'> Quantity </label>
-                                                    <input class='form-control quantity' type='number' min='0' name='quantity' value='1' id='id" . $row["Id"] . "'/>
-                                                    <div class='input-group-btn'>
-                                                        <button class='btn btn-default addToCart'>Add to cart</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>";
+                                            <p class='price'> Price: € <span class='value'>" . $row["Price"] . "</span> </p><br/>";
+                                if($_SESSION["user"]->type === "CLIENT"){
+                                    $string = $string . "<div class='row'>
+                                                            <div class='input-group buttons col-xs-3 col-2 col-xs-offset-3 col-offset-3'>
+                                                                <label class='hidden' for='id". $row["Id"] . "'> Quantity </label>
+                                                                <input class='form-control quantity' type='number' min='0' name='quantity' value='1' id='id" . $row["Id"] . "'/>
+                                                                <div class='input-group-btn'>
+                                                                    <button class='btn btn-default addToCart'>Add to cart</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>";
+                                } else{
+                                    $string = $string . "</li>";
+                                }
+                                echo $string;            
                             }
                     ?>
             </ul>
