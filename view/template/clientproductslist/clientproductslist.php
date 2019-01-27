@@ -57,7 +57,7 @@ $base->requireFromWebSitePath('header/_header.php');
                                             <div class='row'>
                                                 <div class='input-group buttons col-xs-3 col-2 col-xs-offset-3 col-offset-3'>
                                                     <label class='hidden' for='id". $row["Id"] . "'> Quantity </label>
-                                                    <input class='form-control quantity' type='number' min='0' name='quantity' value='0' id='id" . $row["Id"] . "'/>
+                                                    <input class='form-control quantity' type='number' min='0' name='quantity' value='1' id='id" . $row["Id"] . "'/>
                                                     <div class='input-group-btn'>
                                                         <button class='btn btn-default addToCart'>Add to cart</button>
                                                     </div>

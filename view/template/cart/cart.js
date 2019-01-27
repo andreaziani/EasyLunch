@@ -55,5 +55,8 @@ $(document).ready(function () {
             //alert(message);
         });
         $(this).parent().parent().remove();
+        if ($("tbody tr").length === 0) {
+            document.location.href = "/ProgettoTecWeb/view/template/cart/cartPage.php";
+        }
     });
 });
