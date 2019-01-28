@@ -29,7 +29,7 @@ $base->requireFromWebSitePath('header/_header.php');
                                 $html = $html . '<span class="fa fa-star"></span>';
                         }
                         if($row["Comment"] !== ""){
-                            $html = $html . "<p class='comment'>User said: " . $row["Comment"] . "</p> </li>";
+                            $html = $html . "<p class='comment'>User said: <pre>" . $row["Comment"] . "</pre></p> </li>";
                             echo $html;
                         } else{
                             $html = $html . "<p class='comment'>User said:  - " . $row["Comment"] . "</p> </li>";
