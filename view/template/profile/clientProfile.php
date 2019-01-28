@@ -22,7 +22,7 @@ use Utils\PathManager;
                             $_SESSION["user"]->surname .
                             "' disabled /></label>" .
                             " <a class='edit'> <span class='glyphicon glyphicon-pencil'></span> <span class='hidden'>Modify</span></a><br />" .
-                            " <label>Birthdate: <input class='form-control input-sm' type='text' name='birthdate' id='birthdate' value='" .
+                            " <label>Birthdate: <input class='form-control input-sm' type='date' name='birthdate' id='birthdate' value='" .
                             $_SESSION["user"]->birthdate .
                             "' disabled /></label>" .
                             " <a class='edit'> <span class='glyphicon glyphicon-pencil'></span> <span class='hidden'>Modify</span></a><br />" .
