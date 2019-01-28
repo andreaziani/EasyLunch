@@ -96,8 +96,9 @@ $(document).ready(function(){
         var id = $(this).siblings("input.hidden");
         //console.log(id);
         var form = $(this).parent();
-        console.log(form);
+        //console.log(form);
         removedProducts = id.val();
+        $(this).hide();
         var html = "<div class='alert alert-warning'> Are you sure to delete the product? ";
         html = html + "<input type='button' class='yes btn btn-primary btn-danger' value='Yes remove' /> <input type='button' class='no btn btn-primary' value='No' /> </div>"
         form.append(html);        
@@ -131,5 +132,6 @@ $(document).ready(function(){
     $('li').on('click', '.no', function(e){
         e.preventDefault();
         $('.alert-warning').hide();
+        $(this).parent().siblings(".remove").show();
     });
 });
