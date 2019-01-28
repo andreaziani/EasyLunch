@@ -24,3 +24,7 @@ section {
 caption {
     text-align: center;
 }
+
+p {
+    white-space: pre-wrap;
+}

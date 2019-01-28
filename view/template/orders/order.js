@@ -23,13 +23,13 @@ function trySend(orderId) {
 
 $(document).ready(function(){
     $("button[name=toggle_details]").click(function() {
-        var pre = $(this).parent().find("pre");
-        if(pre.is(":visible")) {
+        var p = $(this).parent().find("p");
+        if(p.is(":visible")) {
             $(this).text("Show details");
-            pre.hide();
+            p.hide();
         } else {
             $(this).text("Hide details");
-            pre.show();
+            p.show();
         }
     });
     $('#showCompleted').click(function() {

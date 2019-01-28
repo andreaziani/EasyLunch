@@ -73,3 +73,7 @@ h2{
 section{
     margin-bottom: 20%;
 }
+
+p{
+    white-space: pre-wrap;
+}

@@ -52,3 +52,7 @@ h1 {
 h2 {
     font-size: 130% !important;
 }
+
+p {
+    white-space: pre-wrap;
+}
