@@ -1,6 +1,8 @@
-# ProgettoTecWeb
-Implementation of an easy e-commerce web site for restaurant. 
-This basic website could help someone to start writing an e-commerce from scratch.
+# EasyLunch
+EasyLunch is an implementation of an easy e-commerce web site. 
+On this platform students can order their lunch and wait the delivery in two different spots at the campus of Cesena. Also, restaurants can create their personal page and insert their menu. 
+Furthermore, the platform sends some notifications to both students and restaurants when an order is created or delivered. 
+
 
 ## Some preview of the site
 
